@@ -1,0 +1,5350 @@
+cultureInfo pt-BR
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "rel_apuracao_fiscal_contingencia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "rel apuracao fiscal contingencia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "REL_APURACAO_FISCAL_CONTINGENCIA": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_competencia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "dt_Competencia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dt competencia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt_Competencia": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "Data": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "VariationSource": "dt_Competencia",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hierarquia de data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hierarquia de information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_competencia.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "VariationSource": "dt_Competencia",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt competencia ano": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "VariationSource": "dt_Competencia",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt competencia trimestre": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_competencia.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "VariationSource": "dt_Competencia",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt competencia mê": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_competencia.dia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "VariationSource": "dt_Competencia",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Dia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt competencia dia": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.cd_unidade_negocio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "cd_Unidade_Negocio"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cd unidade negocio": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "cd_Unidade_Negocio": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.ds_conta_ref_inicial": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "ds_Conta_Ref_Inicial"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds conta ref inicial": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ds_Conta_Ref_Inicial": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Conta Ref Inicial": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.ds_conta_ref_final": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "ds_Conta_Ref_Final"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds conta ref final": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ds_Conta_Ref_Final": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "ds conta ref decider": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.464
+			          }
+			        },
+			        {
+			          "ds conta ref round": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.45
+			          }
+			        },
+			        {
+			          "ds conta ref match": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.45
+			          }
+			        },
+			        {
+			          "ds conta ref game": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.45
+			          }
+			        },
+			        {
+			          "Conta Ref Final": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.ds_grupo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "ds_Grupo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds grupo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ds_Grupo": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Grupo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.ds_conta_easy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "ds_Conta_Easy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds conta easy": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ds_Conta_Easy": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Conta Easy": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.ds_tipo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "ds_Tipo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds tipo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ds_Tipo": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Tipo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.ds_base_calculo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "ds_Base_Calculo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds base calculo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ds_Base_Calculo": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Descrição": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.cd_ordem": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "cd_Ordem"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cd ordem": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "cd_Ordem": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.vl_realizado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "vl_Realizado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl realizado": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vl_Realizado": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_atualizacao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "dt_Atualizacao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dt atualizacao": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt_Atualizacao": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "VariationSource": "dt_Atualizacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hierarquia de data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hierarquia de information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_atualizacao.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "VariationSource": "dt_Atualizacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt atualizacao ano": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "VariationSource": "dt_Atualizacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt atualizacao trimestre": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "VariationSource": "dt_Atualizacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt atualizacao mê": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_atualizacao.dia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "VariationSource": "dt_Atualizacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Dia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt atualizacao dia": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.dt_chave": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "dt_Chave"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dt chave": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt_Chave": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "tab_data_1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_1"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "tab data 1": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TAB_DATA_1": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "data 1": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "tab information 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "tab fact 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "tab info 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "tab statistic 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "information 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "tab document 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "tab figure 1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "tab_data_1.date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_1",
+			          "ConceptualProperty": "Date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "tab_data_1.date.hierarquia_de_data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_1",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hierarquia de data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hierarquia de information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "tab_data_1.date.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_1",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "tab_data_1.date.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_1",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "tab_data_1.date.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_1",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "tab_data_1.date.dia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_1",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Dia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "tab_data_2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_2"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "tab data 2": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TAB_DATA_2": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "data 2": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "tab information 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "tab fact 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "tab info 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "tab statistic 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "information 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "tab document 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "tab figure 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "tab_data_2.date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_2",
+			          "ConceptualProperty": "Date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "tab_data_2.date.hierarquia_de_data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_2",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hierarquia de data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hierarquia de information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "tab_data_2.date.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_2",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "tab_data_2.date.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_2",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "tab_data_2.date.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_2",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "tab_data_2.date.dia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_DATA_2",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Dia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "TAB_ordem": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_Ordem"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "TAB ordem": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TAB_Ordem": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "TAB_ordem.ds_base_calculo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_Ordem",
+			          "ConceptualProperty": "ds_Base_Calculo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds base calculo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ds_Base_Calculo": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "TAB_ordem.cd_ordem": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_Ordem",
+			          "ConceptualProperty": "CD_ORDEM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cd ordem": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CD_ORDEM": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "medida": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "medida": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_total_recolher": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_total_recolher"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl total recolher": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vl_total_recolher": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "vl aggregate recolher": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "vl overall recolher": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "Valor": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_total_contingecia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_total_contingecia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl total contingecia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vl_total_contingecia": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "vl aggregate contingecia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "vl overall contingecia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "Contingência": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_total_base_calculo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_total_base_calculo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl total base calculo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vl_total_base_calculo": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "vl aggregate base calculo": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "vl overall base calculo": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "Base de Cálculo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.ds_origem": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "ds_origem"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds origem": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ds_origem": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Origem": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_pis_devido": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_pis_devido"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl pis devido": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vl_pis_devido": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "PIS Devido": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_cofins_devido": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_cofins_devido"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl cofins devido": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vl_cofins_devido": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "COFINS Devido": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_pis_devido_M1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_pis_devido M-1"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl_pis_devido M-1": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_cofins_devido_M1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_cofins_devido M-1"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl_cofins_devido M-1": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.ordem": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "ordem"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ordem": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia.ds_chave_ordem": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA",
+			          "ConceptualProperty": "ds_chave_ordem"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "ds chave ordem": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ds_chave_ordem": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "TAB_ordem.ds_conta": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_Ordem",
+			          "ConceptualProperty": "ds_conta"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds conta": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ds_conta": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "TAB_ordem.ds_chave_ordem": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_Ordem",
+			          "ConceptualProperty": "ds_chave_ordem"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds chave ordem": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ds_chave_ordem": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "medida.eixo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "eixo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "eixo": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_cofins_contigencia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_cofins_contigencia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl cofins contigencia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vl_cofins_contigencia": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_pis_contigencia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_pis_contigencia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl pis contigencia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vl_pis_contigencia": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_tooltip": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas_Tooltip"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "medidas tooltip": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "medida tooltip": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "Medidas_Tooltip": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_tooltip.vl_cofins_contigencia_CORRETAGEM": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas_Tooltip",
+			          "ConceptualProperty": "vl_cofins_contigencia CORRETAGEM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl_cofins_contigencia CORRETAGEM": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_tooltip.vl_cofins_contigencia_RESERVA": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas_Tooltip",
+			          "ConceptualProperty": "vl_cofins_contigencia RESERVA"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl_cofins_contigencia RESERVA": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_tooltip.vl_cofins_contigencia_PRO_LABORE": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas_Tooltip",
+			          "ConceptualProperty": "vl_cofins_contigencia PRO LABORE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl_cofins_contigencia PRO LABORE": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_tooltip.vl_pis_contigencia_CORRETAGEM": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas_Tooltip",
+			          "ConceptualProperty": "vl_pis_contigencia CORRETAGEM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl_pis_contigencia CORRETAGEM": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_tooltip.vl_pis_contigencia_RESERVAS": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas_Tooltip",
+			          "ConceptualProperty": "vl_pis_contigencia RESERVAS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl_pis_contigencia RESERVAS": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medidas_tooltip.vl_pis_contigencia_PRO_LABORE": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas_Tooltip",
+			          "ConceptualProperty": "vl_pis_contigencia PRO LABORE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl_pis_contigencia PRO LABORE": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_total_receitas": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_total_receitas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl total receitas": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vl_total_receitas": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "vl aggregate receita": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "vl overall receita": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "Receitas": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_total_exclusoes": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_total_exclusoes"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl total exclusoes": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vl_total_exclusoes": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "vl aggregate exclusoe": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "vl overall exclusoe": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "Exclusões": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_total_manipulado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl total manipulado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl total manipulado": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vl aggregate manipulado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "vl overall manipulado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "Valor": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "tab_data_2_date_mê_has_tab_data_2_date_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_2.date.mê": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.mê"
+			          }
+			        },
+			        "tab_data_2.date.dia": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.mê"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2.date.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_dias"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.dia"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2.date.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_have_mê"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.dia"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "tab_data_2.date.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_are_in_mê3"
+			        }
+			      ]
+			    },
+			    "tab_data_2_date_trimestre_has_tab_data_2_date_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_2.date.trimestre": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.trimestre"
+			          }
+			        },
+			        "tab_data_2.date.mê": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.trimestre"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2.date.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_mê"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.mê"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2.date.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_trimestres"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.mê"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "tab_data_2.date.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_are_in_trimestres3"
+			        }
+			      ]
+			    },
+			    "tab_data_2_date_ano_has_tab_data_2_date_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_2.date.ano": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.ano"
+			          }
+			        },
+			        "tab_data_2.date.trimestre": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.ano"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2.date.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.trimestre"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2.date.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "tab_data_2.date.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos3"
+			        }
+			      ]
+			    },
+			    "tab_data_2_date_hierarquia_de_data_has_tab_data_2_date_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_2.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.hierarquia_de_data"
+			          }
+			        },
+			        "tab_data_2.date.dia": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2.date.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias"
+			        }
+			      ]
+			    },
+			    "tab_data_2_date_hierarquia_de_data_has_tab_data_2_date_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_2.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.hierarquia_de_data"
+			          }
+			        },
+			        "tab_data_2.date.mê": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2.date.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê"
+			        }
+			      ]
+			    },
+			    "tab_data_2_date_hierarquia_de_data_has_tab_data_2_date_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_2.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.hierarquia_de_data"
+			          }
+			        },
+			        "tab_data_2.date.trimestre": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2.date.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_trimestres"
+			        }
+			      ]
+			    },
+			    "tab_data_2_date_hierarquia_de_data_has_tab_data_2_date_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_2.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.hierarquia_de_data"
+			          }
+			        },
+			        "tab_data_2.date.ano": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2.date.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2.date.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_anos"
+			        }
+			      ]
+			    },
+			    "tab_data_2_date_has_hierarquia_de_data": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_2.date": {
+			          "Target": {
+			            "Entity": "tab_data_2.date"
+			          }
+			        },
+			        "tab_data_2.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tab_data_2.date.hierarquia_de_data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2.date"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2.date.hierarquia_de_data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dates_have_hierarquia_de_data"
+			        }
+			      ]
+			    },
+			    "tab_data_1_date_mê_has_tab_data_1_date_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_1.date.mê": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.mê"
+			          }
+			        },
+			        "tab_data_1.date.dia": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.mê"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1.date.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_dias1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.dia"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1.date.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_have_mê1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.dia"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "tab_data_1.date.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_are_in_mê2"
+			        }
+			      ]
+			    },
+			    "tab_data_1_date_trimestre_has_tab_data_1_date_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_1.date.trimestre": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.trimestre"
+			          }
+			        },
+			        "tab_data_1.date.mê": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.trimestre"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1.date.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_mê1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.mê"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1.date.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_trimestres1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.mê"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "tab_data_1.date.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_are_in_trimestres2"
+			        }
+			      ]
+			    },
+			    "tab_data_1_date_ano_has_tab_data_1_date_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_1.date.ano": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.ano"
+			          }
+			        },
+			        "tab_data_1.date.trimestre": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.ano"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1.date.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.trimestre"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1.date.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "tab_data_1.date.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos2"
+			        }
+			      ]
+			    },
+			    "tab_data_1_date_hierarquia_de_data_has_tab_data_1_date_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_1.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.hierarquia_de_data"
+			          }
+			        },
+			        "tab_data_1.date.dia": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1.date.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias1"
+			        }
+			      ]
+			    },
+			    "tab_data_1_date_hierarquia_de_data_has_tab_data_1_date_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_1.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.hierarquia_de_data"
+			          }
+			        },
+			        "tab_data_1.date.mê": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1.date.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê1"
+			        }
+			      ]
+			    },
+			    "tab_data_1_date_hierarquia_de_data_has_tab_data_1_date_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_1.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.hierarquia_de_data"
+			          }
+			        },
+			        "tab_data_1.date.trimestre": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1.date.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_trimestres1"
+			        }
+			      ]
+			    },
+			    "tab_data_1_date_hierarquia_de_data_has_tab_data_1_date_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_1.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.hierarquia_de_data"
+			          }
+			        },
+			        "tab_data_1.date.ano": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1.date.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1.date.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_anos1"
+			        }
+			      ]
+			    },
+			    "tab_data_1_date_has_hierarquia_de_data": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_1.date": {
+			          "Target": {
+			            "Entity": "tab_data_1.date"
+			          }
+			        },
+			        "tab_data_1.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tab_data_1.date.hierarquia_de_data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1.date"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1.date.hierarquia_de_data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dates_have_hierarquia_de_data1"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_atualizacao_mê_has_rel_apuracao_fiscal_contingencia_dt_atualizacao_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.dia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_dias2"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.dia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_have_mê2"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.dia"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_are_in_mê1"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_atualizacao_trimestre_has_rel_apuracao_fiscal_contingencia_dt_atualizacao_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_mê2"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_trimestres2"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_are_in_trimestres1"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_atualizacao_ano_has_rel_apuracao_fiscal_contingencia_dt_atualizacao_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.ano": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.ano"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.ano"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres2"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos2"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos1"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_atualizacao_hierarquia_de_data_has_rel_apuracao_fiscal_contingencia_dt_atualizacao_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.dia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias2"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_atualizacao_hierarquia_de_data_has_rel_apuracao_fiscal_contingencia_dt_atualizacao_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê2"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_atualizacao_hierarquia_de_data_has_rel_apuracao_fiscal_contingencia_dt_atualizacao_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_trimestres2"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_atualizacao_hierarquia_de_data_has_rel_apuracao_fiscal_contingencia_dt_atualizacao_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.ano": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_anos2"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_atualizacao_has_hierarquia_de_data": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao.hierarquia_de_data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dt_atualizacaos_have_hierarquia_de_data"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_competencia_mê_has_rel_apuracao_fiscal_contingencia_dt_competencia_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.mê": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.mê"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.dia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.mê"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_dias3"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.dia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_have_mê3"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.dia"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_are_in_mê"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_competencia_trimestre_has_rel_apuracao_fiscal_contingencia_dt_competencia_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.mê": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_mê3"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.mê"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_trimestres3"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.mê"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_are_in_trimestres"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_competencia_ano_has_rel_apuracao_fiscal_contingencia_dt_competencia_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.ano": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.ano"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.ano"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres3"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos3"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_competencia_hierarquia_de_data_has_rel_apuracao_fiscal_contingencia_dt_competencia_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.dia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias3"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_competencia_hierarquia_de_data_has_rel_apuracao_fiscal_contingencia_dt_competencia_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.mê": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê3"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_competencia_hierarquia_de_data_has_rel_apuracao_fiscal_contingencia_dt_competencia_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_trimestres3"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_competencia_hierarquia_de_data_has_rel_apuracao_fiscal_contingencia_dt_competencia_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.ano": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_anos3"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_dt_competencia_has_hierarquia_de_data": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia.dt_competencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia.hierarquia_de_data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dt_competencias_have_hierarquia_de_data"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_TAB_ordem": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "TAB_ordem": {
+			          "Target": {
+			            "Entity": "TAB_ordem"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "TAB_ordem"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_TAB_ordems"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "TAB_ordem"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "TAB_ordems_have_rel_apuracao_fiscal_contingencias"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_tab_data_2": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "tab_data_2": {
+			          "Target": {
+			            "Entity": "tab_data_2"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_tab_data_2"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tab_data_2_have_rel_apuracao_fiscal_contingencias"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_tab_data_1": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "tab_data_1": {
+			          "Target": {
+			            "Entity": "tab_data_1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_tab_data_1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tab_data_1_have_rel_apuracao_fiscal_contingencias"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medida_vl_total_manipulado": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medida.vl_total_manipulado": {
+			          "Target": {
+			            "Entity": "medida.vl_total_manipulado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_total_manipulado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_total_manipulado"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medida_vl_total_exclusoes": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medida.vl_total_exclusoes": {
+			          "Target": {
+			            "Entity": "medida.vl_total_exclusoes"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_total_exclusoes"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_total_exclusoes"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medida_vl_total_receitas": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medida.vl_total_receitas": {
+			          "Target": {
+			            "Entity": "medida.vl_total_receitas"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_total_receitas"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_total_receitas"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medidas_tooltip_vl_pis_contigencia_PRO_LABORE": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medidas_tooltip.vl_pis_contigencia_PRO_LABORE": {
+			          "Target": {
+			            "Entity": "medidas_tooltip.vl_pis_contigencia_PRO_LABORE"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medidas_tooltip.vl_pis_contigencia_PRO_LABORE"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_pis_contigencia_PRO_LABORE"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medidas_tooltip_vl_pis_contigencia_RESERVAS": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medidas_tooltip.vl_pis_contigencia_RESERVAS": {
+			          "Target": {
+			            "Entity": "medidas_tooltip.vl_pis_contigencia_RESERVAS"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medidas_tooltip.vl_pis_contigencia_RESERVAS"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_pis_contigencia_RESERVAS"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medidas_tooltip_vl_pis_contigencia_CORRETAGEM": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medidas_tooltip.vl_pis_contigencia_CORRETAGEM": {
+			          "Target": {
+			            "Entity": "medidas_tooltip.vl_pis_contigencia_CORRETAGEM"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medidas_tooltip.vl_pis_contigencia_CORRETAGEM"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_pis_contigencia_CORRETAGEM"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medidas_tooltip_vl_cofins_contigencia_PRO_LABORE": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medidas_tooltip.vl_cofins_contigencia_PRO_LABORE": {
+			          "Target": {
+			            "Entity": "medidas_tooltip.vl_cofins_contigencia_PRO_LABORE"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medidas_tooltip.vl_cofins_contigencia_PRO_LABORE"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_cofins_contigencia_PRO_LABORE"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medidas_tooltip_vl_cofins_contigencia_RESERVA": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medidas_tooltip.vl_cofins_contigencia_RESERVA": {
+			          "Target": {
+			            "Entity": "medidas_tooltip.vl_cofins_contigencia_RESERVA"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medidas_tooltip.vl_cofins_contigencia_RESERVA"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_cofins_contigencia_RESERVA"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medidas_tooltip_vl_cofins_contigencia_CORRETAGEM": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medidas_tooltip.vl_cofins_contigencia_CORRETAGEM": {
+			          "Target": {
+			            "Entity": "medidas_tooltip.vl_cofins_contigencia_CORRETAGEM"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medidas_tooltip.vl_cofins_contigencia_CORRETAGEM"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_cofins_contigencia_CORRETAGEM"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medida_vl_pis_contigencia": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medida.vl_pis_contigencia": {
+			          "Target": {
+			            "Entity": "medida.vl_pis_contigencia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_pis_contigencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_pis_contigencia"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medida_vl_cofins_contigencia": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medida.vl_cofins_contigencia": {
+			          "Target": {
+			            "Entity": "medida.vl_cofins_contigencia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_cofins_contigencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_cofins_contigencia"
+			        }
+			      ]
+			    },
+			    "medida_has_eixo": {
+			      "Binding": {
+			        "ConceptualEntity": "Medidas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "medida": {
+			          "Target": {
+			            "Entity": "medida"
+			          }
+			        },
+			        "medida.eixo": {
+			          "Target": {
+			            "Entity": "medida.eixo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "medida"
+			            },
+			            "Object": {
+			              "Role": "medida.eixo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "medidas_have_eixo"
+			        }
+			      ]
+			    },
+			    "TAB_ordem_has_ds_chave_ordem": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_Ordem"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "TAB_ordem": {
+			          "Target": {
+			            "Entity": "TAB_ordem"
+			          }
+			        },
+			        "TAB_ordem.ds_chave_ordem": {
+			          "Target": {
+			            "Entity": "TAB_ordem.ds_chave_ordem"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "TAB_ordem"
+			            },
+			            "Object": {
+			              "Role": "TAB_ordem.ds_chave_ordem"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "TAB_ordems_have_ds_chave_ordems"
+			        }
+			      ]
+			    },
+			    "TAB_ordem_has_ds_conta": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_Ordem"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "TAB_ordem": {
+			          "Target": {
+			            "Entity": "TAB_ordem"
+			          }
+			        },
+			        "TAB_ordem.ds_conta": {
+			          "Target": {
+			            "Entity": "TAB_ordem.ds_conta"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "TAB_ordem"
+			            },
+			            "Object": {
+			              "Role": "TAB_ordem.ds_conta"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "TAB_ordems_have_ds_contas"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_ordem": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.ordem": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.ordem"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.ordem"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_ordems"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medida_vl_cofins_devido_M1": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medida.vl_cofins_devido_M1": {
+			          "Target": {
+			            "Entity": "medida.vl_cofins_devido_M1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_cofins_devido_M1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_cofins_devido_M1"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medida_vl_pis_devido_M1": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medida.vl_pis_devido_M1": {
+			          "Target": {
+			            "Entity": "medida.vl_pis_devido_M1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_pis_devido_M1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_pis_devido_M1"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medida_vl_cofins_devido": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medida.vl_cofins_devido": {
+			          "Target": {
+			            "Entity": "medida.vl_cofins_devido"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_cofins_devido"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_cofins_devido"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medida_vl_pis_devido": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medida.vl_pis_devido": {
+			          "Target": {
+			            "Entity": "medida.vl_pis_devido"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_pis_devido"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_pis_devido"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_ds_origem": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.ds_origem": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.ds_origem"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.ds_origem"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_ds_origems"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medida_vl_total_base_calculo": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medida.vl_total_base_calculo": {
+			          "Target": {
+			            "Entity": "medida.vl_total_base_calculo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_total_base_calculo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_total_base_calculo"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medida_vl_total_contingecia": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medida.vl_total_contingecia": {
+			          "Target": {
+			            "Entity": "medida.vl_total_contingecia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_total_contingecia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_total_contingecia"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_medida_vl_total_recolher": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "medida.vl_total_recolher": {
+			          "Target": {
+			            "Entity": "medida.vl_total_recolher"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_total_recolher"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_total_recolher"
+			        }
+			      ]
+			    },
+			    "TAB_ordem_has_cd_ordem": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_Ordem"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "TAB_ordem": {
+			          "Target": {
+			            "Entity": "TAB_ordem"
+			          }
+			        },
+			        "TAB_ordem.cd_ordem": {
+			          "Target": {
+			            "Entity": "TAB_ordem.cd_ordem"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "TAB_ordem"
+			            },
+			            "Object": {
+			              "Role": "TAB_ordem.cd_ordem"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "TAB_ordems_have_cd_ordems"
+			        }
+			      ]
+			    },
+			    "TAB_ordem_has_ds_base_calculo": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_Ordem"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "TAB_ordem": {
+			          "Target": {
+			            "Entity": "TAB_ordem"
+			          }
+			        },
+			        "TAB_ordem.ds_base_calculo": {
+			          "Target": {
+			            "Entity": "TAB_ordem.ds_base_calculo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "TAB_ordem"
+			            },
+			            "Object": {
+			              "Role": "TAB_ordem.ds_base_calculo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "TAB_ordems_have_ds_base_calculos"
+			        }
+			      ]
+			    },
+			    "tab_data_2_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_2": {
+			          "Target": {
+			            "Entity": "tab_data_2"
+			          }
+			        },
+			        "tab_data_2.date": {
+			          "Target": {
+			            "Entity": "tab_data_2.date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_2"
+			            },
+			            "Object": {
+			              "Role": "tab_data_2.date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tab_data_2_have_dates"
+			        }
+			      ]
+			    },
+			    "tab_data_1_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_DATA_1"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_data_1": {
+			          "Target": {
+			            "Entity": "tab_data_1"
+			          }
+			        },
+			        "tab_data_1.date": {
+			          "Target": {
+			            "Entity": "tab_data_1.date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_data_1"
+			            },
+			            "Object": {
+			              "Role": "tab_data_1.date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tab_data_1_have_dates"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_dt_chave": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_chave": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_chave"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_chave"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_dt_chaves"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_dt_atualizacao": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_atualizacao": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_atualizacao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_atualizacao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_dt_atualizacaos"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_vl_realizado": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.vl_realizado": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.vl_realizado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.vl_realizado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_vl_realizados"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_cd_ordem": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.cd_ordem": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.cd_ordem"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.cd_ordem"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_cd_ordems"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_ds_base_calculo": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.ds_base_calculo": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.ds_base_calculo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.ds_base_calculo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_ds_base_calculos"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_ds_tipo": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.ds_tipo": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.ds_tipo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.ds_tipo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_ds_tipos"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_ds_conta_easy": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.ds_conta_easy": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.ds_conta_easy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.ds_conta_easy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_ds_conta_easy"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_ds_grupo": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.ds_grupo": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.ds_grupo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.ds_grupo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_ds_grupos"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_ds_conta_ref_final": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.ds_conta_ref_final": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.ds_conta_ref_final"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.ds_conta_ref_final"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_ds_conta_ref_finals"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_ds_conta_ref_inicial": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.ds_conta_ref_inicial": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.ds_conta_ref_inicial"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.ds_conta_ref_inicial"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_ds_conta_ref_inicials"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_cd_unidade_negocio": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.cd_unidade_negocio": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.cd_unidade_negocio"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.cd_unidade_negocio"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_cd_unidade_negocios"
+			        }
+			      ]
+			    },
+			    "rel_apuracao_fiscal_contingencia_has_dt_competencia": {
+			      "Binding": {
+			        "ConceptualEntity": "REL_APURACAO_FISCAL_CONTINGENCIA"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "rel_apuracao_fiscal_contingencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia"
+			          }
+			        },
+			        "rel_apuracao_fiscal_contingencia.dt_competencia": {
+			          "Target": {
+			            "Entity": "rel_apuracao_fiscal_contingencia.dt_competencia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "rel_apuracao_fiscal_contingencia"
+			            },
+			            "Object": {
+			              "Role": "rel_apuracao_fiscal_contingencia.dt_competencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rel_apuracao_fiscal_contingencias_have_dt_competencias"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.1.0"
+			    }
+			  }
+			}
+		contentType: json
+

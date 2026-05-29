@@ -1,0 +1,35 @@
+relationship d9124cf3-f7ac-4a3e-bc51-dd70ea0b6029
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_APURACAO_FISCAL_CONTINGENCIA.dt_Competencia
+	toColumn: LocalDateTable_d4b04f33-d606-4d8d-a576-17a085b37a25.Date
+
+relationship f33c140e-16f0-40fb-bcf9-a7b2f2b47e8c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_APURACAO_FISCAL_CONTINGENCIA.dt_Atualizacao
+	toColumn: LocalDateTable_0c4a8504-0813-49c5-8f65-9530d66ec61c.Date
+
+relationship 78aca52a-7ec6-40df-b05b-1315e90457bc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_DATA_1.Date
+	toColumn: LocalDateTable_d6dfb1f2-d373-40c5-95c7-262ffb0a8528.Date
+
+relationship 917a678b-d015-485e-b2dc-1f3a63abf974
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_DATA_2.Date
+	toColumn: LocalDateTable_be4e294a-61a9-4ede-9141-21ff9bce5abf.Date
+
+relationship 24f53daf-4d2b-187f-9c09-9e18f5aa3443
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_APURACAO_FISCAL_CONTINGENCIA.dt_Chave
+	toColumn: TAB_DATA_1.Date
+
+relationship 6f80ec9f-5e06-6993-b6be-8ae5103ffb3f
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_APURACAO_FISCAL_CONTINGENCIA.dt_Chave
+	toColumn: TAB_DATA_2.Date
+
+relationship d2614b1b-7cef-622c-bdc1-d7601b08b755
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_APURACAO_FISCAL_CONTINGENCIA.ds_chave_ordem
+	toColumn: TAB_Ordem.ds_chave_ordem
+

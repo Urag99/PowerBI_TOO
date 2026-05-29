@@ -1,0 +1,28 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["REL_APURACAO_FISCAL_CONTINGENCIA","TAB_Ordem","Medidas","Medidas_Tooltip"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table REL_APURACAO_FISCAL_CONTINGENCIA
+ref table DateTableTemplate_53a3a48e-768b-4723-8cb4-761783bce015
+ref table LocalDateTable_d4b04f33-d606-4d8d-a576-17a085b37a25
+ref table LocalDateTable_0c4a8504-0813-49c5-8f65-9530d66ec61c
+ref table TAB_DATA_1
+ref table LocalDateTable_d6dfb1f2-d373-40c5-95c7-262ffb0a8528
+ref table TAB_DATA_2
+ref table LocalDateTable_be4e294a-61a9-4ede-9141-21ff9bce5abf
+ref table TAB_Ordem
+ref table Medidas
+ref table Medidas_Tooltip
+
+ref cultureInfo pt-BR
+

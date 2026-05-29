@@ -1,0 +1,23 @@
+table TAB_DATA_2
+	lineageTag: f57bf370-6485-46e4-87a4-d3fea9dbff03
+
+	column Date
+		formatString: General Date
+		lineageTag: 547f90c6-71d4-4766-967c-ecf58b6b6fd1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 917a678b-d015-485e-b2dc-1f3a63abf974
+			defaultHierarchy: LocalDateTable_be4e294a-61a9-4ede-9141-21ff9bce5abf.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAB_DATA_2 = calculated
+		mode: import
+		source = CALENDAR(min(REL_APURACAO_FISCAL_CONTINGENCIA[dt_Competencia]), max(REL_APURACAO_FISCAL_CONTINGENCIA[dt_Competencia]))
+
+	annotation PBI_Id = c8d1f0fd7b754875836d8de0f19bad6a
+

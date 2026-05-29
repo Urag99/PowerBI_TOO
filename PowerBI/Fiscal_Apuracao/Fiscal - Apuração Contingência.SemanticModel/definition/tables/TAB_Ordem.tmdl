@@ -1,0 +1,50 @@
+table TAB_Ordem
+	lineageTag: e05c9fea-2703-4768-bfdf-22b1a0035a93
+
+	column ds_Base_Calculo
+		dataType: string
+		lineageTag: 23b95df1-42db-4e45-ae01-e359fcf65b00
+		summarizeBy: none
+		sourceColumn: ds_Base_Calculo
+
+		annotation SummarizationSetBy = Automatic
+
+	column CD_ORDEM
+		dataType: int64
+		formatString: 0
+		lineageTag: d5bfc4fd-56e2-4015-a074-43adc5582827
+		summarizeBy: none
+		sourceColumn: CD_ORDEM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_conta
+		dataType: string
+		lineageTag: f5598d7d-d29d-4d0a-84c4-04b6c4c5612b
+		summarizeBy: none
+		sourceColumn: ds_conta
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_chave_ordem
+		dataType: string
+		lineageTag: 5dadb7d0-f74b-46bb-ad1d-c0d7e59d6309
+		summarizeBy: none
+		sourceColumn: ds_chave_ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAB_Ordem = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("nVbbbttGEP2VhYACKmC14k2XR1tSAgKOJEiCX4wgGJMbdQOK6+ySQtG/KfIQtECejH4BfywzQy5Nxa6V5MEA4ZlzZnbmnF3d3vbWpvr3oLQV8qAKleJHVn35WPJXP4E8kRkcZF5QhjDSFqooqy8Y/bV30fPwbzj0em8vbnuLg7K2+qRFKsWVyv6QhbRiIGY6t9WDSZQW8/XN5Q4RPqN8Rq3KwoAVG5lIVeDH6l4awOQclMW0gFMDTr38UNpCilSLI2TaUB0jIVN/QfWZ6t6DAaHvjNrTP/7D6ggOmSBkgqaIeKVyOpcygMGIEyKXUFL9mg/5E90cCpNGnDjixLk6qlTmNCODpHc0LQyPOWXcLWaJRh2qh6NUtm45T6nuhHMnTa4tswLwZFhQ6JMWcORW7ktDLUw7437Sq1W5soXROPONw9AEvGFn3C+hZtqhZjLFExHW68yfWAEXyWog7LbBUqLfmTOtnGSimio4hHujj8ryUorqnyRXCZA41uvla0IHnSXcgFGQ8EJrEH65Lq3QiTaGxXlAhpyCgElQL8ALO0tiovagqbT30gItLKsFRn3hyNfzDcXjq+WGGKLODn+6lZatFs20md9pYZfDqsEtvSAsj9Xi1Zvfth3I97JQR7anRPnvybKZTiBjb7JaPP88ZiDiHIvWRqIVsVHFhzJViYKMHMsa8oKf5oL0UKMAASQYn5XlhWeV5bOyvOjUVO9bC+N9pY5oEtFf0gaOKk/KjKwEZB1pjtAqjqbiB2wJH230rmOlp6ybGmzFTjZy7V8rPAQYpgkdjd/SzNxlISzeQjgQI08vVtEXjoKM6UeOI3iGI2ndCNSdfizP2JHDhi22q3fE42XJswS8zG1jRTK5K3BynLGji36UblB3aZs2beeQRDxxxKPHccfb2WorbuLXi+VusaVrYLMaXF9erTaL066mDjz+Frx4E+/i+eoFcDB04Mn/gk/yPZc/bfOvwEp+Bqq/M1QVyTEgOXJwHW/FXKJdcZTDi1H0C7ME3TBJMNH4FBoaVfWQ/ibCaEzSCUKXN1u9ipcNE4h+WNNE34SfYRpPJ7S1YORSd7qAjAYSb3+vYRQetw3h+4M3c6HyvczR141K6RKTBezlgbInbV2NZvgOwPQMvfwzyUqr5TOGotd5eL7eGQbvuxvAXzoPg2u400YS0P+R0oTF0T6ig9Op0zsS07zD6Emg3UVYr+rtVw==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [ds_Base_Calculo = _t, CD_ORDEM = _t, ds_conta = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"ds_Base_Calculo", type text}, {"CD_ORDEM", Int64.Type}}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Tipo Alterado", "ds_chave_ordem", each Text.Combine({[ds_Base_Calculo], [ds_conta]}, "|"), type text)
+				in
+				    #"Coluna Mesclada Inserida"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

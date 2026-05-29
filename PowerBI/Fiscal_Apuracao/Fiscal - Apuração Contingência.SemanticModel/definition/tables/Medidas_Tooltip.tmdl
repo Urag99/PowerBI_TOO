@@ -1,0 +1,110 @@
+table Medidas_Tooltip
+	lineageTag: 8aee6ace-fc83-4a64-b308-f5c98f330ad8
+
+	measure 'vl_cofins_contigencia CORRETAGEM' =
+			
+			CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "Contingencia"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo] = "COFINS"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Base_Calculo] = "Cofins Contingencia sobre corretagem"
+			)
+		formatString: #,0
+		lineageTag: 27b4b925-4cbb-4ab3-bf8e-5231b54c0467
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'vl_cofins_contigencia RESERVA' =
+			
+			var x =
+			CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "Contingencia"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo] = "COFINS"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Base_Calculo] = "Cofins Contingencia sobre exclusoes Reservas Tecnicas"
+			)
+			
+			RETURN
+			if(ISBLANK(x), 0, x)
+		formatString: #,0
+		lineageTag: 50783c2a-ac2f-4bc1-a8fb-2cf73d1274be
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'vl_cofins_contigencia PRO LABORE' =
+			
+			var x =
+			CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "Contingencia"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo] = "COFINS"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Base_Calculo] = "Cofins Contingencia sobre exclusoes Pró - Labore"
+			)
+			RETURN
+			if(ISBLANK(x), 0, x)
+		formatString: #,0
+		lineageTag: 3afeb407-add2-4c3f-b557-c9a538673d08
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'vl_pis_contigencia CORRETAGEM' =
+			
+			CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "Contingencia"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo] = "PIS"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Base_Calculo] = "PIS Contingencia sobre corretagem"
+			)
+		formatString: #,0
+		lineageTag: 91aa72bb-4b43-4049-9a5b-23aad1593a33
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'vl_pis_contigencia RESERVAS' = ```
+			
+			var x = 
+			CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "Contingencia"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo] = "PIS"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Base_Calculo] = "Pis Contingencia sobre exclusoes Reservas Tecnicas"
+			)
+			
+			RETURN
+			if(ISBLANK(x), 0, x)
+			```
+		formatString: #,0
+		lineageTag: 3c8d59eb-985b-4ccf-a887-cafa8c3a0f70
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'vl_pis_contigencia PRO LABORE' = ```
+			
+			 var x =
+			CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "Contingencia"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo] = "PIS"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Base_Calculo] = "Pis Contingencia sobre exclusoes Pró-Labore"
+			)
+			
+			RETURN
+			if(ISBLANK(x), 0, x)
+			```
+		formatString: #,0
+		lineageTag: 8ed4a77e-2489-4de2-a30d-5225fec3a5bc
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	partition Medidas_Tooltip = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

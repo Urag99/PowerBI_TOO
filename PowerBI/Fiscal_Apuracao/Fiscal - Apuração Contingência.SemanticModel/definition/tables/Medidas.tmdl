@@ -1,0 +1,208 @@
+table Medidas
+	lineageTag: 95e1ad85-749a-4d49-bc35-5da25b66934e
+
+	measure vl_total_recolher = ```
+			
+			 CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "A Recolher"
+			 )
+			```
+		formatString: #,0
+		lineageTag: 323e1214-ba8b-4a88-9b4c-c1bb154fb21b
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure vl_total_contingecia = ```
+			
+			 CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "Contingencia"
+			 )
+			```
+		formatString: #,0
+		lineageTag: 500143af-a832-42c0-8e27-a8cf447570f2
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure vl_total_base_calculo = ```
+			
+			 CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Base_Calculo] = "Base de cálculo"
+			    , REMOVEFILTERS(
+			            REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo]
+			            , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Base_Calculo]
+			            , REL_APURACAO_FISCAL_CONTINGENCIA[cd_Unidade_Negocio]
+			        )
+			 )
+			```
+		formatString: #,0
+		lineageTag: 1f1239bd-e991-45ed-8252-26da9f964233
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure vl_pis_devido =
+			
+			CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "A Recolher"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo] = "PIS"
+			)
+		formatString: #,0
+		lineageTag: 8f6158bc-af26-437b-85c8-dc8eda7503a9
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure vl_cofins_devido =
+			
+			CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "A Recolher"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo] = "COFINS"
+			)
+		formatString: #,0
+		lineageTag: 942e5468-d300-4477-bf4a-22120a15ccc5
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'vl_pis_devido M-1' = ```
+			
+			
+			VAR _ant = 
+			CALCULATE(
+			    [vl_pis_devido]
+			    , PREVIOUSMONTH(REL_APURACAO_FISCAL_CONTINGENCIA[dt_Competencia].[Date])
+			    , ALL(REL_APURACAO_FISCAL_CONTINGENCIA[dt_Competencia])
+			)
+			
+			var _atu = [vl_pis_devido]
+			
+			RETURN
+			IF(ISBLANK(_ant) || _ant = 0
+			    , 0
+			    ,DIVIDE(
+			        _atu
+			        , _ant
+			        ,0
+			    ) - 1
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: bde6092c-b80e-4f1e-8ec7-032fe0e46a77
+
+	measure 'vl_cofins_devido M-1' = ```
+			
+			
+			VAR _ant = 
+			CALCULATE(
+			    [vl_cofins_devido]
+			    , PREVIOUSMONTH(REL_APURACAO_FISCAL_CONTINGENCIA[dt_Competencia].[Date])
+			    , ALL(REL_APURACAO_FISCAL_CONTINGENCIA[dt_Competencia])
+			)
+			
+			var _atu = [vl_cofins_devido]
+			
+			RETURN
+			IF(ISBLANK(_ant) || _ant = 0
+			    , 0
+			    ,DIVIDE(
+			        _atu
+			        , _ant
+			        ,0
+			    ) - 1
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 8cf64189-fc12-4d2d-9d6b-2ddbbc7bd321
+
+	measure eixo = 0
+		formatString: 0
+		lineageTag: 9b0e925e-c0e5-4805-8e34-968d9f0cdda7
+
+	measure vl_cofins_contigencia =
+			
+			CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "Contingencia"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo] = "COFINS"
+			)
+		formatString: #,0
+		lineageTag: 675e5bfc-9c55-4f6a-8298-5b8b286fe25e
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure vl_pis_contigencia =
+			
+			CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "Contingencia"
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo] = "PIS"
+			)
+		formatString: #,0
+		lineageTag: 55e642ca-904c-4b22-9817-4c7262b6dbf3
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure vl_total_receitas = ```
+			
+			 CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "Grupo 100"
+			 )
+			```
+		formatString: #,0
+		lineageTag: 3a54ff15-50d9-4f28-a2b7-9d37c7d66b93
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure vl_total_exclusoes = ```
+			
+			 CALCULATE(
+			    sum(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			    , REL_APURACAO_FISCAL_CONTINGENCIA[ds_Grupo] = "Grupo 101"
+			 )*-1
+			```
+		formatString: #,0
+		lineageTag: f72ee908-63c9-4e68-b810-ba092cf792d5
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'vl total manipulado' =
+			
+			VAR _total = [vl_total_receitas] + [vl_total_exclusoes]
+			
+			var _realizado = suM(REL_APURACAO_FISCAL_CONTINGENCIA[vl_Realizado])
+			
+			RETURN
+			// ISINSCOPE(REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo])
+			IF(
+			    ISINSCOPE(REL_APURACAO_FISCAL_CONTINGENCIA[ds_Tipo])
+			    , _realizado, // Value for individual rows
+			    _total          // Specific calculation for Total Row
+			)
+		formatString: #,0
+		lineageTag: a2b1f704-a271-4ce5-95ab-4b0aa3f90a45
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure totalizador =
+			
+			[vl_total_receitas] + [vl_total_exclusoes]
+		formatString: #,0
+		lineageTag: fc271317-2e4b-4f09-b05b-acfd6b30eb79
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

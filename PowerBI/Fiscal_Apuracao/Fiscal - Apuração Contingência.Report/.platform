@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Fiscal - Apuração Contingência"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ea47c7f4-a904-43b8-bc92-eb2a8dabf8b5"
+  }
+}

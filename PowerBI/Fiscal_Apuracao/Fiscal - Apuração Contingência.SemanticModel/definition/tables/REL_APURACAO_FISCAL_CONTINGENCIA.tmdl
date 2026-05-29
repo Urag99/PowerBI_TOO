@@ -1,0 +1,163 @@
+table REL_APURACAO_FISCAL_CONTINGENCIA
+	lineageTag: 1e69dc18-9a04-4dfd-9d4a-e8c1d98ea1d9
+
+	column dt_Competencia
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 2e9a2735-d6c7-4e34-8e29-316645548694
+		summarizeBy: none
+		sourceColumn: dt_Competencia
+
+		variation Variation
+			isDefault
+			relationship: d9124cf3-f7ac-4a3e-bc51-dd70ea0b6029
+			defaultHierarchy: LocalDateTable_d4b04f33-d606-4d8d-a576-17a085b37a25.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column cd_Unidade_Negocio
+		dataType: string
+		lineageTag: bce80157-ed74-44db-8630-826f264bbcec
+		summarizeBy: none
+		sourceColumn: cd_Unidade_Negocio
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Conta_Ref_Inicial
+		dataType: string
+		lineageTag: d7aef6ba-392c-482e-88f2-d9b8e9f0e8c3
+		summarizeBy: none
+		sourceColumn: ds_Conta_Ref_Inicial
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Conta_Ref_Final
+		dataType: string
+		lineageTag: 37697d0c-c91d-43a4-838e-59b17d2c4e70
+		summarizeBy: none
+		sourceColumn: ds_Conta_Ref_Final
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Grupo
+		dataType: string
+		lineageTag: 4f8a17b0-9d0d-43ba-a5b2-51a26469c548
+		summarizeBy: none
+		sourceColumn: ds_Grupo
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Conta_Easy
+		dataType: string
+		lineageTag: b967eaff-efc0-4399-b621-a561fcfe3e71
+		summarizeBy: none
+		sourceColumn: ds_Conta_Easy
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Tipo
+		dataType: string
+		lineageTag: 76071897-20ef-4474-9b1c-628a93e3e307
+		summarizeBy: none
+		sourceColumn: ds_Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Base_Calculo
+		dataType: string
+		lineageTag: 21c7c446-0fa3-4be3-9025-3a3cb936d9ef
+		summarizeBy: none
+		sourceColumn: ds_Base_Calculo
+		sortByColumn: ordem
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Ordem
+		dataType: int64
+		formatString: 0
+		lineageTag: d8dff8ad-93f7-4ea6-8a60-6251a5898dc8
+		summarizeBy: none
+		sourceColumn: cd_Ordem
+
+		annotation SummarizationSetBy = User
+
+	column vl_Realizado
+		dataType: double
+		formatString: #,0
+		lineageTag: bb9815d5-4cc8-4e4e-bb6e-aaeae347c8a9
+		summarizeBy: sum
+		sourceColumn: vl_Realizado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e8df4c74-547d-4585-934f-8e4974ee7929
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: f33c140e-16f0-40fb-bcf9-a7b2f2b47e8c
+			defaultHierarchy: LocalDateTable_0c4a8504-0813-49c5-8f65-9530d66ec61c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Chave
+		dataType: dateTime
+		formatString: yyyy-mm
+		lineageTag: 23b63aed-4c53-4f6c-b026-da371551ffb3
+		summarizeBy: none
+		sourceColumn: dt_Chave
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column ds_origem
+		dataType: string
+		lineageTag: bc6ab7f0-1f9a-4774-9933-a610db35a81a
+		summarizeBy: none
+		sourceColumn: ds_origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column ordem = RELATED(TAB_Ordem[CD_ORDEM])
+		lineageTag: 0e295755-77da-4a8e-a4c5-557dd1c86c11
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_chave_ordem
+		dataType: string
+		lineageTag: 781707d3-9ec0-420c-b38f-ef6fa805d04b
+		summarizeBy: none
+		sourceColumn: ds_chave_ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_APURACAO_FISCAL_CONTINGENCIA = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_APURACAO_FISCAL_CONTINGENCIA = Fonte{[Schema="dbo",Item="REL_APURACAO_FISCAL_CONTINGENCIA"]}[Data],
+				    #"Coluna Duplicada" = Table.DuplicateColumn(dbo_REL_APURACAO_FISCAL_CONTINGENCIA, "dt_Competencia", "dt_Competencia - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"dt_Competencia - Copiar", "dt_Chave"}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Colunas Renomeadas", "ds_origem", each if [cd_Unidade_Negocio] = "001" then "TOO " else "BTG"),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Coluna Condicional Adicionada",null,"",Replacer.ReplaceValue,{"ds_Conta_Easy"}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Valor Substituído", "ds_chave_ordem", each Text.Combine({[ds_Base_Calculo], [ds_Conta_Easy]}, "|"), type text)
+				in
+				    #"Coluna Mesclada Inserida"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
