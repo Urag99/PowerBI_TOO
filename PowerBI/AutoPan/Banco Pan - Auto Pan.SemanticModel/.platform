@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Banco Pan - Auto Pan"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3993f086-82ff-4520-bedf-6c48ae4de205"
+  }
+}
