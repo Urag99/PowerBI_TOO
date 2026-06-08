@@ -1,0 +1,31 @@
+table REL_Fianca_Avisos_DP
+	lineageTag: 23da5568-a43e-43d8-af98-9917a0d47d07
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: cbb4beca-0e2e-4593-b79d-32cafe753132
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cobertura
+		dataType: string
+		lineageTag: ac142df1-3b9f-4736-a791-2459150723c9
+		summarizeBy: none
+		sourceColumn: ds_Cobertura
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Avisos_DP-b0d00820-5443-412f-860e-7d62a39860b9 = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_Fianca_Avisos_DP = Fonte{[Schema="dbo",Item="REL_Fianca_Avisos_DP"]}[Data]
+				in
+				    dbo_REL_Fianca_Avisos_DP
+
+	annotation PBI_ResultType = Table
+

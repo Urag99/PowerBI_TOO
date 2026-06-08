@@ -1,0 +1,150 @@
+table REL_Fianca_Vayon
+	isHidden
+	lineageTag: 060cbe61-ec07-4766-8356-b29e1d19fc6b
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 948e8669-4fcc-4e1c-b2fd-6ca08d9b5275
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Processo_Vayon
+		dataType: string
+		lineageTag: f2de10cf-4430-4ff4-b66d-c7b4338b11d5
+		summarizeBy: none
+		sourceColumn: nm_Processo_Vayon
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Produto
+		dataType: string
+		lineageTag: 4d1f2ffb-dda2-4975-a83c-7bf56f5a79a4
+		summarizeBy: none
+		sourceColumn: nm_Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_Apolice
+		dataType: string
+		lineageTag: c6cc3637-4b1b-45e8-bb13-2f8cb6644b5e
+		summarizeBy: none
+		sourceColumn: tp_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Corretor
+		dataType: string
+		lineageTag: 25c45ad0-b8d9-4efb-b706-ed65740ec9a0
+		summarizeBy: none
+		sourceColumn: nm_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Intermediario
+		dataType: string
+		lineageTag: 0a163663-1fc2-466c-b72d-6cb9f6be02b3
+		summarizeBy: none
+		sourceColumn: ds_Intermediario
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cidade
+		dataType: string
+		lineageTag: 66c581cd-1f9c-4f42-aba0-899f74f8d70e
+		summarizeBy: none
+		sourceColumn: ds_Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column uf_Imovel
+		dataType: string
+		lineageTag: fb91943e-4802-451b-9976-86d966df222f
+		summarizeBy: none
+		sourceColumn: uf_Imovel
+
+		annotation SummarizationSetBy = Automatic
+
+	column st_Processo
+		dataType: string
+		lineageTag: 90283740-04af-498e-988b-ef0310e4ff66
+		summarizeBy: none
+		sourceColumn: st_Processo
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Premio
+		dataType: double
+		lineageTag: 7e4774fe-4694-4d25-8eb3-bf9cc388874b
+		summarizeBy: sum
+		sourceColumn: vl_Premio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dt_Proposta
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 572c662f-1541-4979-99a8-3e3c10c5623b
+		summarizeBy: none
+		sourceColumn: dt_Proposta
+
+		variation Variation
+			isDefault
+			relationship: 9fd7dc0a-de2e-494c-a744-b7d5a0ff7c7f
+			defaultHierarchy: LocalDateTable_e6d5613a-8061-4e1c-bfb2-41e79f8296b9.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoMes
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3817045c-9d8c-4497-ad36-198bcd30809c
+		summarizeBy: none
+		sourceColumn: AnoMes
+
+		variation Variation
+			isDefault
+			relationship: db8d8efe-0683-4580-9a6b-899e80e9f46f
+			defaultHierarchy: LocalDateTable_cdf16523-f359-4c40-87d4-0b1e73e8a1af.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dc596725-9c31-40c9-8dc6-2208192f0a7c
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: 475f9c7a-bfc9-4832-b2f5-27ae88ae2a9b
+			defaultHierarchy: LocalDateTable_e073c0e3-6fd7-4773-b41a-619a2a31d1fc.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Vayon-e14345b9-1ca0-4a4f-922b-d676e7a1b43e = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Vayon = Fonte{[Schema="dbo",Item="REL_Fianca_Vayon"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Vayon = Fonte{[Schema="dbo",Item="REL_Fianca_Vayon"]}[Data],*/
+				    #"Colunas Renomeadas" = Table.RenameColumns(dbo_REL_Fianca_Vayon,{{"nr_Processo_Vayon", "nm_Processo_Vayon"}, {"vl_Premio", "vl_Premio"}})
+				in
+				    #"Colunas Renomeadas"
+
+	changedProperty = IsHidden
+
+	annotation PBI_QueryRelationships = {"columnCount":13,"keyColumnNames":["id"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{id,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{nr_Processo_Vayon,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{nm_Produto,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{tp_Apolice,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{nm_Corretor,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{ds_Intermediario,5}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{ds_Cidade,6}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{uf_Imovel,7}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{st_Processo,8}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{vl_Premio,9}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{dt_Proposta,10}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{AnoMes,11}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{dt_Atualizacao,12}"],"ColumnCount":13,"KeyColumnNames":["id"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{id,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{nr_Processo_Vayon,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{nm_Produto,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{tp_Apolice,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{nm_Corretor,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{ds_Intermediario,5}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{ds_Cidade,6}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{uf_Imovel,7}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{st_Processo,8}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{vl_Premio,9}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{dt_Proposta,10}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{AnoMes,11}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{dt_Atualizacao,12}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

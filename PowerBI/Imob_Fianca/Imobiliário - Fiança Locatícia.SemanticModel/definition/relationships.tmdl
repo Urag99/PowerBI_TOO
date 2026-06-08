@@ -1,0 +1,467 @@
+relationship 85e76adc-60eb-4c7c-b866-38826bde7165
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Fianca_Producao.Anomes_Chave
+	toColumn: REL_Fianca_Producao_Agrupado.AnoMes_Chave
+
+relationship 77d9c07a-99dd-44cf-a573-ed864db79e54
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Meta.dt_Endosso
+	toColumn: LocalDateTable_471fab71-4c5c-4335-a1fd-8642eff0e9df.Date
+
+relationship 0afe95a1-5cda-43db-b481-008c8edcfbf0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.AnoMesRef
+	toColumn: LocalDateTable_0d3432e4-8284-426d-8733-e869168331e1.Date
+
+relationship f472fb3a-0864-4064-8243-4ed4103d8f30
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Sinistralidade.periodo
+	toColumn: LocalDateTable_fdf3d574-0409-45c8-9888-288eb1b41923.Date
+
+relationship 3a29675f-bc60-4556-b435-70aec5e559f8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Base_Vayon.'Dt Atual'
+	toColumn: LocalDateTable_97bb41bb-3226-45d3-bd4f-828a7e5e8ff9.Date
+
+relationship 586bdee2-fb6e-46c4-8cd9-beb10bc416b5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Sinistralidade_Safrada.dt_atualizacao
+	toColumn: LocalDateTable_6017635f-03fe-4625-8678-71b7ed50d819.Date
+
+relationship 1b68deb9-6972-459e-9a95-bc1bd3e10a98
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Sinistralidade_Safrada.dt_safra
+	toColumn: LocalDateTable_dfcf64a5-26ea-4b46-b176-762e69a696c8.Date
+
+relationship 7d8ef072-4616-4f23-88d7-035af3ad28c0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Sinistralidade_Safrada.periodo
+	toColumn: LocalDateTable_962f0a22-8328-4273-88da-c8134a06774e.Date
+
+relationship 084d33da-2066-4176-84fb-33e8d5b67e81
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Sinistralidade_Safrada.dt_final
+	toColumn: LocalDateTable_7ecc4739-6bf5-4d67-a878-56e1aec63f5b.Date
+
+relationship 299fbbab-6730-47e2-bc08-16e2ddbca9ff
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Frequencia.dt_atualizacao
+	toColumn: LocalDateTable_3a8181a9-81bb-4eaf-b32d-f714942c5f2a.Date
+
+relationship ba223d98-c06d-4a6d-a8f4-9b1171128eee
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Base_Categoria_Vayon_Producao.Data
+	toColumn: LocalDateTable_b0a0f9da-cf9e-41f4-9340-dd7949750d76.Date
+
+relationship 81f3f6ef-331c-4faa-afc6-4a4dcfa6a586
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Base_Vayon.'dt_Cotacao - Copiar'
+	toColumn: LocalDateTable_c8f1187e-49d2-4213-973f-46ed6c24578e.Date
+
+relationship 052444ec-7cdf-49be-b79a-69424e72ed5f
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: REL_Fianca_Producao.Chave_Vayon_Producao
+	toColumn: Base_Categoria_Vayon_Producao.Chave_Vayon_Producao
+
+relationship d0928764-3c35-47e4-84af-5f04c7c73fd1
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: REL_Fianca_Base_Vayon.Chave_Vayon_Producao
+	toColumn: Base_Categoria_Vayon_Producao.Chave_Vayon_Producao
+
+relationship 56dc0bdb-28da-4c2e-981e-9bb165b3c229
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Fianca_Producao.Chave_Cluster
+	toColumn: REL_Fianca_Emissao_Corretor.Chave_Cluster
+
+relationship fc8b4c1e-f9cd-40d3-8087-49796fcd2e79
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Fianca_Producao.ds_Classificacao
+	toColumn: tab_ordem.Tipo
+
+relationship cab3edf2-3ba1-4a41-8916-1a33c4124e67
+	joinOnDateBehavior: datePartOnly
+	fromColumn: rel_fianca_avisos.dt_atualizacao
+	toColumn: LocalDateTable_26ba9320-cc4f-494f-96ff-6a7760e4204d.Date
+
+relationship 5f83a7dc-5fb9-45d3-ba73-c1fc191fd21a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tab_Data.Date
+	toColumn: LocalDateTable_94fa12e5-85f2-4bff-a43a-9969e3256df7.Date
+
+relationship 7ccd98a9-2f60-43fe-80dc-363c15392ba0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: rel_fianca_avisos.dt_Ocorrencia
+	toColumn: LocalDateTable_eeb1d372-1a54-415d-be2a-141e69c4ca93.Date
+
+relationship 6d5b2f69-abbf-481e-bec7-06c24d38635d
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Fianca_Avisos_DP.id
+	toColumn: rel_fianca_avisos.id
+
+relationship 6ea46459-fa91-428b-960e-ed8e179d4bc3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Sinistro_Corretor.dt_safra
+	toColumn: LocalDateTable_d257ca6b-e1d6-46d0-99af-dd258a269b96.Date
+
+relationship ab7abd67-6820-496a-9a77-01662f1cf67f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Sinistro_Corretor.periodo
+	toColumn: LocalDateTable_fa46fd35-33e4-40ea-97aa-8b2c5db6c55c.Date
+
+relationship 6c1e0647-488a-4fbc-a577-fa467d7f2efd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Sinistro_Corretor.dt_final
+	toColumn: LocalDateTable_75c330ec-2f1f-4b64-aa41-217d37b082d9.Date
+
+relationship f7ae6dbe-645d-4311-9217-fd0b597beccd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Sinistro_Corretor.dt_atualizacao
+	toColumn: LocalDateTable_739941bd-fbb8-41c4-80d6-2e21c90dda37.Date
+
+relationship 008790fb-e9a5-4857-9071-3b645a498fb0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Sinistralidade_Safrada.dt_chave
+	toColumn: LocalDateTable_7c2804f9-72db-4259-89b6-c7a1958a06b7.Date
+
+relationship 3c366209-d72d-4775-8b1f-ea62d488f62b
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Fianca_Producao.ds_chave
+	toColumn: TAB_Chave_Sinistro.ds_chave
+
+relationship 330f117f-ab04-4c02-bcc2-51282037c2b8
+	crossFilteringBehavior: bothDirections
+	fromColumn: TAB_Sinistro_Corretor.ds_chave
+	toColumn: TAB_Chave_Sinistro.ds_chave
+
+relationship 581406fd-9c2b-4177-930a-fe945d975997
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: REL_Fianca_Producao.ds_chave
+	toColumn: REL_Fianca_Sinistralidade_Safrada.ds_chave_corretor
+
+relationship 84bb87ed-4cc9-4e0f-b5cd-2824beb29d7b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.dt_chave_sinistro
+	toColumn: LocalDateTable_0e9595e7-6f56-43ab-b09c-a984c38c9a39.Date
+
+relationship f1866a34-06ec-4a88-9d99-d25f1d11952b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Ativos.dt_chave
+	toColumn: LocalDateTable_22e63176-16bd-4829-b2bf-8b4b04884f60.Date
+
+relationship 57b49a46-45f2-4188-9d24-e189c1b2584a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: rel_fianca_ativos_credito.dt_chave
+	toColumn: LocalDateTable_fd95ccfe-816d-46d3-b26b-08b76a96279d.Date
+
+relationship 64550bff-aa49-455e-9660-7a63514981a4
+	crossFilteringBehavior: bothDirections
+	fromColumn: rel_fianca_ativos_credito.ds_chave
+	toColumn: TAB_Chave_Ativos_Avisos.ds_chave
+
+relationship 751a3d85-d60d-4437-b076-babea960d71b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: rel_fianca_avisos.dt_chave
+	toColumn: LocalDateTable_369b8c6f-bcba-458f-bda6-bce3214c6be9.Date
+
+relationship 0e5de5ec-f1af-48ab-9ff3-50dd1abd1a47
+	crossFilteringBehavior: bothDirections
+	fromColumn: rel_fianca_avisos.ds_chave
+	toColumn: TAB_Chave_Ativos_Avisos.ds_chave
+
+relationship a8200299-e3b2-447f-85e9-e63f2d796ff2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Meta.AnoMes
+	toColumn: LocalDateTable_3bdc7ba0-8cd8-44d9-9d2d-1eb523e9d9dc.Date
+
+relationship 6805d67a-9e73-4d18-ad25-aeef2635b8c0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Meta.dt_Atualizacao
+	toColumn: LocalDateTable_e4a246a5-9c79-4cbe-b9a1-a98efd6016b8.Date
+
+relationship 929e3483-c15c-4c63-83a2-3fbf2cb949a3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Peers_Mes.dt_Periodo
+	toColumn: LocalDateTable_1aae4f2b-9d43-4157-a8e5-03377afdef46.Date
+
+relationship cbbbffd7-89d3-4a75-92ac-63b7a2515b74
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Peers_Mes.dt_Atualizacao
+	toColumn: LocalDateTable_e956e09d-8b9a-44d2-a039-64533d186581.Date
+
+relationship 89b2c962-7003-4bd5-ae86-01c364021e74
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Peers_YTD.dt_Atualizacao
+	toColumn: LocalDateTable_52c1dcf5-358c-4a93-9199-8f4b6609e72e.Date
+
+relationship 7c56e52e-7671-4199-8bfb-de171430f015
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.dt_Emissao
+	toColumn: LocalDateTable_e5b580ac-2df1-477f-9a68-24609ee50685.Date
+
+relationship b4b2ac5d-45ef-4503-8b7a-af507c91b791
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.dt_Inicio_Vigencia
+	toColumn: LocalDateTable_f097087c-1b84-43b3-ae1c-8e6d8f442c7f.Date
+
+relationship 97788fec-971c-42f5-997f-262332ca9ceb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.dt_Endosso
+	toColumn: LocalDateTable_c675b3a2-06d4-4afd-ae12-9c83385f42ae.Date
+
+relationship f8ac476a-f6cb-40c4-b610-6e529eb1453b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.dt_Fim_Vigencia
+	toColumn: LocalDateTable_993013aa-ee32-4227-a3f8-a7ee5c686319.Date
+
+relationship 39fe389f-0818-466d-a5c5-726be6c65132
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.dt_Fim_Vigencia_Fechado
+	toColumn: LocalDateTable_ffad188e-7376-4e10-9b45-ff03dd76e601.Date
+
+relationship b8bd8ab6-2361-429a-aefa-0d6b6dbc51cb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.AnoMes
+	toColumn: LocalDateTable_36bee5d6-352a-4dad-868e-ff6ec1a307a4.Date
+
+relationship ba605481-7eb2-4c37-90b4-1467b63ddd42
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.dt_Atualizacao
+	toColumn: LocalDateTable_f2db73d9-2c14-44ea-86b5-deeb85c95d08.Date
+
+relationship e72b5648-31cc-4bdf-98c9-9639e7f15db6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.dt_Inicio_Apolice_Nova
+	toColumn: LocalDateTable_35c08826-910a-4612-93c4-5394938f7494.Date
+
+relationship 984980b1-5b52-42ae-a8b8-d9ab1b128321
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.dt_Safra_Original
+	toColumn: LocalDateTable_bc7ec8e0-d34a-4021-aeb1-97db83baca67.Date
+
+relationship 766c929f-fb67-4032-88fe-220dba4ca027
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.dt_Inclusao_Imobiliaria
+	toColumn: LocalDateTable_d6379056-39bf-4519-9d34-da7a8056b5c7.Date
+
+relationship a4a1aaa8-bafc-41f0-b44c-b8e10c498ac1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.dt_Inclusao_Corretor
+	toColumn: LocalDateTable_5665ac5f-103b-44f6-a8e5-897c98b677d5.Date
+
+relationship bc5665f0-c171-4b15-8f73-28068863168f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Sinistro.dt_Endosso
+	toColumn: LocalDateTable_70a6c6cf-0e04-46ac-b70e-afb7988dc86b.Date
+
+relationship c9c3a8af-eae5-4075-a911-ccfc2d8e2d9f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Sinistro.dt_Emissao
+	toColumn: LocalDateTable_64a4da6e-a293-48fa-b87d-e17fe34c137e.Date
+
+relationship 981e9c8c-81d3-43f2-83f4-0f48f9a274bf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Sinistro.AnoMes
+	toColumn: LocalDateTable_0785c8ae-6450-4df2-8dd9-ed23455173a1.Date
+
+relationship c4fffab6-60a1-491e-8904-b6845fb03dff
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Sinistro.dt_Atualizacao
+	toColumn: LocalDateTable_533b2e6d-0761-4c86-b6a2-3f5fb3d382f9.Date
+
+relationship efe2da1b-aab5-45bb-940b-6c8e91d5c1dd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Corretora.dt_Atualizacao
+	toColumn: LocalDateTable_993ac2de-c650-425d-a64b-c5123d2448f0.Date
+
+relationship 13503377-49ab-470c-8dd3-307af21ace99
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao_Agrupado.AnoMes
+	toColumn: LocalDateTable_dd8cf838-fa85-485e-90dd-7e43839fb68c.Date
+
+relationship ebbdeed4-f16c-4a15-94a1-f5137394ed43
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao_Agrupado.dt_Atualizacao
+	toColumn: LocalDateTable_d46b26b8-c856-419e-98e9-175c5befde80.Date
+
+relationship 9fd7dc0a-de2e-494c-a744-b7d5a0ff7c7f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Vayon.dt_Proposta
+	toColumn: LocalDateTable_e6d5613a-8061-4e1c-bfb2-41e79f8296b9.Date
+
+relationship db8d8efe-0683-4580-9a6b-899e80e9f46f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Vayon.AnoMes
+	toColumn: LocalDateTable_cdf16523-f359-4c40-87d4-0b1e73e8a1af.Date
+
+relationship 475f9c7a-bfc9-4832-b2f5-27ae88ae2a9b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Vayon.dt_Atualizacao
+	toColumn: LocalDateTable_e073c0e3-6fd7-4773-b41a-619a2a31d1fc.Date
+
+relationship 4ebe5ea9-be81-461b-a39b-71d870f2a451
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Funil_Vayon.dt_Cotacao
+	toColumn: LocalDateTable_166ef617-39ce-4f0a-9fa5-6b3e892697f1.Date
+
+relationship 7ce098f7-2d98-4ee1-b000-12c75d58de53
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Funil_Vayon.dt_Atualizacao
+	toColumn: LocalDateTable_3fedbc46-f9b2-4bbc-ad0f-1b0768d9f22e.Date
+
+relationship a440857c-2d45-4177-9c88-cbb6ddcc1aa7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Base_Vayon.dt_Cotacao
+	toColumn: LocalDateTable_98991849-1e9e-4f36-8712-76c5f9330409.Date
+
+relationship 5367abe7-423c-4a43-ad5f-d4276a2592da
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Base_Vayon.dt_Ficha
+	toColumn: LocalDateTable_e2595a9c-7e76-4b9e-8a05-9d32b297a73c.Date
+
+relationship 7ce59351-c413-4483-8493-c9605e3fc62f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Base_Vayon.dt_Aprovacao
+	toColumn: LocalDateTable_c2fe449f-6871-46c4-a534-a3360a714080.Date
+
+relationship 68072ee0-cbb6-4774-95a2-575ca48978e9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Base_Vayon.dt_Atualizacao
+	toColumn: LocalDateTable_b93b4b10-e584-4aaa-bc3d-b2c90703df0d.Date
+
+relationship 5b2de8b6-ce8f-45eb-aa97-487bbbe5a72c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Base_Vayon.dt_Inclusao_Imobiliaria
+	toColumn: LocalDateTable_5961363c-d57a-45cc-955d-255cbe8f585a.Date
+
+relationship 90b0b9de-fb11-4a46-a075-7e2284c8154d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Base_Vayon.dt_Inclusao_corretor
+	toColumn: LocalDateTable_e7e21a1c-5254-492b-923f-25df40ac462f.Date
+
+relationship 74c238f9-78d4-457a-b0d4-ae8eb9e98a82
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Base_Vayon.dt_Emissao
+	toColumn: LocalDateTable_0baf9f99-ccbb-415f-a50e-fee22af531b3.Date
+
+relationship 6c3e4b94-cfd0-4bfc-b89d-2bcaf84b0c21
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Sinistralidade.dt_Atualizacao
+	toColumn: LocalDateTable_ffb7fedf-f2db-41cc-8f40-bcc34e0a63ac.Date
+
+relationship a938e233-0aba-45c8-884b-42d49f0fa850
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Severidade.dt_Ocorrencia
+	toColumn: LocalDateTable_89404838-e413-447e-8589-c0ab54be8206.Date
+
+relationship 219fa8fe-8594-4607-af96-a0e5f16da5ae
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Severidade.dt_Atualizacao
+	toColumn: LocalDateTable_6cd931da-4a05-484f-aefc-33558acf837b.Date
+
+relationship dcb65b39-24cf-4b5b-98ce-d9dde4a252a7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Frequencia.dt_Emissao
+	toColumn: LocalDateTable_d440685a-11a1-48f0-8f92-0ad738dd15fa.Date
+
+relationship 78ad5cee-aeff-4e32-b47b-bfaebe03d164
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Frequencia.dt_Safra
+	toColumn: LocalDateTable_79bb9e1c-6dcf-4771-a3fb-c3096c2cea6c.Date
+
+relationship f7e85188-6126-4994-b727-0fe4130572b6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Ativos.dt_Competencia
+	toColumn: LocalDateTable_77dc0d05-13b3-451e-a9a8-69dc51cdbf87.Date
+
+relationship bc738630-0607-4a64-b8fb-68556300fe83
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SA_Dia_Util.DATA
+	toColumn: LocalDateTable_80f8ae97-2076-4dc1-9da2-61c8df9e0562.Date
+
+relationship 7334d8b7-d78c-44cf-9dd4-ef0c10ba5cbb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Emissao_Corretor.Periodo
+	toColumn: LocalDateTable_372cab6b-e37c-43ff-ba38-87457989684b.Date
+
+relationship ab92a0da-d5bf-4f05-a356-257869c19f48
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Emissao_Corretor.dt_Atualizacao
+	toColumn: LocalDateTable_d8837017-6839-43c2-9a0f-5a2b37a8f5ac.Date
+
+relationship 968ac932-2d17-4434-8663-a58638997b43
+	joinOnDateBehavior: datePartOnly
+	fromColumn: rel_fianca_ativos_credito.dt_Competencia
+	toColumn: LocalDateTable_8bc99045-7883-4e70-aa1a-2e1cf3fa25db.Date
+
+relationship 1c49bab1-ff07-4578-b8a4-45609ed6e36c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Chave_Ativos_Avisos.dt_Competencia
+	toColumn: LocalDateTable_a771e3f6-7bf0-460a-8c3f-47551641b15f.Date
+
+relationship cf6adf1f-be16-4fc2-b96d-ffa8110c9d8a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Chave_Ativos_Avisos.dt_chave
+	toColumn: LocalDateTable_ae7852e0-22fd-43e2-9ac4-a5c876baac37.Date
+
+relationship dce34254-a45b-43b2-b821-a44083fe931c
+	fromColumn: REL_Fianca_Producao.id_Meta
+	toColumn: REL_Fianca_Meta.id_Meta
+
+relationship 5fabd52d-0a02-4c0a-bab7-78a6e976c14c
+	fromColumn: REL_Fianca_Peers_Mes.nm_Seguradora
+	toColumn: REL_Fianca_Peers_YTD.nm_Seguradora
+
+relationship 5b027f29-c015-4928-9b36-edd10cbf2eb4
+	fromColumn: REL_Fianca_Producao.id_Sinistro
+	toColumn: REL_Fianca_Sinistro.id_Sinistro
+
+relationship 8fd4b761-4bc0-4d1a-b2d1-4b8aa54d92fa
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: REL_Fianca_Ativos.id_Ativo
+	toColumn: rel_fianca_ativos_credito.id_Ativo
+
+relationship 3838e5c5-9e0c-41fe-9bff-45dbb3dda3b4
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: REL_Fianca_Ativos.id_Ativo
+	toColumn: TAB_Chave_Ativos_Avisos.id_Ativo
+
+relationship e1676b4f-5801-4eb8-a9c8-e881694fa346
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Fianca_Base_Vayon.Chave_Data
+	toColumn: SA_Dia_Util.Chave_Data
+
+relationship 94e1a958-0249-429e-8b8b-4483c1c05ae3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Base_Vayon.dt_mesclada_fichas_pendente
+	toColumn: LocalDateTable_b5f3abf3-70e5-46d6-829a-73cebefaf111.Date
+
+relationship 688848bf-1482-490d-a182-4e73872bab1a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Fianca_Producao.dt_Fim_Apolice_Nova
+	toColumn: LocalDateTable_bc6fde61-f703-4ee3-8e0a-0facc4ae7e35.Date
+
+relationship 0e5b0892-68e4-4719-8322-e3a81e2695ff
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Chave_Sinistro.periodo
+	toColumn: LocalDateTable_9fd02b3c-9039-40a3-a766-eb2d487b936e.Date
+
+relationship AutoDetected_dcbf5a86-de3d-4f10-85cf-57ee47478124
+	fromColumn: TAB_Empilha_Sinistro.ds_chave
+	toColumn: TAB_Chave_Sinistro.ds_chave
+
+relationship 1d37dc1d-d254-4582-a924-804cabfdcc2d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Empilha_Sinistro.periodo
+	toColumn: LocalDateTable_259371d3-7884-4b4c-964b-ccb4ee5b7a33.Date
+
+relationship a0d18ef3-8c90-9bca-765b-3540cdcf353c
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Fianca_Producao.cd_Apolice
+	toColumn: vw_aluguel_sinistrados.cd_Apolice
+

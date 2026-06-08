@@ -1,0 +1,101 @@
+table REL_Fianca_Meta
+	lineageTag: b1e3599a-4e70-48c5-a5a1-7006039fd4b0
+
+	column dt_Endosso
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6a675791-1938-472c-a2fa-09339e831923
+		summarizeBy: none
+		sourceColumn: dt_Endosso
+
+		variation Variation
+			isDefault
+			relationship: 77d9c07a-99dd-44cf-a573-ed864db79e54
+			defaultHierarchy: LocalDateTable_471fab71-4c5c-4335-a1fd-8642eff0e9df.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_Meta
+		dataType: int64
+		formatString: 0
+		lineageTag: 340f8c7f-5634-4e22-bb3f-98c652d66875
+		summarizeBy: none
+		sourceColumn: id_Meta
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoMes
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3a03f505-ab65-4b61-b464-396a3da8e460
+		summarizeBy: none
+		sourceColumn: AnoMes
+
+		variation Variation
+			isDefault
+			relationship: a8200299-e3b2-447f-85e9-e63f2d796ff2
+			defaultHierarchy: LocalDateTable_3bdc7ba0-8cd8-44d9-9d2d-1eb523e9d9dc.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Orcado
+		dataType: double
+		lineageTag: e4b33050-3750-42ba-a24b-32f8c82263b6
+		summarizeBy: sum
+		sourceColumn: vl_Orcado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nm_Executivo
+		dataType: string
+		lineageTag: 9daf7d9f-f623-47a5-ac00-e1aa3594d9d9
+		summarizeBy: none
+		sourceColumn: nm_Executivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column cpf_Executivo
+		dataType: string
+		lineageTag: bf83c41c-926f-47be-bbb4-1155ccade12a
+		summarizeBy: none
+		sourceColumn: cpf_Executivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 736b45b6-b07a-47eb-b61a-71dcd1f272e6
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: 6805d67a-9e73-4d18-ad25-aeef2635b8c0
+			defaultHierarchy: LocalDateTable_e4a246a5-9c79-4cbe-b9a1-a98efd6016b8.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Meta-795a9699-f58e-4a07-b2b2-c95c8eedfa9f = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Meta = Fonte{[Schema="dbo",Item="REL_Fianca_Meta"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Meta = Fonte{[Schema="dbo",Item="REL_Fianca_Meta"]}[Data],*/
+				    #"Coluna Duplicada" = Table.DuplicateColumn(dbo_REL_Fianca_Meta, "AnoMes", "AnoMes - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"AnoMes - Copiar", "dt_Endosso"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_QueryRelationships = {"columnCount":7,"keyColumnNames":["id_Meta"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Meta.{id_Meta,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Meta.{AnoMes,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Meta.{vl_Orcado,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Meta.{nm_Executivo,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Meta.{cpf_Executivo,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Meta.{dt_Atualizacao,5}","Section1/REL_Fianca_Meta/Coluna Duplicada.{AnoMes - Copiar,6}"],"ColumnCount":7,"KeyColumnNames":["id_Meta"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Meta.{id_Meta,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Meta.{AnoMes,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Meta.{vl_Orcado,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Meta.{nm_Executivo,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Meta.{cpf_Executivo,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Meta.{dt_Atualizacao,5}","Section1/REL_Fianca_Meta/Coluna Duplicada.{AnoMes - Copiar,6}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

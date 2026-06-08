@@ -1,0 +1,214 @@
+table rel_fianca_avisos
+	lineageTag: 54962a4a-cfe7-41cb-8e73-5cfe4af1c09a
+
+	measure '% Freq Avisos' = ```
+			
+			DIVIDE(
+			    [qtd avisos filtro]
+			    ,sum(rel_fianca_ativos_credito[qt_Ativos])
+			    ,BLANK()
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 3455bbf7-8635-40c2-b318-0d14f8e1fdec
+
+	measure 'qtd avisos filtro' =
+			
+			IF(SELECTEDVALUE(tab_classificacao[Tipo]) = "1a Ocorrência"
+			    ,sum(rel_fianca_avisos[qt_avisos_primeiro])
+			    ,sum(rel_fianca_avisos[qt_avisos])
+			)
+		formatString: #,0
+		lineageTag: 7231c38f-1acf-4af6-91d1-39622c46ed1e
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: e5c3b44d-9aa4-420b-8527-991f0c477ea0
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_cobertura
+		dataType: string
+		lineageTag: b3b1fdf6-119b-433b-b42f-b1c71a9a1980
+		summarizeBy: none
+		sourceColumn: ds_cobertura
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_classificacao
+		dataType: string
+		lineageTag: 4266e796-93de-4551-9725-c7f0aad09291
+		summarizeBy: none
+		sourceColumn: ds_classificacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_legado
+		dataType: string
+		lineageTag: 1be9aae2-be25-416d-88c7-600f05f1e0a1
+		summarizeBy: none
+		sourceColumn: fl_legado
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_imovel
+		dataType: string
+		lineageTag: 06638b75-fd3a-43c4-bc32-6f9c9171b13b
+		summarizeBy: none
+		sourceColumn: tp_imovel
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b1a5e635-2dae-4994-b96c-ee576e9a247a
+		summarizeBy: none
+		sourceColumn: dt_atualizacao
+
+		variation Variation
+			isDefault
+			relationship: cab3edf2-3ba1-4a41-8916-1a33c4124e67
+			defaultHierarchy: LocalDateTable_26ba9320-cc4f-494f-96ff-6a7760e4204d.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Produto
+		dataType: string
+		lineageTag: bac90f1f-64c1-439a-b44e-cfce6578ddc4
+		summarizeBy: none
+		sourceColumn: nm_Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Ocorrencia
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 98938e3e-6e1a-4868-918d-91df5893aae9
+		summarizeBy: none
+		sourceColumn: dt_Ocorrencia
+
+		variation Variation
+			isDefault
+			relationship: 7ccd98a9-2f60-43fe-80dc-363c15392ba0
+			defaultHierarchy: LocalDateTable_eeb1d372-1a54-415d-be2a-141e69c4ca93.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column nm_Corretor
+		dataType: string
+		lineageTag: 9e43aa81-15f7-4207-8325-b3942339d3fa
+		summarizeBy: none
+		sourceColumn: nm_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Tipo_Apolice
+		dataType: string
+		lineageTag: 47a52a0b-0524-4c31-80db-a1ef3aa86c91
+		summarizeBy: none
+		sourceColumn: ds_Tipo_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Executivo
+		dataType: string
+		lineageTag: 6fde8511-3728-468d-b27e-7779ab657b61
+		summarizeBy: none
+		sourceColumn: nm_Executivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_Pessoa_Locatario
+		dataType: string
+		lineageTag: 37d24024-5a46-4b03-9354-1aee5c1311db
+		summarizeBy: none
+		sourceColumn: tp_Pessoa_Locatario
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_Origem
+		dataType: string
+		lineageTag: 679e1852-df22-4c9c-8a96-8cc0c1b334c9
+		summarizeBy: none
+		sourceColumn: ds_Produto_Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Safra
+		dataType: string
+		lineageTag: 3d8c50ea-333d-43de-ae11-42da919b5a12
+		summarizeBy: none
+		sourceColumn: dt_Safra
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Avisos
+		dataType: int64
+		formatString: 0
+		lineageTag: 7114a996-ba55-4492-b11f-790a3a7628b5
+		summarizeBy: sum
+		sourceColumn: qt_Avisos
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Avisos_Primeiro
+		dataType: int64
+		formatString: 0
+		lineageTag: c35159d3-491b-4c3c-86af-4bb1b0358997
+		summarizeBy: sum
+		sourceColumn: qt_Avisos_Primeiro
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_chave
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7a775b2b-3e53-4836-99b1-f697d1db3f43
+		summarizeBy: none
+		sourceColumn: dt_chave
+
+		variation Variation
+			isDefault
+			relationship: 751a3d85-d60d-4437-b076-babea960d71b
+			defaultHierarchy: LocalDateTable_369b8c6f-bcba-458f-bda6-bce3214c6be9.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ds_chave
+		dataType: string
+		lineageTag: c50b0866-0c91-45e3-b903-6944a86f2fb6
+		summarizeBy: none
+		sourceColumn: ds_chave
+
+		annotation SummarizationSetBy = Automatic
+
+	partition rel_fianca_avisos-2e80bfab-fd74-4c01-ba1a-062c6431a152 = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    rel_fianca_avisos_Table = Fonte{[Schema="dbo",Item="REL_Fianca_Avisos"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(rel_fianca_avisos_Table,{{"dt_Ocorrencia", type date}}),
+				    #"Texto Aparado" = Table.TransformColumns(#"Tipo Alterado",{{"nm_Corretor", Text.Trim, type text}}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Texto Aparado", "dt_Ocorrencia", "dt_Ocorrencia - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"dt_Ocorrencia - Copiar", "dt_chave"}}),
+				    #"Texto em Maiúscula" = Table.TransformColumns(#"Colunas Renomeadas",{{"nm_Produto", Text.Upper, type text}, {"nm_Corretor", Text.Upper, type text}, {"ds_Tipo_Apolice", Text.Upper, type text}, {"fl_legado", Text.Upper, type text}, {"ds_Produto_Origem", Text.Upper, type text}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Texto em Maiúscula","NOVA","NOVO",Replacer.ReplaceText,{"ds_Tipo_Apolice"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","RENOVOÇÃO","RENOVAÇÃO",Replacer.ReplaceText,{"ds_Tipo_Apolice"}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Valor Substituído1", "ds_chave", each Text.Combine({Text.From([dt_Ocorrencia], "pt-BR"), [fl_legado], [ds_Tipo_Apolice], [ds_Produto_Origem], [nm_Produto], [nm_Corretor]}, "|"), type text)
+				in
+				    #"Coluna Mesclada Inserida"
+
+	annotation PBI_ResultType = Table
+

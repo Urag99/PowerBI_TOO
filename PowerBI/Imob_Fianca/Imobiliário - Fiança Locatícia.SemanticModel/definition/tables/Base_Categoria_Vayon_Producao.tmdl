@@ -1,0 +1,116 @@
+table Base_Categoria_Vayon_Producao
+	lineageTag: 35251c42-8d83-41ea-916a-d7cfc6311a00
+
+	column Chave_Vayon_Producao
+		dataType: string
+		lineageTag: aafbe83d-1aa4-4605-8823-4d458eb70fe6
+		summarizeBy: none
+		sourceColumn: Chave_Vayon_Producao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: e3b02af7-7381-4748-9f55-6fb24caf41d6
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: ba223d98-c06d-4a6d-a8f4-9b1171128eee
+			defaultHierarchy: LocalDateTable_b0a0f9da-cf9e-41f4-9340-dd7949750d76.'Hierarquia de Datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Categoria_Corretor
+		dataType: string
+		lineageTag: 93b00e77-266d-44e2-96ba-4d4cf27f4c11
+		summarizeBy: none
+		sourceColumn: Categoria_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_Pessoa
+		dataType: string
+		lineageTag: 508f4d06-a5a1-470b-8d39-212cd5f00eeb
+		summarizeBy: none
+		sourceColumn: tp_Pessoa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Imobiliaria
+		dataType: string
+		lineageTag: a3c13fb7-9d4a-4b24-8620-cb6aa8c1442d
+		summarizeBy: none
+		sourceColumn: Imobiliaria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Produto
+		dataType: string
+		lineageTag: 96d6dd45-6fd8-4826-b18a-498ab35b4976
+		summarizeBy: none
+		sourceColumn: Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Corretor
+		dataType: string
+		lineageTag: b2e7f9ee-68e5-49f4-9bda-9e8359514c05
+		summarizeBy: none
+		sourceColumn: Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Executivo
+		dataType: string
+		lineageTag: b14a3e53-c58c-445e-9334-85f3ffa6a185
+		summarizeBy: none
+		sourceColumn: Executivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave_Data
+		dataType: string
+		lineageTag: 2119d41d-33d8-4cbe-bc9f-2352798550de
+		summarizeBy: none
+		sourceColumn: Chave_Data
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Executivo_New
+		dataType: string
+		lineageTag: eeaf91ab-5f05-4728-b8c2-5600e6b7323c
+		summarizeBy: none
+		sourceColumn: nm_Executivo_New
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Base_Categoria_Vayon_Producao-04fe7741-3372-4337-a0ad-2a89f2706c4d = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.Combine({REL_Fianca_Base_Vayon, REL_Fianca_Producao}),
+				    #"Outras Colunas Removidas1" = Table.SelectColumns(Fonte,{"nm_Executivo_New", "Chave_Vayon_Producao"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Outras Colunas Removidas1"),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Duplicatas Removidas", "Chave_Vayon_Producao", "Chave_Vayon_Producao - Copiar"),
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(#"Coluna Duplicada", "Chave_Vayon_Producao - Copiar", Splitter.SplitTextByDelimiter("|", QuoteStyle.Csv), {"Chave_Vayon_Producao - Copiar.1", "Chave_Vayon_Producao - Copiar.2", "Chave_Vayon_Producao - Copiar.3", "Chave_Vayon_Producao - Copiar.4", "Chave_Vayon_Producao - Copiar.5", "Chave_Vayon_Producao - Copiar.6", "Chave_Vayon_Producao - Copiar.7"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador",{{"Chave_Vayon_Producao - Copiar.1", type date}, {"Chave_Vayon_Producao - Copiar.2", type text}, {"Chave_Vayon_Producao - Copiar.3", type text}, {"Chave_Vayon_Producao - Copiar.4", type text}, {"Chave_Vayon_Producao - Copiar.5", type text}, {"Chave_Vayon_Producao - Copiar.6", type text}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"Chave_Vayon_Producao - Copiar.1", "Data"}, {"Chave_Vayon_Producao - Copiar.2", "Categoria_Corretor"}, {"Chave_Vayon_Producao - Copiar.3", "tp_Pessoa"}, {"Chave_Vayon_Producao - Copiar.4", "Imobiliaria"}, {"Chave_Vayon_Producao - Copiar.5", "Produto"}, {"Chave_Vayon_Producao - Copiar.6", "Corretor"}, {"Chave_Vayon_Producao - Copiar.7", "Executivo"}}),
+				    #"Coluna Duplicada1" = Table.DuplicateColumn(#"Colunas Renomeadas", "Data", "Data - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada1",{{"Data - Copiar", "Chave_Data"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas1",{{"Chave_Data", type text}})
+				in
+				    #"Tipo Alterado1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

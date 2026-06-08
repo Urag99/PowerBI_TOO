@@ -1,0 +1,355 @@
+table TAB_Sinistro_Corretor
+	lineageTag: 0d5b332f-6d69-4039-9658-00402529b16d
+
+	measure '% Sinistralidade Corretor' =
+			
+			DIVIDE(
+			    sum(TAB_Sinistro_Corretor[vl_sinistro])
+			    ,sum(TAB_Sinistro_Corretor[vl_ppng])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: f5968b43-9257-48eb-bf92-90710e17ed46
+
+	measure Sinistralidade_Mensal_Tab = ```
+			
+			IFERROR(
+			sum(TAB_Sinistro_Corretor[vl_sinistro]) / sum(TAB_Sinistro_Corretor[vl_ppng]) 
+			, 0)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b1eadeb5-e1e3-48a6-bbb4-718311fd3b9b
+
+	measure Sinistralidade_Acumulado_Tab = ```
+			
+			IFERROR(
+			[vl_Sinistro_Acum_LastDate] / [vl_PPNG_Acum_LastDate] 
+			, 0)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 2bec1c57-c809-4c37-a33f-61239261d6e6
+
+	measure vl_PPNG_Acum_LastDate =
+			calculate(
+			    sum(TAB_Sinistro_Corretor[vl_ppng_acumulado])
+			    , LASTDATE(TAB_Sinistro_Corretor[periodo]
+			    ))
+		lineageTag: cbfcfea3-e1e5-4f5e-a7e0-32f969100462
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure vl_Sinistro_Acum_LastDate =
+			calculate(
+			    sum(TAB_Sinistro_Corretor[vl_sinistro_acumulado])
+			    , LASTDATE(TAB_Sinistro_Corretor[periodo])
+			)
+		lineageTag: 2cf56f1a-45b8-4cdc-97a6-0dfe0dd0c176
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 289ad4fa-ca80-446f-a0ea-c5196db32393
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_produto
+		dataType: string
+		lineageTag: fddcecd6-6858-4f72-b8cc-f52c8e560ef1
+		summarizeBy: none
+		sourceColumn: nm_produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_classificacao
+		dataType: string
+		lineageTag: 2513ca52-c2bf-4025-b2c0-73b561c4fd47
+		summarizeBy: none
+		sourceColumn: ds_classificacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_legado
+		dataType: string
+		lineageTag: 8564d6d7-be3e-442d-8387-c30a12bb0266
+		summarizeBy: none
+		sourceColumn: fl_legado
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_renovacao
+		dataType: string
+		lineageTag: 0cf71c87-74f7-4856-9955-517db24cce1b
+		summarizeBy: none
+		sourceColumn: fl_renovacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_corretor
+		dataType: string
+		lineageTag: 63716f9b-6ee7-4a12-9309-9bd8021b1d31
+		summarizeBy: none
+		sourceColumn: nm_corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_safra
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 44663d6c-8530-441d-b518-ea88bb885e30
+		summarizeBy: none
+		sourceColumn: dt_safra
+
+		variation Variation
+			isDefault
+			relationship: 6ea46459-fa91-428b-960e-ed8e179d4bc3
+			defaultHierarchy: LocalDateTable_d257ca6b-e1d6-46d0-99af-dd258a269b96.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column periodo
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4e6c7363-5207-4f89-b3d8-4436e869f6c8
+		summarizeBy: none
+		sourceColumn: periodo
+
+		variation Variation
+			isDefault
+			relationship: ab7abd67-6820-496a-9a77-01662f1cf67f
+			defaultHierarchy: LocalDateTable_fa46fd35-33e4-40ea-97aa-8b2c5db6c55c.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column vl_ppng
+		dataType: double
+		lineageTag: 3aae1fa3-e1e4-4d70-9002-958414851906
+		summarizeBy: sum
+		sourceColumn: vl_ppng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_ppng_acumulado
+		dataType: double
+		lineageTag: ff914caf-9702-48f7-a8d2-b85cdf001123
+		summarizeBy: sum
+		sourceColumn: vl_ppng_acumulado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_sinistro
+		dataType: double
+		lineageTag: 9320851c-55c7-4ddd-9592-0b57c2384657
+		summarizeBy: sum
+		sourceColumn: vl_sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_sinistro_acumulado
+		dataType: double
+		lineageTag: a19f1430-e170-4ae9-a142-1a5a27ab303c
+		summarizeBy: sum
+		sourceColumn: vl_sinistro_acumulado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ds_agrupamento_corretor
+		dataType: string
+		lineageTag: 097e107c-e94c-4b59-a2f5-5b74f40729c3
+		summarizeBy: none
+		sourceColumn: ds_agrupamento_corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_indice_apolice
+		dataType: int64
+		formatString: 0
+		lineageTag: 22362af2-7a0c-4ae4-adab-0be431fbd681
+		summarizeBy: sum
+		sourceColumn: cd_indice_apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_final
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f50e56a9-4d13-4a73-a5b6-b120b4e83fb3
+		summarizeBy: none
+		sourceColumn: dt_final
+
+		variation Variation
+			isDefault
+			relationship: 6c1e0647-488a-4fbc-a577-fa467d7f2efd
+			defaultHierarchy: LocalDateTable_75c330ec-2f1f-4b64-aa41-217d37b082d9.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dt_atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7b6a9c50-fe62-4eb8-9c6e-447ece8992e7
+		summarizeBy: none
+		sourceColumn: dt_atualizacao
+
+		variation Variation
+			isDefault
+			relationship: f7ae6dbe-645d-4311-9217-fd0b597beccd
+			defaultHierarchy: LocalDateTable_739941bd-fbb8-41c4-80d6-2e21c90dda37.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_indice_apolice_maturada
+		dataType: int64
+		formatString: 0
+		lineageTag: 6bca7191-f3eb-4eb2-bd73-58e992b9669e
+		summarizeBy: sum
+		sourceColumn: cd_indice_apolice_maturada
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Agrupa Produto'
+		dataType: string
+		lineageTag: aa5acac3-0335-4ad8-b187-eaf60055cc9e
+		summarizeBy: none
+		sourceColumn: Agrupa Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_chave
+		dataType: string
+		lineageTag: 9410c047-c9ed-4366-a0b0-c0555ded9d97
+		summarizeBy: none
+		sourceColumn: ds_chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Apolice
+		dataType: string
+		lineageTag: 65da4a79-d73e-46c1-921a-9cd7c14cc1ed
+		summarizeBy: none
+		sourceColumn: cd_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Premio_Tarifa
+		dataType: double
+		lineageTag: e9b4b083-1661-4ec2-a890-5e94e01f44c6
+		summarizeBy: sum
+		sourceColumn: vl_Premio_Tarifa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tp_Imovel
+		dataType: string
+		lineageTag: efa4f66b-c353-431e-a22f-55b2f39b6b04
+		summarizeBy: none
+		sourceColumn: tp_Imovel
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_Pessoa_Locatario
+		dataType: string
+		lineageTag: bf6be80b-8126-43ae-98d1-2ccd25c389a1
+		summarizeBy: none
+		sourceColumn: tp_Pessoa_Locatario
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Fase
+		dataType: string
+		lineageTag: bfdb44ee-5fcd-4e62-ac6c-5d322366330e
+		summarizeBy: none
+		sourceColumn: ds_Fase
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_Origem
+		dataType: string
+		lineageTag: f8a31abd-ebc6-41de-b387-adefd74da629
+		summarizeBy: none
+		sourceColumn: ds_Produto_Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cidade
+		dataType: string
+		lineageTag: 0172d620-8560-42ce-8ae3-f3ac8b9518e7
+		summarizeBy: none
+		sourceColumn: ds_Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_UF
+		dataType: string
+		lineageTag: 3f006aa8-15f2-40bd-9d9a-4505bd093508
+		summarizeBy: none
+		sourceColumn: cd_UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Cep
+		dataType: string
+		lineageTag: feaaa1cc-facc-42b1-94ef-b806ad6796f8
+		summarizeBy: none
+		sourceColumn: cd_Cep
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Sinistro_Ocupado
+		dataType: int64
+		formatString: 0
+		lineageTag: e65fd877-c712-4af5-85d7-4cbb9a64e79a
+		summarizeBy: sum
+		sourceColumn: qt_Sinistro_Ocupado
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Sinistro_Desocupado
+		dataType: int64
+		formatString: 0
+		lineageTag: f5dbea3e-2bbd-4c55-88bc-2167d76d7434
+		summarizeBy: sum
+		sourceColumn: qt_Sinistro_Desocupado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAB_Sinistro_Corretor-15f1cc9a-7236-41a2-ac27-dfbae83ea0f3 = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Sinistralidade_Safrada = Fonte{[Schema="dbo",Item="REL_Fianca_Sinistralidade_Safrada"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Sinistralidade_Safrada = Fonte{[Schema="dbo",Item="REL_Fianca_Sinistralidade_Safrada"]}[Data],*/
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Fianca_Sinistralidade_Safrada,{{"dt_safra", type date}, {"periodo", type date}, {"dt_final", type date}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Tipo Alterado", "Agrupa Produto", each if Text.Contains([nm_produto], "CIRCULAR") then "Circular 587" else "Anterior a Circular 587"),
+				    #"Texto Aparado" = Table.TransformColumns(#"Coluna Condicional Adicionada",{{"nm_corretor", Text.Trim, type text}}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Texto Aparado", "ds_chave", each Text.Combine({Text.From([periodo], "pt-BR"), [nm_corretor]}, "|"), type text)
+				in
+				    #"Coluna Mesclada Inserida"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

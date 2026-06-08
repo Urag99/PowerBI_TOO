@@ -1,0 +1,79 @@
+table REL_Fianca_Peers_YTD
+	lineageTag: a3372b79-c9a8-4eac-8cba-1b3eceec0c7c
+
+	column id_Peers_YTD
+		dataType: int64
+		formatString: 0
+		lineageTag: 116a026d-1f4d-41f9-962d-0edac3a38b5d
+		summarizeBy: sum
+		sourceColumn: id_Peers_YTD
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Seguradora
+		dataType: string
+		lineageTag: 376fc220-2af8-4e34-bbe5-e8f14063d07c
+		summarizeBy: none
+		sourceColumn: nm_Seguradora
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Premio_Emitido
+		dataType: double
+		lineageTag: 04842dd0-0804-4fb3-989c-83819ccd8443
+		summarizeBy: sum
+		sourceColumn: vl_Premio_Emitido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nr_Ranking
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e78ea56-8962-4e13-88ff-6fcd8cb0ec81
+		summarizeBy: sum
+		sourceColumn: nr_Ranking
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Market_Share
+		dataType: double
+		lineageTag: 83cbc1d7-8f32-4121-8e35-0bbafb1106dc
+		summarizeBy: sum
+		sourceColumn: vl_Market_Share
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 003ee660-20b5-4bb3-bea4-01a67cd2b3eb
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: 89b2c962-7003-4bd5-ae86-01c364021e74
+			defaultHierarchy: LocalDateTable_52c1dcf5-358c-4a93-9199-8f4b6609e72e.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Peers_YTD-2af4dff8-5b0a-40df-9a6e-95502f90eab6 = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Peers_YTD = Fonte{[Schema="dbo",Item="REL_Fianca_Peers_YTD"]}[Data]
+				in
+				    dbo_REL_Fianca_Peers_YTD
+
+	annotation PBI_QueryRelationships = {"columnCount":6,"keyColumnNames":["id_Peers_YTD"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_YTD.{id_Peers_YTD,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_YTD.{nm_Seguradora,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_YTD.{vl_Premio_Emitido,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_YTD.{nr_Ranking,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_YTD.{vl_Market_Share,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_YTD.{dt_Atualizacao,5}"],"ColumnCount":6,"KeyColumnNames":["id_Peers_YTD"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_YTD.{id_Peers_YTD,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_YTD.{nm_Seguradora,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_YTD.{vl_Premio_Emitido,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_YTD.{nr_Ranking,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_YTD.{vl_Market_Share,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_YTD.{dt_Atualizacao,5}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

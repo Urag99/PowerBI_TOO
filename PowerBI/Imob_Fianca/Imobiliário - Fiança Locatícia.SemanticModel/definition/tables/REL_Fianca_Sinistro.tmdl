@@ -1,0 +1,132 @@
+table REL_Fianca_Sinistro
+	lineageTag: bfcb2768-27ef-4910-a201-c2dcc355da74
+
+	column id_Sinistro
+		dataType: int64
+		formatString: 0
+		lineageTag: 6401a3e9-12fc-4569-88c3-a19365def084
+		summarizeBy: none
+		sourceColumn: id_Sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Apolice
+		dataType: string
+		lineageTag: 320750a2-55e0-485d-a8fb-eb477f02d5a8
+		summarizeBy: none
+		sourceColumn: cd_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Corretor
+		dataType: string
+		lineageTag: a0297216-fbe8-46be-875e-6d129fac7560
+		summarizeBy: none
+		sourceColumn: nm_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Endosso
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c40e697e-9f5e-494c-a032-e1a36ef736d9
+		summarizeBy: none
+		sourceColumn: dt_Endosso
+
+		variation Variation
+			isDefault
+			relationship: bc5665f0-c171-4b15-8f73-28068863168f
+			defaultHierarchy: LocalDateTable_70a6c6cf-0e04-46ac-b70e-afb7988dc86b.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Emissao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8cfda3fe-64fb-4b32-9dd9-7d155c73240e
+		summarizeBy: none
+		sourceColumn: dt_Emissao
+
+		variation Variation
+			isDefault
+			relationship: c9c3a8af-eae5-4075-a911-ccfc2d8e2d9f
+			defaultHierarchy: LocalDateTable_64a4da6e-a293-48fa-b87d-e17fe34c137e.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Sinistro
+		dataType: int64
+		formatString: 0
+		lineageTag: dfde469f-9f08-49e6-a055-b47ec6f078df
+		summarizeBy: sum
+		sourceColumn: qt_Sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Sinistro
+		dataType: double
+		lineageTag: 7c0e93d5-de61-4f46-b0f3-45517a544aab
+		summarizeBy: sum
+		sourceColumn: vl_Sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AnoMes
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 30e8128c-aabe-40c6-8938-0ad8ea8bdb54
+		summarizeBy: none
+		sourceColumn: AnoMes
+
+		variation Variation
+			isDefault
+			relationship: 981e9c8c-81d3-43f2-83f4-0f48f9a274bf
+			defaultHierarchy: LocalDateTable_0785c8ae-6450-4df2-8dd9-ed23455173a1.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fa5d62b1-6ab3-4c32-a922-ba4fbc7d67fc
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: c4fffab6-60a1-491e-8904-b6845fb03dff
+			defaultHierarchy: LocalDateTable_533b2e6d-0761-4c86-b6a2-3f5fb3d382f9.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Marcacao_Sinistro
+		dataType: string
+		lineageTag: 8d9622c7-3af4-4e85-8d5f-568461ad0c77
+		summarizeBy: none
+		sourceColumn: ds_Marcacao_Sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Sinistro-f9e2ee1b-9107-453f-8dfa-f5c057096193 = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Sinistro = Fonte{[Schema="dbo",Item="REL_Fianca_Sinistro"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Sinistro = Fonte{[Schema="dbo",Item="REL_Fianca_Sinistro"]}[Data],*/
+				    #"Colunas Renomeadas" = Table.RenameColumns(dbo_REL_Fianca_Sinistro,{{"dt_Movimento", "dt_Endosso"}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Colunas Renomeadas", "ds_Marcacao_Sinistro", each [cd_Apolice]&"|"&"Sinistro"),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"ds_Marcacao_Sinistro", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_QueryRelationships = {"columnCount":9,"keyColumnNames":["id_Sinistro"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{id_Sinistro,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{cd_Apolice,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{nm_Corretor,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{dt_Movimento,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{dt_Emissao,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{qt_Sinistro,5}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{vl_Sinistro,6}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{AnoMes,7}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{dt_Atualizacao,8}"],"ColumnCount":9,"KeyColumnNames":["id_Sinistro"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{id_Sinistro,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{cd_Apolice,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{nm_Corretor,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{dt_Movimento,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{dt_Emissao,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{qt_Sinistro,5}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{vl_Sinistro,6}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{AnoMes,7}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Sinistro.{dt_Atualizacao,8}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

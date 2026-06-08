@@ -1,0 +1,42 @@
+table vw_aluguel_sinistrados
+	lineageTag: 5eb79b0c-29f6-4c1f-a8d5-3e609f78286d
+
+	column cd_Apolice
+		dataType: string
+		lineageTag: 51958db3-40fe-4ca1-b8b0-46fd8b463f75
+		summarizeBy: none
+		sourceColumn: cd_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Aluguel
+		dataType: double
+		lineageTag: 97639ce6-6d72-4f8c-b8e7-9f44adeec483
+		summarizeBy: none
+		sourceColumn: vl_Aluguel
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ds_Marcacao_Sinistro
+		dataType: string
+		lineageTag: 2d84daca-03b4-4b4d-a68f-00304c1d53b1
+		summarizeBy: none
+		sourceColumn: ds_Marcacao_Sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vw_aluguel_sinistrados = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_vw_aluguel_sinistrados = Fonte{[Schema="dbo",Item="vw_aluguel_sinistrados"]}[Data],
+				    #"Personalização Adicionada" = Table.AddColumn(dbo_vw_aluguel_sinistrados, "ds_Marcacao_Sinistro", each [cd_Apolice]&"|"&"Sinistro"),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"ds_Marcacao_Sinistro", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

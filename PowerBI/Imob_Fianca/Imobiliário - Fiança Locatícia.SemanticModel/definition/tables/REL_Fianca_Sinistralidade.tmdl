@@ -1,0 +1,107 @@
+table REL_Fianca_Sinistralidade
+	lineageTag: 4b151e62-2d2b-4240-a25e-a29dfdd27ad2
+
+	measure '% Sinistralidade Sin x Emitido' = sum(REL_Fianca_Sinistralidade[vl_Sinistro])/ sum (REL_Fianca_Sinistralidade[vl_Premio_Emitido_Liquido])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 4001bf3e-4bfa-4fab-a2b7-34ef9ea46f12
+
+	measure '% Sinistralidade Sin x Ganho' = sum(REL_Fianca_Sinistralidade[vl_Sinistro])/ sum (REL_Fianca_Sinistralidade[vl_Premio_Ganho])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2d0f5c2a-84bb-479e-828a-e77fb98c885c
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 569fc2bf-9176-477d-93f2-4f96a0852ad5
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column periodo
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 63f111d3-0996-4105-ad82-046caf238d66
+		summarizeBy: none
+		sourceColumn: periodo
+
+		variation Variation
+			isDefault
+			relationship: f472fb3a-0864-4064-8243-4ed4103d8f30
+			defaultHierarchy: LocalDateTable_fdf3d574-0409-45c8-9888-288eb1b41923.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ds_Produto
+		dataType: string
+		lineageTag: 7c06e1d3-e8ce-46ec-bda5-0c418e3e8ccd
+		summarizeBy: none
+		sourceColumn: ds_Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Premio_Ganho
+		dataType: double
+		lineageTag: 62c642dc-7099-46ad-a283-3af000f750a4
+		summarizeBy: sum
+		sourceColumn: vl_Premio_Ganho
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Premio_Emitido_Liquido
+		dataType: double
+		lineageTag: 3c2c04b2-19b4-48ac-9512-ed11569c9081
+		summarizeBy: sum
+		sourceColumn: vl_Premio_Emitido_Liquido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Sinistro
+		dataType: double
+		lineageTag: cf465fdc-7b18-4bc5-830e-196d18eb7a6a
+		summarizeBy: sum
+		sourceColumn: vl_Sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3f67a397-6712-4c06-ad28-46cf8eb5da59
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: 6c3e4b94-cfd0-4bfc-b89d-2bcaf84b0c21
+			defaultHierarchy: LocalDateTable_ffb7fedf-f2db-41cc-8f40-bcc34e0a63ac.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Sinistralidade-edbef176-13b9-4b0f-a87e-53731c8dfac1 = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Sinistralidade = Fonte{[Schema="dbo",Item="REL_Fianca_Sinistralidade"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Sinistralidade = Fonte{[Schema="dbo",Item="REL_Fianca_Sinistralidade"]}[Data],*/
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Fianca_Sinistralidade,{{"periodo", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_QueryRelationships = {"columnCount":7,"keyColumnNames":["id"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade.{id,0}","Section1/REL_Fianca_Sinistralidade/Tipo Alterado.{periodo,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade.{ds_Produto,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade.{vl_Premio_Ganho,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade.{vl_Premio_Emitido_Liquido,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade.{vl_Sinistro,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade.{dt_Atualizacao,6}"],"ColumnCount":7,"KeyColumnNames":["id"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade.{id,0}","Section1/REL_Fianca_Sinistralidade/Tipo Alterado.{periodo,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade.{ds_Produto,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade.{vl_Premio_Ganho,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade.{vl_Premio_Emitido_Liquido,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade.{vl_Sinistro,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade.{dt_Atualizacao,6}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

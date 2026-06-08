@@ -1,0 +1,44 @@
+table TAB_Empilha_Sinistro
+	lineageTag: d04d0522-6e81-4bb3-955c-2a2b56baa8e9
+
+	column ds_chave
+		dataType: string
+		lineageTag: 46d160f6-c43e-46f5-a416-d8513642693f
+		summarizeBy: none
+		sourceColumn: ds_chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column periodo
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7b223534-9733-4c75-b631-1f27b95fba3a
+		summarizeBy: none
+		sourceColumn: periodo
+
+		variation Variation
+			isDefault
+			relationship: 1d37dc1d-d254-4582-a924-804cabfdcc2d
+			defaultHierarchy: LocalDateTable_259371d3-7884-4b4c-964b-ccb4ee5b7a33.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition TAB_Empilha_Sinistro = m
+		mode: import
+		source =
+				let
+				    Fonte = REL_Fianca_Producao,
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"nm_Corretor", "dt_Endosso"}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Outras Colunas Removidas", "ds_chave", each Text.Combine({Text.From([dt_Endosso], "pt-BR"), [nm_Corretor]}, "|"), type text),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Coluna Mesclada Inserida",{"nm_Corretor"}),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(#"Colunas Removidas",{"ds_chave", "dt_Endosso"}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Colunas Reordenadas",{{"dt_Endosso", "periodo"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

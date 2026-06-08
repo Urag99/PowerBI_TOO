@@ -1,0 +1,134 @@
+table REL_Fianca_Producao_Agrupado
+	lineageTag: 4b312817-3167-4729-872a-c59ae67050de
+
+	column AnoMes_Chave
+		dataType: string
+		lineageTag: 3be4cf3a-32e0-4a50-bbb3-9918c0b813ad
+		summarizeBy: none
+		sourceColumn: AnoMes_Chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_Agrupado
+		dataType: int64
+		formatString: 0
+		lineageTag: 33f6e8f8-4106-4ea8-a739-799813ae966e
+		summarizeBy: sum
+		sourceColumn: id_Agrupado
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoMes
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 03a29796-69c4-42d4-ab47-face8cd18e44
+		summarizeBy: none
+		sourceColumn: AnoMes
+
+		variation Variation
+			isDefault
+			relationship: 13503377-49ab-470c-8dd3-307af21ace99
+			defaultHierarchy: LocalDateTable_dd8cf838-fa85-485e-90dd-7e43839fb68c.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Executivo
+		dataType: string
+		lineageTag: f897bfd3-348c-41da-92e5-f27847cc711f
+		summarizeBy: none
+		sourceColumn: nm_Executivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Vendas
+		dataType: double
+		lineageTag: 623e5be6-b3ae-4655-8915-b83976656ae9
+		summarizeBy: sum
+		sourceColumn: vl_Vendas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Tarifário
+		dataType: double
+		lineageTag: ba8b7978-99d8-458c-ab91-711a23b5950a
+		summarizeBy: sum
+		sourceColumn: vl_Tarifário
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Recusado
+		dataType: double
+		lineageTag: 166bdc88-eabe-4e76-9338-df7e882ef4be
+		summarizeBy: sum
+		sourceColumn: vl_Recusado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Cancelamento
+		dataType: double
+		lineageTag: a094f26a-e296-41aa-b0d5-dbb852ff50e7
+		summarizeBy: sum
+		sourceColumn: vl_Cancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Restituicao
+		dataType: double
+		lineageTag: aedfaa4d-f01e-458b-a53c-b3d2b57319c3
+		summarizeBy: sum
+		sourceColumn: vl_Restituicao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Sinistro
+		dataType: double
+		lineageTag: 40d9d1e1-523c-46f8-a8ef-972db938cb9f
+		summarizeBy: sum
+		sourceColumn: vl_Sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8f5459d6-1ded-4e26-a9cb-f1e23584b45c
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: ebbdeed4-f16c-4a15-94a1-f5137394ed43
+			defaultHierarchy: LocalDateTable_d46b26b8-c856-419e-98e9-175c5befde80.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Producao_Agrupado-b3c7f931-117b-4f5c-839f-ca4025b1b58f = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA", [Query="select #(lf)#(tab)  id_Agrupado#(lf)#(tab), AnoMes#(lf)#(tab), vl_Vendas#(lf)#(tab), vl_Tarifário#(lf)#(tab), vl_Recusado#(lf)#(tab), vl_Cancelamento#(lf)#(tab), vl_Restituicao#(lf)#(tab), vl_Sinistro#(lf)#(tab), dt_Atualizacao#(lf)#(tab), nm_Executivo_Historico#(tab)#(tab)as nm_Executivo#(lf)from REL_Fianca_Producao_Agrupado#(lf)"]),
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Producao_Agrupado = Fonte{[Schema="dbo",Item="REL_Fianca_Producao_Agrupado"]}[Data],*/
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(Fonte, "AnoMes_Chave", each Text.Combine({Text.From([AnoMes], "pt-BR"), [nm_Executivo]}, ""), type text)
+				in
+				    #"Coluna Mesclada Inserida"
+
+	annotation PBI_QueryRelationships = {"columnCount":11,"keyColumnNames":["id_Agrupado"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{id_Agrupado,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{AnoMes,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{nm_Executivo,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{vl_Vendas,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{vl_Tarifário,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{vl_Recusado,5}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{vl_Cancelamento,6}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{vl_Restituicao,7}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{vl_Sinistro,8}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{dt_Atualizacao,9}","Section1/REL_Fianca_Producao_Agrupado/Coluna Mesclada Inserida.{AnoMes_Chave,10}"],"ColumnCount":11,"KeyColumnNames":["id_Agrupado"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{id_Agrupado,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{AnoMes,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{nm_Executivo,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{vl_Vendas,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{vl_Tarifário,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{vl_Recusado,5}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{vl_Cancelamento,6}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{vl_Restituicao,7}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{vl_Sinistro,8}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Producao_Agrupado.{dt_Atualizacao,9}","Section1/REL_Fianca_Producao_Agrupado/Coluna Mesclada Inserida.{AnoMes_Chave,10}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

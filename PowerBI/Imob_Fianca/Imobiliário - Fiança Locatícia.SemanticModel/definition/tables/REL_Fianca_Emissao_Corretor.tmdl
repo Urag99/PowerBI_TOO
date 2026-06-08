@@ -1,0 +1,180 @@
+table REL_Fianca_Emissao_Corretor
+	lineageTag: dfabfdbe-823c-48cc-9bf5-9e0a177eda09
+
+	column Chave_Cluster
+		dataType: string
+		lineageTag: 030e066b-8be8-4e77-a2f1-dca5f062be98
+		summarizeBy: none
+		sourceColumn: Chave_Cluster
+
+		annotation SummarizationSetBy = Automatic
+
+	column Classe_Cluster
+		dataType: string
+		lineageTag: 38ac50e1-90e3-46fb-b3bf-5d2d0e987572
+		summarizeBy: none
+		sourceColumn: Classe_Cluster
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordem_Cluster
+		dataType: double
+		lineageTag: fa062617-ccfd-4e84-a98f-9c5f308039a6
+		summarizeBy: sum
+		sourceColumn: Ordem_Cluster
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Cores_Clusters
+		dataType: string
+		lineageTag: fbc144b9-4555-4c09-81bc-2f3e60825dce
+		summarizeBy: none
+		sourceColumn: Cores_Clusters
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_Emissao_Corretor
+		dataType: int64
+		formatString: 0
+		lineageTag: 6407c315-9927-45d3-99d3-d2bb160541ef
+		summarizeBy: sum
+		sourceColumn: id_Emissao_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column nr_Cnpj_Cpf_Corretor
+		dataType: string
+		lineageTag: fb4336d1-e410-489f-be09-b01022085833
+		summarizeBy: none
+		sourceColumn: nr_Cnpj_Cpf_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Corretor_Tratado
+		dataType: string
+		lineageTag: c65fb6e4-576a-46f1-a491-4eed695be188
+		summarizeBy: none
+		sourceColumn: nm_Corretor_Tratado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: string
+		lineageTag: 26c2275a-6e50-46d4-bb58-8a2a08ba261c
+		summarizeBy: none
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Periodo
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 75fc6812-d564-478c-b345-33e94e182391
+		summarizeBy: none
+		sourceColumn: Periodo
+
+		variation Variation
+			isDefault
+			relationship: 7334d8b7-d78c-44cf-9dd4-ef0c10ba5cbb
+			defaultHierarchy: LocalDateTable_372cab6b-e37c-43ff-ba38-87457989684b.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Emissao_Mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 167db206-ab22-45f5-b9bf-296602fcab92
+		summarizeBy: sum
+		sourceColumn: qt_Emissao_Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Emissao_Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 303c88f2-6861-4b1d-9fcd-1f77fbab8f83
+		summarizeBy: sum
+		sourceColumn: qt_Emissao_Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Classificacao
+		dataType: string
+		lineageTag: f60b3470-d01d-41a6-becd-a14ecd734260
+		summarizeBy: none
+		sourceColumn: ds_Classificacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 61d75979-c175-465e-8725-0d53efed8ad6
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: ab92a0da-d5bf-4f05-a356-257869c19f48
+			defaultHierarchy: LocalDateTable_d8837017-6839-43c2-9a0f-5a2b37a8f5ac.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Grandes_Riscos
+		dataType: string
+		lineageTag: 18beb722-a018-45d8-80a8-8461acb2f7ad
+		summarizeBy: none
+		sourceColumn: fl_Grandes_Riscos
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Renovadas
+		dataType: string
+		lineageTag: 5b95ed28-98ac-466f-b881-9dadc53d20f0
+		summarizeBy: none
+		sourceColumn: fl_Renovadas
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Emissao_Corretor-cd3ff202-744d-4f42-9c7b-bf6a49c7e013 = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Emissao_Corretor = Fonte{[Schema="dbo",Item="REL_Fianca_Emissao_Corretor"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Emissao_Corretor = Fonte{[Schema="dbo",Item="REL_Fianca_Emissao_Corretor"]}[Data],*/
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(dbo_REL_Fianca_Emissao_Corretor, "Chave_Cluster", each Text.Combine(
+				        {[nr_Cnpj_Cpf_Corretor], 
+				         [fl_Grandes_Riscos],
+				         [fl_Renovadas],
+				         Text.From([Periodo], "pt-BR")}, "|"), type text),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Coluna Mesclada Inserida", "Classe_Cluster", each if [ds_Classificacao] = "BRONZE" then "Até 4" else 
+				if [ds_Classificacao] = "PRATA" then "5 a 14" else
+				if [ds_Classificacao] = "OURO" then "15 a 29" else
+				if [ds_Classificacao] = "DIAMANTE" then "30 +" else
+				null),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"Classe_Cluster", type text}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"nm_Corretor", "nm_Corretor_Tratado"}}),
+				    #"Personalização Adicionada1" = Table.AddColumn(#"Colunas Renomeadas", "Ordem_Cluster", each if [ds_Classificacao] = "BRONZE" then 1 else 
+				if [ds_Classificacao] = "PRATA" then 2 else 
+				if [ds_Classificacao] = "OURO" then 3 else 
+				if [ds_Classificacao] = "DIAMANTE" then 4 else null),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada1",{{"Ordem_Cluster", type number}}),
+				    #"Personalização Adicionada2" = Table.AddColumn(#"Tipo Alterado1", "Cores_Clusters", each if [ds_Classificacao] = "BRONZE" then "#CD7F32" else 
+				if [ds_Classificacao] = "PRATA" then "#C0C0C0" else 
+				if [ds_Classificacao] = "OURO" then "#FFD700" else 
+				if [ds_Classificacao] = "DIAMANTE" then "#B9F2FF" else null),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Personalização Adicionada2","MAXIMIZA ADMINISTRACAO E CORRETAGEM DE SEGUROS LTDA","GRUPO MAXIMIZA",Replacer.ReplaceText,{"nm_Corretor_Tratado"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","MAXIMIZA GO ADMINISTRACAO E CORRETAGEM DE SEGUROS LTDA ME","GRUPO MAXIMIZA",Replacer.ReplaceText,{"nm_Corretor_Tratado"}),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Valor Substituído1","MAXIMIZA MS ADMINISTRACAO E CORRETAGEM DE SEGUROS LTDA","GRUPO MAXIMIZA",Replacer.ReplaceText,{"nm_Corretor_Tratado"})
+				in
+				    #"Valor Substituído2"
+				```
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,186 @@
+table REL_Fianca_Severidade
+	lineageTag: 8c7828cf-e6d5-43d6-893d-9b8ee8451328
+
+	measure Severidade = IFerror(sum('REL_Fianca_Severidade'[vl_Sinistro])/sum('REL_Fianca_Severidade'[vl_IS]),0)
+		formatString: #,0
+		lineageTag: b48255b0-5ec4-4d98-a603-52da13987b99
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a004661-8e66-46c8-ae59-0dc0bab3f88a
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Fase
+		dataType: string
+		lineageTag: 94d0d45d-e24b-4f72-9f41-1c08ec15b1af
+		summarizeBy: none
+		sourceColumn: ds_Fase
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Ocorrencia
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7e1b14dd-c01d-483b-8b8f-baed9bb6b6e4
+		summarizeBy: none
+		sourceColumn: dt_Ocorrencia
+
+		variation Variation
+			isDefault
+			relationship: a938e233-0aba-45c8-884b-42d49f0fa850
+			defaultHierarchy: LocalDateTable_89404838-e413-447e-8589-c0ab54be8206.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column cd_Apolice
+		dataType: string
+		lineageTag: 1d0b82af-d346-4996-813a-4500a2464b17
+		summarizeBy: none
+		sourceColumn: cd_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cobertura
+		dataType: string
+		lineageTag: 7d491156-4b9b-41bc-ab7e-08b822d750cf
+		summarizeBy: none
+		sourceColumn: ds_Cobertura
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_IS
+		dataType: double
+		formatString: #,0
+		lineageTag: 92803375-2849-40c8-8329-482bdc653f78
+		summarizeBy: sum
+		sourceColumn: vl_IS
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vl_Sinistro
+		dataType: double
+		formatString: #,0
+		lineageTag: 87b66d21-fd25-40e6-9e98-888c2f72e916
+		summarizeBy: sum
+		sourceColumn: vl_Sinistro
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column fl_Renovacao
+		dataType: string
+		lineageTag: 66baccd2-8605-46dc-a775-01802ab0606f
+		summarizeBy: none
+		sourceColumn: fl_Renovacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Legado
+		dataType: string
+		lineageTag: 20428a0c-da0f-4ea0-b9a1-e81495aadc2d
+		summarizeBy: none
+		sourceColumn: fl_Legado
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_Imovel
+		dataType: string
+		lineageTag: 5f5abd6b-5813-48b2-bdda-b54717b83e47
+		summarizeBy: none
+		sourceColumn: tp_Imovel
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto
+		dataType: string
+		lineageTag: 046d26e7-5f9f-4d01-8cfd-e47810d2aec8
+		summarizeBy: none
+		sourceColumn: ds_Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Corretor
+		dataType: string
+		lineageTag: 39afca7e-d4ac-4039-be56-c1e836eef503
+		summarizeBy: none
+		sourceColumn: nm_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Classificacao
+		dataType: string
+		lineageTag: 1e6f88d1-9f7d-438f-b650-1e55b126d684
+		summarizeBy: none
+		sourceColumn: ds_Classificacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 71da5df5-0688-4dd0-bf51-9be7237018c2
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: 219fa8fe-8594-4607-af96-a0e5f16da5ae
+			defaultHierarchy: LocalDateTable_6cd931da-4a05-484f-aefc-33558acf837b.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_Pessoa_Locatario
+		dataType: string
+		lineageTag: e277120f-d8d6-4982-ba21-a2736e497bc6
+		summarizeBy: none
+		sourceColumn: tp_Pessoa_Locatario
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_Origem
+		dataType: string
+		lineageTag: 6f98937f-e983-4730-b025-71fd867b01dd
+		summarizeBy: none
+		sourceColumn: ds_Produto_Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Severidade-f5addb21-28b4-4b05-a2d8-0944262aaedd = m
+		mode: import
+		source = ```
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Severidade = Fonte{[Schema="dbo",Item="REL_Fianca_Severidade"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Severidade = Fonte{[Schema="dbo",Item="REL_Fianca_Severidade"]}[Data],*/
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Fianca_Severidade,{{"dt_Ocorrencia", type date}, {"cd_Apolice", type text}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Tipo Alterado", "ds_Fase", each 
+				        if Text.Contains([ds_Produto], "Circular") then "Fase 3" else 
+				        if [fl_Legado] = "Legado" then "Fase 1" else 
+				        if [fl_Legado] = "Não legado" then "Fase 2" else null)
+				in
+				    #"Coluna Condicional Adicionada"
+				```
+
+	annotation PBI_ResultType = Table
+

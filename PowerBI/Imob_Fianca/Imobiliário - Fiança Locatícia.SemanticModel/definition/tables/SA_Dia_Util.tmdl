@@ -1,0 +1,151 @@
+table SA_Dia_Util
+	lineageTag: 34cc9a5a-b30f-4317-88b1-6b1bf981512e
+
+	measure Qtd_Media_Fichas_Uteis =
+			
+			divide(
+			     sum(REL_Fianca_Base_Vayon[qt_Ficha])
+			    ,DISTINCTCOUNTNOBLANK(SA_Dia_Util[Chave_Data])
+			)
+		formatString: #,0
+		lineageTag: 393177f7-918f-41a6-8a86-c19005b8ab35
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure Qtd_Media_Aprovacoes_Uteis =
+			
+			divide(
+			     sum(REL_Fianca_Base_Vayon[qt_Aprovacao])
+			    ,DISTINCTCOUNTNOBLANK(SA_Dia_Util[Chave_Data])
+			)
+		formatString: #,0
+		lineageTag: 4f354554-0bc2-4ab5-8853-348ba04c20bb
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure %_Aprox_x_Fichas_Media_Uteis =
+			
+			divide(
+			     [Qtd_Media_Aprovacoes_Uteis]
+			    ,[Qtd_Media_Fichas_Uteis]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 31de9851-b36f-4ea4-8f87-a1dc9572c39b
+
+		changedProperty = FormatString
+
+	measure Qtd_Media_EmissoesUteis =
+			
+			divide(
+			     sum(REL_Fianca_Base_Vayon[fl_Emissao_Apolice])
+			    ,DISTINCTCOUNTNOBLANK(SA_Dia_Util[Chave_Data])
+			)
+		formatString: #,0
+		lineageTag: 9adb9d7d-3b44-40c8-a1c7-1f34bd6e9479
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column id_Dia_Util
+		dataType: int64
+		formatString: 0
+		lineageTag: f2fd6dfe-9cb0-4538-accc-c70f49ddc333
+		summarizeBy: sum
+		sourceColumn: id_Dia_Util
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: string
+		lineageTag: 625b40dd-c356-4ac0-bdc0-8ca52cbdf9c5
+		summarizeBy: none
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4d8fb014-99b5-47b0-b61e-4c23d1bb7833
+		summarizeBy: none
+		sourceColumn: DATA
+
+		variation Variation
+			isDefault
+			relationship: bc738630-0607-4a64-b8fb-68556300fe83
+			defaultHierarchy: LocalDateTable_80f8ae97-2076-4dc1-9da2-61c8df9e0562.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dia_Semana
+		dataType: string
+		lineageTag: d32271a2-8498-4308-a999-358da7789b82
+		summarizeBy: none
+		sourceColumn: dia_Semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column sequencia_Mes
+		dataType: int64
+		formatString: 0
+		lineageTag: a7800ba0-d0b2-4f0c-9f08-ac734c1e0b2c
+		summarizeBy: sum
+		sourceColumn: sequencia_Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column sequencia_Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: beedcab4-71f2-48c1-b53d-b63418debe1a
+		summarizeBy: sum
+		sourceColumn: sequencia_Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA_YYYYMMDD
+		dataType: string
+		lineageTag: 0a5ac24b-0234-421b-9a5e-b3777272e501
+		summarizeBy: none
+		sourceColumn: DATA_YYYYMMDD
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave_Data
+		dataType: string
+		lineageTag: f9eef501-dd46-48ba-80aa-b03317f5a176
+		summarizeBy: none
+		sourceColumn: Chave_Data
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Util
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b2ad3831-23ef-4471-85d2-28ba546931d0
+		summarizeBy: none
+		sourceColumn: fl_Util
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SA_Dia_Util-0baa9c2e-8bb1-45af-b7bd-437b25e74303 = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_SA_Dia_Util = Fonte{[Schema="dbo",Item="SA_Dia_Util"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_SA_Dia_Util = Fonte{[Schema="dbo",Item="SA_Dia_Util"]}[Data],*/
+				    #"Colunas Renomeadas" = Table.RenameColumns(dbo_SA_Dia_Util,{{"DATA_DDMMYYYY", "Chave_Data"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_ResultType = Table
+

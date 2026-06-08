@@ -1,0 +1,123 @@
+model Model
+	culture: pt-PT
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["REL_Fianca_Meta","REL_Fianca_Peers_Mes","REL_Fianca_Peers_YTD","REL_Fianca_Producao","REL_Fianca_Sinistro","REL_Fianca_Corretora","REL_Fianca_Producao_Agrupado","REL_Fianca_Vayon","REL_Fianca_Funil_Vayon","REL_Fianca_Base_Vayon","REL_Fianca_Sinistralidade","REL_Fianca_Sinistralidade_Safrada","REL_Fianca_Severidade","REL_Fianca_Frequencia","REL_Fianca_Ativos","Base_Categoria_Vayon_Producao","SA_Dia_Util","REL_Fianca_Emissao_Corretor","tab_ordem","tab_motivo_cancelamento","tab_classificacao","REL_Fianca_Avisos_DP","TAB_Score","rel_fianca_avisos","rel_fianca_ativos_credito","TAB_Chave_Ativos_Avisos","vw_aluguel_sinistrados","TAB_Sinistro_Corretor","TAB_Chave_Sinistro","TAB_Empilha_Sinistro"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_e508a3e3-1b39-45ed-bfb2-a8b63e713314
+ref table REL_Fianca_Meta
+ref table REL_Fianca_Peers_Mes
+ref table REL_Fianca_Peers_YTD
+ref table REL_Fianca_Producao
+ref table REL_Fianca_Sinistro
+ref table REL_Fianca_Corretora
+ref table REL_Fianca_Producao_Agrupado
+ref table REL_Fianca_Vayon
+ref table REL_Fianca_Funil_Vayon
+ref table REL_Fianca_Base_Vayon
+ref table LocalDateTable_471fab71-4c5c-4335-a1fd-8642eff0e9df
+ref table LocalDateTable_0d3432e4-8284-426d-8733-e869168331e1
+ref table REL_Fianca_Sinistralidade
+ref table LocalDateTable_fdf3d574-0409-45c8-9888-288eb1b41923
+ref table LocalDateTable_97bb41bb-3226-45d3-bd4f-828a7e5e8ff9
+ref table REL_Fianca_Sinistralidade_Safrada
+ref table LocalDateTable_6017635f-03fe-4625-8678-71b7ed50d819
+ref table LocalDateTable_dfcf64a5-26ea-4b46-b176-762e69a696c8
+ref table LocalDateTable_962f0a22-8328-4273-88da-c8134a06774e
+ref table LocalDateTable_7ecc4739-6bf5-4d67-a878-56e1aec63f5b
+ref table REL_Fianca_Severidade
+ref table REL_Fianca_Frequencia
+ref table LocalDateTable_3a8181a9-81bb-4eaf-b32d-f714942c5f2a
+ref table REL_Fianca_Ativos
+ref table Base_Categoria_Vayon_Producao
+ref table LocalDateTable_b0a0f9da-cf9e-41f4-9340-dd7949750d76
+ref table LocalDateTable_c8f1187e-49d2-4213-973f-46ed6c24578e
+ref table SA_Dia_Util
+ref table REL_Fianca_Emissao_Corretor
+ref table tab_ordem
+ref table tab_motivo_cancelamento
+ref table rel_fianca_avisos
+ref table LocalDateTable_26ba9320-cc4f-494f-96ff-6a7760e4204d
+ref table tab_Data
+ref table LocalDateTable_94fa12e5-85f2-4bff-a43a-9969e3256df7
+ref table tab_classificacao
+ref table REL_Fianca_Avisos_DP
+ref table LocalDateTable_eeb1d372-1a54-415d-be2a-141e69c4ca93
+ref table TAB_Sinistro_Corretor
+ref table LocalDateTable_d257ca6b-e1d6-46d0-99af-dd258a269b96
+ref table LocalDateTable_fa46fd35-33e4-40ea-97aa-8b2c5db6c55c
+ref table LocalDateTable_75c330ec-2f1f-4b64-aa41-217d37b082d9
+ref table LocalDateTable_739941bd-fbb8-41c4-80d6-2e21c90dda37
+ref table LocalDateTable_7c2804f9-72db-4259-89b6-c7a1958a06b7
+ref table TAB_Chave_Sinistro
+ref table TAB_Score
+ref table LocalDateTable_0e9595e7-6f56-43ab-b09c-a984c38c9a39
+ref table rel_fianca_ativos_credito
+ref table LocalDateTable_22e63176-16bd-4829-b2bf-8b4b04884f60
+ref table TAB_Chave_Ativos_Avisos
+ref table LocalDateTable_fd95ccfe-816d-46d3-b26b-08b76a96279d
+ref table LocalDateTable_369b8c6f-bcba-458f-bda6-bce3214c6be9
+ref table LocalDateTable_3bdc7ba0-8cd8-44d9-9d2d-1eb523e9d9dc
+ref table LocalDateTable_e4a246a5-9c79-4cbe-b9a1-a98efd6016b8
+ref table LocalDateTable_1aae4f2b-9d43-4157-a8e5-03377afdef46
+ref table LocalDateTable_e956e09d-8b9a-44d2-a039-64533d186581
+ref table LocalDateTable_52c1dcf5-358c-4a93-9199-8f4b6609e72e
+ref table LocalDateTable_e5b580ac-2df1-477f-9a68-24609ee50685
+ref table LocalDateTable_f097087c-1b84-43b3-ae1c-8e6d8f442c7f
+ref table LocalDateTable_c675b3a2-06d4-4afd-ae12-9c83385f42ae
+ref table LocalDateTable_993013aa-ee32-4227-a3f8-a7ee5c686319
+ref table LocalDateTable_ffad188e-7376-4e10-9b45-ff03dd76e601
+ref table LocalDateTable_36bee5d6-352a-4dad-868e-ff6ec1a307a4
+ref table LocalDateTable_f2db73d9-2c14-44ea-86b5-deeb85c95d08
+ref table LocalDateTable_35c08826-910a-4612-93c4-5394938f7494
+ref table LocalDateTable_bc7ec8e0-d34a-4021-aeb1-97db83baca67
+ref table LocalDateTable_d6379056-39bf-4519-9d34-da7a8056b5c7
+ref table LocalDateTable_5665ac5f-103b-44f6-a8e5-897c98b677d5
+ref table LocalDateTable_70a6c6cf-0e04-46ac-b70e-afb7988dc86b
+ref table LocalDateTable_64a4da6e-a293-48fa-b87d-e17fe34c137e
+ref table LocalDateTable_0785c8ae-6450-4df2-8dd9-ed23455173a1
+ref table LocalDateTable_533b2e6d-0761-4c86-b6a2-3f5fb3d382f9
+ref table LocalDateTable_993ac2de-c650-425d-a64b-c5123d2448f0
+ref table LocalDateTable_dd8cf838-fa85-485e-90dd-7e43839fb68c
+ref table LocalDateTable_d46b26b8-c856-419e-98e9-175c5befde80
+ref table LocalDateTable_e6d5613a-8061-4e1c-bfb2-41e79f8296b9
+ref table LocalDateTable_cdf16523-f359-4c40-87d4-0b1e73e8a1af
+ref table LocalDateTable_e073c0e3-6fd7-4773-b41a-619a2a31d1fc
+ref table LocalDateTable_166ef617-39ce-4f0a-9fa5-6b3e892697f1
+ref table LocalDateTable_3fedbc46-f9b2-4bbc-ad0f-1b0768d9f22e
+ref table LocalDateTable_98991849-1e9e-4f36-8712-76c5f9330409
+ref table LocalDateTable_e2595a9c-7e76-4b9e-8a05-9d32b297a73c
+ref table LocalDateTable_c2fe449f-6871-46c4-a534-a3360a714080
+ref table LocalDateTable_b93b4b10-e584-4aaa-bc3d-b2c90703df0d
+ref table LocalDateTable_5961363c-d57a-45cc-955d-255cbe8f585a
+ref table LocalDateTable_e7e21a1c-5254-492b-923f-25df40ac462f
+ref table LocalDateTable_0baf9f99-ccbb-415f-a50e-fee22af531b3
+ref table LocalDateTable_ffb7fedf-f2db-41cc-8f40-bcc34e0a63ac
+ref table LocalDateTable_89404838-e413-447e-8589-c0ab54be8206
+ref table LocalDateTable_6cd931da-4a05-484f-aefc-33558acf837b
+ref table LocalDateTable_d440685a-11a1-48f0-8f92-0ad738dd15fa
+ref table LocalDateTable_79bb9e1c-6dcf-4771-a3fb-c3096c2cea6c
+ref table LocalDateTable_77dc0d05-13b3-451e-a9a8-69dc51cdbf87
+ref table LocalDateTable_80f8ae97-2076-4dc1-9da2-61c8df9e0562
+ref table LocalDateTable_372cab6b-e37c-43ff-ba38-87457989684b
+ref table LocalDateTable_d8837017-6839-43c2-9a0f-5a2b37a8f5ac
+ref table LocalDateTable_8bc99045-7883-4e70-aa1a-2e1cf3fa25db
+ref table LocalDateTable_a771e3f6-7bf0-460a-8c3f-47551641b15f
+ref table LocalDateTable_ae7852e0-22fd-43e2-9ac4-a5c876baac37
+ref table LocalDateTable_b5f3abf3-70e5-46d6-829a-73cebefaf111
+ref table vw_aluguel_sinistrados
+ref table LocalDateTable_bc6fde61-f703-4ee3-8e0a-0facc4ae7e35
+ref table LocalDateTable_9fd02b3c-9039-40a3-a766-eb2d487b936e
+ref table TAB_Empilha_Sinistro
+ref table LocalDateTable_259371d3-7884-4b4c-964b-ccb4ee5b7a33
+
+ref cultureInfo pt-PT
+

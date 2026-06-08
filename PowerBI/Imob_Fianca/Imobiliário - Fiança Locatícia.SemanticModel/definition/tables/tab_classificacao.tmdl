@@ -1,0 +1,22 @@
+table tab_classificacao
+	lineageTag: 4d6f7f09-789c-47f0-b0da-a851d188ed6f
+
+	column Tipo
+		dataType: string
+		lineageTag: 922d3863-f74a-4305-b404-41e6c0fe5115
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tab_classificacao-f83a1902-5b83-4a3b-ab57-7b9c96aa869a = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMkxU8E/OLyo6vCovOTNRKVYnWikkPyWxGFm0WCk2FgA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Tipo = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Tipo", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

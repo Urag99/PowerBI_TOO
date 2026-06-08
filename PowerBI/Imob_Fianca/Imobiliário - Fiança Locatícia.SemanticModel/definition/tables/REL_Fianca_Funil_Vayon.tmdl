@@ -1,0 +1,267 @@
+table REL_Fianca_Funil_Vayon
+	lineageTag: 49b3d0bf-8d30-42c1-8b90-a837c3c59769
+
+	measure 'qt_Aprov_Mesa MoM%' = ```
+			
+				VAR __PREV_MONTH =
+					CALCULATE(
+						SUM('REL_Fianca_Funil_Vayon'[qt_Aprov_Mesa]),
+						DATEADD('REL_Fianca_Funil_Vayon'[dt_Cotacao].[Date], -1, MONTH)
+					)
+				RETURN
+					DIVIDE(
+						SUM('REL_Fianca_Funil_Vayon'[qt_Aprov_Mesa]) - __PREV_MONTH,
+						__PREV_MONTH
+					)
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 86bda72b-f379-4bd3-8d30-df14d7dbdd05
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "MonthOverMonth"
+				}
+
+	measure '% Cotacao x Aprov Mesa' =
+			
+			IFERROR (
+			    DIVIDE(
+			        SUM(
+			            REL_Fianca_Funil_Vayon[qt_Aprov_Mesa]
+			        ),
+			        SUM(
+			            REL_Fianca_Funil_Vayon[qt_Fichas]
+			        )
+			    ),""
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d18cec72-9ba2-4e3e-98e8-d40b32a97bbf
+
+	measure '% Cotacao x Aprov Crivo' =
+			
+			IFERROR (
+			    DIVIDE(
+			        SUM(
+			            REL_Fianca_Funil_Vayon[qt_Aprov_Crivo]
+			        ),
+			        SUM(
+			            REL_Fianca_Funil_Vayon[qt_Fichas]
+			        )
+			    ),""
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 03636e10-6b2d-4350-8761-e14c436f2191
+
+	measure '% Cotacao x Recusa Crivo' =
+			
+			IFERROR (
+			    DIVIDE(
+			        SUM(
+			            REL_Fianca_Funil_Vayon[qt_Recusa_Crivo]
+			        ),
+			        SUM(
+			            REL_Fianca_Funil_Vayon[qt_Fichas]
+			        )
+			    ),""
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: bd4bb6ed-48ed-4fe3-ab6a-6c92cde759ff
+
+	measure '% Cotacao x Recusa Mesa' =
+			
+			IFERROR (
+			    DIVIDE(
+			        SUM(
+			            REL_Fianca_Funil_Vayon[qt_Recusa_Mesa]
+			        ),
+			        SUM(
+			            REL_Fianca_Funil_Vayon[qt_Fichas]
+			        )
+			    ),""
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b3bfb5fa-ed18-4d14-90d7-28097c5ca54b
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 4d649293-6c89-4f03-8457-20632a3a55bb
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_corretor
+		dataType: string
+		lineageTag: ca2ee110-3055-4022-9d43-1ddf106c8fb7
+		summarizeBy: none
+		sourceColumn: nm_corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Cotacao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ad718fc9-a059-4dca-a641-2a49145ba704
+		summarizeBy: none
+		sourceColumn: dt_Cotacao
+
+		variation Variation
+			isDefault
+			relationship: 4ebe5ea9-be81-461b-a39b-71d870f2a451
+			defaultHierarchy: LocalDateTable_166ef617-39ce-4f0a-9fa5-6b3e892697f1.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column qt_Cotacao
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c90fc87-a7d8-4c8f-8782-568a2234017b
+		summarizeBy: sum
+		sourceColumn: qt_Cotacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Fichas
+		dataType: int64
+		formatString: 0
+		lineageTag: d97cfd69-edf3-46af-83fd-39e2ac84764e
+		summarizeBy: sum
+		sourceColumn: qt_Fichas
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Fichas_Mesa
+		dataType: int64
+		formatString: 0
+		lineageTag: 30e8beeb-e468-4d23-bc78-92cd61fc5e11
+		summarizeBy: sum
+		sourceColumn: qt_Fichas_Mesa
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Fichas_Crivo
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d26fd9b-2f74-42f1-8204-8cc42cee50e1
+		summarizeBy: sum
+		sourceColumn: qt_Fichas_Crivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Aprov_Mesa
+		dataType: int64
+		formatString: 0
+		lineageTag: 628c1367-1282-487c-bcf2-1bdd4792e365
+		summarizeBy: sum
+		sourceColumn: qt_Aprov_Mesa
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Aprov_Crivo
+		dataType: int64
+		formatString: 0
+		lineageTag: ff300380-27a5-47f2-ac3a-790c2423ff95
+		summarizeBy: sum
+		sourceColumn: qt_Aprov_Crivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Recusa_Mesa
+		dataType: int64
+		formatString: 0
+		lineageTag: 4cf03883-60b7-44bc-8796-ee3de0db567c
+		summarizeBy: sum
+		sourceColumn: qt_Recusa_Mesa
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Recusa_Crivo
+		dataType: int64
+		formatString: 0
+		lineageTag: 444445b2-aa4d-4a9c-92c1-9cb210cf0a32
+		summarizeBy: sum
+		sourceColumn: qt_Recusa_Crivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Pendencia_Mesa
+		dataType: int64
+		formatString: 0
+		lineageTag: aac7d243-caef-4ada-bb0d-2eacd7501961
+		summarizeBy: sum
+		sourceColumn: qt_Pendencia_Mesa
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Pendencia_Crivo
+		dataType: int64
+		formatString: 0
+		lineageTag: a93291a2-a3b8-4ff3-a388-d42100ae4a8a
+		summarizeBy: sum
+		sourceColumn: qt_Pendencia_Crivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_Contratacao
+		dataType: string
+		lineageTag: 63973882-61bf-4199-97d8-011f87cc037d
+		summarizeBy: none
+		sourceColumn: tp_Contratacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Emissao_Apolice
+		dataType: int64
+		formatString: 0
+		lineageTag: 0bbc7ff5-0dd3-4c8b-8e37-acb88d2436f6
+		summarizeBy: sum
+		sourceColumn: fl_Emissao_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_Analise
+		dataType: string
+		lineageTag: 39da01fd-8a0e-42ee-ab14-ef7664edce34
+		summarizeBy: none
+		sourceColumn: tp_Analise
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d6948128-ff54-4a0f-a276-163faebb28b1
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: 7ce098f7-2d98-4ee1-b000-12c75d58de53
+			defaultHierarchy: LocalDateTable_3fedbc46-f9b2-4bbc-ad0f-1b0768d9f22e.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Funil_Vayon-aa60e592-f0ce-41e4-8fbb-ad725ac1d88f = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Funil_Vayon = Fonte{[Schema="dbo",Item="REL_Fianca_Funil_Vayon"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Funil_Vayon = Fonte{[Schema="dbo",Item="REL_Fianca_Funil_Vayon"]}[Data],*/
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Fianca_Funil_Vayon,{{"dt_Cotacao", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_QueryRelationships = {"columnCount":17,"keyColumnNames":["id"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{id,0}","Section1/REL_Fianca_Funil_Vayon/Tipo Alterado.{dt_Cotacao,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{nm_corretor,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Cotacao,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Fichas,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Fichas_Mesa,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Fichas_Crivo,6}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Aprov_Mesa,7}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Aprov_Crivo,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Recusa_Mesa,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Recusa_Crivo,10}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Pendencia_Mesa,11}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Pendencia_Crivo,12}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{tp_Contratacao,13}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{fl_Emissao_Apolice,14}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{tp_Analise,15}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{dt_Atualizacao,16}"],"ColumnCount":17,"KeyColumnNames":["id"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{id,0}","Section1/REL_Fianca_Funil_Vayon/Tipo Alterado.{dt_Cotacao,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{nm_corretor,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Cotacao,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Fichas,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Fichas_Mesa,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Fichas_Crivo,6}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Aprov_Mesa,7}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Aprov_Crivo,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Recusa_Mesa,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Recusa_Crivo,10}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Pendencia_Mesa,11}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{qt_Pendencia_Crivo,12}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{tp_Contratacao,13}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{fl_Emissao_Apolice,14}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{tp_Analise,15}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Funil_Vayon.{dt_Atualizacao,16}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

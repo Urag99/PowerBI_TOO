@@ -1,0 +1,391 @@
+table REL_Fianca_Sinistralidade_Safrada
+	lineageTag: e9c3af79-4621-46e3-abde-618b6cb2e8a8
+
+	measure Sinistralidade_Mensal = ```
+			
+			IFERROR(
+			sum(REL_Fianca_Sinistralidade_Safrada[vl_sinistro]) / sum(REL_Fianca_Sinistralidade_Safrada[vl_ppng]) 
+			, 0)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: a18195b5-71ee-4c36-a03e-7ef015584969
+
+	measure Sinistralidade_Acumulada = ```
+			
+			--IFERROR(
+			--sum(REL_Fianca_Sinistralidade_Safrada[vl_sinistro_acumulado]) / sum(REL_Fianca_Sinistralidade_Safrada[vl_ppng_acumulado]) 
+			--, 0)
+			DIVIDE(
+			     sum(REL_Fianca_Sinistralidade_Safrada[vl_sinistro_acumulado])
+			    ,sum(REL_Fianca_Sinistralidade_Safrada[vl_ppng_acumulado])
+			    ,BLANK()
+			)    
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 301d3486-b568-4f04-a38a-7ee93249b392
+
+	measure Medida =
+			
+			Switch( SELECTEDVALUE(TAB_Score[Tipo])
+			    ,"Prêmio Ganho", sum(REL_Fianca_Sinistralidade_Safrada[vl_ppng])
+			    ,"Sinistro", sum(REL_Fianca_Sinistralidade_Safrada[vl_sinistro])
+			    ,BLANK()
+			)
+		lineageTag: 432efbc2-8197-4710-98d0-1f54a0cf96a6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure teste =
+			
+			CALCULATE(
+			    sum(REL_Fianca_Sinistralidade_Safrada[vl_ppng_acumulado])
+			    , CROSSFILTER(REL_Fianca_Producao[ds_chave]
+			                , REL_Fianca_Sinistralidade_Safrada[ds_chave_corretor]
+			                , OneWay_LeftFiltersRight)
+			)
+		lineageTag: d89b4466-1c05-47c7-9977-0decf672fd4a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: ec3f7be5-dfe2-453a-9e4f-87a8fb8d3750
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_produto
+		dataType: string
+		lineageTag: 95d609da-87c3-4c41-83e7-d3d609abde7c
+		summarizeBy: none
+		sourceColumn: nm_produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_classificacao
+		dataType: string
+		lineageTag: 88ce7bc4-ec1f-4a24-a558-72692bef5ecd
+		summarizeBy: none
+		sourceColumn: ds_classificacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_legado
+		dataType: string
+		lineageTag: 47a7b79e-402d-40eb-be87-3e027df88a07
+		summarizeBy: none
+		sourceColumn: fl_legado
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_renovacao
+		dataType: string
+		lineageTag: e0cc8928-9a2b-4503-9609-0fe2467d544d
+		summarizeBy: none
+		sourceColumn: fl_renovacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_corretor
+		dataType: string
+		lineageTag: 50b9bf39-e835-4cbe-9a4b-ed3e5d345581
+		summarizeBy: none
+		sourceColumn: nm_corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_safra
+		dataType: dateTime
+		formatString: yyyy-mm
+		lineageTag: 8fcee5ab-7c29-4943-8772-6ed87995dc44
+		summarizeBy: none
+		sourceColumn: dt_safra
+
+		variation Variation
+			isDefault
+			relationship: 1b68deb9-6972-459e-9a95-bc1bd3e10a98
+			defaultHierarchy: LocalDateTable_dfcf64a5-26ea-4b46-b176-762e69a696c8.'Hierarquia de Datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column periodo
+		dataType: dateTime
+		formatString: yyyy-mm
+		lineageTag: ca6ff621-3a4f-4f03-83b0-ee060a8f6e5c
+		summarizeBy: none
+		sourceColumn: periodo
+
+		variation Variation
+			isDefault
+			relationship: 7d8ef072-4616-4f23-88d7-035af3ad28c0
+			defaultHierarchy: LocalDateTable_962f0a22-8328-4273-88da-c8134a06774e.'Hierarquia de Datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column vl_ppng
+		dataType: double
+		lineageTag: dd305b38-78c1-40d9-b4ee-b0c59e4c9e47
+		summarizeBy: sum
+		sourceColumn: vl_ppng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_ppng_acumulado
+		dataType: double
+		lineageTag: 15670464-2235-4fc2-84cc-355130e1db08
+		summarizeBy: sum
+		sourceColumn: vl_ppng_acumulado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_sinistro
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 5df13829-4f01-47b7-b34f-eaeb2bf1e150
+		summarizeBy: sum
+		sourceColumn: vl_sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_sinistro_acumulado
+		dataType: double
+		lineageTag: f4288499-2ae6-4640-851b-45f73068c72a
+		summarizeBy: sum
+		sourceColumn: vl_sinistro_acumulado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ds_agrupamento_corretor
+		dataType: string
+		lineageTag: bd09d1b3-8c8b-4e3b-bcce-3be5e17b5e4f
+		summarizeBy: none
+		sourceColumn: ds_agrupamento_corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_indice_apolice
+		dataType: int64
+		formatString: 0
+		lineageTag: 1cafdfdc-aeb4-4ec4-968e-bb70f1d120b4
+		summarizeBy: sum
+		sourceColumn: cd_indice_apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_final
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: afabbd13-dccd-4756-b404-25eba8cfdcc3
+		summarizeBy: none
+		sourceColumn: dt_final
+
+		variation Variation
+			isDefault
+			relationship: 084d33da-2066-4176-84fb-33e8d5b67e81
+			defaultHierarchy: LocalDateTable_7ecc4739-6bf5-4d67-a878-56e1aec63f5b.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dt_atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b242ec12-9708-4357-ac38-5d5a517f8969
+		summarizeBy: none
+		sourceColumn: dt_atualizacao
+
+		variation Variation
+			isDefault
+			relationship: 586bdee2-fb6e-46c4-8cd9-beb10bc416b5
+			defaultHierarchy: LocalDateTable_6017635f-03fe-4625-8678-71b7ed50d819.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Agrupa Produto'
+		dataType: string
+		lineageTag: 3ba2ecd8-1265-406b-a2f3-931b00de741e
+		summarizeBy: none
+		sourceColumn: Agrupa Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_indice_apolice_maturada
+		dataType: int64
+		formatString: 0
+		lineageTag: b7f01d24-866c-4c37-bf5c-83133e65a4d5
+		summarizeBy: sum
+		sourceColumn: cd_indice_apolice_maturada
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_chave
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5e15c5cb-0699-48f9-ae04-eed9c24302ac
+		summarizeBy: none
+		sourceColumn: dt_chave
+
+		variation Variation
+			isDefault
+			relationship: 008790fb-e9a5-4857-9071-3b645a498fb0
+			defaultHierarchy: LocalDateTable_7c2804f9-72db-4259-89b6-c7a1958a06b7.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ds_score_pan
+		dataType: string
+		lineageTag: 8e8c2e77-f3c4-4eaa-943b-0a4b1468181c
+		summarizeBy: none
+		sourceColumn: ds_score_pan
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_chave_corretor
+		dataType: string
+		lineageTag: d55fce71-2654-41fb-a23f-e9b4fa2f562f
+		summarizeBy: none
+		sourceColumn: ds_chave_corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Apolice
+		dataType: string
+		lineageTag: 9c724ac2-581c-4712-a581-84e9dfc97c64
+		summarizeBy: none
+		sourceColumn: cd_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Premio_Tarifa
+		dataType: double
+		lineageTag: 1acb475e-1c16-4a03-8b1b-ce1982bfccef
+		summarizeBy: sum
+		sourceColumn: vl_Premio_Tarifa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tp_Imovel
+		dataType: string
+		lineageTag: cc0ad260-5cfd-4845-8bd5-38a4d66a15fe
+		summarizeBy: none
+		sourceColumn: tp_Imovel
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_Pessoa_Locatario
+		dataType: string
+		lineageTag: a69f49f8-229d-40d5-bf58-72d02b7953c5
+		summarizeBy: none
+		sourceColumn: tp_Pessoa_Locatario
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Fase
+		dataType: string
+		lineageTag: f8447db4-ed1d-4131-aec8-249f462a8023
+		summarizeBy: none
+		sourceColumn: ds_Fase
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_Origem
+		dataType: string
+		lineageTag: b61d29f9-a6bf-489d-8600-ef2ec06e4b96
+		summarizeBy: none
+		sourceColumn: ds_Produto_Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cidade
+		dataType: string
+		lineageTag: d0cdcf33-81a9-4db6-ac89-b4bb1fbc4090
+		summarizeBy: none
+		sourceColumn: ds_Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_UF
+		dataType: string
+		lineageTag: e60ed613-8d8c-4f84-bcbe-a041e39eb28e
+		summarizeBy: none
+		sourceColumn: cd_UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Cep
+		dataType: string
+		lineageTag: 3a6b0ec8-af8e-4e2d-a041-f0286c366292
+		summarizeBy: none
+		sourceColumn: cd_Cep
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Sinistro_Ocupado
+		dataType: int64
+		formatString: 0
+		lineageTag: 40f03f33-f185-45d9-baa4-cecaa92f0b4d
+		summarizeBy: sum
+		sourceColumn: qt_Sinistro_Ocupado
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Sinistro_Desocupado
+		dataType: int64
+		formatString: 0
+		lineageTag: b73a97fb-fbeb-4bf1-bd65-e6e981af44dc
+		summarizeBy: sum
+		sourceColumn: qt_Sinistro_Desocupado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Sinistralidade_Safrada-05cd2e58-3c0f-4418-91e1-0352ca78a1b4 = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Sinistralidade_Safrada = Fonte{[Schema="dbo",Item="REL_Fianca_Sinistralidade_Safrada"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Sinistralidade_Safrada = Fonte{[Schema="dbo",Item="REL_Fianca_Sinistralidade_Safrada"]}[Data],*/
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Fianca_Sinistralidade_Safrada,{{"dt_safra", type date}, {"periodo", type date}, {"dt_final", type date}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado",null," ",Replacer.ReplaceValue,{"nm_produto"}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Valor Substituído", "Agrupa Produto", each if Text.Contains([nm_produto], "CIRCULAR") then "Circular 587" else "Anterior a Circular 587"),
+				    #"Texto Aparado" = Table.TransformColumns(#"Coluna Condicional Adicionada",{{"nm_corretor", Text.Trim, type text}}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Texto Aparado", "periodo", "periodo - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"periodo - Copiar", "dt_chave"}}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Colunas Renomeadas1", "ds_chave_corretor", each Text.Combine({Text.From([periodo], "pt-BR"), [nm_corretor]}, "|"), type text),
+				    #"Coluna Condicional Adicionada1" = Table.AddColumn(#"Coluna Mesclada Inserida", "ds_score_pan", each if [dt_safra] <= #date(2020, 10, 31) then "Safras anteriores a Nov/20" else if [dt_safra] >= #date(2021, 12, 1) then "Safras após Nov/21 (retirada Score)" else "Safras Nov/20 a Nov/21 (Score Customizado)")
+				in
+				    #"Coluna Condicional Adicionada1"
+
+	annotation PBI_QueryRelationships = {"columnCount":19,"keyColumnNames":["id"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{id,0}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{cd_Apolice,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{nm_produto,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{ds_classificacao,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{fl_legado,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{fl_renovacao,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{nm_corretor,6}","Section1/REL_Fianca_Sinistralidade_Safrada/Tipo Alterado.{dt_safra,7}","Section1/REL_Fianca_Sinistralidade_Safrada/Tipo Alterado.{periodo,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{vl_Premio_Tarifa,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{vl_ppng,10}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{vl_ppng_acumulado,11}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{vl_sinistro,12}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{vl_sinistro_acumulado,13}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{ds_agrupamento_corretor,14}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{cd_indice_apolice,15}","Section1/REL_Fianca_Sinistralidade_Safrada/Tipo Alterado.{dt_final,16}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{dt_atualizacao,17}","Section1/REL_Fianca_Sinistralidade_Safrada/Coluna Condicional Adicionada.{Agrupa Produto,18}"],"ColumnCount":19,"KeyColumnNames":["id"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{id,0}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{cd_Apolice,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{nm_produto,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{ds_classificacao,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{fl_legado,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{fl_renovacao,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{nm_corretor,6}","Section1/REL_Fianca_Sinistralidade_Safrada/Tipo Alterado.{dt_safra,7}","Section1/REL_Fianca_Sinistralidade_Safrada/Tipo Alterado.{periodo,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{vl_Premio_Tarifa,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{vl_ppng,10}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{vl_ppng_acumulado,11}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{vl_sinistro,12}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{vl_sinistro_acumulado,13}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{ds_agrupamento_corretor,14}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{cd_indice_apolice,15}","Section1/REL_Fianca_Sinistralidade_Safrada/Tipo Alterado.{dt_final,16}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Fianca_Sinistralidade_Safrada.{dt_atualizacao,17}","Section1/REL_Fianca_Sinistralidade_Safrada/Coluna Condicional Adicionada.{Agrupa Produto,18}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

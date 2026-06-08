@@ -1,0 +1,210 @@
+table REL_Fianca_Ativos
+	lineageTag: 2836b2a3-bcf7-46d9-b08c-cbfc775fb621
+
+	measure 'qt ativos last date' =
+			CALCULATE(
+			                            sum(REL_Fianca_Ativos[qt_Ativos])
+			                            , LASTDATE(REL_Fianca_Ativos[dt_Competencia])
+			)
+		formatString: #,0
+		lineageTag: 81d3cc3d-32c4-4bf0-8bfe-bb4769a0b974
+
+	column fl_Gdes_Riscos
+		dataType: string
+		lineageTag: 03080e7b-295c-4df6-84b7-5a40ffcc06f1
+		summarizeBy: none
+		sourceColumn: fl_Gdes_Riscos
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Chave Base Prod'
+		dataType: string
+		lineageTag: 444c0627-e03c-4622-a6f5-a094d861f731
+		summarizeBy: none
+		sourceColumn: Chave Base Prod
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_assitencia
+		dataType: string
+		lineageTag: 6e30fc0e-8acf-43d8-b8f5-4b89102e8223
+		summarizeBy: none
+		sourceColumn: fl_assitencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_chave
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d460185d-963d-4b8b-8c6f-1e62f577a0c6
+		summarizeBy: none
+		sourceColumn: dt_chave
+
+		variation Variation
+			isDefault
+			relationship: f1866a34-06ec-4a88-9d99-d25f1d11952b
+			defaultHierarchy: LocalDateTable_22e63176-16bd-4829-b2bf-8b4b04884f60.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_Ativo
+		dataType: int64
+		formatString: 0
+		lineageTag: 59e638c9-c2b2-4364-b992-a35597aa333b
+		summarizeBy: none
+		sourceColumn: id_Ativo
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Competencia
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c996495f-29b9-4e7b-98df-09d6f71e2041
+		summarizeBy: none
+		sourceColumn: dt_Competencia
+
+		variation Variation
+			isDefault
+			relationship: f7e85188-6126-4994-b727-0fe4130572b6
+			defaultHierarchy: LocalDateTable_77dc0d05-13b3-451e-a9a8-69dc51cdbf87.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Canal
+		dataType: string
+		lineageTag: 9dab0ac0-e5f8-4911-97c4-b37c0ae6d5df
+		summarizeBy: none
+		sourceColumn: cd_Canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_SUN
+		dataType: string
+		lineageTag: 157d7f67-70e9-4490-b035-7539ca86626d
+		summarizeBy: none
+		sourceColumn: ds_Produto_SUN
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Corretor
+		dataType: string
+		lineageTag: e32badea-432c-4ad5-ae44-73c0939910e6
+		summarizeBy: none
+		sourceColumn: nm_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Legado
+		dataType: string
+		lineageTag: 700c14da-7824-4a7b-9d68-e51309120515
+		summarizeBy: none
+		sourceColumn: fl_Legado
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Tipo_Apolice
+		dataType: string
+		lineageTag: 8718a6fe-3b8d-44b4-a01f-cabdfea5bbbc
+		summarizeBy: none
+		sourceColumn: ds_Tipo_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Executivo
+		dataType: string
+		lineageTag: 7e429bd7-5523-4f06-9446-c9b12720ed9b
+		summarizeBy: none
+		sourceColumn: nm_Executivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Meses_Inicio_x_Fim_Vigencia
+		dataType: int64
+		formatString: 0
+		lineageTag: d0c475d7-1a4b-42a6-b63c-8a8249b8b299
+		summarizeBy: sum
+		sourceColumn: qt_Meses_Inicio_x_Fim_Vigencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Ativos
+		dataType: int64
+		formatString: 0
+		lineageTag: 99121e1f-77cd-4e75-b7ca-dba5dc59e173
+		summarizeBy: sum
+		sourceColumn: qt_Ativos
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_Origem
+		dataType: string
+		lineageTag: ee1ba7ff-8248-4858-9689-9fcff9f8bf03
+		summarizeBy: none
+		sourceColumn: ds_Produto_Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Faixa_Premio
+		dataType: string
+		lineageTag: 4f744d90-7e14-4003-8588-c37b2a9281fd
+		summarizeBy: none
+		sourceColumn: ds_Faixa_Premio
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_UF
+		dataType: string
+		lineageTag: aa58250a-01dc-42d2-b5bc-323f9861523a
+		summarizeBy: none
+		sourceColumn: cd_UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cidade
+		dataType: string
+		lineageTag: 055d9d9a-bcdc-4077-a36c-753802fb3c2b
+		summarizeBy: none
+		sourceColumn: ds_Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_CNPJ_Assessor_Digital
+		dataType: string
+		lineageTag: f8da31f3-f4ee-468d-b4a4-c09ee2bd80e9
+		summarizeBy: none
+		sourceColumn: cd_CNPJ_Assessor_Digital
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Assessor_Digital
+		dataType: string
+		lineageTag: 301efdff-14f1-49d2-9e41-e3409c91e751
+		summarizeBy: none
+		sourceColumn: nm_Assessor_Digital
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Ativos-690635d8-553e-4e77-98d3-8f6cc7805265 = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Ativos = Fonte{[Schema="dbo",Item="REL_Fianca_Ativos"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Ativos = Fonte{[Schema="dbo",Item="REL_Fianca_Ativos"]}[Data],*/
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(dbo_REL_Fianca_Ativos, "fl_Gdes_Riscos", each if [cd_Canal] = "I001001009" then "Gdes Riscos" else "Fiança"),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Coluna Condicional Adicionada", "Chave Base Prod", each Text.Combine({[cd_Canal], [nm_Corretor], [nm_Executivo], Text.From([dt_Competencia], "pt-BR"), [fl_Legado], [ds_Tipo_Apolice], Text.From([qt_Meses_Inicio_x_Fim_Vigencia], "pt-BR")}, ":"), type text),
+				    #"Coluna Condicional Adicionada1" = Table.AddColumn(#"Coluna Mesclada Inserida", "fl_assitencia", each if [cd_Canal] = "I001001009" then "Sem Assistência" else if [cd_Canal] = "I001001001" then "Completa" else "Básica"),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Coluna Condicional Adicionada1", "dt_Competencia", "dt_Competencia - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"dt_Competencia - Copiar", "dt_chave"}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Colunas Renomeadas1",null,"Demais",Replacer.ReplaceValue,{"nm_Assessor_Digital"})
+				in
+				    #"Valor Substituído"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

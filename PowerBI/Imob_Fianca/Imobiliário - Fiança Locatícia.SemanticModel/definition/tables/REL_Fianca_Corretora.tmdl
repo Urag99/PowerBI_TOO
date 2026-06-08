@@ -1,0 +1,91 @@
+table REL_Fianca_Corretora
+	lineageTag: be545a08-e246-4d16-b019-689844f4fdfd
+
+	column id_Corretora
+		dataType: int64
+		formatString: 0
+		lineageTag: b542679f-490e-4d92-8fb7-f87fc06d362b
+		summarizeBy: sum
+		sourceColumn: id_Corretora
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_Pessoa
+		dataType: int64
+		formatString: 0
+		lineageTag: cbd7609f-0e52-4ee8-abef-9a13ed2cfcdb
+		summarizeBy: sum
+		sourceColumn: id_Pessoa
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Cnpj
+		dataType: string
+		lineageTag: 0a52b34c-392c-45e0-ba9d-01ad7d477afe
+		summarizeBy: none
+		sourceColumn: cd_Cnpj
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Corretora
+		dataType: string
+		lineageTag: 07b4da28-fc33-425c-992d-612cd7535b63
+		summarizeBy: none
+		sourceColumn: ds_Corretora
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Executivo
+		dataType: string
+		lineageTag: 1e4e690f-f6da-4742-8c7e-14357bd8b04b
+		summarizeBy: none
+		sourceColumn: nm_Executivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cidade
+		dataType: string
+		lineageTag: 5fa74220-5fdd-4d98-af96-db2621136bd0
+		summarizeBy: none
+		sourceColumn: ds_Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Uf
+		dataType: string
+		lineageTag: f3a4d607-99c5-4913-9678-5bd54e8e0432
+		summarizeBy: none
+		sourceColumn: cd_Uf
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 08a32306-fa7d-4b1a-9711-c081bc905aba
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: efe2da1b-aab5-45bb-940b-6c8e91d5c1dd
+			defaultHierarchy: LocalDateTable_993ac2de-c650-425d-a64b-c5123d2448f0.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Corretora-dc9e9d72-1792-4a0d-80ee-90381498ee67 = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Corretora = Fonte{[Schema="dbo",Item="REL_Fianca_Corretora"]}[Data]
+				in
+				    dbo_REL_Fianca_Corretora
+
+	annotation PBI_QueryRelationships = {"columnCount":8,"keyColumnNames":["id_Corretora"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{id_Corretora,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{id_Pessoa,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{cd_Cnpj,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{ds_Corretora,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{nm_Executivo,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{ds_Cidade,5}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{cd_Uf,6}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{dt_Atualizacao,7}"],"ColumnCount":8,"KeyColumnNames":["id_Corretora"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{id_Corretora,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{id_Pessoa,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{cd_Cnpj,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{ds_Corretora,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{nm_Executivo,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{ds_Cidade,5}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{cd_Uf,6}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Corretora.{dt_Atualizacao,7}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,205 @@
+table REL_Fianca_Frequencia
+	lineageTag: ec5eb645-c2bf-4eca-bb1e-bf0673e991a9
+
+	measure '% Freq' = IFERROR(sum(REL_Fianca_Frequencia[qt_sinistro]) / sum(REL_Fianca_Frequencia[Qtd Emissao]),0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c6a443fc-f170-4191-8d7b-7296014bab58
+
+	measure 'qt emissao apolice' = DISTINCTCOUNT(REL_Fianca_Frequencia[cd_Apolice])
+		formatString: #,0
+		lineageTag: a51550ee-cc6f-4237-a3d4-2b63c15b97d0
+
+	measure 'qt sinistro apolice' =
+			CALCULATE(
+			                                DISTINCTCOUNT(REL_Fianca_Frequencia[cd_Apolice]),
+			                                REL_Fianca_Frequencia[qt_sinistro] = 1
+			)
+		formatString: #,0
+		lineageTag: 6ccdb465-0cfc-483f-9afb-75fe055d1978
+
+	measure '% Frequncia Total' = [qt sinistro apolice] / [qt emissao apolice]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a26d0c59-3c57-4553-b0f6-f458bd39c90b
+
+	column ds_cobertura
+		dataType: string
+		lineageTag: 792e1b78-45e4-48aa-b22a-e7d2d0c41c90
+		summarizeBy: none
+		sourceColumn: ds_cobertura
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_imovel
+		dataType: string
+		lineageTag: 5e3f4a79-b1be-4df0-8758-cd44aa0177f0
+		summarizeBy: none
+		sourceColumn: tp_imovel
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_classificacao
+		dataType: string
+		lineageTag: 6e62e349-02b5-41aa-a9c2-f5df4e3869f9
+		summarizeBy: none
+		sourceColumn: ds_classificacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_renovacao
+		dataType: string
+		lineageTag: e151d5a0-9ead-417b-94f6-963d7e375bd9
+		summarizeBy: none
+		sourceColumn: fl_renovacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_legado
+		dataType: string
+		lineageTag: 796f5369-3b04-4812-baf9-9a9db3d33426
+		summarizeBy: none
+		sourceColumn: fl_legado
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_sinistro
+		dataType: int64
+		formatString: #,0
+		lineageTag: c2721df9-1377-4e94-867f-64260f20a0eb
+		summarizeBy: sum
+		sourceColumn: qt_sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtd Emissao'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 467945af-1bf1-445f-9ad6-46d83cf15bab
+		summarizeBy: sum
+		sourceColumn: Qtd Emissao
+
+		annotation SummarizationSetBy = Automatic
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 7dd2664e-02ba-4ff8-a86e-32a0f0c7dbda
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 94f01bde-25e4-4746-8419-03e8a6f61a02
+		summarizeBy: none
+		sourceColumn: dt_atualizacao
+
+		variation Variation
+			isDefault
+			relationship: 299fbbab-6730-47e2-bc08-16e2ddbca9ff
+			defaultHierarchy: LocalDateTable_3a8181a9-81bb-4eaf-b32d-f714942c5f2a.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Fase
+		dataType: string
+		lineageTag: f7cc9206-4b91-4b76-96c5-75f1a40277ef
+		summarizeBy: none
+		sourceColumn: ds_Fase
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Apolice
+		dataType: string
+		lineageTag: fc8529d7-6dbd-474e-95f1-36e8221a6991
+		summarizeBy: none
+		sourceColumn: cd_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Produto
+		dataType: string
+		lineageTag: 22be0ddf-5a36-4e18-acd2-deb510b1cc8f
+		summarizeBy: none
+		sourceColumn: nm_Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Emissao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d28ba744-bc6e-4f23-a36e-c680ee4fd858
+		summarizeBy: none
+		sourceColumn: dt_Emissao
+
+		variation Variation
+			isDefault
+			relationship: dcb65b39-24cf-4b5b-98ce-d9dde4a252a7
+			defaultHierarchy: LocalDateTable_d440685a-11a1-48f0-8f92-0ad738dd15fa.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column nm_Corretor
+		dataType: string
+		lineageTag: 4de1bc3b-55e1-4722-898b-9e2baa553da4
+		summarizeBy: none
+		sourceColumn: nm_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Safra
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9482ede8-3587-45a4-ad69-9c1c56fd48c0
+		summarizeBy: none
+		sourceColumn: dt_Safra
+
+		variation Variation
+			isDefault
+			relationship: 78ad5cee-aeff-4e32-b47b-bfaebe03d164
+			defaultHierarchy: LocalDateTable_79bb9e1c-6dcf-4771-a3fb-c3096c2cea6c.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column tp_Pessoa_Locatario
+		dataType: string
+		lineageTag: 5d2beaf9-b768-419d-b58a-88710fef5443
+		summarizeBy: none
+		sourceColumn: tp_Pessoa_Locatario
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_Origem
+		dataType: string
+		lineageTag: 009aebd8-a2a7-463d-8160-9531035e6ae8
+		summarizeBy: none
+		sourceColumn: ds_Produto_Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Frequencia-668906a5-599c-425f-83e0-39d67c5c3a9c = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Frequencia = Fonte{[Schema="dbo",Item="REL_Fianca_Frequencia"]}[Data],
+				    #"Valor Substituído" = Table.ReplaceValue(dbo_REL_Fianca_Frequencia,null," ",Replacer.ReplaceValue,{"nm_Produto"}),
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Frequencia = Fonte{[Schema="dbo",Item="REL_Fianca_Frequencia"]}[Data],*/
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Valor Substituído",{{"cd_Apolice", type text}, {"dt_Emissao", type date}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "Qtd Emissao", each 1),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"Qtd Emissao", Int64.Type}, {"dt_Safra", type date}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Tipo Alterado1", "ds_Fase", each if Text.Contains([nm_Produto], "Circular") then "Fase 3" else if [fl_legado] = "Legado" then "Fase 1" else if [fl_legado] = "Não legado" then "Fase 2" else null)
+				in
+				    #"Coluna Condicional Adicionada"
+
+	annotation PBI_ResultType = Table
+

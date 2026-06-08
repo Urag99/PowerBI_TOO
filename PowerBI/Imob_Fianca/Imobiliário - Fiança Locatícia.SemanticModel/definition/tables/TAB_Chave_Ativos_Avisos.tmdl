@@ -1,0 +1,153 @@
+table TAB_Chave_Ativos_Avisos
+	lineageTag: f60026d2-7104-4577-9692-6c3533ad3539
+
+	column fl_assistencia
+		dataType: string
+		lineageTag: 2e13313e-1297-4689-bc0d-197fd20dda6c
+		summarizeBy: none
+		sourceColumn: fl_assistencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_chave
+		dataType: string
+		lineageTag: bf7527a6-882a-438a-8666-da2ff7ee63bc
+		summarizeBy: none
+		sourceColumn: ds_chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_Ativo
+		dataType: int64
+		formatString: 0
+		lineageTag: e0db57d9-0c4e-4234-a2fc-67caf0756b3c
+		summarizeBy: sum
+		sourceColumn: id_Ativo
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Competencia
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2f5d1361-925b-4a16-8190-dac69428b73d
+		summarizeBy: none
+		sourceColumn: dt_Competencia
+
+		variation Variation
+			isDefault
+			relationship: 1c49bab1-ff07-4578-b8a4-45609ed6e36c
+			defaultHierarchy: LocalDateTable_a771e3f6-7bf0-460a-8c3f-47551641b15f.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column cd_Canal
+		dataType: string
+		lineageTag: 41f07eee-2c18-4403-91b2-9f5899b7ba0a
+		summarizeBy: none
+		sourceColumn: cd_Canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_SUN
+		dataType: string
+		lineageTag: 7bbc9db0-6ca2-4e77-8464-06e493db0072
+		summarizeBy: none
+		sourceColumn: ds_Produto_SUN
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Corretor
+		dataType: string
+		lineageTag: 2c10edb8-69cc-4658-9d44-144539caf10e
+		summarizeBy: none
+		sourceColumn: nm_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Legado
+		dataType: string
+		lineageTag: ba3d2965-ddc1-43d3-9f11-d7ad1ae3f038
+		summarizeBy: none
+		sourceColumn: fl_Legado
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Tipo_Apolice
+		dataType: string
+		lineageTag: bcfdc92c-5d93-4260-95f1-bd1a52db0952
+		summarizeBy: none
+		sourceColumn: ds_Tipo_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Executivo
+		dataType: string
+		lineageTag: a76e93a9-3576-4c57-b71c-b78083ee8b13
+		summarizeBy: none
+		sourceColumn: nm_Executivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Meses_Inicio_x_Fim_Vigencia
+		dataType: int64
+		formatString: 0
+		lineageTag: b37e1219-d498-44e5-b4be-e7e63256687f
+		summarizeBy: sum
+		sourceColumn: qt_Meses_Inicio_x_Fim_Vigencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Ativos
+		dataType: int64
+		formatString: 0
+		lineageTag: 4afa2585-8cfc-45be-bc13-9fd924ba68c1
+		summarizeBy: sum
+		sourceColumn: qt_Ativos
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_Origem
+		dataType: string
+		lineageTag: f4afafe8-46d2-4c96-b6f1-26a4b248a138
+		summarizeBy: none
+		sourceColumn: ds_Produto_Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_chave
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 575505d2-93c2-4de4-b72c-159e546a049d
+		summarizeBy: none
+		sourceColumn: dt_chave
+
+		variation Variation
+			isDefault
+			relationship: cf6adf1f-be16-4fc2-b96d-ffa8110c9d8a
+			defaultHierarchy: LocalDateTable_ae7852e0-22fd-43e2-9ac4-a5c876baac37.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAB_Chave_Ativos_Avisos-537b88e8-79a5-4fe0-9147-2ccf7fb5e686 = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    rel_fianca_ativos_credito_Table = Fonte{[Schema="dbo",Item="REL_Fianca_Ativos_Credito"]}[Data],
+				    #"Texto Aparado" = Table.TransformColumns(rel_fianca_ativos_credito_Table,{{"nm_Corretor", Text.Trim, type text}}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Texto Aparado", "dt_Competencia", "dt_Competencia - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"dt_Competencia - Copiar", "dt_chave"}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"dt_Competencia", type date}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Tipo Alterado", "fl_assistencia", each if [cd_Canal] = "I001001009" then "Sem Assistência" else if [cd_Canal] = "I001001001" then "Completa" else "Básica"),
+				    #"Texto em Maiúscula" = Table.TransformColumns(#"Coluna Condicional Adicionada",{{"ds_Produto_SUN", Text.Upper, type text}, {"nm_Corretor", Text.Upper, type text}, {"fl_Legado", Text.Upper, type text}, {"ds_Tipo_Apolice", Text.Upper, type text}, {"ds_Produto_Origem", Text.Upper, type text}}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Texto em Maiúscula", "ds_chave", each Text.Combine({Text.From([dt_Competencia], "pt-BR"), [fl_Legado], [ds_Tipo_Apolice], [ds_Produto_Origem], [ds_Produto_SUN], [nm_Corretor]}, "|"), type text),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Coluna Mesclada Inserida", {"ds_chave"})
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_ResultType = Table
+

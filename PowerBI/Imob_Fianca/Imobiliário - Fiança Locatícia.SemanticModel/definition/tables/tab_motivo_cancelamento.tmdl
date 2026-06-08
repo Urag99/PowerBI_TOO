@@ -1,0 +1,92 @@
+table tab_motivo_cancelamento
+	lineageTag: 7d3ee6a4-9860-4cb5-abd6-dd0fa5cbdbe4
+
+	column cd_Apolice
+		dataType: string
+		lineageTag: 794dbac1-f723-4461-a0f4-c00476b76c7b
+		summarizeBy: none
+		sourceColumn: cd_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Motivo_Cancelamento
+		dataType: string
+		lineageTag: c2887848-1f43-4496-bd38-7511a92a88b0
+		summarizeBy: none
+		sourceColumn: ds_Motivo_Cancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tab_motivo_cancelamento-ffab6afc-0e58-4536-a3e6-9951a51d7310 = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Producao = Fonte{[Schema="dbo",Item="REL_Fianca_Producao"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Producao = Fonte{[Schema="dbo",Item="REL_Fianca_Producao"]}[Data],*/
+				    #"Consulta Acrescentada" = Table.Combine({dbo_REL_Fianca_Producao, REL_Fianca_Sinistro}),
+				    #"Consulta Acrescentada1" = Table.Combine({#"Consulta Acrescentada", REL_Fianca_Meta}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Consulta Acrescentada1", "Anomes_Chave", each Text.Combine({Text.From([AnoMes], "pt-BR"), [nm_Executivo]}, ""), type text),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Coluna Mesclada Inserida", each true),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Linhas Filtradas",{"AnoMes"},REL_Fianca_Vayon,{"AnoMes"},"REL_Fianca_Vayon",JoinKind.LeftOuter),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Consultas Mescladas", "fl_Renovadas", each if [cd_Apolice_Renovada] = "0" then "Novo" else if [cd_Apolice_Renovada] = null then "Outros" else "Renovação"),
+				    #"Coluna Condicional Adicionada1" = Table.AddColumn(#"Coluna Condicional Adicionada", "fl_Apolice", each if [id_Sinistro] <> null then "não" else if [id_Meta] <> null then "não" else if [cd_Apolice] = null then "não" else "sim"),
+				    #"Coluna Condicional Adicionada2" = Table.AddColumn(#"Coluna Condicional Adicionada1", "fl_Legado_old", each if [id_Sinistro] <> null then "Outros" else if [id_Meta] <> null then "Outros" else if [dt_Emissao] >= #datetime(2017, 5, 1, 0, 0, 0) then "Não Legado" else "Legado"),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Coluna Condicional Adicionada2", "AnoMes", "AnoMes - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"AnoMes - Copiar", "AnoMesRef"}}),
+				    #"Coluna Condicional Adicionada3" = Table.AddColumn(#"Colunas Renomeadas", "fl_Grandes_Riscos", each if [cd_Canal] = "I001001009" then "Gdes Riscos" else "Fiança"),
+				    #"Coluna Condicional Adicionada4" = Table.AddColumn(#"Coluna Condicional Adicionada3", "fl_Renovadas_2", each if [fl_Renovadas] = "Outros" then "Novo" else [fl_Renovadas]),
+				    #"Coluna Condicional Adicionada5" = Table.AddColumn(#"Coluna Condicional Adicionada4", "ds_Apolice_Renovada", each if [fl_Apolice_Renovada] = 1 then "Sim" else "Não"),
+				    #"Coluna Mesclada Inserida1" = Table.AddColumn(#"Coluna Condicional Adicionada5", "Chave Base Ativos", each Text.Combine({[cd_Canal], [nm_Corretor], [nm_Executivo], Text.From([AnoMes], "pt-BR"), [fl_Legado], [fl_Renovadas], Text.From([qt_Meses_Inicio_x_Fim_Vigencia], "pt-BR")}, ":"), type text),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna Mesclada Inserida1",{{"dt_Endosso", type date}}),
+				    #"Texto Aparado" = Table.TransformColumns(#"Tipo Alterado",{{"nm_Corretor", Text.Trim, type text}}),
+				    #"Texto Aparado1" = Table.TransformColumns(#"Texto Aparado",{{"ds_Imobiliaria", Text.Trim, type text}, {"nm_Corretor", Text.Trim, type text}}),
+				    #"Texto Aparado2" = Table.TransformColumns(#"Texto Aparado1",{{"nm_Corretor", Text.Trim, type text}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Texto Aparado2",null,"NÃO INFORMADO",Replacer.ReplaceValue,{"tp_Pessoa"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído",null,"NÃO INFORMADO",Replacer.ReplaceValue,{"ds_Imobiliaria"}),
+				    #"Coluna Mesclada Inserida2" = Table.AddColumn(#"Valor Substituído1", 
+				    "Chave_Vayon_Producao", each 
+				        Text.Combine({Text.From([dt_Endosso], "pt-BR"), 
+				        [ds_Categoria_Corretor], 
+				        [tp_Pessoa], 
+				        [ds_Imobiliaria], 
+				        [nm_Produto], 
+				        [nm_Corretor],
+				        [nm_Executivo]}, "|"), type text),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Coluna Mesclada Inserida2", "Prazo_Vigencia", each if [dt_Inicio_Vigencia] = null then null else 
+				if [dt_Fim_Vigencia] = null then null else 
+				([dt_Fim_Vigencia] - [dt_Inicio_Vigencia])),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"Prazo_Vigencia", type duration}}),
+				    #"Dias Extraídos" = Table.TransformColumns(#"Tipo Alterado1",{{"Prazo_Vigencia", Duration.Days, Int64.Type}}),
+				    #"Personalização Adicionada1" = Table.AddColumn(#"Dias Extraídos", "Faixa_Prazo_Vigencia", each 
+				        if [Prazo_Vigencia] = null then null else
+				        if [Prazo_Vigencia] <= 182.5 then "01 - <= 6 meses" else    
+				        if [Prazo_Vigencia] <= 365 then "02 - 6 a 12 meses" else
+				        if [Prazo_Vigencia] <= 547.5 then "03 - 12 a 18 meses" else 
+				        if [Prazo_Vigencia] <= 730 then "04 - 18 a 24 meses" else 
+				        if [Prazo_Vigencia] <= 912.5 then "05 - 24 a 30 meses" else 
+				        if [Prazo_Vigencia] <= 1095 then "06 - 30 a 48 meses" else 
+				        if [Prazo_Vigencia] <= 1277.5 then "07 - 48 a 54 meses" else 
+				        if [Prazo_Vigencia] <= 1460 then "08 - 54 a 60 meses" else 
+				        if [Prazo_Vigencia] > 1460 then "09 - > 60 meses" else null),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Personalização Adicionada1",{{"Faixa_Prazo_Vigencia", type text}}),
+				    #"Coluna Mesclada Inserida3" = Table.AddColumn(#"Tipo Alterado2", "Chave_Cluster", each Text.Combine(
+				        {[nr_Cnpj_Cpf_Corretor],
+				         [fl_Grandes_Riscos],
+				         [fl_Renovadas], 
+				         Text.From([AnoMes], "pt-BR")}, "|"), type text),
+				    #"Consultas Mescladas1" = Table.NestedJoin(#"Coluna Mesclada Inserida3", {"Chave_Cluster"}, REL_Fianca_Emissao_Corretor, {"Chave_Cluster"}, "REL_Fianca_Emissao_Corretor", JoinKind.LeftOuter),
+				    #"REL_Fianca_Emissao_Corretor Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas1", "REL_Fianca_Emissao_Corretor", {"nm_Corretor_Tratado", "ds_Classificacao", "Classe_Cluster", "Ordem_Cluster", "Cores_Clusters"}, {"nm_Corretor_Tratado", "ds_Classificacao", "Classe_Cluster", "Ordem_Cluster", "Cores_Clusters"}),
+				    #"Linhas Filtradas1" = Table.SelectRows(#"REL_Fianca_Emissao_Corretor Expandido", each ([nm_Status] = "Cancelada") and ([nm_Tipo_Endosso] = "Cancelamento")),
+				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Linhas Filtradas1",{"cd_Apolice", "ds_Motivo_Cancelamento"})
+				in
+				    #"Outras Colunas Removidas"
+				```
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navegação
+

@@ -1,0 +1,1528 @@
+table REL_Fianca_Producao
+	lineageTag: 124a920d-3964-4921-9342-e67c087be80d
+
+	measure '% Renovação' = ```
+			
+			IFERROR( 
+			    DIVIDE(
+			        CALCULATE(
+			            DISTINCTCOUNT(
+			                REL_Fianca_Producao[cd_Apolice]
+			            ), 
+			            REL_Fianca_Producao[fl_Renovadas] = "Renovação",
+			            REL_Fianca_Producao[fl_Apolice] = "sim"
+			        ),
+			        CALCULATE(
+			            DISTINCTCOUNT(
+			                REL_Fianca_Producao[cd_Apolice]
+			            ), 
+			--            REL_Fianca_Producao[fl_Renovadas] = "sim";
+			            REL_Fianca_Producao[fl_Apolice] = "sim"
+			        )
+			    ),""
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 976c9827-04fc-4be1-810d-ec90c81062b7
+
+	measure 'Qtde Apolice' =
+			
+			IFERROR(
+			    CALCULATE(
+			        DISTINCTCOUNT(
+			            REL_Fianca_Producao[cd_Apolice]
+			        ),
+			        REL_Fianca_Producao[fl_Apolice] = "sim"
+			    ),""
+			)
+		formatString: #,0
+		lineageTag: c191184e-1382-4d3e-838c-603e0eda323e
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Correlação Qtde Apolice e % Renovação para nm_Corretor' =
+			
+			VAR __CORRELATION_TABLE = VALUES('REL_Fianca_Producao'[nm_Corretor])
+			VAR __COUNT =
+				COUNTX(
+					KEEPFILTERS(__CORRELATION_TABLE),
+					CALCULATE([Qtde Apolice] * [% Renovação])
+				)
+			VAR __SUM_X = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE([Qtde Apolice]))
+			VAR __SUM_Y = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE([% Renovação]))
+			VAR __SUM_XY =
+				SUMX(
+					KEEPFILTERS(__CORRELATION_TABLE),
+					CALCULATE([Qtde Apolice] * [% Renovação] * 1.)
+				)
+			VAR __SUM_X2 = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE([Qtde Apolice] ^ 2))
+			VAR __SUM_Y2 = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE([% Renovação] ^ 2))
+			RETURN
+				DIVIDE(
+					__COUNT * __SUM_XY - __SUM_X * __SUM_Y * 1.,
+					SQRT(
+						(__COUNT * __SUM_X2 - __SUM_X ^ 2)
+							* (__COUNT * __SUM_Y2 - __SUM_Y ^ 2)
+					)
+				)
+		lineageTag: 26082c27-f6f6-4ef4-8bdd-0dfe78d9647e
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "CorrelationCoefficient"
+				}
+
+	measure 'Qtde Apolice Renovadas' =
+			
+			IFERROR(
+			    CALCULATE(
+			        DISTINCTCOUNT(
+			            REL_Fianca_Producao[cd_Apolice]
+			        ),
+			        REL_Fianca_Producao[fl_Apolice] = "sim",
+			        REL_Fianca_Producao[fl_Renovadas] = "Renovação"
+			    ),""
+			)
+		formatString: #,0
+		lineageTag: 97ec1c71-046e-4d09-928d-ff87ac5d217d
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Qtde Apolices Novas' = ```
+			IFERROR(
+			    CALCULATE(
+			        DISTINCTCOUNT(
+			            REL_Fianca_Producao[cd_Apolice]
+			        ),
+			        REL_Fianca_Producao[fl_Apolice] = "sim"
+			    ),""
+			) - 
+			IFERROR(
+			    CALCULATE(
+			        DISTINCTCOUNT(
+			            REL_Fianca_Producao[cd_Apolice]
+			        ),
+			        REL_Fianca_Producao[fl_Apolice] = "sim",
+			        REL_Fianca_Producao[fl_Renovadas] = "Renovação"
+			    ),""
+			)
+			```
+		formatString: #,0
+		lineageTag: df945d2c-e0ab-462b-bf6b-6ab56e09333b
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Ating Meta' = (sum(REL_Fianca_Producao_Agrupado[vl_Vendas]) - sum(REL_Fianca_Producao_Agrupado[vl_Cancelamento]) - sum(REL_Fianca_Producao_Agrupado[vl_Restituicao])) / sum (REL_Fianca_Meta[vl_Orcado])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 95d847f3-c4ce-433d-a61b-6707415d788c
+
+	measure '% Canc/Emiss' = ```
+			IFERROR(
+			    CALCULATE(
+			        DISTINCTCOUNT(
+			            REL_Fianca_Producao[cd_Apolice]
+			        ),
+			        REL_Fianca_Producao[nm_Tipo_Endosso] = "Cancelamento"
+			    ),""
+			) / 
+			IFERROR(
+			    CALCULATE(
+			        DISTINCTCOUNT(
+			            REL_Fianca_Producao[cd_Apolice]
+			        ),
+			        REL_Fianca_Producao[cd_Apolice] <> "",
+			        REL_Fianca_Producao[nm_Tipo_Endosso] = "Apólice"
+			    ),""
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: ac3bcd7b-c5ab-492a-8fa6-ef2848d0a0b7
+
+	measure '% Renovação New' = ```
+			
+			IFERROR( 
+			    DIVIDE(
+			        CALCULATE(
+			            SUM(
+			                REL_Fianca_Producao[fl_Apolice_Renovada]
+			            ), 
+			            REL_Fianca_Producao[nm_Tipo_Endosso] = "Apólice",
+			            REL_Fianca_Producao[cd_Apolice] <> ""
+			        ),
+			        CALCULATE(
+			            sum(
+			                REL_Fianca_Producao[fl_Emissao]
+			            ), 
+			            REL_Fianca_Producao[nm_Tipo_Endosso] = "Apólice",
+			            REL_Fianca_Producao[nm_Status] = "Emitida",
+			            REL_Fianca_Producao[cd_Apolice] <> ""
+			        )
+			    ),""
+			)
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: f1c74227-99eb-4b1a-94a1-85d839696e3b
+
+		changedProperty = FormatString
+
+	measure 'Qtd Cancelamentos' =
+			CALCULATE(
+			                            DISTINCTCOUNT(REL_Fianca_Producao[cd_Apolice]),
+			                            REL_Fianca_Producao[nm_Tipo_Endosso] = "Cancelamento"
+			)
+		formatString: #,0
+		lineageTag: 7370c09b-5421-4588-99c9-9157588c94b9
+
+	measure 'Qtd Emissoes' =
+			CALCULATE(
+			                            DISTINCTCOUNT(REL_Fianca_Producao[cd_Apolice]),
+			                            REL_Fianca_Producao[nm_Tipo_Endosso] = "Apólice",
+			                            REL_Fianca_Producao[cd_Apolice] <> ""
+			)
+		formatString: #,0
+		lineageTag: d6eb0527-f2a0-44b9-96d4-c42200067edc
+
+	measure 'Valor Emissoes' =
+			CALCULATE(
+			                            sum(REL_Fianca_Producao[vl_Endosso_Tarifario]),
+			                            REL_Fianca_Producao[nm_Tipo_Endosso] = "Apólice",
+			                            REL_Fianca_Producao[cd_Apolice] <> ""
+			)
+		formatString: #,0
+		lineageTag: 65a33dd8-ff60-4ffd-b2f2-24988afda807
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'qt Renovacao' =
+			CALCULATE(
+			                    COUNT(REL_Fianca_Producao[fl_Renovadas]),
+			                    REL_Fianca_Producao[cd_Apolice] <> "",
+			                    REL_Fianca_Producao[nm_Tipo_Endosso] = "Apólice"
+			)
+		formatString: 0
+		lineageTag: 32151c36-0551-4f1b-b63d-66034111be1a
+
+	measure 'qt Legado' =
+			CALCULATE(
+			                        COUNT(REL_Fianca_Producao[fl_Legado]),
+			                        REL_Fianca_Producao[cd_Apolice] <> "",
+			                        REL_Fianca_Producao[nm_Tipo_Endosso] = "Apólice"
+			)
+		formatString: 0
+		lineageTag: d217bb57-0ffe-44be-a911-2ccd46bf56bb
+
+	measure 'fl Apolice Renovada new' =
+			CALCULATE(
+			                                sum(REL_Fianca_Producao[fl_Apolice_Renovada]),
+			                                REL_Fianca_Producao[nm_Tipo_Endosso] = "Apólice",
+			                                REL_Fianca_Producao[cd_Apolice] <> ""
+			                                )
+		formatString: #,0
+		lineageTag: 92b913fc-414a-4efa-a3f3-fefe007390d7
+
+	measure 'qt Potencial' =
+			CALCULATE(
+			                        sum(REL_Fianca_Producao[fl_Emissao]),
+			                        REL_Fianca_Producao[nm_Status] = "Emitida")
+		formatString: #,0
+		lineageTag: aee54d20-a3f1-46ef-a8ba-f83d7e30d442
+
+	measure '$ Potencial' =
+			CALCULATE(
+			                        sum(REL_Fianca_Producao[vl_Endosso_Tarifario]),
+			                        REL_Fianca_Producao[nm_Status] = "Emitida")
+		formatString: #,0
+		lineageTag: 7735f08b-2d30-458e-9bd8-6429fafa588b
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Ticket Médio' = sum(REL_Fianca_Producao[vl_Emissao]) / sum(REL_Fianca_Producao[fl_Emissao])
+		formatString: #,0
+		lineageTag: ede781a1-7688-45d4-b4a4-9a0d903e482f
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'qt Corretores com pelo menos 1 emis' =
+			
+			CALCULATE(
+			     DISTINCTCOUNTNOBLANK(REL_Fianca_Producao[nr_Cnpj_Cpf_Corretor])
+			    ,REL_Fianca_Producao[fl_Emissao] = 1
+			)
+		formatString: #,0
+		lineageTag: 0a3c647b-2567-40d2-af97-910db9576885
+
+		changedProperty = FormatString
+
+	measure 'qt Imobiliarias com pelo menos 1 emis' =
+			
+			CALCULATE(
+			     DISTINCTCOUNTNOBLANK(REL_Fianca_Producao[cnpj_Imobiliaria])
+			    ,REL_Fianca_Producao[fl_Emissao] = 1
+			)
+		formatString: #,0
+		lineageTag: e738e791-6275-4a48-9cba-c4f1d32d3ba2
+
+	measure Qtd_Corretor_Tratado =
+			
+			DISTINCTCOUNTNOBLANK(REL_Fianca_Producao[nm_Corretor_Tratado])
+		formatString: #,0
+		lineageTag: 934d78c9-1864-4f4c-8b4a-5ac3619a405a
+
+		changedProperty = FormatString
+
+	measure Qtd_Emissoes_Corretores_Tratado =
+			
+			divide(
+			     sum(REL_Fianca_Producao[fl_Emissao])
+			    ,[Qtd_Corretor_Tratado]
+			    ,BLANK()
+			)
+		formatString: #,0.00
+		lineageTag: 0eeb0eff-6dbb-43cc-8f46-c3df7699dbbf
+
+		changedProperty = FormatString
+
+	measure 'Prazo Vigencia Meses' =
+			
+			DIVIDE(
+			    Sum(REL_Fianca_Producao[Prazo_Vigencia])
+			    ,30
+			    ,BLANK()
+			)
+		formatString: 0
+		lineageTag: 0b9bb3b5-12ca-48e4-b5b7-c3b25f9f2caf
+
+		changedProperty = FormatString
+
+	measure '% producao' =
+			
+			DIVIDE(
+			    sum(REL_Fianca_Producao[vl_Emissao])
+			    ,CALCULATE(
+			        sum(REL_Fianca_Producao[vl_Emissao])
+			        ,all(REL_Fianca_Producao[nm_Corretor],REL_Fianca_Producao[ds_Imobiliaria])
+			    )
+			    ,BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 070780ae-05bc-4f51-b96f-deccb8505e67
+
+	measure 'TM Aluguel' =
+			
+			DIVIDE(
+			     CALCULATE(
+			         sum(REL_Fianca_Producao[vl_Aluguel])
+			        ,REL_Fianca_Producao[fl_Emissao] = 1
+			     )
+			    ,sum(REL_Fianca_Producao[fl_Emissao])
+			    ,BLANK()
+			)
+		formatString: #,0
+		lineageTag: 018392aa-976a-4223-9624-2529519b3f2c
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Sinistralidade' =
+			
+			DIVIDE(
+			    Sum(REL_Fianca_Producao[vl_Sinistro])
+			    ,sum(REL_Fianca_Producao[vl_Net])
+			    ,BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 21c99b3a-91f0-4f15-bac1-8ab1dd250f9f
+
+	measure 'Qtd Ativos' =
+			
+			CALCULATE(
+			    [Qtd Emissoes]
+			    , REL_Fianca_Producao[nm_Status] = "Emitida"
+			)
+		formatString: 0
+		lineageTag: 7afee4c2-0d40-49ec-89b4-02fe403a2109
+
+	measure ticket_aluguel_emitido =
+			
+			DIVIDE(
+			     CALCULATE(
+			         sum(REL_Fianca_Producao[vl_Aluguel])
+			        ,REL_Fianca_Producao[fl_Emissao] = 1
+			     )
+			    ,sum(REL_Fianca_Producao[fl_Emissao])
+			    ,BLANK()
+			)
+		lineageTag: bf432e77-06eb-41df-b2d0-b8f7208ceb60
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ticket_aluguel_emitido_sinistrado = ```
+			
+			DIVIDE(
+			     CALCULATE(
+			         sum(REL_Fianca_Producao[vl_Aluguel_Sinistrado])
+			        ,REL_Fianca_Producao[fl_Emissao] = 1
+			     )
+			     , CALCULATE(
+			         sum(REL_Fianca_Producao[fl_Emissao])
+			        ,REL_Fianca_Producao[vl_Aluguel_Sinistrado] <> 0 
+			     )
+			    ,BLANK()
+			)
+			```
+		formatString: #,0
+		lineageTag: dc774a3d-0ebd-4acc-8523-90032e2459e4
+
+	column id_Sinistro
+		dataType: int64
+		formatString: 0
+		lineageTag: 349ee305-7d1c-4a61-af86-2d4857dc5072
+		summarizeBy: none
+		sourceColumn: id_Sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Sinistro
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f55d86f-58eb-4fe1-bc29-269e838af309
+		summarizeBy: sum
+		sourceColumn: qt_Sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Sinistro
+		dataType: double
+		formatString: #,0
+		lineageTag: 08cf5201-d2d4-4d24-9f46-b306a7c3134b
+		summarizeBy: sum
+		sourceColumn: vl_Sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column id_Meta
+		dataType: int64
+		formatString: 0
+		lineageTag: b75ec8f4-eef2-4f5a-82cd-05076204842b
+		summarizeBy: none
+		sourceColumn: id_Meta
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Orcado
+		dataType: double
+		formatString: #,0
+		lineageTag: b7d2a13f-abb6-4077-8584-2f960cf7fbb5
+		summarizeBy: sum
+		sourceColumn: vl_Orcado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column cpf_Executivo
+		dataType: string
+		lineageTag: cef9d437-2f41-44ac-9d7f-94b071e1d3c3
+		summarizeBy: none
+		sourceColumn: cpf_Executivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Anomes_Chave
+		dataType: string
+		lineageTag: f5396016-1599-4942-ba99-2da3975e407c
+		summarizeBy: none
+		sourceColumn: Anomes_Chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Renovadas
+		dataType: string
+		lineageTag: a6f84aa9-1850-4f8c-a6bb-3142a761e0fc
+		summarizeBy: none
+		sourceColumn: fl_Renovadas
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Apolice
+		dataType: string
+		lineageTag: 3ffd795f-4a52-4167-9c59-7102ec4a04d3
+		summarizeBy: none
+		sourceColumn: fl_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoMesRef
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bded88df-9a61-4bab-87c9-abb4f2720c39
+		summarizeBy: none
+		sourceColumn: AnoMesRef
+
+		variation Variation
+			isDefault
+			relationship: 0afe95a1-5cda-43db-b481-008c8edcfbf0
+			defaultHierarchy: LocalDateTable_0d3432e4-8284-426d-8733-e869168331e1.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pais = "Brasil"
+		lineageTag: a0a0175a-c24a-445c-a8cc-7929c92f6e19
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Grandes_Riscos
+		dataType: string
+		lineageTag: 4c12c5b7-7655-49fa-a49c-42678c39e368
+		summarizeBy: none
+		sourceColumn: fl_Grandes_Riscos
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Legado_old
+		dataType: string
+		lineageTag: c2d76f88-a039-4ed1-9fbe-77e8a850ea21
+		summarizeBy: none
+		sourceColumn: fl_Legado_old
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Renovadas_2
+		dataType: string
+		lineageTag: bfe90de5-e33b-4450-a480-bb36f2a312ea
+		summarizeBy: none
+		sourceColumn: fl_Renovadas_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Apolice_Renovada
+		dataType: string
+		lineageTag: b0785adc-52d5-4fbb-8f48-a26b199ac2ed
+		summarizeBy: none
+		sourceColumn: ds_Apolice_Renovada
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Chave Base Ativos'
+		dataType: string
+		lineageTag: 176f3b5b-d560-4a3c-9b28-8bf8b237e702
+		summarizeBy: none
+		sourceColumn: Chave Base Ativos
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave_Vayon_Producao
+		dataType: string
+		lineageTag: 64225a1e-2777-4859-ad3f-4400e7be0c85
+		summarizeBy: none
+		sourceColumn: Chave_Vayon_Producao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prazo_Vigencia
+		dataType: int64
+		lineageTag: 488a2b6b-21d5-44ff-9bde-437f5c16ed57
+		summarizeBy: sum
+		sourceColumn: Prazo_Vigencia
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Faixa_Prazo_Vigencia
+		dataType: string
+		lineageTag: b1b0e681-5e42-4a1b-9751-733602bea52f
+		summarizeBy: none
+		sourceColumn: Faixa_Prazo_Vigencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave_Cluster
+		dataType: string
+		lineageTag: 3f5b7c06-0b41-43eb-a7dd-80ddf52717e1
+		summarizeBy: none
+		sourceColumn: Chave_Cluster
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Classificacao
+		dataType: string
+		lineageTag: 97a4fa53-7110-4071-94c7-d39092530862
+		summarizeBy: none
+		sourceColumn: ds_Classificacao
+		sortByColumn: 'Custom Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Classe_Cluster
+		dataType: string
+		lineageTag: 2576505c-12b2-437c-b6c2-f200fc265ca9
+		summarizeBy: none
+		sourceColumn: Classe_Cluster
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Corretor_Tratado
+		dataType: string
+		lineageTag: d729f82c-46e7-4991-9db8-ee6a6983cfe7
+		summarizeBy: none
+		sourceColumn: nm_Corretor_Tratado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordem_Cluster
+		dataType: double
+		lineageTag: 2210071e-2211-49ed-b226-e452ba5d8165
+		summarizeBy: sum
+		sourceColumn: Ordem_Cluster
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Cores_Clusters
+		dataType: string
+		lineageTag: 299cec4f-87f9-4bd5-9b2d-085606c303b6
+		summarizeBy: none
+		sourceColumn: Cores_Clusters
+
+		annotation SummarizationSetBy = Automatic
+
+	column emissao_incorreta =
+			
+			if(REL_Fianca_Producao[fl_emissao_incorreta] = 1, "Emissão Incorreta", "Emissão Correta")
+		lineageTag: 4ec7f368-6d2a-45b8-a1ff-20e6bd0ac964
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'maquina de vendas flag' =
+			
+			if(REL_Fianca_Producao[fl_maquina_vendas], "Máquina de Vendas", "Outros")
+		lineageTag: e9360d89-538e-471b-82b0-20899c97c03f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Custom Sort' = RELATED(tab_ordem[Ordem])
+		formatString: 0
+		lineageTag: 3153c50e-a28b-45d3-95ba-63475d962d2a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'tab_motivo_cancelamento.ds_Motivo_Cancelamento'
+		dataType: string
+		lineageTag: bfd948e8-ef0b-4bea-875c-6574914e2dc2
+		summarizeBy: none
+		sourceColumn: tab_motivo_cancelamento.ds_Motivo_Cancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_chave_sinistro
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 87bdf3cf-16e9-4f57-9cb7-b34d85c615b2
+		summarizeBy: none
+		sourceColumn: dt_chave_sinistro
+
+		variation Variation
+			isDefault
+			relationship: 84bb87ed-4cc9-4e0f-b5cd-2824beb29d7b
+			defaultHierarchy: LocalDateTable_0e9595e7-6f56-43ab-b09c-a984c38c9a39.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ds_chave
+		dataType: string
+		lineageTag: 1f67a10f-e04e-434b-96ae-c8051ce8ecf5
+		summarizeBy: none
+		sourceColumn: ds_chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_Producao
+		dataType: int64
+		formatString: 0
+		lineageTag: df01174b-c208-44be-ab91-dfbd413e568c
+		summarizeBy: sum
+		sourceColumn: id_Producao
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Apolice
+		dataType: string
+		lineageTag: 8f45c789-3222-4314-9a95-3b1d5b2b862d
+		summarizeBy: none
+		sourceColumn: cd_Apolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Canal
+		dataType: string
+		lineageTag: 8ca70d9c-33d1-43e4-9cb5-e3734ce063e5
+		summarizeBy: none
+		sourceColumn: cd_Canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column nr_Cnpj_Cpf_Corretor
+		dataType: string
+		lineageTag: 9d4c920f-0a6b-4af8-8df1-44291df63fe9
+		summarizeBy: none
+		sourceColumn: nr_Cnpj_Cpf_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Corretor
+		dataType: string
+		lineageTag: 0501fa73-e54c-4a81-9fe1-a008641cfffe
+		summarizeBy: none
+		sourceColumn: nm_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cidade_Corretor
+		dataType: string
+		lineageTag: 5ce24a1b-66ad-4c5a-9bf8-acf581f09658
+		summarizeBy: none
+		sourceColumn: ds_Cidade_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF_Corretor
+		dataType: string
+		lineageTag: 95890707-df40-4a77-943c-7ce835cba457
+		summarizeBy: none
+		sourceColumn: UF_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column nr_Cnpj_Cpf_Segurado
+		dataType: string
+		lineageTag: 680b07c4-c7a4-497e-b749-35e4d2b13f18
+		summarizeBy: none
+		sourceColumn: nr_Cnpj_Cpf_Segurado
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Segurado
+		dataType: string
+		lineageTag: 14f829cd-de71-45b7-b57d-c1e4539d81e7
+		summarizeBy: none
+		sourceColumn: nm_Segurado
+
+		annotation SummarizationSetBy = Automatic
+
+	column nr_Cnpj_Cpf_Pagador
+		dataType: string
+		lineageTag: dc0182c6-ce1b-461f-9c6e-d929d08987cc
+		summarizeBy: none
+		sourceColumn: nr_Cnpj_Cpf_Pagador
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Pagador
+		dataType: string
+		lineageTag: 960b379d-beeb-4e27-a116-ccc0a03af865
+		summarizeBy: none
+		sourceColumn: nm_Pagador
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Executivo
+		dataType: string
+		lineageTag: 5967c0a8-2a59-4b3d-94c8-c92c5d217af9
+		summarizeBy: none
+		sourceColumn: nm_Executivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column cnpj_Imobiliaria
+		dataType: string
+		lineageTag: bf2d90fd-3b61-4423-a0ec-46380538cac3
+		summarizeBy: none
+		sourceColumn: cnpj_Imobiliaria
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Imobiliaria
+		dataType: string
+		lineageTag: 6c240e3d-5623-4a45-bdc0-2debb75c9d3f
+		summarizeBy: none
+		sourceColumn: ds_Imobiliaria
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Emissao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a16b4b6e-de54-47b3-b287-e54b5e7d49a5
+		summarizeBy: none
+		sourceColumn: dt_Emissao
+
+		variation Variation
+			isDefault
+			relationship: 7c56e52e-7671-4199-8bfb-de171430f015
+			defaultHierarchy: LocalDateTable_e5b580ac-2df1-477f-9a68-24609ee50685.'Hierarquia de Datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Inicio_Vigencia
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 15d4d5a6-b669-43c8-a435-22da5ce8b32b
+		summarizeBy: none
+		sourceColumn: dt_Inicio_Vigencia
+
+		variation Variation
+			isDefault
+			relationship: b4b2ac5d-45ef-4503-8b7a-af507c91b791
+			defaultHierarchy: LocalDateTable_f097087c-1b84-43b3-ae1c-8e6d8f442c7f.'Hierarquia de Datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Endosso
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0c7a5425-5716-4359-921a-1ad49f5f7fab
+		summarizeBy: none
+		sourceColumn: dt_Endosso
+
+		variation Variation
+			isDefault
+			relationship: 97788fec-971c-42f5-997f-262332ca9ceb
+			defaultHierarchy: LocalDateTable_c675b3a2-06d4-4afd-ae12-9c83385f42ae.'Hierarquia de Datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dt_Fim_Vigencia
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f158a66d-7420-4fc0-935b-5f6fad43ec5b
+		summarizeBy: none
+		sourceColumn: dt_Fim_Vigencia
+
+		variation Variation
+			isDefault
+			relationship: f8ac476a-f6cb-40c4-b610-6e529eb1453b
+			defaultHierarchy: LocalDateTable_993013aa-ee32-4227-a3f8-a7ee5c686319.'Hierarquia de Datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Fim_Vigencia_Fechado
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e4964703-2525-4b11-9c1b-f414d64dfcd2
+		summarizeBy: none
+		sourceColumn: dt_Fim_Vigencia_Fechado
+
+		variation Variation
+			isDefault
+			relationship: 39fe389f-0818-466d-a5c5-726be6c65132
+			defaultHierarchy: LocalDateTable_ffad188e-7376-4e10-9b45-ff03dd76e601.'Hierarquia de Datas'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column vl_Iof
+		dataType: double
+		lineageTag: 3ec6cc93-fb13-42ad-b92c-bbc217632ac6
+		summarizeBy: sum
+		sourceColumn: vl_Iof
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Adicional
+		dataType: double
+		lineageTag: 63c750a0-bffd-4d06-9ed1-587fe6954dd0
+		summarizeBy: sum
+		sourceColumn: vl_Adicional
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Premio_Liquido
+		dataType: double
+		lineageTag: be456135-6853-4c85-97a0-57df8d14e64e
+		summarizeBy: sum
+		sourceColumn: vl_Premio_Liquido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Total
+		dataType: double
+		lineageTag: 3af70021-8252-4790-892f-200bc4d5859a
+		summarizeBy: sum
+		sourceColumn: vl_Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Endosso
+		dataType: double
+		lineageTag: 30570f81-e5dc-4a3a-b2a0-d6c6004ec89b
+		summarizeBy: sum
+		sourceColumn: vl_Endosso
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Endosso_Tarifario
+		dataType: double
+		formatString: #,0
+		lineageTag: 885a2658-b6dd-427c-a715-a9c97fcee8d2
+		summarizeBy: sum
+		sourceColumn: vl_Endosso_Tarifario
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vl_Recusado
+		dataType: double
+		formatString: #,0
+		lineageTag: 7552e174-14d4-478c-98e3-9b480e930e18
+		summarizeBy: sum
+		sourceColumn: vl_Recusado
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vl_Net
+		dataType: double
+		formatString: #,0
+		lineageTag: 6a30240e-d62f-4fd3-86eb-94777d90d8b9
+		summarizeBy: sum
+		sourceColumn: vl_Net
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vl_Proj_Emissao
+		dataType: double
+		lineageTag: 144203f1-b363-4beb-a7c4-1fa2ce17f5d2
+		summarizeBy: sum
+		sourceColumn: vl_Proj_Emissao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Cancelamento
+		dataType: double
+		formatString: #,0
+		lineageTag: 4158f694-f13d-4e55-8ba8-1b36fcfd3357
+		summarizeBy: sum
+		sourceColumn: vl_Cancelamento
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vl_Emissao
+		dataType: double
+		formatString: #,0
+		lineageTag: 86b0c464-cd03-445d-b2f0-1f360b5be74d
+		summarizeBy: sum
+		sourceColumn: vl_Emissao
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vl_Restituicao
+		dataType: double
+		formatString: #,0
+		lineageTag: 670d1922-37da-4a84-9c5d-e5d2560491ae
+		summarizeBy: sum
+		sourceColumn: vl_Restituicao
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column nm_Tipo_Endosso
+		dataType: string
+		lineageTag: 5fd68ad8-915c-49c6-9802-ece7db3b31f5
+		summarizeBy: none
+		sourceColumn: nm_Tipo_Endosso
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Produto
+		dataType: int64
+		formatString: 0
+		lineageTag: 880897dc-6708-4a28-878a-aec342a7c47a
+		summarizeBy: sum
+		sourceColumn: cd_Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Produto
+		dataType: string
+		lineageTag: 17e9068f-d348-4aa7-b6f9-da66d7cb3266
+		summarizeBy: none
+		sourceColumn: nm_Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Apolice_Renovada
+		dataType: string
+		lineageTag: b15e9c14-ecb4-4711-a4b5-20526607ca93
+		summarizeBy: none
+		sourceColumn: cd_Apolice_Renovada
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Cancelado
+		dataType: int64
+		formatString: 0
+		lineageTag: 5cfc3c51-53e5-4440-ad6f-f8e7efb61964
+		summarizeBy: sum
+		sourceColumn: fl_Cancelado
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Restituicao
+		dataType: int64
+		formatString: 0
+		lineageTag: 3169d5b2-b83c-4e8c-a374-9891ecd90dcc
+		summarizeBy: sum
+		sourceColumn: fl_Restituicao
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Reativacao
+		dataType: int64
+		formatString: 0
+		lineageTag: c6e077e9-6b82-41b5-b19c-3b0ae537017a
+		summarizeBy: sum
+		sourceColumn: fl_Reativacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Status
+		dataType: int64
+		formatString: 0
+		lineageTag: 037fc639-38f6-40f4-b8a1-220e9543bd26
+		summarizeBy: sum
+		sourceColumn: cd_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Status
+		dataType: string
+		lineageTag: 86110129-8f6b-43e7-a062-a2250404afb3
+		summarizeBy: none
+		sourceColumn: nm_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoMes
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 87e7ecc4-1aa6-43cd-8861-ca7074df9c3f
+		summarizeBy: none
+		sourceColumn: AnoMes
+
+		variation Variation
+			isDefault
+			relationship: b8bd8ab6-2361-429a-aefa-0d6b6dbc51cb
+			defaultHierarchy: LocalDateTable_36bee5d6-352a-4dad-868e-ff6ec1a307a4.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column fl_Emissao
+		dataType: int64
+		formatString: 0
+		lineageTag: bac50c4b-2d6f-4270-8acb-30084add69b2
+		summarizeBy: sum
+		sourceColumn: fl_Emissao
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Legado
+		dataType: string
+		lineageTag: 9db47312-a1c9-4395-8730-c75b7c4d4e8f
+		summarizeBy: none
+		sourceColumn: fl_Legado
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Apolice_Renovada
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1269acf1-71e0-4c5c-a90b-068940af07dd
+		summarizeBy: sum
+		sourceColumn: fl_Apolice_Renovada
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f1b77f3f-4d6f-467d-99d9-a6c016e618cd
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: ba605481-7eb2-4c37-90b4-1467b63ddd42
+			defaultHierarchy: LocalDateTable_f2db73d9-2c14-44ea-86b5-deeb85c95d08.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_Apolice_Nova
+		dataType: string
+		lineageTag: 3ea81aad-b496-497d-8452-172740e67dbb
+		summarizeBy: none
+		sourceColumn: cd_Apolice_Nova
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Inicio_Apolice_Nova
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: b1389e7e-f9e7-4a98-9414-fbef62f9efad
+		summarizeBy: none
+		sourceColumn: dt_Inicio_Apolice_Nova
+
+		variation Variation
+			isDefault
+			relationship: e72b5648-31cc-4bdf-98c9-9639e7f15db6
+			defaultHierarchy: LocalDateTable_35c08826-910a-4612-93c4-5394938f7494.'Hierarquia de Datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Motivo_Cancelamento
+		dataType: string
+		lineageTag: ed3f7929-5d29-4a8e-ba02-1d71dc6ceb99
+		summarizeBy: none
+		sourceColumn: ds_Motivo_Cancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Safra_Original
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e7d95ba3-af61-4cb6-a9ba-7f7011eb5f50
+		summarizeBy: none
+		sourceColumn: dt_Safra_Original
+
+		variation Variation
+			isDefault
+			relationship: 984980b1-5b52-42ae-a8b8-d9ab1b128321
+			defaultHierarchy: LocalDateTable_bc7ec8e0-d34a-4021-aeb1-97db83baca67.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Meses_Inicio_x_Fim_Vigencia
+		dataType: double
+		lineageTag: bc3d3929-bb34-4205-9ece-65c51baca4a9
+		summarizeBy: sum
+		sourceColumn: qt_Meses_Inicio_x_Fim_Vigencia
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tp_Assistencia
+		dataType: string
+		lineageTag: afa65029-e08c-4b50-911c-4af0bf45be23
+		summarizeBy: none
+		sourceColumn: tp_Assistencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_SUN
+		dataType: string
+		lineageTag: 3f15aeda-bd05-4d5d-8c72-815471f611f7
+		summarizeBy: none
+		sourceColumn: ds_Produto_SUN
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Inclusao_Imobiliaria
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a9619fc9-9ec3-4c04-8fd7-def7f54ede1d
+		summarizeBy: none
+		sourceColumn: dt_Inclusao_Imobiliaria
+
+		variation Variation
+			isDefault
+			relationship: 766c929f-fb67-4032-88fe-220dba4ca027
+			defaultHierarchy: LocalDateTable_d6379056-39bf-4519-9d34-da7a8056b5c7.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Inclusao_Corretor
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1af5ba22-3fbe-4218-a993-a7c718208023
+		summarizeBy: none
+		sourceColumn: dt_Inclusao_Corretor
+
+		variation Variation
+			isDefault
+			relationship: a4a1aaa8-bafc-41f0-b44c-b8e10c498ac1
+			defaultHierarchy: LocalDateTable_5665ac5f-103b-44f6-a8e5-897c98b677d5.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Categoria_Corretor
+		dataType: string
+		lineageTag: 63c1aa56-45cc-4bff-a1a6-4b4a13449331
+		summarizeBy: none
+		sourceColumn: ds_Categoria_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Reemissao
+		dataType: int64
+		formatString: 0
+		lineageTag: ced18d63-5609-45ea-b563-899efa89bbce
+		summarizeBy: sum
+		sourceColumn: fl_Reemissao
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Executivo_New
+		dataType: string
+		lineageTag: 20b9ebaa-f7fd-4b24-a2a1-f6b946883832
+		summarizeBy: none
+		sourceColumn: nm_Executivo_New
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_Pessoa
+		dataType: string
+		lineageTag: e9373cc9-2d0b-43aa-93e5-772cf5cea039
+		summarizeBy: none
+		sourceColumn: tp_Pessoa
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_Origem
+		dataType: string
+		lineageTag: ba67bf3a-2219-4d68-90a0-04c7a60df2c8
+		summarizeBy: none
+		sourceColumn: ds_Produto_Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Emissao_Incorreta
+		dataType: int64
+		formatString: 0
+		lineageTag: 58f48fdd-2b43-4117-b84e-e5ed3f4e205a
+		summarizeBy: sum
+		sourceColumn: fl_Emissao_Incorreta
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Maquina_Vendas
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c6b617c1-e823-4d17-82f5-d67847317afc
+		summarizeBy: none
+		sourceColumn: fl_Maquina_Vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Aluguel
+		dataType: double
+		lineageTag: eae77d7e-a165-4e31-91d7-712088e61097
+		summarizeBy: sum
+		sourceColumn: vl_Aluguel
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fl_Reativado_Maquina_Vendas
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9c55c941-cc75-4421-8067-cabd4617df43
+		summarizeBy: none
+		sourceColumn: fl_Reativado_Maquina_Vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Melhores_Riscos
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7265bc21-a56d-4dd0-81bd-bff5a9c11b3c
+		summarizeBy: none
+		sourceColumn: fl_Melhores_Riscos
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_melhores_riscos
+		dataType: string
+		lineageTag: 2bd7f250-d590-4ebf-882f-1965dd5dde79
+		summarizeBy: none
+		sourceColumn: ds_melhores_riscos
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_ultimo = ```
+			
+			var ult_Data = CALCULATE(
+			        MAX(REL_Fianca_Producao[dt_Endosso])
+			        , ALLEXCEPT(REL_Fianca_Producao, REL_Fianca_Producao[cd_Apolice])
+			)
+			
+			RETURN 
+			if(REL_Fianca_Producao[dt_Endosso] = ult_Data, 1,0)
+			// CALCULATE(
+			//     max(REL_Fianca_Producao[dt_Endosso])
+			//     , FILTER(ALLEXCEPT(REL_Fianca_Producao, REL_Fianca_Producao[cd_Apolice])
+			//     , REL_Fianca_Producao[dt_Endosso] = ult_Data)
+			// )
+			```
+		formatString: 0
+		lineageTag: 97d9046e-ea78-4ba1-b9ef-215da181f8e5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Marcacao_Sinistro
+		dataType: string
+		lineageTag: e7602852-53c1-4c2a-b247-cb439da6ce3e
+		summarizeBy: none
+		sourceColumn: ds_Marcacao_Sinistro
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_CNPJ_Assessor_Digital
+		dataType: string
+		lineageTag: a7c26cb9-d9d9-4307-a57b-37869ada8bd0
+		summarizeBy: none
+		sourceColumn: cd_CNPJ_Assessor_Digital
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Assessor_Digital
+		dataType: string
+		lineageTag: 2faee156-142d-4694-a107-74a642e566c0
+		summarizeBy: none
+		sourceColumn: nm_Assessor_Digital
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Fim_Apolice_Nova
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 880fe454-6163-44da-ba9b-054b68cef9b2
+		summarizeBy: none
+		sourceColumn: dt_Fim_Apolice_Nova
+
+		variation Variation
+			isDefault
+			relationship: 688848bf-1482-490d-a182-4e73872bab1a
+			defaultHierarchy: LocalDateTable_bc6fde61-f703-4ee3-8e0a-0facc4ae7e35.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_cidade
+		dataType: string
+		lineageTag: 1ad0e037-f9bc-4c61-814b-d372341fef11
+		summarizeBy: none
+		sourceColumn: nm_cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_UF
+		dataType: string
+		lineageTag: c5b295d8-68cf-4863-b0ec-35638b6c00a0
+		summarizeBy: none
+		sourceColumn: cd_UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Bairro
+		dataType: string
+		lineageTag: cebe84a9-6f5d-4155-9e2f-f938f1d6e80b
+		summarizeBy: none
+		sourceColumn: nm_Bairro
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Endereco
+		dataType: string
+		lineageTag: a20cb6f6-1168-4107-99ec-f17cb568ed23
+		summarizeBy: none
+		sourceColumn: nm_Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Cep
+		dataType: string
+		lineageTag: 54b4ed1d-3083-41e9-bf82-0fb49c9f4029
+		summarizeBy: none
+		sourceColumn: nm_Cep
+
+		annotation SummarizationSetBy = Automatic
+
+	column nr_Rua_Endereco
+		dataType: string
+		lineageTag: 42e06b04-c30d-4b18-b8e7-7de39cbefc58
+		summarizeBy: none
+		sourceColumn: nr_Rua_Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Bairro_Corretor
+		dataType: string
+		lineageTag: f537c88b-4466-4529-a9aa-249238ec1ad4
+		summarizeBy: none
+		sourceColumn: ds_Bairro_Corretor
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Aluguel_Sinistrado = RELATED(vw_aluguel_sinistrados[vl_Aluguel])
+		lineageTag: be712a7d-202d-491c-aa54-bbffa8c55dc5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nr_Cnpj_Cpf_Corretor_Renovacao
+		dataType: string
+		lineageTag: d5f155ba-33a9-4d17-8184-26dd208424fb
+		summarizeBy: none
+		sourceColumn: nr_Cnpj_Cpf_Corretor_Renovacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Corretor_Renovacao
+		dataType: string
+		lineageTag: 843c5319-a3f2-40db-9127-2acfb5183234
+		summarizeBy: none
+		sourceColumn: nm_Corretor_Renovacao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Producao-f2be9430-146c-42f0-a537-5065f5bcf554 = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA", [Query="select #(lf)#(tab)  id_Producao#(lf)#(tab), cd_Apolice#(lf)#(tab), cd_Canal#(lf)#(tab), nr_Cnpj_Cpf_Corretor#(lf)#(tab), nm_Corretor#(lf)#(tab), nr_Cnpj_Cpf_Corretor_Renovacao#(lf)#(tab), nm_Corretor_Renovacao#(lf)#(tab), ds_Cidade_Corretor#(lf)#(tab), UF_Corretor#(lf)#(tab), nr_Cnpj_Cpf_Segurado#(lf)#(tab), nm_Segurado#(lf)#(tab), nr_Cnpj_Cpf_Pagador#(lf)#(tab), nm_Pagador#(lf)#(tab), nm_Executivo_Atual#(tab)#(tab)#(tab)#(tab)#(tab)#(tab)as nm_Executivo#(tab)#(tab)#(tab)#(tab)#(tab)#(lf)#(tab), cnpj_Imobiliaria#(lf)#(tab), ds_Imobiliaria#(lf)#(tab), dt_Emissao#(lf)#(tab), dt_Inicio_Vigencia#(lf)#(tab), dt_Endosso#(lf)#(tab), dt_Fim_Vigencia#(lf)#(tab), dt_Fim_Vigencia_Fechado#(lf)#(tab), vl_Iof#(lf)#(tab), vl_Adicional#(lf)#(tab), vl_Premio_Liquido#(lf)#(tab), vl_Total#(lf)#(tab), vl_Endosso#(lf)#(tab), vl_Endosso_Tarifario#(lf)#(tab), vl_Recusado#(lf)#(tab), vl_Net#(lf)#(tab), vl_Proj_Emissao#(lf)#(tab), vl_Cancelamento#(lf)#(tab), vl_Emissao#(lf)#(tab), vl_Restituicao#(lf)#(tab), nm_Tipo_Endosso#(lf)#(tab), cd_Produto#(lf)#(tab), nm_Produto#(lf)#(tab), cd_Apolice_Renovada#(lf)#(tab), fl_Cancelado#(lf)#(tab), fl_Restituicao#(lf)#(tab), fl_Reativacao#(lf)#(tab), cd_Status#(lf)#(tab), nm_Status#(lf)#(tab), AnoMes#(lf)#(tab), fl_Emissao#(lf)#(tab), fl_Legado#(lf)#(tab), fl_Apolice_Renovada#(lf)#(tab), dt_Atualizacao#(lf)#(tab), cd_Apolice_Nova#(lf)#(tab), dt_Inicio_Apolice_Nova#(lf)#(tab), ds_Motivo_Cancelamento#(lf)#(tab), dt_Safra_Original#(lf)#(tab), qt_Meses_Inicio_x_Fim_Vigencia#(lf)#(tab), tp_Assistencia#(lf)#(tab), ds_Produto_SUN#(lf)#(tab), dt_Inclusao_Imobiliaria#(lf)#(tab), dt_Inclusao_Corretor#(lf)#(tab), ds_Categoria_Corretor#(lf)#(tab), fl_Reemissao#(lf)#(tab), nm_Executivo_Historico#(tab)#(tab)#(tab)#(tab)as nm_Executivo_New#(lf)#(tab), tp_Pessoa#(lf)#(tab), ds_Produto_Origem#(lf)#(tab), fl_Emissao_Incorreta#(lf)#(tab), fl_Maquina_Vendas#(lf)#(tab), vl_Aluguel#(lf)#(tab), fl_Reativado_Maquina_Vendas#(lf)#(tab), fl_Melhores_Riscos#(lf)#(tab), cd_CNPJ_Assessor_Digital#(lf)#(tab), nm_Assessor_Digital#(lf)#(tab), dt_Fim_Apolice_Nova#(lf)#(tab), nm_cidade#(lf)#(tab), cd_UF#(lf)#(tab), nm_Bairro#(lf)#(tab), nm_Endereco#(lf)#(tab), nm_Cep#(lf)#(tab), nr_Rua_Endereco#(lf)#(tab), ds_Bairro_Corretor#(lf)from REL_FIANCA_PRODUCAO#(lf)"]),
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Producao = Fonte{[Schema="dbo",Item="REL_Fianca_Producao"]}[Data],*/
+				    #"Consulta Acrescentada" = Table.Combine({Fonte, REL_Fianca_Sinistro}),
+				    #"Consulta Acrescentada1" = Table.Combine({#"Consulta Acrescentada", REL_Fianca_Meta}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Consulta Acrescentada1", "Anomes_Chave", each Text.Combine({Text.From([AnoMes], "pt-BR"), [nm_Executivo]}, ""), type text),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Coluna Mesclada Inserida", each true),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Linhas Filtradas",{"AnoMes"},REL_Fianca_Vayon,{"AnoMes"},"REL_Fianca_Vayon",JoinKind.LeftOuter),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Consultas Mescladas", "fl_Renovadas", each if [cd_Apolice_Renovada] = "0" then "Novo" else if [cd_Apolice_Renovada] = null then "Outros" else "Renovação"),
+				    #"Coluna Condicional Adicionada1" = Table.AddColumn(#"Coluna Condicional Adicionada", "fl_Apolice", each if [id_Sinistro] <> null then "não" else if [id_Meta] <> null then "não" else if [cd_Apolice] = null then "não" else "sim"),
+				    #"Coluna Condicional Adicionada2" = Table.AddColumn(#"Coluna Condicional Adicionada1", "fl_Legado_old", each if [id_Sinistro] <> null then "Outros" else if [id_Meta] <> null then "Outros" else if [dt_Emissao] >= #datetime(2017, 5, 1, 0, 0, 0) then "Não Legado" else "Legado"),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Coluna Condicional Adicionada2", "AnoMes", "AnoMes - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"AnoMes - Copiar", "AnoMesRef"}}),
+				    #"Coluna Condicional Adicionada3" = Table.AddColumn(#"Colunas Renomeadas", "fl_Grandes_Riscos", each if [cd_Canal] = "I001001009" then "Gdes Riscos" else "Fiança"),
+				    #"Coluna Condicional Adicionada4" = Table.AddColumn(#"Coluna Condicional Adicionada3", "fl_Renovadas_2", each if [fl_Renovadas] = "Outros" then "Novo" else [fl_Renovadas]),
+				    #"Coluna Condicional Adicionada5" = Table.AddColumn(#"Coluna Condicional Adicionada4", "ds_Apolice_Renovada", each if [fl_Apolice_Renovada] = 1 then "Sim" else "Não"),
+				    #"Coluna Mesclada Inserida1" = Table.AddColumn(#"Coluna Condicional Adicionada5", "Chave Base Ativos", each Text.Combine({[cd_Canal], [nm_Corretor], [nm_Executivo], Text.From([AnoMes], "pt-BR"), [fl_Legado], [fl_Renovadas], Text.From([qt_Meses_Inicio_x_Fim_Vigencia], "pt-BR")}, ":"), type text),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna Mesclada Inserida1",{{"dt_Endosso", type date}}),
+				    #"Texto Aparado" = Table.TransformColumns(#"Tipo Alterado",{{"nm_Corretor", Text.Trim, type text}}),
+				    #"Texto Aparado1" = Table.TransformColumns(#"Texto Aparado",{{"ds_Imobiliaria", Text.Trim, type text}, {"nm_Corretor", Text.Trim, type text}}),
+				    #"Texto Aparado2" = Table.TransformColumns(#"Texto Aparado1",{{"nm_Corretor", Text.Trim, type text}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Texto Aparado2",null,"NÃO INFORMADO",Replacer.ReplaceValue,{"tp_Pessoa"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído",null,"NÃO INFORMADO",Replacer.ReplaceValue,{"ds_Imobiliaria"}),
+				    #"Coluna Mesclada Inserida2" = Table.AddColumn(#"Valor Substituído1", 
+				    "Chave_Vayon_Producao", each 
+				        Text.Combine({Text.From([dt_Endosso], "pt-BR"), 
+				        [ds_Categoria_Corretor], 
+				        [tp_Pessoa], 
+				        [ds_Imobiliaria], 
+				        [nm_Produto], 
+				        [nm_Corretor],
+				        [nm_Executivo]}, "|"), type text),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Coluna Mesclada Inserida2", "Prazo_Vigencia", each if [dt_Inicio_Vigencia] = null then null else 
+				if [dt_Fim_Vigencia] = null then null else 
+				([dt_Fim_Vigencia] - [dt_Inicio_Vigencia])),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"Prazo_Vigencia", type duration}}),
+				    #"Dias Extraídos" = Table.TransformColumns(#"Tipo Alterado1",{{"Prazo_Vigencia", Duration.Days, Int64.Type}}),
+				    #"Personalização Adicionada1" = Table.AddColumn(#"Dias Extraídos", "Faixa_Prazo_Vigencia", each 
+				        if [Prazo_Vigencia] = null then null else
+				        if [Prazo_Vigencia] <= 182.5 then "01 - <= 6 meses" else    
+				        if [Prazo_Vigencia] <= 365 then "02 - 6 a 12 meses" else
+				        if [Prazo_Vigencia] <= 547.5 then "03 - 12 a 18 meses" else 
+				        if [Prazo_Vigencia] <= 730 then "04 - 18 a 24 meses" else 
+				        if [Prazo_Vigencia] <= 912.5 then "05 - 24 a 30 meses" else 
+				        if [Prazo_Vigencia] <= 1095 then "06 - 30 a 48 meses" else 
+				        if [Prazo_Vigencia] <= 1277.5 then "07 - 48 a 54 meses" else 
+				        if [Prazo_Vigencia] <= 1460 then "08 - 54 a 60 meses" else 
+				        if [Prazo_Vigencia] > 1460 then "09 - > 60 meses" else null),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Personalização Adicionada1",{{"Faixa_Prazo_Vigencia", type text}}),
+				    #"Coluna Mesclada Inserida3" = Table.AddColumn(#"Tipo Alterado2", "Chave_Cluster", each Text.Combine(
+				        {[nr_Cnpj_Cpf_Corretor],
+				         [fl_Grandes_Riscos],
+				         [fl_Renovadas], 
+				         Text.From([AnoMes], "pt-BR")}, "|"), type text),
+				    #"Consultas Mescladas1" = Table.NestedJoin(#"Coluna Mesclada Inserida3", {"Chave_Cluster"}, REL_Fianca_Emissao_Corretor, {"Chave_Cluster"}, "REL_Fianca_Emissao_Corretor", JoinKind.LeftOuter),
+				    #"REL_Fianca_Emissao_Corretor Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas1", "REL_Fianca_Emissao_Corretor", {"nm_Corretor_Tratado", "ds_Classificacao", "Classe_Cluster", "Ordem_Cluster", "Cores_Clusters"}, {"nm_Corretor_Tratado", "ds_Classificacao", "Classe_Cluster", "Ordem_Cluster", "Cores_Clusters"}),
+				    #"Consultas Mescladas2" = Table.NestedJoin(#"REL_Fianca_Emissao_Corretor Expandido", {"cd_Apolice"}, tab_motivo_cancelamento, {"cd_Apolice"}, "tab_motivo_cancelamento", JoinKind.LeftOuter),
+				    #"tab_motivo_cancelamento Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas2", "tab_motivo_cancelamento", {"ds_Motivo_Cancelamento"}, {"tab_motivo_cancelamento.ds_Motivo_Cancelamento"}),
+				    #"Tipo Alterado3" = Table.TransformColumnTypes(#"tab_motivo_cancelamento Expandido",{{"AnoMes", type date}}),
+				    #"Coluna Duplicada1" = Table.DuplicateColumn(#"Tipo Alterado3", "AnoMes", "AnoMes - Copiar"),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Coluna Duplicada1",{{"AnoMes - Copiar", "dt_chave_sinistro"}}),
+				    #"Coluna Mesclada Inserida4" = Table.AddColumn(#"Colunas Renomeadas2", "ds_chave", each Text.Combine({Text.From([dt_Endosso], "pt-BR"), [nm_Corretor]}, "|"), type text),
+				    #"Coluna Condicional Adicionada6" = Table.AddColumn(#"Coluna Mesclada Inserida4", "ds_melhores_riscos", each if [fl_Melhores_Riscos] = true then "Ficha Premiada" else "Demais"),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Coluna Condicional Adicionada6",null,"Demais",Replacer.ReplaceValue,{"nm_Assessor_Digital"})
+				in
+				    #"Valor Substituído2"
+				```
+
+	annotation PBI_QueryRelationships = {"columnCount":61,"keyColumnNames":[],"queryRelationships":[{"keyColumnCount":1,"keyColumn":40,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{AnoMes,11}","KeyColumnCount":1}],"columnIdentities":["Section1/REL_Fianca_Producao/Consulta Acrescentada1.{id_Producao,0}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cd_Apolice,1}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cd_Canal,2}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nr_Cnpj_Cpf_Corretor,3}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Corretor,4}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{ds_Cidade_Corretor,5}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{UF_Corretor,6}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nr_Cnpj_Cpf_Segurado,7}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Segurado,8}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nr_Cnpj_Cpf_Pagador,9}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Pagador,10}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Executivo,11}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cnpj_Imobiliaria,12}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{ds_Imobiliaria,13}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Emissao,14}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Inicio_Vigencia,15}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Endosso,16}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Fim_Vigencia,17}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Fim_Vigencia_Fechado,18}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Iof,19}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Adicional,20}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Premio_Liquido,21}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Total,22}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Endosso,23}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Endosso_Tarifario,24}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Recusado,25}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Net,26}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Proj_Emissao,27}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Cancelamento,28}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Emissao,29}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Restituicao,30}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Tipo_Endosso,31}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cd_Produto,32}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Produto,33}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cd_Apolice_Renovada,34}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{fl_Cancelado,35}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{fl_Restituicao,36}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{fl_Reativacao,37}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cd_Status,38}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Status,39}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{AnoMes,40}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{fl_Emissao,41}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{fl_Legado,42}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{fl_Apolice_Renovada,43}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Atualizacao,44}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cd_Apolice_Nova,45}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Inicio_Apolice_Nova,46}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{id_Sinistro,47}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{qt_Sinistro,48}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Sinistro,49}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{id_Meta,50}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Orcado,51}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cpf_Executivo,52}","Section1/REL_Fianca_Producao/Coluna Mesclada Inserida.{Anomes_Chave,53}","Section1/REL_Fianca_Producao/Coluna Condicional Adicionada.{fl_Renovadas,55}","Section1/REL_Fianca_Producao/Coluna Condicional Adicionada1.{fl_Apolice,56}","Section1/REL_Fianca_Producao/Coluna Condicional Adicionada2.{fl_Legado_old,57}","Section1/REL_Fianca_Producao/Coluna Duplicada.{AnoMes - Copiar,58}","Section1/REL_Fianca_Producao/Coluna Condicional Adicionada3.{fl_Grandes_Riscos,59}","Section1/REL_Fianca_Producao/Coluna Condicional Adicionada4.{fl_Renovadas_2,60}","Section1/REL_Fianca_Producao/Coluna Condicional Adicionada5.{ds_Apolice_Renovada,60}"],"ColumnCount":61,"KeyColumnNames":[],"ColumnIdentities":["Section1/REL_Fianca_Producao/Consulta Acrescentada1.{id_Producao,0}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cd_Apolice,1}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cd_Canal,2}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nr_Cnpj_Cpf_Corretor,3}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Corretor,4}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{ds_Cidade_Corretor,5}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{UF_Corretor,6}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nr_Cnpj_Cpf_Segurado,7}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Segurado,8}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nr_Cnpj_Cpf_Pagador,9}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Pagador,10}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Executivo,11}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cnpj_Imobiliaria,12}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{ds_Imobiliaria,13}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Emissao,14}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Inicio_Vigencia,15}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Endosso,16}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Fim_Vigencia,17}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Fim_Vigencia_Fechado,18}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Iof,19}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Adicional,20}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Premio_Liquido,21}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Total,22}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Endosso,23}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Endosso_Tarifario,24}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Recusado,25}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Net,26}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Proj_Emissao,27}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Cancelamento,28}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Emissao,29}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Restituicao,30}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Tipo_Endosso,31}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cd_Produto,32}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Produto,33}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cd_Apolice_Renovada,34}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{fl_Cancelado,35}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{fl_Restituicao,36}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{fl_Reativacao,37}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cd_Status,38}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{nm_Status,39}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{AnoMes,40}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{fl_Emissao,41}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{fl_Legado,42}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{fl_Apolice_Renovada,43}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Atualizacao,44}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cd_Apolice_Nova,45}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{dt_Inicio_Apolice_Nova,46}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{id_Sinistro,47}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{qt_Sinistro,48}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Sinistro,49}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{id_Meta,50}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{vl_Orcado,51}","Section1/REL_Fianca_Producao/Consulta Acrescentada1.{cpf_Executivo,52}","Section1/REL_Fianca_Producao/Coluna Mesclada Inserida.{Anomes_Chave,53}","Section1/REL_Fianca_Producao/Coluna Condicional Adicionada.{fl_Renovadas,55}","Section1/REL_Fianca_Producao/Coluna Condicional Adicionada1.{fl_Apolice,56}","Section1/REL_Fianca_Producao/Coluna Condicional Adicionada2.{fl_Legado_old,57}","Section1/REL_Fianca_Producao/Coluna Duplicada.{AnoMes - Copiar,58}","Section1/REL_Fianca_Producao/Coluna Condicional Adicionada3.{fl_Grandes_Riscos,59}","Section1/REL_Fianca_Producao/Coluna Condicional Adicionada4.{fl_Renovadas_2,60}","Section1/REL_Fianca_Producao/Coluna Condicional Adicionada5.{ds_Apolice_Renovada,60}"],"RelationshipInfo":[{"keyColumnCount":1,"keyColumn":40,"otherKeyColumnIdentity":"Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Vayon.{AnoMes,11}","KeyColumnCount":1}]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

@@ -1,0 +1,87 @@
+table REL_Fianca_Peers_Mes
+	lineageTag: 869dc262-bb6e-4409-8187-764a5a910600
+
+	column id_Peers_Mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 3536efd4-d7b8-4120-8de8-96cc55dcb22d
+		summarizeBy: sum
+		sourceColumn: id_Peers_Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_Seguradora
+		dataType: string
+		lineageTag: 5155b430-89ca-4170-bc05-b6e44ef743cd
+		summarizeBy: none
+		sourceColumn: nm_Seguradora
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Periodo
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d4e13e1b-2eff-4e4d-a662-17eb9ff24db4
+		summarizeBy: none
+		sourceColumn: dt_Periodo
+
+		variation Variation
+			isDefault
+			relationship: 929e3483-c15c-4c63-83a2-3fbf2cb949a3
+			defaultHierarchy: LocalDateTable_1aae4f2b-9d43-4157-a8e5-03377afdef46.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Premio_Emitido
+		dataType: double
+		formatString: #,0
+		lineageTag: ee670185-a242-45a3-9c75-d33945aae6ff
+		summarizeBy: sum
+		sourceColumn: vl_Premio_Emitido
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vl_Crescimento
+		dataType: double
+		lineageTag: 050b1c1c-e9a0-4ce4-b448-d9cce4592293
+		summarizeBy: sum
+		sourceColumn: vl_Crescimento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c9de6e6b-073c-4670-b740-aa37f44459a9
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: cbbbffd7-89d3-4a75-92ac-63b7a2515b74
+			defaultHierarchy: LocalDateTable_e956e09d-8b9a-44d2-a039-64533d186581.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Fianca_Peers_Mes-aedbf95c-461e-4fd6-81bb-ba6bdd3e6a2e = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Peers_Mes = Fonte{[Schema="dbo",Item="REL_Fianca_Peers_Mes"]}[Data]
+				in
+				    dbo_REL_Fianca_Peers_Mes
+
+	annotation PBI_QueryRelationships = {"columnCount":6,"keyColumnNames":["id_Peers_Mes"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_Mes.{id_Peers_Mes,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_Mes.{nm_Seguradora,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_Mes.{dt_Periodo,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_Mes.{vl_Premio_Emitido,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_Mes.{vl_Crescimento,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_Mes.{dt_Atualizacao,5}"],"ColumnCount":6,"KeyColumnNames":["id_Peers_Mes"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_Mes.{id_Peers_Mes,0}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_Mes.{nm_Seguradora,1}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_Mes.{dt_Periodo,2}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_Mes.{vl_Premio_Emitido,3}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_Mes.{vl_Crescimento,4}","Server.Database\\/2/SQL/toovdbp01;controladoria/dbo/REL_Fianca_Peers_Mes.{dt_Atualizacao,5}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

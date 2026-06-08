@@ -1,0 +1,54 @@
+table TAB_Chave_Sinistro
+	lineageTag: bf2a01bf-6371-47b5-8ffd-e12f3b5658e3
+
+	column ds_chave
+		dataType: string
+		lineageTag: db05fae5-84d7-4e84-82aa-703cc9f722a5
+		summarizeBy: none
+		sourceColumn: ds_chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column periodo
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 824aa443-8c54-400c-b3a0-d072811a80ce
+		summarizeBy: none
+		sourceColumn: periodo
+
+		variation Variation
+			isDefault
+			relationship: 0e5b0892-68e4-4719-8322-e3a81e2695ff
+			defaultHierarchy: LocalDateTable_9fd02b3c-9039-40a3-a766-eb2d487b936e.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition TAB_Chave_Sinistro-fa9f1ea4-79a4-4cfc-8e51-123eac9e5dc1 = m
+		mode: import
+		source =
+				let
+				
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_bi_fianca_analytics_Schema = AwsDataCatalog_Database{[Name="db_bi_fianca_analytics",Kind="Schema"]}[Data],
+				    dbo_REL_Fianca_Sinistralidade_Safrada = Fonte{[Schema="dbo",Item="REL_Fianca_Sinistralidade_Safrada"]}[Data],
+				    /*Fonte = Sql.Database("sql-sandbox", "controladoria"),
+				    dbo_REL_Fianca_Sinistralidade_Safrada = Fonte{[Schema="dbo",Item="REL_Fianca_Sinistralidade_Safrada"]}[Data],*/
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Fianca_Sinistralidade_Safrada,{{"dt_safra", type date}, {"periodo", type date}, {"dt_final", type date}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Tipo Alterado", "Agrupa Produto", each if Text.Contains([nm_produto], "CIRCULAR") then "Circular 587" else "Anterior a Circular 587"),
+				    #"Texto Aparado" = Table.TransformColumns(#"Coluna Condicional Adicionada",{{"nm_corretor", Text.Trim, type text}}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Texto Aparado", "periodo", "periodo - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"periodo - Copiar", "dt_chave"}}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Colunas Renomeadas1", "ds_chave", each Text.Combine({Text.From([periodo], "pt-BR"), [nm_corretor]}, "|"), type text),
+				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Coluna Mesclada Inserida",{"ds_chave", "periodo"}),
+				    #"Consulta Acrescentada" = Table.Combine({#"Outras Colunas Removidas", TAB_Empilha_Sinistro}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Consulta Acrescentada", {"ds_chave"})
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navegação
+

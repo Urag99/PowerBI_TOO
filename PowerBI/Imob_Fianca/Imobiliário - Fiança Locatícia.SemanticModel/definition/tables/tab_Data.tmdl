@@ -1,0 +1,23 @@
+table tab_Data
+	lineageTag: 70b37702-a269-48dd-8cea-bb03a015a7b1
+
+	column Date
+		formatString: General Date
+		lineageTag: 6d401f78-e5ed-4275-954d-63960fb8cb3a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 5f83a7dc-5fb9-45d3-ba73-c1fc191fd21a
+			defaultHierarchy: LocalDateTable_94fa12e5-85f2-4bff-a43a-9969e3256df7.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tab_Data-89ce5a28-c715-4901-b673-fae3da9eee33 = calculated
+		mode: import
+		source = CALENDAR(DATE(2015,01,01), TODAY())
+
+	annotation PBI_Id = ee6dee3fcb474491b84355cf3ef4525e
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Imobiliário - Fiança Locatícia"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "aae18f75-e962-4724-8473-108c586ef273"
+  }
+}
