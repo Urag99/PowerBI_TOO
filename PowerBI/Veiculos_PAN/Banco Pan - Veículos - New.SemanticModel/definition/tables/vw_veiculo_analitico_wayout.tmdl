@@ -1,0 +1,332 @@
+table vw_veiculo_analitico_wayout
+	lineageTag: bb981004-f834-45b7-924c-d37c01d8d1ec
+
+	column DS_REGIONAL
+		dataType: string
+		lineageTag: 56474623-ccf9-41eb-bdaa-f66f73dd6799
+		summarizeBy: none
+		sourceColumn: DS_REGIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_FILIAL
+		dataType: string
+		lineageTag: a0500ad5-e9c4-487c-b7d2-02fadb9a2772
+		summarizeBy: none
+		sourceColumn: DS_FILIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_OFFICERS
+		dataType: string
+		lineageTag: 83c01504-409c-47f4-b575-d431b04f4696
+		summarizeBy: none
+		sourceColumn: DS_OFFICERS
+
+		annotation SummarizationSetBy = Automatic
+
+	column COD_LOJA
+		dataType: int64
+		formatString: 0
+		lineageTag: 57f1199d-baa7-4098-bc4e-b73836788acc
+		summarizeBy: sum
+		sourceColumn: COD_LOJA
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_LOJA
+		dataType: string
+		lineageTag: 15a488a9-fadf-4fb1-8792-a53932c75ebd
+		summarizeBy: none
+		sourceColumn: DS_LOJA
+
+		annotation SummarizationSetBy = Automatic
+
+	column DT_PRODUCAO
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f363bf85-f056-4e46-8385-3ed0cbd93283
+		summarizeBy: none
+		sourceColumn: DT_PRODUCAO
+
+		variation Variation
+			isDefault
+			relationship: 52240540-7d57-4132-96c4-4c6059927eb8
+			defaultHierarchy: LocalDateTable_2dbd3c0a-a8c5-4c58-9458-bb0b4b4f1813.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CONSOLIDADOR
+		dataType: string
+		lineageTag: 91a10e1b-10dd-4922-99de-db0abe2b8da9
+		summarizeBy: none
+		sourceColumn: CONSOLIDADOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column COD_CONTRATO
+		dataType: string
+		lineageTag: 2797728a-7f4f-40d7-9875-71754569f327
+		summarizeBy: none
+		sourceColumn: COD_CONTRATO
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_POTENCIAL_PP
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3b4dc937-5b39-4c60-b5a1-6644bf8e4d5d
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_POTENCIAL_MA
+		dataType: int64
+		formatString: #,0
+		lineageTag: cc9e0ae7-e37d-4e87-8341-803cdd12b00b
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_MA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_POTENCIAL_GM
+		dataType: int64
+		formatString: #,0
+		lineageTag: 013e755c-996c-4fd9-80f2-bf37b3a2edcb
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_GM
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_POTENCIAL_RCF
+		dataType: int64
+		formatString: #,0
+		lineageTag: dd5e5b23-8edf-49c2-a982-e5d0f5242f76
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_RCF
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_POTENCIAL_AA
+		dataType: int64
+		formatString: #,0
+		lineageTag: c3de844e-1a6f-4f30-a681-dca203c4c9a3
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_AA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4be4d783-f827-44e8-95fa-e4ba2a37cfe4
+		summarizeBy: sum
+		sourceColumn: QTD_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_MA
+		dataType: int64
+		formatString: #,0
+		lineageTag: a684e24a-adba-4ef1-9a7e-53d2c26efb4f
+		summarizeBy: sum
+		sourceColumn: QTD_MA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_GM
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2c22c7c7-a94f-483f-a3ca-266e8d481400
+		summarizeBy: sum
+		sourceColumn: QTD_GM
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_RCF
+		dataType: int64
+		formatString: #,0
+		lineageTag: ac86e99c-74ba-465f-a41a-4a6810e75577
+		summarizeBy: sum
+		sourceColumn: QTD_RCF
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_AA
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5b10fcbe-fc1a-44da-bdf6-6250f85817bb
+		summarizeBy: sum
+		sourceColumn: QTD_AA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_CLIENTE_PP
+		dataType: int64
+		formatString: #,0
+		lineageTag: b4f343f6-3a96-4e4a-9d2b-3433d357a51c
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_CLIENTE_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_CLIENTE_MA
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2e804c95-113a-4854-a3b3-17d47124523a
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_CLIENTE_MA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_CLIENTE_GM
+		dataType: int64
+		formatString: #,0
+		lineageTag: 32f09a4c-8993-4d62-8d3a-8fd5be8dd113
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_CLIENTE_GM
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_CLIENTE_RCF
+		dataType: int64
+		formatString: #,0
+		lineageTag: b462d2ae-0b97-473c-a35a-aa9f4cec30fa
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_CLIENTE_RCF
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_CLIENTE_AA
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1398b177-68e4-44d7-a9f6-d038f2db9293
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_CLIENTE_AA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_LOJISTA_PP
+		dataType: int64
+		formatString: #,0
+		lineageTag: d258e458-32f3-4a64-b576-e196212a6c88
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_LOJISTA_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_LOJISTA_MA
+		dataType: int64
+		formatString: 0
+		lineageTag: b81d606f-b6bc-44c1-b709-da643e972118
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_LOJISTA_MA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_LOJISTA_GM
+		dataType: int64
+		formatString: 0
+		lineageTag: 057febc0-37ae-47e9-a979-8043b1eb3c23
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_LOJISTA_GM
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_LOJISTA_RCF
+		dataType: int64
+		formatString: 0
+		lineageTag: 2efc6b5a-825d-4709-b43e-92dc55463e79
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_LOJISTA_RCF
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_LOJISTA_AA
+		dataType: int64
+		formatString: 0
+		lineageTag: 7e21eb01-5db5-41ff-8b53-9d6936e08c88
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_LOJISTA_AA
+
+		annotation SummarizationSetBy = Automatic
+
+	column combo_loja
+		dataType: string
+		lineageTag: d50e9bd9-7025-46c6-8ec7-a3fcd6d0063d
+		summarizeBy: none
+		sourceColumn: combo_loja
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_REINCLUSAO_PP
+		dataType: int64
+		formatString: #,0
+		lineageTag: 290f1c83-2a8e-456e-b86a-7aa5dc2825de
+		summarizeBy: sum
+		sourceColumn: QTD_REINCLUSAO_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_REINCLUSAO_MA
+		dataType: int64
+		formatString: #,0
+		lineageTag: bfc2f097-9fbc-4ccc-b500-911c8d3e103e
+		summarizeBy: sum
+		sourceColumn: QTD_REINCLUSAO_MA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_REINCLUSAO_GM
+		dataType: int64
+		formatString: #,0
+		lineageTag: 723e36f1-ca48-452a-b5df-5cc1a1674542
+		summarizeBy: sum
+		sourceColumn: QTD_REINCLUSAO_GM
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_REINCLUSAO_RCF
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4aa1b79d-5331-4af8-953e-297611ebd375
+		summarizeBy: sum
+		sourceColumn: QTD_REINCLUSAO_RCF
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_REINCLUSAO_AA
+		dataType: int64
+		formatString: #,0
+		lineageTag: e862fa0a-5aef-4790-a2ce-fd75752a77e4
+		summarizeBy: sum
+		sourceColumn: QTD_REINCLUSAO_AA
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Classificacao
+		dataType: string
+		lineageTag: a93bf715-2de0-4bad-9ca0-336b88674070
+		summarizeBy: none
+		sourceColumn: ds_Classificacao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vw_veiculo_analitico_wayout = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_vw_veiculo_analitico_wayout = Fonte{[Schema="dbo",Item="vw_veiculo_analitico_wayout"]}[Data],
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(dbo_vw_veiculo_analitico_wayout, "combo_loja", each Text.Combine({Text.From([COD_LOJA], "pt-BR"), [DS_LOJA]}, " - "), type text),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna Mesclada Inserida",{{"DT_PRODUCAO", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

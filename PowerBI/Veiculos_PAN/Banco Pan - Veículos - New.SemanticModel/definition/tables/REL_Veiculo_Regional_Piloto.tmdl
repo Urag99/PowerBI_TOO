@@ -1,0 +1,65 @@
+table REL_Veiculo_Regional_Piloto
+	lineageTag: 22f809e3-da81-4a55-8b3d-329197a4d077
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: ef34a4e6-4851-4b99-89b5-04ea23df2ab2
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Regional
+		dataType: string
+		lineageTag: 1d2e2d61-a547-46eb-a90a-78fb849184f8
+		summarizeBy: none
+		sourceColumn: ds_Regional
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Filial
+		dataType: string
+		lineageTag: f6849d44-7d1d-4321-b3a0-1ad334685985
+		summarizeBy: none
+		sourceColumn: ds_Filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Piloto
+		dataType: string
+		lineageTag: f5d93dee-4faa-42bc-844a-5eae37d786d7
+		summarizeBy: none
+		sourceColumn: ds_Piloto
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Flag_8
+		dataType: string
+		lineageTag: a9b656f8-6b44-4979-a45f-27572bcaa7d4
+		summarizeBy: none
+		sourceColumn: ds_Flag_8
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Flag_9
+		dataType: string
+		lineageTag: 6b2d5783-4226-4e29-b6db-297c87dabae9
+		summarizeBy: none
+		sourceColumn: ds_Flag_9
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Veiculo_Regional_Piloto = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_Veiculo_Regional_Piloto = Fonte{[Schema="dbo",Item="REL_Veiculo_Regional_Piloto"]}[Data]
+				in
+				    dbo_REL_Veiculo_Regional_Piloto
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

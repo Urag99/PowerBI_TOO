@@ -1,0 +1,1270 @@
+table vw_veiculo_producao
+	lineageTag: b22c783b-6e0b-464d-bc48-954fb1447f9c
+
+	measure 'ME TM Financiamento' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_FINANCIADO])
+			    , sum(vw_veiculo_producao[QTD_FINANCIADO])
+			    , BLANK()
+			)
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: 00321a52-db52-45d9-84be-9ef88ce837bb
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'ME %PP Aprov' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP])
+			    , sum(vw_veiculo_producao[QTD_PP_POTENCIAL_UNIFICADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 14067191-a253-49af-83d8-807ecdfaad96
+
+	measure 'ME %PP 1600' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_1600])
+			    , sum(vw_veiculo_producao[QTD_PP_POTENCIAL_UNIFICADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: a9f21506-15d4-4abb-9a50-dfe39caba653
+
+	measure 'ME %GM Aprov' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_GM])
+			    , sum(vw_veiculo_producao[QTD_GM_POTENCIAL_UNIFICADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: d4ef879b-7ab5-41ae-93ca-7cc263781d8d
+
+	measure 'ME %GM Potencial' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_GM_POTENCIAL_UNIFICADO])
+			    , sum(vw_veiculo_producao[QTD_FINANCIADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: eb5c56dc-9356-4c88-9da6-a6718cc094b9
+
+	measure 'ME %AA Aprov' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_AA])
+			    , sum(vw_veiculo_producao[QTD_AA_POTENCIAL_UNIFICADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: aabedd09-fd21-4233-ab0f-2bfca88d57ad
+
+	measure 'ME %RCF Aprov' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_RCF])
+			    , sum(vw_veiculo_producao[QTD_RCF_POTENCIAL_UNIFICADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0d06a3b4-c949-4a24-a8a9-d1e85c7b1681
+
+	measure 'ME % Seguro Adicional' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_SEGURO_ADICIONAL])
+			    , sum(vw_veiculo_producao[QTD_POTENCIAL_UNIFICADO_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 79ec1b29-0ff9-404d-9ff6-12de233149f1
+
+	measure 'ME % PP ADICIONAL' = ```
+			
+			var _total_adicional = 
+			    sum(vw_veiculo_producao[QTD_PP_ADICIONAL]) 
+			    + sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL]) 
+			    + sum(vw_veiculo_producao[QTD_PP_3_ADICIONAL]) 
+			
+			return 
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_ADICIONAL])
+			    , _total_adicional
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b42f9056-4975-426f-b20a-9d52f31a2c17
+
+	measure 'ME %MA Aprov' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_MOTO])
+			    , sum(vw_veiculo_producao[QTD_MOTO_POTENCIAL_UNIFICADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 69d12ad2-5a6d-4480-8b54-0826d40ac1d4
+
+	measure 'ME % PP DEMAIS' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_DEMAIS])
+			    , sum(vw_veiculo_producao[QTD_PP_POTENCIAL_UNIFICADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 1d6ea776-91b5-44e9-8406-8ccd5134e81a
+
+	measure 'ME % PP 2 ADICIONAL' = ```
+			
+			var _total_adicional = 
+			    sum(vw_veiculo_producao[QTD_PP_ADICIONAL]) 
+			    + sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL]) 
+			    + sum(vw_veiculo_producao[QTD_PP_3_ADICIONAL]) 
+			
+			return 
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL])
+			    , _total_adicional
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: e8265eb6-c70f-4704-bb35-3c15163b885e
+
+	measure 'ME % PP 3 ADICIONAL' = ```
+			
+			var _total_adicional = 
+			    sum(vw_veiculo_producao[QTD_PP_ADICIONAL]) 
+			    + sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL]) 
+			    + sum(vw_veiculo_producao[QTD_PP_3_ADICIONAL]) 
+			
+			return 
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_3_ADICIONAL])
+			    , _total_adicional
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 046d88d1-ee1d-4e0b-b12a-3a1d1249f042
+
+	measure 'ME % PP MOTO ADICIONAL' = ```
+			
+			var _total_adicional = 
+			    sum(vw_veiculo_producao[QTD_PP_ADICIONAL_MOTO]) 
+			    + sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL_MOTO]) 
+			
+			return 
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_ADICIONAL_MOTO])
+			    , _total_adicional
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 7e280154-32ee-4b79-9749-6d94656a257d
+
+	measure 'ME % PP MOTO 2 ADICIONAL' = ```
+			
+			var _total_adicional = 
+			    sum(vw_veiculo_producao[QTD_PP_ADICIONAL_MOTO]) 
+			    + sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL_MOTO]) 
+			
+			return 
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL_MOTO])
+			    , _total_adicional
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b5ef4486-d800-48e7-b076-237c9a27234f
+
+	measure '% Cross' =
+			
+			
+			var _gm = sum(vw_veiculo_producao[QTD_GM])
+			var _AA = sum(vw_veiculo_producao[QTD_AA])
+			var _rcf = sum(vw_veiculo_producao[QTD_RCF])
+			var _financ = sum(vw_veiculo_producao[QTD_FINANCIADO])
+			
+			RETURN
+			DIVIDE(
+			    _gm + _AA + _rcf
+			    , _financ
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b9455e6f-decd-4dd3-919d-399fb1b7d7ba
+
+	measure '% Cross Motos' =
+			
+			
+			var _ma = sum(vw_veiculo_producao[QTD_MOTO])
+			var _rcf = sum(vw_veiculo_producao[QTD_RCF])
+			var _financ = sum(vw_veiculo_producao[QTD_FINANCIADO])
+			
+			RETURN
+			DIVIDE(
+			    _ma + _rcf
+			    , _financ
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 7bdc8533-4ad0-4cb5-a8ed-167c35d926bd
+
+	measure '% Sem Adicionais' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_SEM_ADICIONAL])
+			    , sum(vw_veiculo_producao[QTD_PP])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2fc2d893-950b-4e63-97fd-8c2d8293957f
+
+	measure '% 3 Adicionais' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_3_ADICIONAL])
+			    , sum(vw_veiculo_producao[QTD_PP])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0ff8fd61-0df6-468d-8af5-859b066ff5d7
+
+	measure '% Sem Adicionais Moto' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_SEM_ADICIONAL_MOTO])
+			    , sum(vw_veiculo_producao[QTD_PP])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 75d62252-cecb-47ad-8001-519f30332d2d
+
+	measure '% 2 Adicionais Moto' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL_MOTO])
+			    , sum(vw_veiculo_producao[QTD_PP])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: e752d4f2-5bf7-43d3-99bc-d98fafc8cc58
+
+	measure 'QTD_SEGUROS_COM_ADICIONAL LEVES' =
+			
+			sum(vw_veiculo_producao[QTD_PP_ADICIONAL])
+			+
+			sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL])
+			+
+			sum(vw_veiculo_producao[QTD_PP_3_ADICIONAL])
+		formatString: #,0
+		lineageTag: 0ebb25d3-89e8-4383-9126-6efe38b2e29f
+
+	measure 'QTD_SEGUROS_COM_ADICIONAL MOTOS' = ```
+			
+			sum(vw_veiculo_producao[QTD_PP_ADICIONAL_MOTO])
+			+
+			sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL_MOTO])
+			
+			```
+		formatString: #,0
+		lineageTag: dc8c66f6-10fe-4b1d-bfd5-a0b57cea73a4
+
+	measure 'QTD_SEGURO_ADICIONAL MOTO' =
+			
+			SUM(vw_veiculo_producao[QTD_PP_ADICIONAL_MOTO])
+			+
+			SUM(vw_veiculo_producao[QTD_PP_2_ADICIONAL_MOTO])
+		formatString: #,0
+		lineageTag: 4a9f313d-2c21-47c1-b545-2b0e0a4c4e6b
+
+	measure 'VL_SEGUROS_COM_ADICIONAL LEVES' =
+			
+			sum(vw_veiculo_producao[VL_PP_ADICIONAL])
+			+
+			sum(vw_veiculo_producao[VL_PP_2_ADICIONAL])
+			+
+			sum(vw_veiculo_producao[VL_PP_3_ADICIONAL])
+		formatString: #,0
+		lineageTag: 382d47da-b823-4ed8-b94c-5642bc7a6d55
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ME % PP ADICIONAL VALOR' = ```
+			
+			var _total_adicional = 
+			    sum(vw_veiculo_producao[VL_PP_ADICIONAL]) 
+			    + sum(vw_veiculo_producao[VL_PP_2_ADICIONAL]) 
+			    + sum(vw_veiculo_producao[VL_PP_3_ADICIONAL]) 
+			
+			return 
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_ADICIONAL])
+			    , _total_adicional
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: bfa9fe2c-eee4-40e9-93f0-dbf94cb4ed0b
+
+	measure 'ME % PP 3 ADICIONAL VALOR' = ```
+			
+			var _total_adicional = 
+			    sum(vw_veiculo_producao[VL_PP_ADICIONAL]) 
+			    + sum(vw_veiculo_producao[VL_PP_2_ADICIONAL]) 
+			    + sum(vw_veiculo_producao[VL_PP_3_ADICIONAL]) 
+			
+			return 
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_3_ADICIONAL])
+			    , _total_adicional
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b715ad2d-1047-46e3-b143-f13e3c57e7fb
+
+	measure 'VL_SEGUROS_COM_ADICIONAL MOTOS' = ```
+			
+			sum(vw_veiculo_producao[VL_PP_ADICIONAL_MOTO])
+			+
+			sum(vw_veiculo_producao[VL_PP_2_ADICIONAL_MOTO])
+			
+			```
+		formatString: #,0
+		lineageTag: c2019921-39c7-4a34-ac8a-56c80c86c4a6
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ME % PP 2 ADICIONAL VALOR' = ```
+			
+			var _total_adicional = 
+			    sum(vw_veiculo_producao[VL_PP_ADICIONAL]) 
+			    + sum(vw_veiculo_producao[VL_PP_2_ADICIONAL]) 
+			    + sum(vw_veiculo_producao[VL_PP_3_ADICIONAL]) 
+			
+			return 
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_2_ADICIONAL])
+			    , _total_adicional
+			    , BLANK()
+			)
+			```
+		lineageTag: 17be39da-5b04-4c5b-b0a8-6128312ecdbc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ME % PP MOTO ADICIONAL VALOR' = ```
+			
+			var _total_adicional = 
+			    sum(vw_veiculo_producao[VL_PP_ADICIONAL_MOTO]) 
+			    + sum(vw_veiculo_producao[VL_PP_2_ADICIONAL_MOTO]) 
+			
+			return 
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_ADICIONAL_MOTO])
+			    , _total_adicional
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0c19f56b-004e-4366-baf1-50d3ba37458b
+
+	measure 'ME % PP MOTO 2 ADICIONAL VALOR' = ```
+			
+			var _total_adicional = 
+			    sum(vw_veiculo_producao[VL_PP_ADICIONAL_MOTO]) 
+			    + sum(vw_veiculo_producao[VL_PP_2_ADICIONAL_MOTO]) 
+			
+			return 
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_2_ADICIONAL_MOTO])
+			    , _total_adicional
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 7d5ba103-8390-4920-99f8-bcdf4747fe5d
+
+	measure VL_POTENCIAL_ADICIONAL =
+			
+			sum(vw_veiculo_producao[VL_RCF_POTENCIAL])
+			+
+			sum(vw_veiculo_producao[VL_AA_POTENCIAL])
+			+
+			sum(vw_veiculo_producao[VL_GM_POTENCIAL])
+			+
+			sum(vw_veiculo_producao[VL_MOTO_POTENCIAL])
+		formatString: #,0
+		lineageTag: 75a93fdb-b5d9-4ea7-865c-0762ce07fa6f
+
+	measure 'ME %AA Potencial' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_AA_POTENCIAL_UNIFICADO])
+			    , sum(vw_veiculo_producao[QTD_FINANCIADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 10e5459b-644a-4411-8218-d06887671630
+
+	measure 'ME %RCF Potencial' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_RCF_POTENCIAL_UNIFICADO])
+			    , sum(vw_veiculo_producao[QTD_FINANCIADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 1635edf1-d189-4a3f-94e4-41a2aebe5314
+
+	measure 'ME %MOTO Potencial' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_MOTO_POTENCIAL_UNIFICADO])
+			    , sum(vw_veiculo_producao[QTD_FINANCIADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2c09d1a1-e82c-494c-9f71-04bd16b0c122
+
+	measure 'ME TM PP' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_PREMIO])
+			    , sum(vw_veiculo_producao[QTD_PP])
+			    , BLANK()
+			)
+		formatString: #,0
+		lineageTag: d9084ef9-97b4-428b-bc30-8b625818357f
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ME TM GM' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_GM_PREMIO])
+			    , sum(vw_veiculo_producao[QTD_GM])
+			    , BLANK()
+			)
+		formatString: #,0
+		lineageTag: 955c01a6-f8db-4737-8a00-5329ecd39130
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ME TM AA' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_AA_PREMIO])
+			    , sum(vw_veiculo_producao[QTD_AA])
+			    , BLANK()
+			)
+		formatString: #,0
+		lineageTag: a10346d2-1fdf-4faf-9fd8-ee76a7185af0
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ME TM RCF' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_RCF_PREMIO])
+			    , sum(vw_veiculo_producao[QTD_RCF])
+			    , BLANK()
+			)
+		formatString: #,0
+		lineageTag: 924804b3-406d-4c97-a7a1-8fc106f402e2
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ME TM MA' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_MOTO_PREMIO])
+			    , sum(vw_veiculo_producao[QTD_MOTO])
+			    , BLANK()
+			)
+		formatString: #,0
+		lineageTag: a9f57450-e7f6-4d14-81f1-db8249438b04
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ME %MOTO Potencial GERAL' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_MOTO_POTENCIAL_UNIFICADO])
+			    , CALCULATE(
+			        sum(vw_veiculo_producao[QTD_FINANCIADO])
+			        , vw_veiculo_producao[DS_CONSOLIDADOR] = "MOTOS"
+			    )
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: bc80222d-9702-4217-ae4e-e00f70e39a36
+
+	column DS_REGIONAL
+		dataType: string
+		lineageTag: 4d4efc63-b7aa-4fbb-8804-f9ba885b3e61
+		summarizeBy: none
+		sourceColumn: DS_REGIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_FILIAL
+		dataType: string
+		lineageTag: c769c5f6-3ee9-4aa1-ad53-05bb3454ed31
+		summarizeBy: none
+		sourceColumn: DS_FILIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_OFFICERS
+		dataType: string
+		lineageTag: 654a8b99-9486-4fa5-a6b7-514b1408be52
+		summarizeBy: none
+		sourceColumn: DS_OFFICERS
+
+		annotation SummarizationSetBy = Automatic
+
+	column COD_LOJA
+		dataType: int64
+		formatString: 0
+		lineageTag: 7fe93a82-f436-48be-92f7-e86af422b81d
+		summarizeBy: sum
+		sourceColumn: COD_LOJA
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_LOJA
+		dataType: string
+		lineageTag: d5434d8b-5298-4963-8a3c-08345b6586c6
+		summarizeBy: none
+		sourceColumn: DS_LOJA
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_CONFIGURACAO_MOLICAR
+		dataType: string
+		lineageTag: 3b3ab489-bdd0-47b1-b793-e0b085a2f4b3
+		summarizeBy: none
+		sourceColumn: DS_CONFIGURACAO_MOLICAR
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_GRP
+		dataType: string
+		lineageTag: d479eeb8-ae16-4022-a571-41874334fa64
+		summarizeBy: none
+		sourceColumn: DS_GRP
+
+		annotation SummarizationSetBy = Automatic
+
+	column DT_PRODUCAO
+		dataType: dateTime
+		formatString: yyyy-mm
+		lineageTag: d60c9b2e-1f93-4cac-b0a2-a783e9209986
+		summarizeBy: none
+		sourceColumn: DT_PRODUCAO
+
+		variation Variation
+			isDefault
+			relationship: d0b5b845-bfcd-429f-8d8c-fc81cbdf2fc1
+			defaultHierarchy: LocalDateTable_1f8a4c13-5c06-4a60-a928-f8ccb11c26ec.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column QTD_FINANCIADO
+		dataType: int64
+		formatString: #,0
+		lineageTag: 76d2ac04-399c-4a6e-93ac-81e9d154703b
+		summarizeBy: sum
+		sourceColumn: QTD_FINANCIADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_FINANCIADO
+		dataType: double
+		formatString: #,0
+		lineageTag: 54680e58-081d-4e91-8c77-e77959f6db52
+		summarizeBy: sum
+		sourceColumn: VL_FINANCIADO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column QTD_PP
+		dataType: int64
+		formatString: #,0
+		lineageTag: ef175157-d165-47df-ae1d-b984c3480eab
+		summarizeBy: sum
+		sourceColumn: QTD_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_PP_PREMIO
+		dataType: double
+		formatString: #,0
+		lineageTag: 0ccdd260-79eb-4306-a0e4-aae7bf105076
+		summarizeBy: sum
+		sourceColumn: VL_PP_PREMIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column QTD_PP_POTENCIAL_UNIFICADO
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4dace10e-6025-4573-ab50-38440b3835c5
+		summarizeBy: sum
+		sourceColumn: QTD_PP_POTENCIAL_UNIFICADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_1600
+		dataType: int64
+		formatString: 0
+		lineageTag: 7838d328-5fee-4e5a-bc0a-e366e57965bc
+		summarizeBy: sum
+		sourceColumn: QTD_PP_1600
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_GM
+		dataType: int64
+		formatString: #,0
+		lineageTag: 7ce8538e-54fd-4bad-a60b-d6718f6669ab
+		summarizeBy: sum
+		sourceColumn: QTD_GM
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_GM_PREMIO
+		dataType: double
+		formatString: #,0
+		lineageTag: 3ab61a1f-99a0-4f18-a60c-f389f5763abb
+		summarizeBy: sum
+		sourceColumn: VL_GM_PREMIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column QTD_GM_POTENCIAL_UNIFICADO
+		dataType: int64
+		formatString: #,0
+		lineageTag: c68c57c2-2a8a-4fd1-908a-2a529e59b9fd
+		summarizeBy: sum
+		sourceColumn: QTD_GM_POTENCIAL_UNIFICADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_AA
+		dataType: int64
+		formatString: #,0
+		lineageTag: da578526-8ed0-4bf5-8570-b9bae8cf7207
+		summarizeBy: sum
+		sourceColumn: QTD_AA
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_AA_PREMIO
+		dataType: double
+		formatString: #,0
+		lineageTag: 258d61b8-0351-42f3-bc6c-f0bf65c7296d
+		summarizeBy: sum
+		sourceColumn: VL_AA_PREMIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column QTD_AA_POTENCIAL_UNIFICADO
+		dataType: int64
+		formatString: #,0
+		lineageTag: eaacca41-426a-4c0b-aa3c-30efa354303a
+		summarizeBy: sum
+		sourceColumn: QTD_AA_POTENCIAL_UNIFICADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_RCF
+		dataType: int64
+		formatString: #,0
+		lineageTag: c44f37d2-45ee-4245-8f99-0992c11b97b6
+		summarizeBy: sum
+		sourceColumn: QTD_RCF
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_RCF_PREMIO
+		dataType: double
+		formatString: #,0
+		lineageTag: bb29fa72-a7a5-40e5-bbe6-8044e8b8a813
+		summarizeBy: sum
+		sourceColumn: VL_RCF_PREMIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column QTD_RCF_POTENCIAL_UNIFICADO
+		dataType: int64
+		formatString: #,0
+		lineageTag: dba30461-96d9-4e97-b1cd-653e391343f2
+		summarizeBy: sum
+		sourceColumn: QTD_RCF_POTENCIAL_UNIFICADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_SEGURO_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1d59e820-1981-4270-8b4b-7a7fb380679c
+		summarizeBy: sum
+		sourceColumn: QTD_SEGURO_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 54f3bc74-5e88-4463-a587-3586cdf58979
+		summarizeBy: sum
+		sourceColumn: QTD_PP_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_POTENCIAL_UNIFICADO_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: b428956c-3090-4b99-9823-48bc7edb2981
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_UNIFICADO_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPF_OFFICER
+		dataType: string
+		lineageTag: bd1ff35d-5814-4f81-a61e-9cef1b242a87
+		summarizeBy: none
+		sourceColumn: CPF_OFFICER
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_idade_contratacao
+		dataType: string
+		lineageTag: 3f4a142f-a987-4e17-ac3b-7ee3296dedc9
+		summarizeBy: none
+		sourceColumn: fl_idade_contratacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_CONSOLIDADOR
+		dataType: string
+		lineageTag: 8b1e147e-b336-40e5-956e-f79d4a6bb16c
+		summarizeBy: none
+		sourceColumn: DS_CONSOLIDADOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_MOTO
+		dataType: int64
+		formatString: #,0
+		lineageTag: da45ba9a-aab7-4ada-88a8-aa4ec84655b2
+		summarizeBy: sum
+		sourceColumn: QTD_MOTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_MOTO_PREMIO
+		dataType: double
+		formatString: #,0
+		lineageTag: 09a4b7c3-c044-4af6-ade6-544b6ef88b7b
+		summarizeBy: sum
+		sourceColumn: VL_MOTO_PREMIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column QTD_MOTO_POTENCIAL_UNIFICADO
+		dataType: int64
+		formatString: #,0
+		lineageTag: a1210e33-af68-45eb-aa04-71b784eccef3
+		summarizeBy: sum
+		sourceColumn: QTD_MOTO_POTENCIAL_UNIFICADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_REINCLUSAO_PP
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e2156b1-e4de-45a5-b01e-3b3913a6497f
+		summarizeBy: sum
+		sourceColumn: QTD_REINCLUSAO_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_DEMAIS
+		dataType: int64
+		formatString: 0
+		lineageTag: b708909e-60de-40db-8514-1bdda91fc7b4
+		summarizeBy: sum
+		sourceColumn: QTD_PP_DEMAIS
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_PP_POTENCIAL_LEVES
+		dataType: int64
+		formatString: #,0
+		lineageTag: 86b1a6ed-919a-4da3-8f40-e2211f8709f6
+		summarizeBy: sum
+		sourceColumn: VL_PP_POTENCIAL_LEVES
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_PP_POTENCIAL_MOTOS
+		dataType: int64
+		formatString: #,0
+		lineageTag: fe1bc9b0-94c1-4e14-8eca-fb2c6546ad33
+		summarizeBy: sum
+		sourceColumn: VL_PP_POTENCIAL_MOTOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_AA_POTENCIAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1af4cdaf-496b-410d-9d55-bbf2f0e9a81a
+		summarizeBy: sum
+		sourceColumn: VL_AA_POTENCIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_MOTO_POTENCIAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 182fff9b-4c31-4b12-9a35-ffe4888fa680
+		summarizeBy: sum
+		sourceColumn: VL_MOTO_POTENCIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_GM_POTENCIAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 946f974b-9cc9-4d8f-b2e3-fbc859e44cc6
+		summarizeBy: sum
+		sourceColumn: VL_GM_POTENCIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_RCF_POTENCIAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 0e68dc89-78e5-46c1-8bbd-ac25e4b4b285
+		summarizeBy: sum
+		sourceColumn: VL_RCF_POTENCIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_PRESTAMISTA
+		dataType: int64
+		formatString: 0
+		lineageTag: a853c367-a83e-40e3-9653-2d4d9541448e
+		summarizeBy: sum
+		sourceColumn: QTD_PP_PRESTAMISTA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_VIDA
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d08bf0b-f863-4d88-b30f-394877f03110
+		summarizeBy: sum
+		sourceColumn: QTD_PP_VIDA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_2_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: a86762e8-4371-48e3-98c6-eade853a59b8
+		summarizeBy: sum
+		sourceColumn: QTD_PP_2_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_3_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: beeb34b4-4352-47c8-8c30-ea703886159e
+		summarizeBy: sum
+		sourceColumn: QTD_PP_3_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_ADICIONAL_MOTO
+		dataType: int64
+		formatString: #,0
+		lineageTag: 0a2fa653-b750-4f49-af68-0e90a5e6d9ee
+		summarizeBy: sum
+		sourceColumn: QTD_PP_ADICIONAL_MOTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_2_ADICIONAL_MOTO
+		dataType: int64
+		formatString: #,0
+		lineageTag: cde6748c-e44b-47a4-b5dd-1992a2b4fd25
+		summarizeBy: sum
+		sourceColumn: QTD_PP_2_ADICIONAL_MOTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_RCF_GM_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5b19ba0d-3112-4853-9a56-c375bdc8c3f8
+		summarizeBy: sum
+		sourceColumn: QTD_RCF_GM_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_RCF_AA_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1e941db6-2483-462f-9726-38f8b56560d1
+		summarizeBy: sum
+		sourceColumn: QTD_RCF_AA_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_GM_AA_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 67772dd3-6513-4d30-b9ab-098312e734e8
+		summarizeBy: sum
+		sourceColumn: QTD_GM_AA_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_SEM_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: fec45ef1-6997-4185-8f6a-4150fe356f36
+		summarizeBy: sum
+		sourceColumn: QTD_PP_SEM_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_SEM_ADICIONAL_MOTO
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4a08d55e-fce4-4475-8adc-f4e8fb82d3eb
+		summarizeBy: sum
+		sourceColumn: QTD_PP_SEM_ADICIONAL_MOTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_ADICIONAL_PREMIO
+		dataType: double
+		lineageTag: 98816ed9-475b-44d5-9120-e1bdc4fe7c51
+		summarizeBy: sum
+		sourceColumn: VL_ADICIONAL_PREMIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VL_RCF_AA_PREMIO
+		dataType: double
+		formatString: #,0
+		lineageTag: f78a9a31-949b-4335-823f-ecacccf2d3a0
+		summarizeBy: sum
+		sourceColumn: VL_RCF_AA_PREMIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VL_GM_AA_PREMIO
+		dataType: double
+		formatString: #,0
+		lineageTag: 135f0a8d-18b2-4be1-af23-c222d8631788
+		summarizeBy: sum
+		sourceColumn: VL_GM_AA_PREMIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VL_RCF_GM_PREMIO
+		dataType: double
+		formatString: #,0
+		lineageTag: 8306d5b4-f14a-4033-9f02-d4839abd7933
+		summarizeBy: sum
+		sourceColumn: VL_RCF_GM_PREMIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VL_3_ADICIONAL_PREMIO
+		dataType: double
+		lineageTag: 056f41be-855b-4f2e-bbd3-afd89950fb36
+		summarizeBy: sum
+		sourceColumn: VL_3_ADICIONAL_PREMIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VL_ADICIONAL_PREMIO_MOTO
+		dataType: double
+		lineageTag: 90d0acbf-0aa9-417b-814c-7a0df0ded597
+		summarizeBy: sum
+		sourceColumn: VL_ADICIONAL_PREMIO_MOTO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VL_RCF_MA_PREMIO_MOTO
+		dataType: double
+		lineageTag: 5e8e5338-8c2b-4e66-b46b-23b9550c88e7
+		summarizeBy: sum
+		sourceColumn: VL_RCF_MA_PREMIO_MOTO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VL_PP_GM_ADICIONAL
+		dataType: double
+		formatString: #,0
+		lineageTag: b806a6d8-7268-4b71-aab0-184d36b7f89b
+		summarizeBy: sum
+		sourceColumn: VL_PP_GM_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VL_PP_AA_ADICIONAL
+		dataType: double
+		formatString: #,0
+		lineageTag: eff9c092-c248-4db2-aec3-22f536cbabe1
+		summarizeBy: sum
+		sourceColumn: VL_PP_AA_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VL_PP_RCF_ADICIONAL
+		dataType: double
+		formatString: #,0
+		lineageTag: 15a1e1d4-9b76-48a3-82e5-5d4f4cfbda58
+		summarizeBy: sum
+		sourceColumn: VL_PP_RCF_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VL_PP_MA_ADICIONAL
+		dataType: double
+		lineageTag: 741b1c10-982f-4188-9274-be92bd1bc479
+		summarizeBy: sum
+		sourceColumn: VL_PP_MA_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QTD_PP_MA_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 044e833f-0ba0-4d6f-810e-1b5a9d8e0fc4
+		summarizeBy: sum
+		sourceColumn: QTD_PP_MA_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_COM_POTENCIAL_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 896a73a1-574a-4ddb-b763-6c912b2588d3
+		summarizeBy: sum
+		sourceColumn: QTD_PP_COM_POTENCIAL_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_GM_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 479ea5d8-99c2-47ae-aa5b-bfe70ad2dbd8
+		summarizeBy: sum
+		sourceColumn: QTD_PP_GM_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_AA_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 0da71f6d-dda8-4d21-92f4-e60c11b2c611
+		summarizeBy: sum
+		sourceColumn: QTD_PP_AA_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP_RCF_ADICIONAL
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3d2c4f7f-88f6-4c1a-90b5-01a066224deb
+		summarizeBy: sum
+		sourceColumn: QTD_PP_RCF_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_PP_ADICIONAL
+		dataType: double
+		formatString: #,0
+		lineageTag: f9bc002e-fc3e-4c97-ba98-edadaf8ef888
+		summarizeBy: sum
+		sourceColumn: VL_PP_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VL_PP_2_ADICIONAL
+		dataType: double
+		formatString: #,0
+		lineageTag: 24311a8a-4fe9-4859-9c11-0bcb502cd321
+		summarizeBy: sum
+		sourceColumn: VL_PP_2_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VL_PP_3_ADICIONAL
+		dataType: double
+		formatString: #,0
+		lineageTag: d4b9f90d-42a8-4276-a259-49f07fd2eade
+		summarizeBy: sum
+		sourceColumn: VL_PP_3_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VL_PP_ADICIONAL_MOTO
+		dataType: double
+		formatString: #,0
+		lineageTag: 17c71669-9844-41e9-bdf1-81a446c595f9
+		summarizeBy: sum
+		sourceColumn: VL_PP_ADICIONAL_MOTO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VL_PP_2_ADICIONAL_MOTO
+		dataType: double
+		formatString: #,0
+		lineageTag: 369a40bf-00a2-4a9a-80fd-d85e66819202
+		summarizeBy: sum
+		sourceColumn: VL_PP_2_ADICIONAL_MOTO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VL_PP_COM_POTENCIAL_ADICIONAL
+		dataType: double
+		formatString: #,0
+		lineageTag: 94ccf9bc-a649-454c-8176-9ae157dfdeaa
+		summarizeBy: sum
+		sourceColumn: VL_PP_COM_POTENCIAL_ADICIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column QTD_SEGURO_ADICIONAL_ABSOLUTO
+		dataType: int64
+		formatString: #,0
+		lineageTag: 67d71b71-c5ac-4221-835e-3d755830e85d
+		summarizeBy: sum
+		sourceColumn: QTD_SEGURO_ADICIONAL_ABSOLUTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_POTENCIAL_UNIFICADO_ADICIONAL_ABSOLUTO
+		dataType: int64
+		formatString: #,0
+		lineageTag: aaa576e8-1141-4fbf-91c1-d8cc156d0f0f
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_UNIFICADO_ADICIONAL_ABSOLUTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_idade_Veiculo
+		dataType: string
+		lineageTag: 4de3986d-11ba-4eea-97eb-01aa53b8664f
+		summarizeBy: none
+		sourceColumn: fl_idade_Veiculo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DT_PRODUCAO - Capa'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7fc9f481-1744-42dd-8ebd-ea83b2e9cbc1
+		summarizeBy: none
+		sourceColumn: DT_PRODUCAO - Capa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition vw_veiculo_producao = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_vw_veiculo_producao = Fonte{[Schema="dbo",Item="vw_veiculo_producao"]}[Data],
+				    #"Coluna Duplicada" = Table.DuplicateColumn(dbo_vw_veiculo_producao, "DT_PRODUCAO", "DT_PRODUCAO - Capa"),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna Duplicada",{{"DT_PRODUCAO - Capa", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

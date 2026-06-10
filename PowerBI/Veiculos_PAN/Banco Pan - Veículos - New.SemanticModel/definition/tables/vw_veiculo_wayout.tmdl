@@ -1,0 +1,740 @@
+table vw_veiculo_wayout
+	lineageTag: 8f9d5a35-e32b-46cc-a352-e60e8d657153
+
+	measure '% WO Cliente PP v2' =
+			
+			
+			var wayout = sum(vw_veiculo_wayout[QTD_WAYOUT_CLIENTE_PP])
+			
+			var denominador = wayout + sum(vw_veiculo_wayout[QTD_PP])
+			
+			RETURN
+			DIVIDE(
+			    wayout
+			    , denominador
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 922040bc-feed-41e8-bbe6-3f04a0a1f617
+
+	measure '% WO Cliente AA v2' =
+			
+			
+			var wayout = sum(vw_veiculo_wayout[QTD_WAYOUT_CLIENTE_AA])
+			
+			var denominador = wayout + sum(vw_veiculo_wayout[QTD_AA])
+			
+			RETURN
+			DIVIDE(
+			    wayout
+			    , denominador
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 1f689fa0-ef42-4954-8f30-808f815185c5
+
+	measure '% WO Cliente GM v2' =
+			
+			
+			var wayout = sum(vw_veiculo_wayout[QTD_WAYOUT_CLIENTE_GM])
+			
+			var denominador = wayout + sum(vw_veiculo_wayout[QTD_GM])
+			
+			RETURN
+			DIVIDE(
+			    wayout
+			    , denominador
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 34abc519-8e6a-4493-84de-21bc54a81ab4
+
+	measure '% WO Cliente RCF v2' =
+			
+			
+			var wayout = sum(vw_veiculo_wayout[QTD_WAYOUT_CLIENTE_RCF])
+			
+			var denominador = wayout + sum(vw_veiculo_wayout[QTD_RCF])
+			
+			RETURN
+			DIVIDE(
+			    wayout
+			    , denominador
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 05b996b0-ed5f-47d6-bfc9-3ebc18c55fa0
+
+	measure '% WO Cliente MA v2' =
+			
+			
+			var wayout = sum(vw_veiculo_wayout[QTD_WAYOUT_CLIENTE_MA])
+			
+			var denominador = wayout + sum(vw_veiculo_wayout[QTD_MA])
+			
+			RETURN
+			DIVIDE(
+			    wayout
+			    , denominador
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: bd2084a1-0414-49dc-9b43-7740e8fcb335
+
+	measure '% WO Lojista PP v2' =
+			
+			
+			var wayout = sum(vw_veiculo_wayout[QTD_WAYOUT_LOJISTA_PP])
+			
+			var denominador = sum(vw_veiculo_wayout[QTD_POTENCIAL_PP])
+			
+			RETURN
+			DIVIDE(
+			    wayout
+			    , denominador
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b272cd5f-9862-497f-90aa-3acdfe8b5466
+
+	measure '% Lojas WO Cliente PP v2' =
+			
+			DIVIDE(
+			    [qtd_loja_distinta_cliente]
+			    , [qtd_loja_distinta]
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 03679402-2377-410d-b690-45725be519f9
+
+	measure '% Lojas WO Lojista PP v2' =
+			
+			DIVIDE(
+			    [qtd_loja_distinta_lojista]
+			    , [qtd_loja_distinta]
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 79df47b9-40cd-4667-ad29-2bfa058c1731
+
+	measure '% Aprov. Pre AA v2' = ```
+			
+			
+			var soma = sum(vw_veiculo_wayout[QTD_WAYOUT_CLIENTE_AA]) 
+			
+			var seguro = sum(vw_veiculo_wayout[QTD_AA])
+			
+			var potencial = sum(vw_veiculo_wayout[QTD_POTENCIAL_AA])
+			
+			RETURN
+			DIVIDE(
+			    soma + seguro
+			    , potencial
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 19c712f2-cc2a-405b-b182-6b881b97451b
+
+	measure '% Aprov. Pre GM v2' = ```
+			
+			
+			var soma = sum(vw_veiculo_wayout[QTD_WAYOUT_CLIENTE_GM]) 
+			
+			var seguro = sum(vw_veiculo_wayout[QTD_GM])
+			
+			var potencial = sum(vw_veiculo_wayout[QTD_POTENCIAL_GM])
+			
+			RETURN
+			DIVIDE(
+			    soma + seguro
+			    , potencial
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: a756713d-018c-4a9f-9bce-74eaa2ce6c30
+
+	measure '% Aprov. Pre MA v2' = ```
+			
+			
+			var soma = sum(vw_veiculo_wayout[QTD_WAYOUT_CLIENTE_MA]) 
+			
+			var seguro = sum(vw_veiculo_wayout[QTD_MA])
+			
+			var potencial = sum(vw_veiculo_wayout[QTD_POTENCIAL_MA])
+			
+			RETURN
+			DIVIDE(
+			    soma + seguro
+			    , potencial
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0098ba2f-2dd3-4f0d-b1de-7a5e51775237
+
+	measure '% Aprov. Pre PP v2' = ```
+			
+			
+			var soma = sum(vw_veiculo_wayout[QTD_WAYOUT_CLIENTE_PP]) 
+			
+			var seguro = sum(vw_veiculo_wayout[QTD_PP])
+			
+			var potencial = sum(vw_veiculo_wayout[QTD_POTENCIAL_PP])
+			
+			RETURN
+			DIVIDE(
+			    soma + seguro
+			    , potencial
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2eea4328-ae01-42f2-a98c-58fc7040f591
+
+	measure '% Aprov. Pre RCF v2' = ```
+			
+			
+			var soma = sum(vw_veiculo_wayout[QTD_WAYOUT_CLIENTE_RCF]) 
+			
+			var seguro = sum(vw_veiculo_wayout[QTD_RCF])
+			
+			var potencial = sum(vw_veiculo_wayout[QTD_POTENCIAL_RCF])
+			
+			RETURN
+			DIVIDE(
+			    soma + seguro
+			    , potencial
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 88c14117-1c8b-41fe-b0cd-0787a3fd35ab
+
+	measure '% Aprov. Pós AA' =
+			
+			
+			var seguro = sum(vw_veiculo_wayout[QTD_AA])
+			
+			var potencial = sum(vw_veiculo_wayout[QTD_POTENCIAL_AA])
+			
+			return
+			DIVIDE(
+			    seguro
+			    , potencial
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 40efa0f8-817a-4f7a-949f-555ee4257225
+
+	measure '% Aprov. Pós GM' =
+			
+			
+			var seguro = sum(vw_veiculo_wayout[QTD_GM])
+			
+			var potencial = sum(vw_veiculo_wayout[QTD_POTENCIAL_GM])
+			
+			return
+			DIVIDE(
+			    seguro
+			    , potencial
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 566210cf-284a-482a-81c4-21598f36ff69
+
+	measure '% Aprov. Pós MA' =
+			
+			
+			var seguro = sum(vw_veiculo_wayout[QTD_MA])
+			
+			var potencial = sum(vw_veiculo_wayout[QTD_POTENCIAL_MA])
+			
+			return
+			DIVIDE(
+			    seguro
+			    , potencial
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0714a868-bcbd-4b66-afcf-5ce35948d97d
+
+	measure '% Aprov. Pós PP' =
+			
+			
+			var seguro = sum(vw_veiculo_wayout[QTD_PP])
+			
+			var potencial = sum(vw_veiculo_wayout[QTD_POTENCIAL_PP])
+			
+			return
+			DIVIDE(
+			    seguro
+			    , potencial
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 550f80ab-493f-4428-a5c4-5579a9aa1562
+
+	measure '% Aprov. Pós RCF' =
+			
+			
+			var seguro = sum(vw_veiculo_wayout[QTD_RCF])
+			
+			var potencial = sum(vw_veiculo_wayout[QTD_POTENCIAL_RCF])
+			
+			return
+			DIVIDE(
+			    seguro
+			    , potencial
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: ad305d14-60c4-4a27-903c-ff0440b18952
+
+	measure qtd_loja_distinta = DISTINCTCOUNTNOBLANK(vw_veiculo_wayout[COD_LOJA])
+		formatString: #,0
+		lineageTag: b1d950d3-4476-47a7-b51a-6a1583b07fcd
+
+	measure qtd_loja_distinta_lojista =
+			
+			CALCULATE(
+			    [qtd_loja_distinta]
+			    , vw_veiculo_wayout[QTD_WAYOUT_LOJISTA_PP] >= 1
+			)
+		formatString: #,0
+		lineageTag: 22b25c50-789a-42f6-99fa-368aaaeba39a
+
+	measure qtd_loja_distinta_cliente =
+			
+			CALCULATE(
+			    [qtd_loja_distinta]
+			    , vw_veiculo_wayout[QTD_WAYOUT_CLIENTE_PP] >= 1
+			)
+		formatString: #,0
+		lineageTag: 3c2ceaab-5690-476a-969b-29e6324108df
+
+	measure '% Reinclusão PP' =
+			
+			
+			var reinclusao = sum(vw_veiculo_wayout[QTD_REINCLUSAO_PP])
+			
+			var wayout = sum(vw_veiculo_wayout[QTD_WAYOUT_PP])
+			
+			return
+			DIVIDE(
+			    reinclusao
+			    , wayout
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 8b1ac800-11ae-44d2-a40d-82e7695db44d
+
+	measure 'Qtd Bruta WO Cliente' =
+			
+			sum(vw_veiculo_wayout[QTD_WAYOUT_CLIENTE_PP])
+			+
+			sum(vw_veiculo_wayout[QTD_REINCLUSAO_PP])
+		formatString: #,0
+		lineageTag: 991367e8-5493-4e21-86a3-103b83007b4e
+
+	measure '% WO Cliente Bruto PP v2' =
+			
+			
+			var wayout = sum(vw_veiculo_wayout[QTD_WAYOUT_PP])
+			
+			var denominador = wayout + sum(vw_veiculo_wayout[QTD_PP])
+			
+			RETURN
+			DIVIDE(
+			    wayout
+			    , denominador
+			    , BLANK()
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e72f71db-dfa1-4963-8157-e870a9a7939b
+
+	measure 'Qtd WO RCF Motos' =
+			
+			var x =
+			CALCULATE(
+			    sum(vw_veiculo_analitico_wayout[QTD_WAYOUT_CLIENTE_RCF])
+			    , vw_veiculo_wayout[CONSOLIDADOR] = "MOTOS"
+			)
+			
+			RETURN
+			if(x > 0, x , 0 )
+		formatString: #,0
+		lineageTag: f28a78d2-07aa-4923-9ee5-089b549ca9c3
+
+	measure 'Qtd WO RCF Leves' =
+			
+			CALCULATE(
+			    sum(vw_veiculo_analitico_wayout[QTD_WAYOUT_CLIENTE_RCF])
+			    , vw_veiculo_wayout[CONSOLIDADOR] = "LEVES"
+			)
+		formatString: #,0
+		lineageTag: c3ed467c-436c-49d1-9d23-1dcb827e10d1
+
+	column DS_REGIONAL
+		dataType: string
+		lineageTag: 28b053c2-ab80-4404-863b-66745a40668d
+		summarizeBy: none
+		sourceColumn: DS_REGIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_FILIAL
+		dataType: string
+		lineageTag: 921a1360-5742-4e6a-9e5f-ea8680999ac6
+		summarizeBy: none
+		sourceColumn: DS_FILIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_OFFICERS
+		dataType: string
+		lineageTag: 6f01de28-4805-4ac0-b11e-d331f16ca515
+		summarizeBy: none
+		sourceColumn: DS_OFFICERS
+
+		annotation SummarizationSetBy = Automatic
+
+	column COD_LOJA
+		dataType: int64
+		formatString: 0
+		lineageTag: aee4f253-04b4-4ad7-b258-4173588742b8
+		summarizeBy: sum
+		sourceColumn: COD_LOJA
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_LOJA
+		dataType: string
+		lineageTag: 963ad697-4094-4a92-8526-3cf3f777404f
+		summarizeBy: none
+		sourceColumn: DS_LOJA
+
+		annotation SummarizationSetBy = Automatic
+
+	column DT_PRODUCAO
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c65544a8-6f56-4168-bcd8-259f17239b31
+		summarizeBy: none
+		sourceColumn: DT_PRODUCAO
+
+		variation Variation
+			isDefault
+			relationship: 5f022f79-5017-4fd6-b948-5c2dac6c3d4e
+			defaultHierarchy: LocalDateTable_5b11647d-053a-4081-8b7f-1c00b0703cbe.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CONSOLIDADOR
+		dataType: string
+		lineageTag: 2084a494-6ecd-4260-b17c-5df8ab8775ea
+		summarizeBy: none
+		sourceColumn: CONSOLIDADOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_LOJAS
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2dd582d5-a120-44bd-a6b7-61a45ad15cb7
+		summarizeBy: sum
+		sourceColumn: QTD_LOJAS
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_LOJAS_WO_CLIENTE
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3864ae8a-2d17-4ce0-a075-6d2c2f4d737b
+		summarizeBy: sum
+		sourceColumn: QTD_LOJAS_WO_CLIENTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_LOJAS_WO_LOJISTA
+		dataType: int64
+		formatString: #,0
+		lineageTag: b5c0313b-ed9a-46cf-92d2-a18070fe8cb9
+		summarizeBy: sum
+		sourceColumn: QTD_LOJAS_WO_LOJISTA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_FINANCIAMENTOS
+		dataType: int64
+		formatString: #,0
+		lineageTag: c92740ab-813d-43da-8278-99c13341676b
+		summarizeBy: sum
+		sourceColumn: QTD_FINANCIAMENTOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_POTENCIAL_PP
+		dataType: int64
+		formatString: #,0
+		lineageTag: 8a7e1bc9-08d1-4292-9f2a-af587c4b15a3
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_POTENCIAL_MA
+		dataType: int64
+		formatString: #,0
+		lineageTag: 86857575-3897-46bb-889e-58a63fc76656
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_MA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_POTENCIAL_GM
+		dataType: int64
+		formatString: #,0
+		lineageTag: 7ca501b3-51c8-4c83-974b-93ecb0dad4fd
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_GM
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_POTENCIAL_RCF
+		dataType: int64
+		formatString: #,0
+		lineageTag: a6084648-c903-488d-8491-1b940ae712c5
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_RCF
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_POTENCIAL_AA
+		dataType: int64
+		formatString: #,0
+		lineageTag: f44f14d7-74c1-4559-a749-2111b9daea68
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_AA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_PP
+		dataType: int64
+		formatString: #,0
+		lineageTag: deb099a7-12ae-4f66-8ab7-26ebadbda900
+		summarizeBy: sum
+		sourceColumn: QTD_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_MA
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1c1a94f9-717c-4285-9fe6-bf7446bf84fc
+		summarizeBy: sum
+		sourceColumn: QTD_MA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_GM
+		dataType: int64
+		formatString: #,0
+		lineageTag: 77c68861-5f3c-4774-88ac-a40424412c48
+		summarizeBy: sum
+		sourceColumn: QTD_GM
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_RCF
+		dataType: int64
+		formatString: #,0
+		lineageTag: 30e7b699-4d22-4441-a6d1-445cc689ac4f
+		summarizeBy: sum
+		sourceColumn: QTD_RCF
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_AA
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3ca26fce-1ce7-4c61-8bb7-4c4eb658d30d
+		summarizeBy: sum
+		sourceColumn: QTD_AA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_CLIENTE_PP
+		dataType: int64
+		formatString: #,0
+		lineageTag: 197c663d-502b-455a-bb27-cbd3b8a9a4a6
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_CLIENTE_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_CLIENTE_MA
+		dataType: int64
+		formatString: #,0
+		lineageTag: 49e46dc9-dce1-4776-b183-07775667a722
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_CLIENTE_MA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_CLIENTE_GM
+		dataType: int64
+		formatString: #,0
+		lineageTag: 29d2432a-07ac-46da-aed6-923195f69051
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_CLIENTE_GM
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_CLIENTE_RCF
+		dataType: int64
+		formatString: #,0
+		lineageTag: 160989ad-8464-4167-b1ee-e6aa7667ab3b
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_CLIENTE_RCF
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_CLIENTE_AA
+		dataType: int64
+		formatString: #,0
+		lineageTag: b1d0c64e-8b09-4f29-8842-5da2bf731d78
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_CLIENTE_AA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_LOJISTA_PP
+		dataType: int64
+		formatString: #,0
+		lineageTag: 61ca4b47-b3a8-4842-b1d1-8cc4cae0b364
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_LOJISTA_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_LOJISTA_MA
+		dataType: int64
+		formatString: #,0
+		lineageTag: 57a2851e-fedd-4d7c-9ffa-4d4fb772c666
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_LOJISTA_MA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_LOJISTA_GM
+		dataType: int64
+		formatString: #,0
+		lineageTag: 7da9d812-4e35-440e-8158-fdc8e15bef49
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_LOJISTA_GM
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_LOJISTA_RCF
+		dataType: int64
+		formatString: #,0
+		lineageTag: d78b4ceb-c32b-4262-8ca1-0cacc017efb1
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_LOJISTA_RCF
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_LOJISTA_AA
+		dataType: int64
+		formatString: #,0
+		lineageTag: 9975417a-7c86-43a4-83f2-b1e8b10b300e
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_LOJISTA_AA
+
+		annotation SummarizationSetBy = Automatic
+
+	column combo_loja
+		dataType: string
+		lineageTag: c89c5484-62e4-4246-b712-f7945be6606b
+		summarizeBy: none
+		sourceColumn: combo_loja
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_REINCLUSAO_PP
+		dataType: int64
+		formatString: #,0
+		lineageTag: 40697a3d-b5c3-456a-8ffa-8258c5d2bf69
+		summarizeBy: sum
+		sourceColumn: QTD_REINCLUSAO_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_WAYOUT_PP
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b9451a9-661f-4c0c-8026-977871ec89a0
+		summarizeBy: sum
+		sourceColumn: QTD_WAYOUT_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Classificacao
+		dataType: string
+		lineageTag: 5d204387-80dc-4f35-a5c6-bea1f8fc171a
+		summarizeBy: none
+		sourceColumn: ds_Classificacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Tipo_Adc
+		dataType: string
+		lineageTag: e4c8edef-bce7-4d19-9304-0c9129f5d58c
+		summarizeBy: none
+		sourceColumn: ds_Tipo_Adc
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_idade_contratacao
+		dataType: string
+		lineageTag: 7815400e-40e7-45ca-9c74-fc15f994d827
+		summarizeBy: none
+		sourceColumn: fl_idade_contratacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_idade_Veiculo
+		dataType: string
+		lineageTag: 39b6c82f-cff7-45f3-ab96-19719a54aa92
+		summarizeBy: none
+		sourceColumn: fl_idade_Veiculo
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_GRP
+		dataType: string
+		lineageTag: 65b768bc-2835-49ab-ba20-d91864af5b34
+		summarizeBy: none
+		sourceColumn: DS_GRP
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vw_veiculo_wayout = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_vw_veiculo_wayout = Fonte{[Schema="dbo",Item="vw_veiculo_wayout"]}[Data],
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(dbo_vw_veiculo_wayout, "combo_loja", each Text.Combine({Text.From([COD_LOJA], "pt-BR"), [DS_LOJA]}, " - "), type text),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna Mesclada Inserida",{{"DT_PRODUCAO", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,130 @@
+relationship 90d4f475-9626-4fbd-ab10-8184930c272a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'REL_Veiculo_Producao (2)'.DATA
+	toColumn: LocalDateTable_e87da961-4cb0-42c0-9730-d6bf3fdaf9a3.Date
+
+relationship 844e8466-f883-4e96-9ca3-606fe5eaafc6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'REL_Veiculo_Producao (2)'.DATA_PRIM_PARC
+	toColumn: LocalDateTable_3163219a-6743-4d0f-829b-46f2a853f4e1.Date
+
+relationship 434b1664-214d-4c7d-be01-027013a890a5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'REL_Veiculo_Producao (2)'.DATA_NASCIMENTO
+	toColumn: LocalDateTable_3e62ed08-c343-4ebb-bb8c-94d05fd3725f.Date
+
+relationship 76849d07-5bcf-4691-8445-d31a8f7d9ad5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'REL_Veiculo_Producao (2)'.DTHORA_INCLUSAO
+	toColumn: LocalDateTable_990bd773-0677-4b2d-9623-b0f3d5db9127.Date
+
+relationship b1cf6cd6-9586-4e01-b7c1-b957b134d9e3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'REL_Veiculo_Producao (2)'.DATA_PROPOSTA
+	toColumn: LocalDateTable_2a266d64-4f75-4ed4-be78-5af4d0be0fc9.Date
+
+relationship 5381786e-8632-440d-a6c3-b626a4094902
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Veiculo_Emissao_Cancelamento.dtProducao
+	toColumn: LocalDateTable_fd8c9e44-16c8-4828-b9b8-8b5acdc519ef.Date
+
+relationship 1d1b9bf5-3409-45a4-8028-816fd389a473
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Veiculo_Emissao_Cancelamento.dtEmissao
+	toColumn: LocalDateTable_af6da23e-8fde-4bc0-9d63-4b6f16f3a690.Date
+
+relationship 6b600aad-8edd-463e-99de-2b2a53720292
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Veiculo_Emissao_Cancelamento.dtEmissaoEndossoApolice
+	toColumn: LocalDateTable_f544d12d-7763-4d15-be16-27063b97ea3b.Date
+
+relationship adb93d8c-c0b4-49b9-a10d-893e30580fee
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'REL_Veiculo_Producao (2)'.DT_CONTRATO_ORIGINAL
+	toColumn: LocalDateTable_bba9f5ce-fbbc-41b3-807d-da3ab35a5311.Date
+
+relationship d0b5b845-bfcd-429f-8d8c-fc81cbdf2fc1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_veiculo_producao.DT_PRODUCAO
+	toColumn: LocalDateTable_1f8a4c13-5c06-4a60-a928-f8ccb11c26ec.Date
+
+relationship 5f022f79-5017-4fd6-b948-5c2dac6c3d4e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_veiculo_wayout.DT_PRODUCAO
+	toColumn: LocalDateTable_5b11647d-053a-4081-8b7f-1c00b0703cbe.Date
+
+relationship e4d5c7de-6e52-4e4a-8780-bbb3cf781653
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Veiculo_Emissao_Cancelamento.dtCancelamento
+	toColumn: LocalDateTable_8043ecef-445c-4afa-9ac1-396764dcb09e.Date
+
+relationship d50ac8df-ac86-483c-b7ac-e6ccf92fc749
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: vw_veiculo_wayout.DS_FILIAL
+	toColumn: WAYOUT_FASE_DP.FILIAL
+
+relationship 52240540-7d57-4132-96c4-4c6059927eb8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_veiculo_analitico_wayout.DT_PRODUCAO
+	toColumn: LocalDateTable_2dbd3c0a-a8c5-4c58-9458-bb0b4b4f1813.Date
+
+relationship 7cf2c45a-d9a2-4cd8-b88c-12cc231cca7d
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: vw_veiculo_analitico_wayout.DS_FILIAL
+	toColumn: WAYOUT_FASE_DP.FILIAL
+
+relationship 1e778473-afd5-445a-8818-37f6cfd45c89
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_veiculo_tipo_produto.DT_PRODUCAO
+	toColumn: LocalDateTable_0b8c3c99-2027-4e6a-bb9d-e526eb4b55e7.Date
+
+relationship 8415e213-0eb8-4317-a0c1-938dc49cc105
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_veiculo_tipo_produto.DT_COMPETENCIA
+	toColumn: LocalDateTable_19b9f89c-0a96-4af2-95fd-ad62da80a858.Date
+
+relationship 14ef86ae-daf8-4b68-a29d-9966c24678c3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_veiculo_projecao.Ano_Mes
+	toColumn: LocalDateTable_8db2c110-909b-474c-846e-af0f13bc05d3.Date
+
+relationship 8a631ce5-cffc-4d11-a473-48759b58fb8b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_veiculo_projecao.dt_Ultima_Producao
+	toColumn: LocalDateTable_07d2d889-efa0-4b83-a284-f565d6f104f5.Date
+
+relationship f3013992-b9d0-4b7e-8a02-570299c2d8e0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_VEICULO_DESAFIO_COMERCIAL.dt_Competencia
+	toColumn: LocalDateTable_a7d9dfb8-7578-4dc2-865e-d94e01520286.Date
+
+relationship df7a6510-08b1-46b4-adbd-98df4676c5ac
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_VEICULO_DESAFIO_COMERCIAL.dt_Atualizacao
+	toColumn: LocalDateTable_be4da371-a9b9-4efe-99a5-0acea1aacf56.Date
+
+relationship 8df45335-ba00-46f6-a178-3b8ecda07279
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Capa Data'.'DT_PRODUCAO - Capa'
+	toColumn: LocalDateTable_705412ec-0f3c-49e2-a3c8-378a6b96e10b.Date
+
+relationship d30ff692-2bf3-2964-9403-ba03c1e6ffe5
+	fromColumn: vw_veiculo_projecao.dt_Producao
+	toColumn: 'Capa Data'.'DT_PRODUCAO - Capa'
+
+relationship 97db5c92-ca48-ead0-623b-0aaf99350a8d
+	fromColumn: vw_veiculo_producao.'DT_PRODUCAO - Capa'
+	toColumn: 'Capa Data'.'DT_PRODUCAO - Capa'
+
+relationship f2336204-9ad1-262e-0912-4ae50ef777c0
+	crossFilteringBehavior: bothDirections
+	fromColumn: vw_veiculo_producao.DS_FILIAL
+	toColumn: REL_Veiculo_Regional_Piloto.ds_Filial
+
+relationship ffe1d1d0-183b-81b0-5693-53bb02168de0
+	crossFilteringBehavior: bothDirections
+	fromColumn: vw_veiculo_wayout.DS_FILIAL
+	toColumn: REL_Veiculo_Regional_Piloto.ds_Filial
+

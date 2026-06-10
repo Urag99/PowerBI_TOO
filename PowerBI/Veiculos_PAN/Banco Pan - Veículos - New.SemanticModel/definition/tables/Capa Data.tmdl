@@ -1,0 +1,33 @@
+table 'Capa Data'
+	lineageTag: 9228914b-895f-40b9-bc5e-f9bc6bb389a5
+
+	column 'DT_PRODUCAO - Capa'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4d7d42d5-912e-4e09-a07d-834736f6bb91
+		summarizeBy: none
+		sourceColumn: DT_PRODUCAO - Capa
+
+		variation Variation
+			isDefault
+			relationship: 8df45335-ba00-46f6-a178-3b8ecda07279
+			defaultHierarchy: LocalDateTable_705412ec-0f3c-49e2-a3c8-378a6b96e10b.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Capa Data' = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.NestedJoin(vw_veiculo_producao, {"DT_PRODUCAO - Capa"}, vw_veiculo_projecao, {"dt_Producao"}, "vw_veiculo_projecao", JoinKind.LeftOuter),
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"DT_PRODUCAO - Capa"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Outras Colunas Removidas")
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

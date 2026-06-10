@@ -1,0 +1,173 @@
+table 'Medidas Unificado'
+	lineageTag: 821bd088-3c63-4b07-b04f-fdd3fa9412e3
+
+	measure 'Leves Premio Rcf' =
+			
+			CALCULATE(
+			    sum(vw_veiculo_producao[VL_RCF_PREMIO])
+			    , vw_veiculo_producao[DS_CONSOLIDADOR] = "LEVES"
+			)
+		formatString: #,0
+		lineageTag: db56cfe0-00cb-4bba-99cd-bca9d0a5d761
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Motos Premio Rcf' =
+			
+			CALCULATE(
+			    sum(vw_veiculo_producao[VL_RCF_PREMIO])
+			    , vw_veiculo_producao[DS_CONSOLIDADOR] = "MOTOS"
+			)
+		formatString: #,0
+		lineageTag: b5f9a063-4563-4762-89b3-0fd04426fde6
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Leves RCF QTD Seguros' =
+			
+			CALCULATE(
+			    sum(vw_veiculo_producao[QTD_RCF])
+			    , vw_veiculo_producao[DS_CONSOLIDADOR] = "LEVES"
+			)
+		formatString: #,0
+		lineageTag: cab579c7-f967-4d9a-bdb2-9abb7ef99438
+
+	measure 'Motos RCF QTD Seguros' =
+			
+			CALCULATE(
+			    sum(vw_veiculo_producao[QTD_RCF])
+			    , vw_veiculo_producao[DS_CONSOLIDADOR] = "MOTOS"
+			)
+		formatString: 0
+		lineageTag: fadeb8db-79bc-45c9-ae53-64bc3010f6e4
+
+	measure 'Leves RCF % Aproveitamento' =
+			
+			DIVIDE(
+			    [Leves RCF QTD Seguros]
+			    , [Leves RCF QTD Potencial]
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 471dd67b-9e08-4947-835f-94d20a117aa0
+
+	measure 'Leves RCF QTD Potencial' =
+			
+			CALCULATE(
+			    sum(vw_veiculo_producao[QTD_RCF_POTENCIAL_UNIFICADO])
+			    , vw_veiculo_producao[DS_CONSOLIDADOR] = "LEVES"
+			)
+		formatString: #,0
+		lineageTag: 8e9556ba-f96d-48d3-83c2-f22240b4e040
+
+	measure 'Motos RCF QTD Potencial' =
+			
+			CALCULATE(
+			    sum(vw_veiculo_producao[QTD_RCF_POTENCIAL_UNIFICADO])
+			    , vw_veiculo_producao[DS_CONSOLIDADOR] = "MOTOS"
+			)
+		formatString: #,0
+		lineageTag: 2fdc18ea-8bd7-4456-bbc6-168944f790d6
+
+	measure 'Motos RCF % Aproveitamento' =
+			
+			DIVIDE(
+			    [Motos RCF QTD Seguros]
+			    , [Motos RCF QTD Potencial]
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: cf4811a1-3496-4e34-8199-c38bbee5149f
+
+	measure 'Leves RCF % Potencial' =
+			
+			DIVIDE(
+			    [Leves RCF QTD Potencial]
+			    , sum(vw_veiculo_producao[QTD_FINANCIADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: a23b9a32-d157-4f9c-a9b3-707c6459feca
+
+	measure 'Motos RCF % Potencial' =
+			
+			DIVIDE(
+			    [Motos RCF QTD Potencial]
+			    , sum(vw_veiculo_producao[QTD_FINANCIADO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: cc932c4c-df29-4227-a91c-adc2a2059816
+
+	measure 'Leves RCF Ticket Medio' =
+			
+			DIVIDE(
+			    [Leves Premio Rcf]
+			    , [Leves RCF QTD Seguros]
+			    , BLANK()
+			)
+		formatString: #,0
+		lineageTag: f81cc355-dbe6-4b15-96eb-5def9190a0d3
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Motos RCF Ticket Medio' =
+			
+			DIVIDE(
+			    [Motos Premio Rcf]
+			    , [Motos RCF QTD Seguros]
+			    , BLANK()
+			)
+		formatString: #,0
+		lineageTag: 37d266c8-644c-4c9e-809a-a875b89dcd04
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'VL Leves RCF Potencial' =
+			
+			CALCULATE(
+			    sum(vw_veiculo_producao[VL_RCF_POTENCIAL])
+			    , vw_veiculo_producao[DS_CONSOLIDADOR] = "LEVES"
+			)
+		formatString: #,0
+		lineageTag: be75b28b-39e3-4e68-9c5d-55caaae9bf5e
+
+	measure 'VL % Aprov. RCF Premio Leves' =
+			
+			DIVIDE(
+			    [Leves Premio Rcf]
+			    , [VL Leves RCF Potencial]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 35f62fb5-b203-413a-bf8c-449737577151
+
+	measure 'VL Motos RCF Potencial' =
+			
+			CALCULATE(
+			    sum(vw_veiculo_producao[VL_RCF_POTENCIAL])
+			    , vw_veiculo_producao[DS_CONSOLIDADOR] = "MOTOS"
+			)
+		formatString: #,0
+		lineageTag: 305fafe4-f0b5-406e-b749-f53a8eee9ee0
+
+	measure 'VL % Aprov. RCF Premio Motos' =
+			
+			DIVIDE(
+			    [Motos Premio Rcf]
+			    , [VL Motos RCF Potencial]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b72fbc27-5ed5-4505-9c16-878e8acc24a0
+
+	partition 'Medidas Unificado' = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

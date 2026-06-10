@@ -1,0 +1,216 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 504.39320048481756,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1704.7661000293876,
+            "y": 25
+          },
+          "nodeIndex": "REL_Veiculo_Emissao_Cancelamento",
+          "nodeLineageTag": "aef093cf-0b58-4449-bd67-355e97738ad6",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1988.7661000293876,
+            "y": 25
+          },
+          "nodeIndex": "REL_Veiculo_Producao (2)",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 618.38305001469371,
+            "y": -39.992555389800032
+          },
+          "nodeIndex": "vw_veiculo_producao",
+          "nodeLineageTag": "b22c783b-6e0b-464d-bc48-954fb1447f9c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 1470.7661000293874,
+            "y": -39.9925553898002
+          },
+          "nodeIndex": "vw_veiculo_wayout",
+          "nodeLineageTag": "8f9d5a35-e32b-46cc-a352-e60e8d657153",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 1186.5846112078789,
+            "y": 78.852142570045828
+          },
+          "nodeIndex": "WAYOUT_FASE_DP",
+          "nodeLineageTag": "1bbb36be-0a94-4c0b-9042-77d383c4d5d2",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 902.38305001469382,
+            "y": -10.007444610199798
+          },
+          "nodeIndex": "vw_veiculo_analitico_wayout",
+          "nodeLineageTag": "bb981004-f834-45b7-924c-d37c01d8d1ec",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 2272.7661000293874,
+            "y": 25
+          },
+          "nodeIndex": "vw_veiculo_tipo_produto",
+          "nodeLineageTag": "87aa5aad-463b-4de9-adc5-714a01ff87cc",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 2556.7661000293874,
+            "y": 25
+          },
+          "nodeIndex": "Medidas_Premio",
+          "nodeLineageTag": "102af7a3-24cd-4199-910e-a12c8d93b984",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 2840.7661000293874,
+            "y": 25
+          },
+          "nodeIndex": "Medidas Cross Sell",
+          "nodeLineageTag": "32e337cf-d7b1-4f86-b771-51f6aab9eb78",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": -10.007444610199968
+          },
+          "nodeIndex": "vw_veiculo_projecao",
+          "nodeLineageTag": "3b3b8037-a5f4-4d3d-a45a-decac327f89b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3124.7661000293874,
+            "y": 25
+          },
+          "nodeIndex": "REL_VEICULO_DESAFIO_COMERCIAL",
+          "nodeLineageTag": "0962c785-5c64-43a3-97ea-58d9bca9bfa2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3408.7661000293874,
+            "y": 51
+          },
+          "nodeIndex": "Medidas_Orcado",
+          "nodeLineageTag": "a8b72210-00a9-4969-ad10-346d37953286",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3692.7661000293874,
+            "y": 25
+          },
+          "nodeIndex": "Medidas Unificado",
+          "nodeLineageTag": "821bd088-3c63-4b07-b04f-fdd3fa9412e3",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334.20156119318523,
+            "y": 90.852142570046169
+          },
+          "nodeIndex": "Capa Data",
+          "nodeLineageTag": "9228914b-895f-40b9-bc5e-f9bc6bb389a5",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 598.60323627813045,
+            "y": 457.18964407637003
+          },
+          "nodeIndex": "REL_Veiculo_Regional_Piloto",
+          "nodeLineageTag": "22f809e3-da81-4a55-8b3d-329197a4d077",
+          "size": {
+            "height": 219.76140167659818,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 47.185410067232638,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

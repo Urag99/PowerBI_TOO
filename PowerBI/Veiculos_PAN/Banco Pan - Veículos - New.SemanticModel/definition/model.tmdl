@@ -1,0 +1,54 @@
+model Model
+	culture: pt-PT
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["REL_Veiculo_Producao (2)","REL_Veiculo_Emissao_Cancelamento","vw_veiculo_producao","vw_veiculo_wayout","WAYOUT_FASE_DP","vw_veiculo_analitico_wayout","vw_veiculo_tipo_produto","Medidas_Premio","Medidas Cross Sell","vw_veiculo_projecao","REL_VEICULO_DESAFIO_COMERCIAL","Medidas_Orcado","Medidas Unificado","Capa Data","REL_Veiculo_Regional_Piloto"]
+
+annotation PBI_ProTooling = ["TMDLView_Desktop","DevMode"]
+
+ref table DateTableTemplate_e508a3e3-1b39-45ed-bfb2-a8b63e713314
+ref table 'REL_Veiculo_Producao (2)'
+ref table REL_Veiculo_Emissao_Cancelamento
+ref table LocalDateTable_e87da961-4cb0-42c0-9730-d6bf3fdaf9a3
+ref table LocalDateTable_3163219a-6743-4d0f-829b-46f2a853f4e1
+ref table LocalDateTable_3e62ed08-c343-4ebb-bb8c-94d05fd3725f
+ref table LocalDateTable_990bd773-0677-4b2d-9623-b0f3d5db9127
+ref table LocalDateTable_2a266d64-4f75-4ed4-be78-5af4d0be0fc9
+ref table LocalDateTable_fd8c9e44-16c8-4828-b9b8-8b5acdc519ef
+ref table LocalDateTable_af6da23e-8fde-4bc0-9d63-4b6f16f3a690
+ref table LocalDateTable_f544d12d-7763-4d15-be16-27063b97ea3b
+ref table LocalDateTable_bba9f5ce-fbbc-41b3-807d-da3ab35a5311
+ref table vw_veiculo_producao
+ref table LocalDateTable_1f8a4c13-5c06-4a60-a928-f8ccb11c26ec
+ref table vw_veiculo_wayout
+ref table LocalDateTable_5b11647d-053a-4081-8b7f-1c00b0703cbe
+ref table LocalDateTable_8043ecef-445c-4afa-9ac1-396764dcb09e
+ref table WAYOUT_FASE_DP
+ref table vw_veiculo_analitico_wayout
+ref table LocalDateTable_2dbd3c0a-a8c5-4c58-9458-bb0b4b4f1813
+ref table vw_veiculo_tipo_produto
+ref table LocalDateTable_0b8c3c99-2027-4e6a-bb9d-e526eb4b55e7
+ref table LocalDateTable_19b9f89c-0a96-4af2-95fd-ad62da80a858
+ref table Medidas_Premio
+ref table 'Medidas Cross Sell'
+ref table vw_veiculo_projecao
+ref table LocalDateTable_8db2c110-909b-474c-846e-af0f13bc05d3
+ref table LocalDateTable_07d2d889-efa0-4b83-a284-f565d6f104f5
+ref table REL_VEICULO_DESAFIO_COMERCIAL
+ref table LocalDateTable_a7d9dfb8-7578-4dc2-865e-d94e01520286
+ref table LocalDateTable_be4da371-a9b9-4efe-99a5-0acea1aacf56
+ref table Medidas_Orcado
+ref table 'Medidas Unificado'
+ref table 'Capa Data'
+ref table LocalDateTable_705412ec-0f3c-49e2-a3c8-378a6b96e10b
+ref table REL_Veiculo_Regional_Piloto
+
+ref cultureInfo pt-PT
+

@@ -1,0 +1,32 @@
+table WAYOUT_FASE_DP
+	lineageTag: 1bbb36be-0a94-4c0b-9042-77d383c4d5d2
+
+	column FILIAL
+		dataType: string
+		lineageTag: 64288f13-b2b2-45ad-9d3a-3e11b079bf4a
+		summarizeBy: none
+		sourceColumn: FILIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_FASE
+		dataType: string
+		lineageTag: 0599f18b-9f99-4b9f-8bd6-857d66c3aefb
+		summarizeBy: none
+		sourceColumn: DS_FASE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition WAYOUT_FASE_DP = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("lZRBbtwwDEWvIgyQ3Tgz0yIHoGWNQ4MWFUoyigmy6KIn6BFytFwsdIAgkzgU2o03fP6k+L/0+LhbAnoHAh6mutvvzr///nE/XOfujje7p/11vdQe3omTEqe7z4TAQ9WPKdID/oIBOpnekZ+ryvEzU6U2yoHC3Cyzu2fBC8cS/pVzxB4IL9D4geocItgL8jAnjJCbALtRIA7Bzdlu5SF7WALZSlWwYN+Y9kx6NIicmDCbjp1ZClC42IaNrCpo1yd+eWaXQs78f9B25IkxLkgUzHGnGgcENPsQx0HUAlNgBjWwsfjIi4YC5r7KyKYKh6yJ+YjwZo6EelfQQ+OuJIICuv4ZXC+QkRAc2idLGlLQ6HDOjQ0mtZOdGjpKI/kSPJ6D2UqwDyhvhkkobOtkoAUGlgaxqkycgxtYdb8obnbyhlNF+wZlFr5e6xZIHfT+QA2PFfEhFuEuV7JnSd0o9QClKURrElrDRHXEzrMCfK3wHXA15HcNFnX7QNFUKOsrMFZ962aM6itbYrfOrxkbG2/rrVuwrM/Klnh6BQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [FILIAL = _t, DS_FASE = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"FILIAL", type text}, {"DS_FASE", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

@@ -1,0 +1,294 @@
+table vw_veiculo_tipo_produto
+	lineageTag: 87aa5aad-463b-4de9-adc5-714a01ff87cc
+
+	measure 'TM Financiamento prd' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_tipo_produto[VL_FINANCIADO])
+			    , sum(vw_veiculo_tipo_produto[QTD_FINANCIADO])
+			    , BLANK()
+			)
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: 4f02f2cc-83cc-4795-b513-6219ff0d2a69
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Mix P+V' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_tipo_produto[QTD_COMBO])
+			    , SUM(vw_veiculo_tipo_produto[QTD_SEGUROS])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 5f0732ae-c7b9-4667-95e0-696055ac67c0
+
+	measure '% Mix Vida' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_tipo_produto[QTD_VIDA])
+			    , SUM(vw_veiculo_tipo_produto[QTD_SEGUROS])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: c7cb2ad3-bce3-46d0-82c4-19b426e04d3c
+
+	measure '% Mix Prestamista' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_tipo_produto[QTD_PRESTAMISTA])
+			    , SUM(vw_veiculo_tipo_produto[QTD_SEGUROS])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 90757a99-709a-4219-9a58-6ca21f8367c7
+
+	measure '% Apro. Seg.' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_tipo_produto[QTD_SEGUROS])
+			    , sum(vw_veiculo_tipo_produto[QTD_POTENCIAL_PP])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 48c84b6d-6c8d-43c6-8d92-963909221e35
+
+	measure '% Aprov. Leves' =
+			
+			CALCULATE(
+			    [% Apro. Seg.]
+			    ,vw_veiculo_tipo_produto[DS_CONSOLIDADOR] = "LEVES"
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: e01d063e-ca4b-4ebc-9604-332ea85aa854
+
+	measure '% Aprov. Motos' =
+			
+			CALCULATE(
+			    [% Apro. Seg.]
+			    ,vw_veiculo_tipo_produto[DS_CONSOLIDADOR] = "MOTOS"
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 5018918f-0e29-4597-9907-b4c8a5ea6ceb
+
+	column DT_PRODUCAO
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8f4b32cb-e5d2-434e-80e9-06259b2edf2b
+		summarizeBy: none
+		sourceColumn: DT_PRODUCAO
+
+		variation Variation
+			isDefault
+			relationship: 1e778473-afd5-445a-8818-37f6cfd45c89
+			defaultHierarchy: LocalDateTable_0b8c3c99-2027-4e6a-bb9d-e526eb4b55e7.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DS_REGIONAL
+		dataType: string
+		lineageTag: c0d347de-cfe1-4493-a693-f2d1d906833e
+		summarizeBy: none
+		sourceColumn: DS_REGIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_FILIAL
+		dataType: string
+		lineageTag: c4efdd0c-f4f5-4c6e-b909-d00cdf2c8c5d
+		summarizeBy: none
+		sourceColumn: DS_FILIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPF_OFFICER
+		dataType: string
+		lineageTag: fdd3f288-63c0-45a2-8742-67cdcbada5d7
+		summarizeBy: none
+		sourceColumn: CPF_OFFICER
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_OFFICERS
+		dataType: string
+		lineageTag: 15409029-80f0-4eb1-83d8-466f94eb780a
+		summarizeBy: none
+		sourceColumn: DS_OFFICERS
+
+		annotation SummarizationSetBy = Automatic
+
+	column COD_LOJA
+		dataType: string
+		lineageTag: 562d1042-ff8c-4341-a4dd-6047211a8765
+		summarizeBy: none
+		sourceColumn: COD_LOJA
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_LOJA
+		dataType: string
+		lineageTag: a8085878-90fe-4e7c-a50e-06ee1a171bf4
+		summarizeBy: none
+		sourceColumn: DS_LOJA
+
+		annotation SummarizationSetBy = Automatic
+
+	column DS_CONSOLIDADOR
+		dataType: string
+		lineageTag: e5ee7f45-7575-40c5-a68e-665a5a8f98b1
+		summarizeBy: none
+		sourceColumn: DS_CONSOLIDADOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column DT_COMPETENCIA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 024b5063-9249-4352-a3ef-1614bb8e9b5d
+		summarizeBy: none
+		sourceColumn: DT_COMPETENCIA
+
+		variation Variation
+			isDefault
+			relationship: 8415e213-0eb8-4317-a0c1-938dc49cc105
+			defaultHierarchy: LocalDateTable_19b9f89c-0a96-4af2-95fd-ad62da80a858.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column QTD_FINANCIADO
+		dataType: int64
+		formatString: #,0
+		lineageTag: 76a74c8c-3b6b-4929-9e78-821483d2a223
+		summarizeBy: sum
+		sourceColumn: QTD_FINANCIADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_FINANCIADO
+		dataType: double
+		formatString: #,0
+		lineageTag: fabb9aee-4806-4a93-93f5-fc35187a553a
+		summarizeBy: sum
+		sourceColumn: VL_FINANCIADO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column QTD_POTENCIAL_PP
+		dataType: int64
+		formatString: #,0
+		lineageTag: da818c49-bdef-4960-a56c-f719903db6b3
+		summarizeBy: sum
+		sourceColumn: QTD_POTENCIAL_PP
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_COMBO
+		dataType: int64
+		formatString: #,0
+		lineageTag: 14842014-50be-49ca-848a-73213168c903
+		summarizeBy: sum
+		sourceColumn: QTD_COMBO
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_COMBO
+		dataType: double
+		formatString: #,0
+		lineageTag: fcda70c7-c66f-4a24-925e-a1e0df0eaa2a
+		summarizeBy: sum
+		sourceColumn: VL_COMBO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column QTD_VIDA
+		dataType: int64
+		formatString: 0
+		lineageTag: ec21a605-bbfe-425f-8ddb-87ddbaae232c
+		summarizeBy: sum
+		sourceColumn: QTD_VIDA
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_VIDA
+		dataType: double
+		formatString: #,0
+		lineageTag: d8af14c6-a452-4516-aa07-2419311382bd
+		summarizeBy: sum
+		sourceColumn: VL_VIDA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column QTD_PRESTAMISTA
+		dataType: int64
+		formatString: #,0
+		lineageTag: d8870f25-0fd4-47be-ae4b-fa5e651e1fe2
+		summarizeBy: sum
+		sourceColumn: QTD_PRESTAMISTA
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_PRESTAMISTA
+		dataType: double
+		formatString: #,0
+		lineageTag: 741fa92f-8d42-443b-9fd9-ee14100b4cef
+		summarizeBy: sum
+		sourceColumn: VL_PRESTAMISTA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column QTD_SEGUROS
+		dataType: int64
+		formatString: #,0
+		lineageTag: 8310732c-c4fd-440b-ba64-2daedd136f05
+		summarizeBy: sum
+		sourceColumn: QTD_SEGUROS
+
+		annotation SummarizationSetBy = Automatic
+
+	column VL_SEGUROS
+		dataType: double
+		formatString: #,0
+		lineageTag: 262d8fd8-f838-4a37-975c-e43c45877315
+		summarizeBy: sum
+		sourceColumn: VL_SEGUROS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column fl_idade_Veiculo
+		dataType: string
+		lineageTag: edcb54f0-f879-48d1-8639-4e22ffdf605b
+		summarizeBy: none
+		sourceColumn: fl_idade_Veiculo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vw_veiculo_tipo_produto = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_vw_veiculo_tipo_produto = Fonte{[Schema="dbo",Item="vw_veiculo_tipo_produto"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_vw_veiculo_tipo_produto,{{"COD_LOJA", type text}, {"DATA", type date}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"DATA", "DT_COMPETENCIA"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"DT_PRODUCAO", type date}})
+				in
+				    #"Tipo Alterado1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

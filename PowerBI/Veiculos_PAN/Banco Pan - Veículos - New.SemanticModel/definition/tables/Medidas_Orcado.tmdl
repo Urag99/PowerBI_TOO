@@ -1,0 +1,89 @@
+table Medidas_Orcado
+	lineageTag: a8b72210-00a9-4969-ad10-346d37953286
+
+	measure '% ICM vs Orçado' =
+			
+			DIVIDE(
+			    sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Realizado])
+			    , sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Orcado])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: c8ec748a-3bdd-4715-b601-c862abf25339
+
+	measure 'Δ vs Orçado' =
+			
+			sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Realizado])
+			    - sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Orcado])
+		formatString: #,0
+		lineageTag: 2d60e941-1402-41b6-a8a1-b0f1bf21cad4
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% ICM vs Desafio' =
+			
+			DIVIDE(
+			    sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Realizado])
+			    , sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Desafio])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 37bda736-e962-42de-997f-075d2692784e
+
+	measure '% ICM vs Supera' =
+			
+			DIVIDE(
+			    sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Realizado])
+			    , sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Supera])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: da67493d-1156-46bd-8f9d-8aef2a5fecd9
+
+	measure 'Δ vs Desafio' =
+			
+			sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Realizado])
+			    - sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Desafio])
+		formatString: #,0
+		lineageTag: 6a7325fb-9143-4f33-9f92-82fa594ec4dd
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Δ vs Supera' =
+			
+			sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Realizado])
+			    - sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Supera])
+		formatString: #,0
+		lineageTag: 3a274191-19ec-42c1-805b-47c1ebad25cf
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Real vs Real Y-1' = ```
+			
+			var x = 
+			DIVIDE(
+			    sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Realizado])
+			    , sum(REL_VEICULO_DESAFIO_COMERCIAL[vl_Realizado_Y_1])
+			    , BLANK()
+			)
+			
+			RETURN 
+			if( x <> BLANK()
+			    , if( x = 0, 0 , x-1)
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: a3e60089-122e-4066-bbf9-26df6ab6d9a0
+
+	partition Medidas_Orcado = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,287 @@
+table Medidas_Premio
+	lineageTag: 102af7a3-24cd-4199-910e-a12c8d93b984
+
+	measure '% Mix P+V Leves' = ```
+			
+			--% Mix P+V: (# de PP Combo x R$ TM PP Combo Leves) / R$ Pot.PP
+			DIVIDE(
+			    (sum(vw_veiculo_producao[QTD_PP_1600]) * 1720)
+			    , sum(vw_veiculo_producao[VL_PP_POTENCIAL_LEVES])
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 6f5280ae-8be8-440d-b610-52b8e30c57bd
+
+	measure '% Mix Demais Leves' = ```
+			
+			--[(# de PP Vida Individual x R$ TM PP Vida Individual Leves) + (# de PP Prestamista Individual x R$ TM PP Prestamista Individual Leves)] / R$ Pot.PP
+			
+			var _indv = sum(vw_veiculo_producao[QTD_PP_PRESTAMISTA]) * 1600
+			
+			var _vida = sum(vw_veiculo_producao[QTD_PP_VIDA]) * 1370
+			
+			return 
+			DIVIDE(
+			    _indv + _vida
+			    , sum(vw_veiculo_producao[VL_PP_POTENCIAL_LEVES])
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 9834eb5c-0abc-490f-abb0-620354e106a2
+
+	measure '% Aprov PP Leves' =
+			
+			[% Mix P+V Leves] + [% Mix Demais Leves]
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 418a3c57-739e-4507-bbaa-12aff99d63ac
+
+	measure '% Aprov. GM Premio' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_GM_PREMIO])
+			    , sum(vw_veiculo_producao[VL_GM_POTENCIAL])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 8f9a41eb-b986-42e1-903e-ad4c2ef21721
+
+	measure '% Aprov. AA Premio' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_AA_PREMIO])
+			    , sum(vw_veiculo_producao[VL_AA_POTENCIAL])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: a36deaf2-a2df-4112-a289-9a655f2d634c
+
+	measure '% Aprov. RCF Premio' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_RCF_PREMIO])
+			    , sum(vw_veiculo_producao[VL_RCF_POTENCIAL])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 84a2e96a-4270-4016-bd96-4a99e3862c35
+
+	measure '% Mix P+V Motos' = ```
+			
+			--% Mix P+V: (# de PP Combo x R$ TM PP Combo Leves) / R$ Pot.PP
+			DIVIDE(
+			    (sum(vw_veiculo_producao[QTD_PP_1600]) * 590)
+			    , sum(vw_veiculo_producao[VL_PP_POTENCIAL_MOTOS])
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: d8fab8ad-da0f-4907-8106-bb27f103a45a
+
+	measure '% Mix Demais Motos' = ```
+			
+			--[(# de PP Vida Individual x R$ TM PP Vida Individual Leves) + (# de PP Prestamista Individual x R$ TM PP Prestamista Individual Leves)] / R$ Pot.PP
+			
+			var _indv = sum(vw_veiculo_producao[QTD_PP_PRESTAMISTA]) * 513
+			
+			var _vida = sum(vw_veiculo_producao[QTD_PP_VIDA]) * 415
+			
+			return 
+			DIVIDE(
+			    _indv + _vida
+			    , sum(vw_veiculo_producao[VL_PP_POTENCIAL_MOTOS])
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 33922c62-4335-4e45-a074-6519c17fbbff
+
+	measure '% Aprov PP Motos' =
+			
+			[% Mix P+V Motos] + [% Mix Demais Motos]
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: bb5a9ab3-4080-4174-9249-954fa58ed229
+
+	measure '% Aprov. MA Premio' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_MOTO_PREMIO])
+			    , sum(vw_veiculo_producao[VL_MOTO_POTENCIAL])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 154acf46-8c5a-4731-a028-350d8e99d5cf
+
+	measure 'Vl Potencial PP Adc' =
+			
+			sum(vw_veiculo_producao[VL_PP_POTENCIAL_LEVES])
+			+
+			sum(vw_veiculo_producao[VL_GM_POTENCIAL])
+			+
+			sum(vw_veiculo_producao[VL_AA_POTENCIAL])
+			+
+			sum(vw_veiculo_producao[VL_RCF_POTENCIAL])
+		formatString: #,0
+		lineageTag: b35d1c39-db92-4483-9ddf-113128a216ba
+
+	measure 'Vl Seguro PP Adc' =
+			
+			sum(vw_veiculo_producao[VL_PP_PREMIO])
+			+
+			sum(vw_veiculo_producao[VL_GM_PREMIO])
+			+
+			sum(vw_veiculo_producao[VL_AA_PREMIO])
+			+
+			sum(vw_veiculo_producao[VL_RCF_PREMIO])
+		formatString: #,0
+		lineageTag: 80874c2e-1ee8-494a-9d10-62f2cfe7f800
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Seg PP + Adc' =
+			
+			DIVIDE(
+			    [Vl Seguro PP Adc]
+			    , [Vl Potencial PP Adc]
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 9d204df1-d6de-4c85-b7a6-04116f783a32
+
+	measure 'Vl Potencial MOTOS PP Adc' =
+			
+			sum(vw_veiculo_producao[VL_PP_POTENCIAL_MOTOS])
+			+
+			sum(vw_veiculo_producao[VL_RCF_POTENCIAL])
+			+
+			sum(vw_veiculo_producao[VL_MOTO_POTENCIAL])
+		formatString: #,0
+		lineageTag: 5263edbf-cd6d-414d-ae02-938b0d3fc82b
+
+	measure 'Vl Seguro MOTOS PP Adc' =
+			
+			sum(vw_veiculo_producao[VL_PP_PREMIO])
+			+
+			sum(vw_veiculo_producao[VL_RCF_PREMIO])
+			+
+			sum(vw_veiculo_producao[VL_MOTO_PREMIO])
+		formatString: #,0
+		lineageTag: 486da3ea-c7b4-4adb-8cf5-4498601218f6
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Seg Moto PP + Adc' =
+			
+			DIVIDE(
+			    [Vl Seguro MOTOS PP Adc]
+			    , [Vl Potencial MOTOS PP Adc]
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: d5438c1e-5f1b-4dc8-9578-4dca9a939805
+
+	measure 'Vl Potencial PP Adc GERAL' =
+			
+			sum(vw_veiculo_producao[VL_PP_POTENCIAL_LEVES])
+			+
+			sum(vw_veiculo_producao[VL_GM_POTENCIAL])
+			+
+			sum(vw_veiculo_producao[VL_AA_POTENCIAL])
+			+
+			sum(vw_veiculo_producao[VL_PP_POTENCIAL_MOTOS])
+			+
+			sum(vw_veiculo_producao[VL_MOTO_POTENCIAL])
+			+
+			sum(vw_veiculo_producao[VL_RCF_POTENCIAL])
+		formatString: #,0
+		lineageTag: d6a3362a-c5e4-4cb6-a44b-bd28d31390bd
+
+	measure 'Vl Seguro PP Adc Geral' =
+			
+			sum(vw_veiculo_producao[VL_PP_PREMIO])
+			+
+			sum(vw_veiculo_producao[VL_GM_PREMIO])
+			+
+			sum(vw_veiculo_producao[VL_AA_PREMIO])
+			+
+			sum(vw_veiculo_producao[VL_RCF_PREMIO])
+			+
+			sum(vw_veiculo_producao[VL_MOTO_PREMIO])
+		formatString: #,0
+		lineageTag: 5c291bdc-4aee-45e6-95d2-4c8f1de8dd54
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Seg PP + Adc Geral' =
+			
+			DIVIDE(
+			    [Vl Seguro PP Adc Geral]
+			    , [Vl Potencial PP Adc GERAL]
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 05541487-cb66-4327-b0ca-b6aa767e08d9
+
+	measure 'Geral VL Potencial PP' =
+			
+			sum(vw_veiculo_producao[VL_PP_POTENCIAL_LEVES])
+			+
+			sum(vw_veiculo_producao[VL_PP_POTENCIAL_MOTOS])
+		formatString: #,0
+		lineageTag: 2a47e1d8-c8bb-47a3-8edc-0958e9ec2513
+
+	measure 'GERAL % Mix P+V' = ```
+			
+			--% Mix P+V: (# de PP Combo x R$ TM PP Combo Leves) / R$ Pot.PP
+			
+			var _vl_pp_motos = sum(vw_veiculo_producao[QTD_PP_1600]) * 590
+			var _vl_pp_pot_motos = sum(vw_veiculo_producao[VL_PP_POTENCIAL_MOTOS])
+			
+			var _vl_pp_leves = sum(vw_veiculo_producao[QTD_PP_1600]) * 1720
+			var _vl_pp_pot_leves = sum(vw_veiculo_producao[VL_PP_POTENCIAL_LEVES])
+			RETURN
+			DIVIDE(
+			    _vl_pp_motos + _vl_pp_leves
+			    , _vl_pp_pot_motos + _vl_pp_pot_leves
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 03cfff85-3cda-4122-8896-b2794a025ccc
+
+	measure 'GERAL % Mix Demais' = ```
+			
+			var _indv_leves = sum(vw_veiculo_producao[QTD_PP_PRESTAMISTA]) * 1600
+			var _vida_leves = sum(vw_veiculo_producao[QTD_PP_VIDA]) * 1370
+			
+			var _indv_motos = sum(vw_veiculo_producao[QTD_PP_PRESTAMISTA]) * 513
+			var _vida_motos = sum(vw_veiculo_producao[QTD_PP_VIDA]) * 415
+			
+			var _pot_motos = sum(vw_veiculo_producao[VL_PP_POTENCIAL_MOTOS])
+			var _pot_leves = sum(vw_veiculo_producao[VL_PP_POTENCIAL_LEVES])
+			
+			RETURN
+			DIVIDE(
+			    _indv_leves + _vida_leves +  _indv_motos + _vida_motos
+			    , _pot_leves + _pot_motos
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 796cdee7-5182-4682-907e-14ed6c78b4ac
+
+	measure 'GERAL % Aprov PP' =
+			
+			[GERAL % Mix P+V] + [GERAL % Mix Demais]
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 5777d626-f9b1-4c45-b4fa-1250dfe7024a
+
+	partition Medidas_Premio = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

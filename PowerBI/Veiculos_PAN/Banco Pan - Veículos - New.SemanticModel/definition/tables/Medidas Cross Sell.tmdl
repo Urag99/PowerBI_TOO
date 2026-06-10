@@ -1,0 +1,650 @@
+table 'Medidas Cross Sell'
+	lineageTag: 32e337cf-d7b1-4f86-b771-51f6aab9eb78
+
+	measure '% PP 1 ADC' = ```
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_ADICIONAL])
+			    , [QTD_SEGUROS_COM_ADICIONAL LEVES]
+			    , BLANK()
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 405f3667-2340-4f0e-84d0-93699056bdb0
+
+	measure '% PP 2 ADC' = ```
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL])
+			    , [QTD_SEGUROS_COM_ADICIONAL LEVES]
+			    , BLANK()
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: ced2018d-c0c7-4e15-b80c-7d35f2e7ec01
+
+	measure '% PP 3 ADC' = ```
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_3_ADICIONAL])
+			    , [QTD_SEGUROS_COM_ADICIONAL LEVES]
+			    , BLANK()
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 9c9a3e59-6d00-45cd-a6f1-7e18a49dc674
+
+	measure 'TM Seguro Adicional' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_ADICIONAL_PREMIO])
+			    , [QTD SEGURO ADICIONAL]
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: ac918b64-18de-4e3b-96fd-bcbc278386a7
+
+	measure '% 2 RCF + AA' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[QTD_RCF_AA_ADICIONAL])
+			    , SUM(vw_veiculo_producao[QTD_PP_2_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 81811759-5368-4e61-af24-93fa8a877055
+
+	measure '% 2 RCF + GM' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[QTD_RCF_GM_ADICIONAL])
+			    , SUM(vw_veiculo_producao[QTD_PP_2_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: eb0b9a5b-c667-4719-880a-34fdf8569d44
+
+	measure '% 2 GM + AA' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[QTD_GM_AA_ADICIONAL])
+			    , SUM(vw_veiculo_producao[QTD_PP_2_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 4db7fe5b-2078-4d9d-b6a3-e83b0ec27057
+
+	measure 'TM RCF + AA' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_RCF_AA_PREMIO])
+			    , SUM(vw_veiculo_producao[QTD_RCF_AA_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: ff07952f-66a3-400f-b47e-8bf459a20312
+
+	measure 'TM RCF + GM' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_RCF_GM_PREMIO])
+			    , SUM(vw_veiculo_producao[QTD_RCF_GM_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: ca65acb4-0cad-4b29-9164-6b64bb883240
+
+	measure 'TM GM + AA' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_GM_AA_PREMIO])
+			    , SUM(vw_veiculo_producao[QTD_GM_AA_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: 1ec2c863-3745-4d58-8405-a0e484b562d4
+
+	measure 'TM Seguro 2 Adicional' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_RCF_AA_PREMIO])
+			        + sum(vw_veiculo_producao[VL_RCF_GM_PREMIO])
+			        + sum(vw_veiculo_producao[VL_GM_AA_PREMIO])
+			    , SUM(vw_veiculo_producao[QTD_PP_2_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0
+		lineageTag: 68984702-4920-4f4a-bf24-897321eec7cd
+
+	measure 'TM Seguro 3 Adicional' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_3_ADICIONAL_PREMIO])
+			    , sum(vw_veiculo_producao[QTD_PP_3_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: 9e0414f0-63ac-4399-a1c7-56d51062a660
+
+	measure '% GM Adc' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[QTD_PP_GM_ADICIONAL])
+			    , SUM(vw_veiculo_producao[QTD_PP_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 9403213d-bf5c-406b-9f98-d67a0d185eb8
+
+	measure 'TM GM Adc' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_GM_ADICIONAL])
+			    , sum(vw_veiculo_producao[QTD_PP_GM_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: 764c84c2-89e6-4156-acaa-eb5d82662be4
+
+	measure 'TM AA Adc' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_AA_ADICIONAL])
+			    , sum(vw_veiculo_producao[QTD_PP_AA_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: 02e4ea11-1ddb-4b80-95cb-9360d062edf2
+
+	measure 'TM RCF Adc' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_RCF_ADICIONAL])
+			    , sum(vw_veiculo_producao[QTD_PP_RCF_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: ac1517ff-9712-45ed-ab5a-1a182e6d7df8
+
+	measure '% AA Adc' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[QTD_PP_AA_ADICIONAL])
+			    , SUM(vw_veiculo_producao[QTD_PP_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 48125da3-ee74-4ad6-9f03-6bf75b579d02
+
+	measure '% RCF Adc' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[QTD_PP_RCF_ADICIONAL])
+			    , SUM(vw_veiculo_producao[QTD_PP_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 562cb057-0f4f-486f-b02d-8ee24bb97ccf
+
+	measure 'TM PP 2 ADC' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_GM_AA_PREMIO])
+			        + SUM(vw_veiculo_producao[VL_RCF_AA_PREMIO])
+			        + SUM(vw_veiculo_producao[VL_RCF_GM_PREMIO])
+			    , SUM(vw_veiculo_producao[QTD_PP_2_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: 8213900b-28b4-4473-a5a4-9f7776d0e301
+
+	measure 'TM PP 1 ADC' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_PP_GM_ADICIONAL])
+			        + SUM(vw_veiculo_producao[VL_PP_AA_ADICIONAL])
+			        + SUM(vw_veiculo_producao[VL_PP_RCF_ADICIONAL])
+			    , SUM(vw_veiculo_producao[QTD_PP_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: de627b8e-e359-4d59-ad78-a610ca976fd1
+
+	measure '% Potencial Cross' =
+			
+			DIVIDE (
+			    SUM(vw_veiculo_producao[QTD_POTENCIAL_UNIFICADO_ADICIONAL])
+			    , SUM(vw_veiculo_producao[QTD_PP_COM_POTENCIAL_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: da8165bc-0c29-47d2-8838-5d386054adaf
+
+	measure '% Aprov Adicionais' = ```
+			
+			DIVIDE (
+			    [QTD SEGURO ADICIONAL] 
+			    , SUM(vw_veiculo_producao[QTD_POTENCIAL_UNIFICADO_ADICIONAL])
+			    , BLANK()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 8f07a86c-ecaa-439f-8292-80e3b389fbdb
+
+	measure '% Cross Sell' =
+			
+			var _financ = sum(vw_veiculo_producao[QTD_PP_COM_POTENCIAL_ADICIONAL])
+			var _adicional = sum(vw_veiculo_producao[QTD_SEGURO_ADICIONAL_ABSOLUTO])
+			RETURN
+			DIVIDE(
+			    _adicional
+			    , _financ
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: cb7427ec-dd3d-45fb-af2b-6c33f8daa16b
+
+	measure '% Seg Sem Adc' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[QTD_PP_SEM_ADICIONAL])
+			    , SUM(vw_veiculo_producao[QTD_PP_COM_POTENCIAL_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: c7829753-4876-462d-9a05-650157cbff32
+
+	measure '% Seg Com Adc' =
+			
+			DIVIDE(
+			    [QTD_SEGUROS_COM_ADICIONAL LEVES]
+			    , SUM(vw_veiculo_producao[QTD_PP_COM_POTENCIAL_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 95a6ee38-19fe-48f6-ae91-4280c77b6ef6
+
+	measure '% Seg Sem Adc Motos' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[QTD_PP_SEM_ADICIONAL_MOTO])
+			    , SUM(vw_veiculo_producao[QTD_PP_COM_POTENCIAL_ADICIONAL])
+			    , 0
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: fdbf99e0-50b5-463a-9706-580d6a77c9e6
+
+	measure '% Seg Com Adc Motos' =
+			
+			DIVIDE(
+			    [QTD_SEGUROS_COM_ADICIONAL MOTOS]
+			    , SUM(vw_veiculo_producao[QTD_PP_COM_POTENCIAL_ADICIONAL])
+			    , 0
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2c76ec80-5377-41ae-b332-89bb43802106
+
+	measure '% PP 1 ADC Motos' = ```
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_ADICIONAL_MOTO])
+			    , [QTD_SEGUROS_COM_ADICIONAL MOTOS]
+			    , BLANK()
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 5515f424-6c11-4158-b31d-851b0fb6740d
+
+	measure '% PP 2 ADC Motos' = ```
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL_MOTO])
+			    , [QTD_SEGUROS_COM_ADICIONAL MOTOS]
+			    , BLANK()
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: fcd4950e-6430-429e-882d-e0d5eafe743d
+
+	measure 'TM Seguro Adicional Moto' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_ADICIONAL_PREMIO_MOTO])
+			        + sum(vw_veiculo_producao[VL_RCF_MA_PREMIO_MOTO])
+			    , [QTD_SEGURO_ADICIONAL MOTO]
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: 9419e495-47fa-4ff0-b76c-00398b5fbddb
+
+	measure '% Cross Sell Motos' =
+			
+			
+			var _financ = sum(vw_veiculo_producao[QTD_PP_COM_POTENCIAL_ADICIONAL])
+			var _adicional = sum(vw_veiculo_producao[QTD_SEGURO_ADICIONAL_ABSOLUTO])
+			RETURN
+			DIVIDE(
+			    _adicional
+			    , _financ
+			    , BLANK()
+			)
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: e92d8b5f-3ea8-480d-98ea-c2224dc09767
+
+	measure '% Aprov Adicionais Motos' =
+			
+			DIVIDE (
+			    sum(vw_veiculo_producao[QTD_PP_ADICIONAL_MOTO])
+			        + sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL_MOTO])
+			    , SUM(vw_veiculo_producao[QTD_POTENCIAL_UNIFICADO_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 9ad4d77d-d9db-4098-bb4a-73b70b3d4d20
+
+	measure 'TM PP 1 ADC MOTO' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_PP_MA_ADICIONAL])
+			        + SUM(vw_veiculo_producao[VL_PP_RCF_ADICIONAL])
+			    , SUM(vw_veiculo_producao[QTD_PP_ADICIONAL_MOTO])
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: 7b0c7af4-f7ba-455c-842f-487ae30aa12a
+
+	measure '% MA Adc' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[QTD_PP_MA_ADICIONAL])
+			    , SUM(vw_veiculo_producao[QTD_PP_ADICIONAL_MOTO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b61f85f8-02f6-4e4c-a27b-62ca183d4bbf
+
+	measure 'TM MA Adc' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_MA_ADICIONAL])
+			    , sum(vw_veiculo_producao[QTD_PP_MA_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: e537afc6-37b2-4749-85d9-721039698ac2
+
+	measure '% RCF Adc Moto' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[QTD_PP_RCF_ADICIONAL])
+			    , SUM(vw_veiculo_producao[QTD_PP_ADICIONAL_MOTO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0a5fec1f-a31e-486b-a183-c99d0d287890
+
+	measure 'TM PP 2 ADC Moto' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_RCF_MA_PREMIO_MOTO])
+			    , SUM(vw_veiculo_producao[QTD_PP_2_ADICIONAL_MOTO])
+			    , BLANK()
+			)
+		formatString: #,0.0
+		lineageTag: 664ee59f-6520-4fba-b958-82a1d8a69acb
+
+	measure 'QTD SEGURO ADICIONAL' = ```
+			
+			sum(vw_veiculo_producao[QTD_PP_ADICIONAL])
+			+ sum(vw_veiculo_producao[QTD_PP_2_ADICIONAL])
+			+ sum(vw_veiculo_producao[QTD_PP_3_ADICIONAL])
+			
+			```
+		formatString: #,0
+		lineageTag: c1990ecc-2d1a-4eed-b61c-670921201a87
+
+	measure '% PP 1 ADC VALOR' =
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_ADICIONAL])
+			    , [VL_SEGUROS_COM_ADICIONAL LEVES]
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0713426d-f552-41ef-b74b-4f5f8f569ece
+
+	measure '% PP 2 ADC VALOR' = ```
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_2_ADICIONAL])
+			    , [VL_SEGUROS_COM_ADICIONAL LEVES]
+			    , BLANK()
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: e141e44b-e8f2-42b7-8dc5-54467a0b1e90
+
+	measure '% PP 3 ADC VALOR' = ```
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_3_ADICIONAL])
+			    , [VL_SEGUROS_COM_ADICIONAL LEVES]
+			    , BLANK()
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: d37afcc4-286b-4daf-bac7-25f6047c508c
+
+	measure '% Seg Com Adc VALOR' =
+			
+			DIVIDE(
+			    [VL_SEGUROS_COM_ADICIONAL LEVES]
+			    , SUM(vw_veiculo_producao[VL_PP_COM_POTENCIAL_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 1df38f8e-5d08-40e6-bf03-53baf54729e2
+
+	measure 'VL SEGURO ADICIONAL' = ```
+			
+			sum(vw_veiculo_producao[VL_PP_ADICIONAL])
+			+ sum(vw_veiculo_producao[VL_PP_2_ADICIONAL])
+			+ sum(vw_veiculo_producao[VL_PP_3_ADICIONAL])
+			
+			```
+		formatString: #,0
+		lineageTag: f39664c0-1d2e-4ab3-98a4-127a179e69d3
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Cross Sell VALOR' =
+			
+			var _financ = sum(vw_veiculo_producao[VL_PP_COM_POTENCIAL_ADICIONAL])
+			var _adicional = sum(vw_veiculo_producao[VL_ADICIONAL_PREMIO])
+			RETURN
+			DIVIDE(
+			    _adicional
+			    , _financ
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 79a6cd9a-f121-4838-92f7-e059dbad64e1
+
+	measure '% GM Adc VALOR' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_PP_GM_ADICIONAL])
+			    , SUM(vw_veiculo_producao[VL_PP_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: c51d3232-cadd-4810-a0c9-9080547efcbc
+
+	measure '% AA Adc VALOR' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_PP_AA_ADICIONAL])
+			    , SUM(vw_veiculo_producao[VL_PP_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: c7d9cf59-1408-4c34-846b-45fd8338d67a
+
+	measure '% RCF Adc VALOR' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_PP_RCF_ADICIONAL])
+			    , SUM(vw_veiculo_producao[VL_PP_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 3927785d-35b5-4428-9148-0b969d968380
+
+	measure '% 2 GM + AA VALOR' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_GM_AA_PREMIO])
+			    , SUM(vw_veiculo_producao[VL_PP_2_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 848e4704-6f95-4a44-9ee1-35305d6d7fb9
+
+	measure '% 2 RCF + GM VALOR' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_RCF_GM_PREMIO])
+			    , SUM(vw_veiculo_producao[VL_PP_2_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 65b590fe-3410-43b8-bae4-d4ffab68a5dc
+
+	measure '% 2 RCF + AA VALOR' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_RCF_AA_PREMIO])
+			    , SUM(vw_veiculo_producao[VL_PP_2_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 62474230-8462-4c87-9df5-a46ba63b8de2
+
+	measure '% Seg Com Adc Motos VALOR' =
+			
+			DIVIDE(
+			    [VL_SEGUROS_COM_ADICIONAL MOTOS]
+			    , SUM(vw_veiculo_producao[VL_PP_COM_POTENCIAL_ADICIONAL])
+			    , 0
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 10cd79a5-22ae-4d3a-a98d-f40fe58aa920
+
+	measure '% PP 1 ADC Motos VALOR' = ```
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_ADICIONAL_MOTO])
+			    , [VL_SEGUROS_COM_ADICIONAL MOTOS]
+			    , BLANK()
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 6578e391-a649-438b-ba5b-16f49c414eef
+
+	measure '% PP 2 ADC Motos VALOR' = ```
+			
+			DIVIDE(
+			    sum(vw_veiculo_producao[VL_PP_2_ADICIONAL_MOTO])
+			    , [VL_SEGUROS_COM_ADICIONAL MOTOS]
+			    , BLANK()
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: ea8d0f69-c16e-4cd8-be52-cf2b000665d0
+
+	measure '% MA Adc VALOR' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_PP_MA_ADICIONAL])
+			    , SUM(vw_veiculo_producao[VL_PP_ADICIONAL_MOTO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b5a7817d-0120-4aa7-9e30-f89706100e52
+
+	measure '% RCF Adc Moto VALOR' =
+			
+			DIVIDE(
+			    SUM(vw_veiculo_producao[VL_PP_RCF_ADICIONAL])
+			    , SUM(vw_veiculo_producao[VL_PP_ADICIONAL_MOTO])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 46dedf29-8933-4a09-b1f0-52c39f952c8b
+
+	measure '% Cross Sell Motos VALOR' =
+			
+			
+			var _financ = [VL_POTENCIAL_ADICIONAL]
+			var _adicional = [VL_SEGUROS_COM_ADICIONAL MOTOS]
+			RETURN
+			DIVIDE(
+			    _adicional
+			    , _financ
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 8b2eb4d4-2191-4c08-ad61-b7ed5adbbd8d
+
+	measure '% Potencial Cross VALOR' =
+			
+			DIVIDE (
+			      vw_veiculo_producao[VL_POTENCIAL_ADICIONAL]
+			    , SUM(vw_veiculo_producao[VL_PP_COM_POTENCIAL_ADICIONAL])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: dbb0fcc0-cd24-484a-9e31-3e8d469a1849
+
+	measure '% Aprov Adicionais Valor' = ```
+			
+			DIVIDE (
+			    [VL SEGURO ADICIONAL] 
+			    , [VL_POTENCIAL_ADICIONAL]
+			    , BLANK()
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1a4d7e03-842a-4d0c-b3cd-d9b9ca79bd08
+
+	measure 'VL SEGURO ADICIONAL MOTO' = ```
+			
+			sum(vw_veiculo_producao[VL_PP_ADICIONAL_moto])
+			+ sum(vw_veiculo_producao[VL_PP_2_ADICIONAL_MOTO])
+			
+			```
+		lineageTag: 94f714be-c243-46fa-82ab-bb1a554ebe8c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Medidas Cross Sell' = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

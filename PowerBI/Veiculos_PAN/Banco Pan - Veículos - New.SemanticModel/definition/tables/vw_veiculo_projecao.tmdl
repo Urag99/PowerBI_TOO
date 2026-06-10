@@ -1,0 +1,220 @@
+table vw_veiculo_projecao
+	lineageTag: 3b3b8037-a5f4-4d3d-a45a-decac327f89b
+
+	measure 'R$ Seguro Total' = ```
+			
+			CALCULATE(
+			  sum(vw_veiculo_projecao[vl_Seguro_PP]) 
+			+ sum(vw_veiculo_projecao[vl_Seguro_MA])
+			+ sum(vw_veiculo_projecao[vl_Seguro_RCF])
+			+ sum(vw_veiculo_projecao[vl_Seguro_GM])
+			+ sum(vw_veiculo_projecao[vl_Seguro_AA]))
+			
+			```
+		lineageTag: b27a08eb-6ba2-4f80-9b71-8f4d90fd8720
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Ano_Mes
+		dataType: dateTime
+		formatString: mmmm" de "yyyy
+		lineageTag: ee29e141-daa6-40a0-83c9-f14a26c4d16c
+		summarizeBy: none
+		sourceColumn: Ano_Mes
+
+		variation Variation
+			isDefault
+			relationship: 14ef86ae-daf8-4b68-a29d-9966c24678c3
+			defaultHierarchy: LocalDateTable_8db2c110-909b-474c-846e-af0f13bc05d3.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column dt_Producao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f35ade15-ee3c-4ca1-981b-53fc47e3d4d1
+		summarizeBy: none
+		sourceColumn: dt_Producao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ds_Regional
+		dataType: string
+		lineageTag: 952fa2ed-42e1-4fe6-963e-0b1105d14ea9
+		summarizeBy: none
+		sourceColumn: ds_Regional
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp_Consolidador
+		dataType: string
+		lineageTag: 2039b5f0-22fd-4e3b-ac63-2d89d74ddd29
+		summarizeBy: none
+		sourceColumn: tp_Consolidador
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Seguro_Vida
+		dataType: double
+		lineageTag: 5ab64a56-1603-480d-ad21-81ee3f79680b
+		summarizeBy: sum
+		sourceColumn: vl_Seguro_Vida
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Seguro_Combo
+		dataType: double
+		lineageTag: a5101ace-612f-4d0f-8b7c-4a272207b7fb
+		summarizeBy: sum
+		sourceColumn: vl_Seguro_Combo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_Seguro_PP
+		dataType: double
+		formatString: "R$"\ #,0.0;-"R$"\ #,0.0;"R$"\ #,0.0
+		lineageTag: 04262071-a8ed-45ae-9866-0182c2a5bcd6
+		summarizeBy: sum
+		sourceColumn: vl_Seguro_PP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vl_Seguro_MA
+		dataType: double
+		formatString: "R$"\ #,0.0;-"R$"\ #,0.0;"R$"\ #,0.0
+		lineageTag: d9e1c5ea-efcf-47bd-afcc-0d6f77809d32
+		summarizeBy: sum
+		sourceColumn: vl_Seguro_MA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vl_Seguro_AA
+		dataType: double
+		formatString: "R$"\ #,0.0;-"R$"\ #,0.0;"R$"\ #,0.0
+		lineageTag: f13641f4-6387-4d15-8306-0f83e98100e5
+		summarizeBy: sum
+		sourceColumn: vl_Seguro_AA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vl_Seguro_GM
+		dataType: double
+		formatString: "R$"\ #,0.0;-"R$"\ #,0.0;"R$"\ #,0.0
+		lineageTag: 05ee01f2-f290-4559-bd1d-6e075d042877
+		summarizeBy: sum
+		sourceColumn: vl_Seguro_GM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vl_Seguro_RCF
+		dataType: double
+		formatString: "R$"\ #,0.0;-"R$"\ #,0.0;"R$"\ #,0.0
+		lineageTag: 92d2c90f-2acb-49eb-92e6-cffe1a78e162
+		summarizeBy: sum
+		sourceColumn: vl_Seguro_RCF
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vl_Projecao_PP
+		dataType: double
+		formatString: "R$"\ #,0.0;-"R$"\ #,0.0;"R$"\ #,0.0
+		lineageTag: fe82e91e-2495-4d77-9f1e-927c1ba3fbdb
+		summarizeBy: sum
+		sourceColumn: vl_Projecao_PP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vl_Projecao_MA
+		dataType: double
+		formatString: "R$"\ #,0.0;-"R$"\ #,0.0;"R$"\ #,0.0
+		lineageTag: 70793250-6339-4b16-9ae1-4e4d2e1b0f97
+		summarizeBy: sum
+		sourceColumn: vl_Projecao_MA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vl_Projecao_AA
+		dataType: double
+		formatString: "R$"\ #,0.0;-"R$"\ #,0.0;"R$"\ #,0.0
+		lineageTag: ecaa880a-2753-4cb7-93b3-a13f14eced3b
+		summarizeBy: sum
+		sourceColumn: vl_Projecao_AA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vl_Projecao_GM
+		dataType: double
+		formatString: "R$"\ #,0.0;-"R$"\ #,0.0;"R$"\ #,0.0
+		lineageTag: a31a9373-94e1-463a-b583-c49f5e567681
+		summarizeBy: sum
+		sourceColumn: vl_Projecao_GM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vl_Projecao_RCF
+		dataType: double
+		formatString: "R$"\ #,0.0;-"R$"\ #,0.0;"R$"\ #,0.0
+		lineageTag: b084c4eb-7d7e-4a67-8d2b-416ae633a12e
+		summarizeBy: sum
+		sourceColumn: vl_Projecao_RCF
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column dt_Ultima_Producao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 860fdea9-a5c6-40ac-9fd2-b38764b24d30
+		summarizeBy: none
+		sourceColumn: dt_Ultima_Producao
+
+		variation Variation
+			isDefault
+			relationship: 8a631ce5-cffc-4d11-a473-48759b58fb8b
+			defaultHierarchy: LocalDateTable_07d2d889-efa0-4b83-a284-f565d6f104f5.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vw_veiculo_projecao = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_vw_veiculo_projecao = Fonte{[Schema="dbo",Item="vw_veiculo_projecao"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_vw_veiculo_projecao,{{"dt_Producao", type date}, {"Ano_Mes", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navegação
+

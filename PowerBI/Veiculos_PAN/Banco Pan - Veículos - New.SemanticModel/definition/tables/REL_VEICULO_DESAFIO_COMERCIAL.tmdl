@@ -1,0 +1,172 @@
+table REL_VEICULO_DESAFIO_COMERCIAL
+	lineageTag: 0962c785-5c64-43a3-97ea-58d9bca9bfa2
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 0563f5d2-f74e-4f2c-80a9-c4b9d0b7a278
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Competencia
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: adc2edee-6eb2-4845-8745-f4223d1a2480
+		summarizeBy: none
+		sourceColumn: dt_Competencia
+
+		variation Variation
+			isDefault
+			relationship: f3013992-b9d0-4b7e-8a02-570299c2d8e0
+			defaultHierarchy: LocalDateTable_a7d9dfb8-7578-4dc2-865e-d94e01520286.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto
+		dataType: string
+		lineageTag: 50fb0e5d-7383-4521-8aff-a93a3d889423
+		summarizeBy: none
+		sourceColumn: ds_Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_Agrupado
+		dataType: string
+		lineageTag: 94bc2bd3-78ad-492e-a5b1-fe02f494dedc
+		summarizeBy: none
+		sourceColumn: ds_Produto_Agrupado
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_Detalhado
+		dataType: string
+		lineageTag: ca542583-5c37-4f3a-91e0-b48d26ddf2ac
+		summarizeBy: none
+		sourceColumn: ds_Produto_Detalhado
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Produto_Regionais
+		dataType: string
+		lineageTag: 1d6c3469-ca78-485a-bd4c-8c49377f08b0
+		summarizeBy: none
+		sourceColumn: ds_Produto_Regionais
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Regional
+		dataType: string
+		lineageTag: c4d7fa53-4cf4-4887-aa29-9a8c9e744761
+		summarizeBy: none
+		sourceColumn: ds_Regional
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Filial
+		dataType: string
+		lineageTag: 5d967da3-c777-48a2-9629-3085f3071d40
+		summarizeBy: none
+		sourceColumn: ds_Filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Consolidador
+		dataType: string
+		lineageTag: 10a1ea75-103f-4ff8-9870-995a5669c104
+		summarizeBy: none
+		sourceColumn: ds_Consolidador
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_Orcado
+		dataType: double
+		formatString: #,0
+		lineageTag: 0e387c5c-39ba-4e19-9148-5b5c37fb4b10
+		summarizeBy: sum
+		sourceColumn: vl_Orcado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vl_Desafio
+		dataType: double
+		formatString: #,0
+		lineageTag: ce18898b-f186-4d6a-a23a-b507f418e9d1
+		summarizeBy: sum
+		sourceColumn: vl_Desafio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vl_Supera
+		dataType: double
+		formatString: #,0
+		lineageTag: 813124fb-9ea7-4ef1-a9cd-6d0472d48ec8
+		summarizeBy: sum
+		sourceColumn: vl_Supera
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vl_Realizado
+		dataType: double
+		formatString: #,0
+		lineageTag: 073dc442-9ecf-4668-9d23-73dedeffc67c
+		summarizeBy: sum
+		sourceColumn: vl_Realizado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vl_Realizado_Y_1
+		dataType: double
+		formatString: #,0
+		lineageTag: b8b7c72d-7100-464c-b7e6-c6d14a779bbe
+		summarizeBy: sum
+		sourceColumn: vl_Realizado_Y_1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 606576a6-0139-4c40-a012-1cf5109da486
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: df7a6510-08b1-46b4-adbd-98df4676c5ac
+			defaultHierarchy: LocalDateTable_be4da371-a9b9-4efe-99a5-0acea1aacf56.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_Fechado
+		dataType: string
+		lineageTag: 2b41c678-9058-4468-a46f-3a3f938c3869
+		summarizeBy: none
+		sourceColumn: fl_Fechado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_VEICULO_DESAFIO_COMERCIAL = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_VEICULO_DESAFIO_COMERCIAL = Fonte{[Schema="dbo",Item="REL_VEICULO_DESAFIO_COMERCIAL"]}[Data]
+				in
+				    dbo_REL_VEICULO_DESAFIO_COMERCIAL
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

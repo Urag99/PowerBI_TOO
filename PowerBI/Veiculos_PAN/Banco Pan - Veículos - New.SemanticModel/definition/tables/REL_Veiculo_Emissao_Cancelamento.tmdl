@@ -1,0 +1,380 @@
+table REL_Veiculo_Emissao_Cancelamento
+	lineageTag: aef093cf-0b58-4449-bd67-355e97738ad6
+
+	measure '% Emissão x Cancelamento (Qtd)' = ```
+			
+			       CALCULATE(
+			            sum(REL_Veiculo_Emissao_Cancelamento[flCancelado]),
+			            REL_Veiculo_Emissao_Cancelamento[tpEndosso] = "Cancelamento"
+			       )
+			        /  CALCULATE(
+			            sum(REL_Veiculo_Emissao_Cancelamento[flEmitido]),
+			            REL_Veiculo_Emissao_Cancelamento[tpEndosso] = "Apólice"
+			        )
+			            
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: 03b5216e-5854-43f2-ae32-c50987d0e916
+
+		changedProperty = FormatString
+
+	measure '% Emissão x (Cancelamento + Restituição) (R$)' = ```
+			
+			CALCULATE(
+			        sum(REL_Veiculo_Emissao_Cancelamento[valor]),
+			        REL_Veiculo_Emissao_Cancelamento[tpEndosso] in {"Cancelamento","Restituição"}
+			) / 
+			CALCULATE(
+			        sum(REL_Veiculo_Emissao_Cancelamento[valor]),
+			        REL_Veiculo_Emissao_Cancelamento[tpEndosso] = "Apólice"
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0febf6d1-c781-4677-b152-cf3a115a2c75
+
+	measure 'Cancelamentos (Qtd) MoM%' = ```
+			
+				VAR __PREV_MONTH =
+					CALCULATE(
+						sum(REL_Veiculo_Emissao_Cancelamento[flCancelado]),
+						DATEADD('REL_Veiculo_Emissao_Cancelamento'[dtEmissao].[Date], -1, MONTH)
+					)
+				RETURN
+					DIVIDE(sum(REL_Veiculo_Emissao_Cancelamento[flCancelado]) - __PREV_MONTH, __PREV_MONTH)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 41beefaf-1d7c-4d54-885d-78e068953095
+
+	measure 'Prêmio Emitido' = ```
+			CALCULATE(
+			                        SUM(REL_Veiculo_Emissao_Cancelamento[valor]),
+			                        REL_Veiculo_Emissao_Cancelamento[tpEndosso] = "Apólice"
+			                            )
+			                            -
+			                CALCULATE(
+			                        SUM(REL_Veiculo_Emissao_Cancelamento[valor]),
+			                        REL_Veiculo_Emissao_Cancelamento[tpEndosso] in {"Cancelamento","Restituição"}
+			                            )                            
+			```
+		lineageTag: d0ab8965-26dc-4275-af47-ad9486eaff7c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Valor Cancelamento + Restituição' =
+			
+			CALCULATE(
+			     SUM(REL_Veiculo_Emissao_Cancelamento[valor])
+			    ,REL_Veiculo_Emissao_Cancelamento[tpEndosso] IN {"Cancelamento","Restituição"}
+			)
+		lineageTag: 76c8a922-c29d-466a-ab7c-d60261ac90a2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Valor Apólice' =
+			CALCULATE(
+			                                            SUM(REL_Veiculo_Emissao_Cancelamento[valor]),
+			                                            REL_Veiculo_Emissao_Cancelamento[tpEndosso] IN {"Apólice"}
+			)
+		lineageTag: 648a79c2-500d-499a-8580-aac81b09da64
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vendedor
+		dataType: string
+		lineageTag: 739a3ce3-b4df-406f-abe3-5342bcbcaf03
+		summarizeBy: none
+		sourceColumn: vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column filial
+		dataType: string
+		lineageTag: 48d0b17c-cf96-4a56-828f-5a5f43247346
+		summarizeBy: none
+		sourceColumn: filial
+
+		annotation SummarizationSetBy = Automatic
+
+	column regional
+		dataType: string
+		lineageTag: 2b36bb4e-c882-4dd7-acb1-67a81e813700
+		summarizeBy: none
+		sourceColumn: regional
+
+		annotation SummarizationSetBy = Automatic
+
+	column valor
+		dataType: double
+		lineageTag: ea27eaa4-b85f-4dd3-879d-5ff0b19708e1
+		summarizeBy: sum
+		sourceColumn: valor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dtEmissaoEndossoApoliceFechado
+		dataType: string
+		lineageTag: 25f276b3-0127-4e6c-8540-1aa470568ffa
+		summarizeBy: none
+		sourceColumn: dtEmissaoEndossoApoliceFechado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave1
+		dataType: string
+		lineageTag: e1b28427-2560-431a-841d-9bb6458b5e6e
+		summarizeBy: none
+		sourceColumn: Chave1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Endosso Personalizado'
+		dataType: string
+		lineageTag: cdaf805f-789f-4651-8418-13c92a796a04
+		summarizeBy: none
+		sourceColumn: Endosso Personalizado
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fl Emissão Incorreta'
+		dataType: string
+		lineageTag: 895ae285-bbb8-4175-b98f-4e36a33a43a4
+		summarizeBy: none
+		sourceColumn: Fl Emissão Incorreta
+
+		annotation SummarizationSetBy = Automatic
+
+	column loja
+		dataType: string
+		lineageTag: ca4f2a28-6d42-42aa-9138-628b5f808b88
+		summarizeBy: none
+		sourceColumn: loja
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Motivo Alterado'
+		dataType: string
+		lineageTag: 357b7ba9-60e2-40cd-ac34-6a86e4cc327e
+		summarizeBy: none
+		sourceColumn: Motivo Alterado
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'dtEmissaoEndossoApolice - Copiar'
+		dataType: string
+		lineageTag: b8cb302f-a65c-4774-9360-74d86d82c8c2
+		summarizeBy: none
+		sourceColumn: dtEmissaoEndossoApolice - Copiar
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fl Emissão Incorreta New'
+		dataType: string
+		lineageTag: b00acfe0-262e-4390-be79-47968b305d2d
+		summarizeBy: none
+		sourceColumn: Fl Emissão Incorreta New
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdProduto
+		dataType: int64
+		formatString: 0
+		lineageTag: 70aebb6a-6096-41da-8b8c-fb7261fc0424
+		summarizeBy: sum
+		sourceColumn: cdProduto
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsProduto
+		dataType: string
+		lineageTag: 34bb999b-7eb1-44dd-bb8d-19f11139fc91
+		summarizeBy: none
+		sourceColumn: dsProduto
+
+		annotation SummarizationSetBy = Automatic
+
+	column nuProposta
+		dataType: string
+		lineageTag: 7b8f9ec2-1bca-4f65-b7e7-a55f0bb89471
+		summarizeBy: none
+		sourceColumn: nuProposta
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtProducao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e8a17ee3-f48b-4ea9-9761-497b904f39b6
+		summarizeBy: none
+		sourceColumn: dtProducao
+
+		variation Variation
+			isDefault
+			relationship: 5381786e-8632-440d-a6c3-b626a4094902
+			defaultHierarchy: LocalDateTable_fd8c9e44-16c8-4828-b9b8-8b5acdc519ef.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dtEmissao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 05498c86-bfcb-4250-83e4-e8a11fd2226e
+		summarizeBy: none
+		sourceColumn: dtEmissao
+
+		variation Variation
+			isDefault
+			relationship: 1d1b9bf5-3409-45a4-8028-816fd389a473
+			defaultHierarchy: LocalDateTable_af6da23e-8fde-4bc0-9d63-4b6f16f3a690.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dtEmissaoEndossoApolice
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: de63ed7b-5cb0-4606-93d6-643a4de1208c
+		summarizeBy: none
+		sourceColumn: dtEmissaoEndossoApolice
+
+		variation Variation
+			isDefault
+			relationship: 6b600aad-8edd-463e-99de-2b2a53720292
+			defaultHierarchy: LocalDateTable_f544d12d-7763-4d15-be16-27063b97ea3b.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column flEmitido
+		dataType: int64
+		formatString: #,0
+		lineageTag: ea9e60f1-ac11-493a-846e-11d5ed02d978
+		summarizeBy: sum
+		sourceColumn: flEmitido
+
+		annotation SummarizationSetBy = Automatic
+
+	column flCancelado
+		dataType: int64
+		formatString: #,0
+		lineageTag: 7b84f71a-0801-4536-853e-426267d3b6ec
+		summarizeBy: sum
+		sourceColumn: flCancelado
+
+		annotation SummarizationSetBy = Automatic
+
+	column flRestituicao
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ef694c2-cbf4-4473-a73a-665f3ba81b27
+		summarizeBy: sum
+		sourceColumn: flRestituicao
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdApolice
+		dataType: string
+		lineageTag: 863f40b1-8548-46b2-b1ca-7feda4b60802
+		summarizeBy: none
+		sourceColumn: cdApolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column tpProduto
+		dataType: string
+		lineageTag: c74b45e0-ac06-4895-afad-5eeccb4f8383
+		summarizeBy: none
+		sourceColumn: tpProduto
+
+		annotation SummarizationSetBy = Automatic
+
+	column tpVenda
+		dataType: string
+		lineageTag: 510873f6-e8bc-47b7-ad36-c4ead55d36ab
+		summarizeBy: none
+		sourceColumn: tpVenda
+
+		annotation SummarizationSetBy = Automatic
+
+	column tpEndosso
+		dataType: string
+		lineageTag: b7fc7e6a-6d5a-4aad-bd71-c02aaef916fd
+		summarizeBy: none
+		sourceColumn: tpEndosso
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmMotivo
+		dataType: string
+		lineageTag: 8e114b26-1347-463f-b74b-b70e948b53fb
+		summarizeBy: none
+		sourceColumn: nmMotivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtDiasEmiCanc
+		dataType: int64
+		formatString: 0
+		lineageTag: 63c57855-5caa-43cc-9e5f-6b429a852e8c
+		summarizeBy: sum
+		sourceColumn: qtDiasEmiCanc
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtCancelamento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cbe08b15-9780-4ec9-b604-e80b3be2e299
+		summarizeBy: none
+		sourceColumn: dtCancelamento
+
+		variation Variation
+			isDefault
+			relationship: e4d5c7de-6e52-4e4a-8780-bbb3cf781653
+			defaultHierarchy: LocalDateTable_8043ecef-445c-4afa-9ac1-396764dcb09e.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column flEmissaoIncorreta
+		dataType: int64
+		formatString: 0
+		lineageTag: ce8c985b-955a-41fb-b633-ef4457f93b2b
+		summarizeBy: sum
+		sourceColumn: flEmissaoIncorreta
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Veiculo_Emissao_Cancelamento-72f0ca55-a690-4d01-b650-dfaa15a67ed3 = m
+		mode: import
+		source =
+				let
+				   Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA", [Query="select *#(lf)from REL_Veiculo_Emissao_Cancelamento#(lf)where convert(date,dtEmissao,103) >= '20230101'"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"dtProducao", type date}, {"dtEmissao", type date}, {"dtEmissaoEndossoApolice", type date}, {"dtCancelamento", type date}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado", each true),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Linhas Filtradas", "dtEmissaoEndossoApoliceFechado", each Date.StartOfMonth([dtEmissaoEndossoApolice])),
+				    #"Coluna Mesclada Inserida1" = Table.AddColumn(#"Personalização Adicionada", "Chave1", each Text.Combine({[cdApolice], Text.From([dtEmissaoEndossoApoliceFechado], "pt-BR"),[nmMotivo],[filial],[vendedor],[loja]}, ";"), type text),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Coluna Mesclada Inserida1", "Endosso Personalizado", each if [tpEndosso] = "Apólice" then "Apólice (Emissão)" else if [tpEndosso] = "Cancelamento" then "Cancelamento" else if [tpProduto] = "Restituição" then "Restituição" else null),
+				    #"Coluna Condicional Adicionada1" = Table.AddColumn(#"Coluna Condicional Adicionada", "Fl Emissão Incorreta", each if [nmMotivo] = "Emissão incorreta" then "C/ EI" else "S/ EI"),
+				    #"Coluna Condicional Adicionada2" = Table.AddColumn(#"Coluna Condicional Adicionada1", "Motivo Alterado", each if [nmMotivo] = null then "Emissão (Apolice)" else "Cancelamento - " & [nmMotivo]),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Coluna Condicional Adicionada2", "dtEmissaoEndossoApolice", "dtEmissaoEndossoApolice - Copiar"),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Coluna Duplicada",{{"dtEmissaoEndossoApolice - Copiar", type text}}),
+				    #"Coluna Condicional Adicionada3" = Table.AddColumn(#"Tipo Alterado1", "Personalizar", each if [flEmissaoIncorreta] = null then "SEM E/I" else null),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Condicional Adicionada3",{{"Personalizar", "Fl Emissão Incorreta New"}}),
+				    #"Linhas Filtradas1" = Table.SelectRows(#"Colunas Renomeadas", each [loja] <> "AUTOPAN LOJA VIRTUAL"),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Linhas Filtradas1",{"id", "dtAtualizacao"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_QueryRelationships = {"columnCount":28,"keyColumnNames":["id"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{id,0}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{cdProduto,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{dsProduto,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{nuProposta,3}","Section1/REL_Veiculo_Emissao_Cancelamento/Tipo Alterado.{dtProducao,4}","Section1/REL_Veiculo_Emissao_Cancelamento/Tipo Alterado.{dtEmissao,5}","Section1/REL_Veiculo_Emissao_Cancelamento/Tipo Alterado.{dtEmissaoEndossoApolice,6}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{flEmitido,7}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{flCancelado,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{flRestituicao,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{cdApolice,10}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{nmMotivo,11}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{vendedor,12}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{filial,13}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{loja,14}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{tpProduto,15}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{tpVenda,16}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{regional,17}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{tpEndosso,18}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{valor,19}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{qtDiasEmiCanc,20}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{dtAtualizacao,21}","Section1/REL_Veiculo_Emissao_Cancelamento/Personalização Adicionada.{dtEmissaoEndossoApoliceFechado,22}","Section1/REL_Veiculo_Emissao_Cancelamento/Coluna Mesclada Inserida1.{Chave1,23}","Section1/REL_Veiculo_Emissao_Cancelamento/Coluna Condicional Adicionada.{Endosso Personalizado,24}","Section1/REL_Veiculo_Emissao_Cancelamento/Coluna Condicional Adicionada1.{Fl Emissão Incorreta,25}","Section1/REL_Veiculo_Emissao_Cancelamento/Coluna Condicional Adicionada2.{Motivo Alterado,26}","Section1/REL_Veiculo_Emissao_Cancelamento/Tipo Alterado1.{dtEmissaoEndossoApolice - Copiar,27}"],"ColumnCount":28,"KeyColumnNames":["id"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{id,0}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{cdProduto,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{dsProduto,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{nuProposta,3}","Section1/REL_Veiculo_Emissao_Cancelamento/Tipo Alterado.{dtProducao,4}","Section1/REL_Veiculo_Emissao_Cancelamento/Tipo Alterado.{dtEmissao,5}","Section1/REL_Veiculo_Emissao_Cancelamento/Tipo Alterado.{dtEmissaoEndossoApolice,6}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{flEmitido,7}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{flCancelado,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{flRestituicao,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{cdApolice,10}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{nmMotivo,11}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{vendedor,12}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{filial,13}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{loja,14}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{tpProduto,15}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{tpVenda,16}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{regional,17}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{tpEndosso,18}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{valor,19}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{qtDiasEmiCanc,20}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Veiculo_Emissao_Cancelamento.{dtAtualizacao,21}","Section1/REL_Veiculo_Emissao_Cancelamento/Personalização Adicionada.{dtEmissaoEndossoApoliceFechado,22}","Section1/REL_Veiculo_Emissao_Cancelamento/Coluna Mesclada Inserida1.{Chave1,23}","Section1/REL_Veiculo_Emissao_Cancelamento/Coluna Condicional Adicionada.{Endosso Personalizado,24}","Section1/REL_Veiculo_Emissao_Cancelamento/Coluna Condicional Adicionada1.{Fl Emissão Incorreta,25}","Section1/REL_Veiculo_Emissao_Cancelamento/Coluna Condicional Adicionada2.{Motivo Alterado,26}","Section1/REL_Veiculo_Emissao_Cancelamento/Tipo Alterado1.{dtEmissaoEndossoApolice - Copiar,27}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navegação
+
