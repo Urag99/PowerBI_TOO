@@ -1,0 +1,155 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSectionda8f034d42500311a00a",
+  "displayName": "CVP",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "fa4856ad1729f741fda5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "subcanal_tratado2"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "tb_auto_pan_too_seguros",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "t"
+                          }
+                        },
+                        "Property": "subcanal_tratado2"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'BOT_CVP'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'CVP'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'APP_CVP'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'shutterstock_1177758967 v2.jpg'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "shutterstock_1177758967_v27611198911771646.jpg"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fill'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "5796c09edb90cb1c910a",
+      "target": "fe48bc18461e602de893",
+      "type": "DataFilter"
+    },
+    {
+      "source": "fe48bc18461e602de893",
+      "target": "5796c09edb90cb1c910a",
+      "type": "DataFilter"
+    },
+    {
+      "source": "125ebd358cc26d3d8a04",
+      "target": "fe48bc18461e602de893",
+      "type": "DataFilter"
+    },
+    {
+      "source": "125ebd358cc26d3d8a04",
+      "target": "5796c09edb90cb1c910a",
+      "type": "DataFilter"
+    },
+    {
+      "source": "b48bb3022b4b0058b096",
+      "target": "fe48bc18461e602de893",
+      "type": "DataFilter"
+    },
+    {
+      "source": "b48bb3022b4b0058b096",
+      "target": "5796c09edb90cb1c910a",
+      "type": "DataFilter"
+    }
+  ]
+}

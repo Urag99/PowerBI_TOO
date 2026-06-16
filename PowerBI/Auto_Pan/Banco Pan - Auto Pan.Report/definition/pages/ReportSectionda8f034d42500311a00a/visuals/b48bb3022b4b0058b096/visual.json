@@ -1,0 +1,590 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "b48bb3022b4b0058b096",
+  "position": {
+    "x": 8,
+    "y": 497,
+    "z": 23000,
+    "height": 216,
+    "width": 841,
+    "tabOrder": 23000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TAB_DePara"
+                    }
+                  },
+                  "Property": "Gerente"
+                }
+              },
+              "queryRef": "TAB_DePara.Gerente",
+              "nativeQueryRef": "Gerente",
+              "active": false
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TAB_DePara"
+                    }
+                  },
+                  "Property": "Grupo"
+                }
+              },
+              "queryRef": "TAB_DePara.Grupo",
+              "nativeQueryRef": "Grupo",
+              "active": false
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "nome_operador"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.nome_operador",
+              "nativeQueryRef": "Operador",
+              "active": true,
+              "displayName": "Operador"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "tb_auto_pan_too_seguros"
+                        }
+                      },
+                      "Property": "val_producao"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(tb_auto_pan_too_seguros.val_producao)",
+              "nativeQueryRef": "R$ Empréstimo",
+              "displayName": "R$ Empréstimo"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "qtd_contrato v2"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.qtd_contrato v2",
+              "nativeQueryRef": "Qtd. Contratos",
+              "displayName": "Qtd. Contratos"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "tb_auto_pan_too_seguros"
+                        }
+                      },
+                      "Property": "qtd_potencial_lake"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(tb_auto_pan_too_seguros.qtd_potencial_lake)",
+              "nativeQueryRef": "Qtd. Potencial",
+              "displayName": "Qtd. Potencial"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "tb_auto_pan_too_seguros"
+                        }
+                      },
+                      "Property": "qtde_seguro"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(tb_auto_pan_too_seguros.qtde_seguro)",
+              "nativeQueryRef": "Qtd. Seguros",
+              "displayName": "Qtd. Seguros"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "% Aproveitamento v2"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.% Aproveitamento v2",
+              "nativeQueryRef": "% Aproveitamento",
+              "displayName": "% Aproveitamento"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "tb_auto_pan_too_seguros"
+                        }
+                      },
+                      "Property": "valor_seguro"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(tb_auto_pan_too_seguros.valor_seguro)",
+              "nativeQueryRef": "R$ Seguros",
+              "displayName": "R$ Seguros"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "tb_auto_pan_too_seguros"
+                  }
+                },
+                "Property": "qtd_contrato v2"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "TAB_DePara.Gerente"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "TAB_DePara.Grupo"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TAB_DePara"
+                    }
+                  },
+                  "Property": "Grupo"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "tb_auto_pan_too_seguros.nome_operador"
+            ],
+            "isCollapsed": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#000000'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Bold'', wf_segoe-ui_bold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#000000'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#000000'"
+                    }
+                  }
+                }
+              }
+            },
+            "valuesOnRow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#000000'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Bold'', wf_segoe-ui_bold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "perColumnLevel": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#000000'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "Column"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#000000'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "Row"
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "dataBars": {
+              "positiveColor": {
+                "solid": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'#00C3C6'"
+                      }
+                    }
+                  }
+                }
+              },
+              "negativeColor": {
+                "solid": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'minColor'"
+                      }
+                    }
+                  }
+                }
+              },
+              "axisColor": {
+                "solid": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'foreground'"
+                      }
+                    }
+                  }
+                }
+              },
+              "reverseDirection": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              },
+              "hideText": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              },
+              "totalMatchingOption": {
+                "expr": {
+                  "Literal": {
+                    "Value": "1L"
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "tb_auto_pan_too_seguros.% Aproveitamento v2"
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "92.01960886379575D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "tb_auto_pan_too_seguros.qtd_contrato v2"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "92.72549201647332D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(tb_auto_pan_too_seguros.qtd_potencial_lake)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "85.72549280794904D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(tb_auto_pan_too_seguros.qtde_seguro)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "122.72548926471319D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "tb_auto_pan_too_seguros.% Aproveitamento v2"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "79.43137291984081D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(tb_auto_pan_too_seguros.valor_seguro)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

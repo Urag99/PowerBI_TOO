@@ -1,0 +1,1039 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "ffb06f667903c2ba8a4b",
+  "position": {
+    "x": 8,
+    "y": 104,
+    "z": 6000,
+    "height": 608,
+    "width": 1264,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "AnoMes"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.AnoMes",
+              "nativeQueryRef": "AnoMês Venda",
+              "displayName": "AnoMês Venda"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "data_situacao"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.data_situacao",
+              "nativeQueryRef": "Data Venda",
+              "displayName": "Data Venda"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "num_proposta"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.num_proposta",
+              "nativeQueryRef": "NuProposta",
+              "displayName": "NuProposta"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "qtd_potencial_lake"
+                }
+              },
+              "queryRef": "Sum(tb_auto_pan_too_seguros.qtd_potencial_lake)",
+              "nativeQueryRef": "Qtd Potencial",
+              "displayName": "Qtd Potencial"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "canal"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.canal",
+              "nativeQueryRef": "Canal1",
+              "displayName": "Canal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "subcanal_tratado"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.subcanal_tratado",
+              "nativeQueryRef": "SubCanal",
+              "displayName": "SubCanal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "subcanal_tratado2"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.subcanal_tratado2",
+              "nativeQueryRef": "subcanal_tratado2"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "ds_consolidador"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.ds_consolidador",
+              "nativeQueryRef": "Consolidador1",
+              "displayName": "Consolidador"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "nome_loja_prop"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.nome_loja_prop",
+              "nativeQueryRef": "Nome Loja1",
+              "displayName": "Nome Loja"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "regional_prop"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.regional_prop",
+              "nativeQueryRef": "Regional",
+              "displayName": "Regional"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "desc_unidade_prop"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.desc_unidade_prop",
+              "nativeQueryRef": "Filial1",
+              "displayName": "Filial"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "nome_operador"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.nome_operador",
+              "nativeQueryRef": "Operador",
+              "displayName": "Operador"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "tb_auto_pan_too_seguros"
+                        }
+                      },
+                      "Property": "val_producao"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(tb_auto_pan_too_seguros.val_producao)",
+              "nativeQueryRef": "R$ Empréstimo1",
+              "displayName": "R$ Empréstimo"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "tb_auto_pan_too_seguros"
+                        }
+                      },
+                      "Property": "val_financiado"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(tb_auto_pan_too_seguros.val_financiado)",
+              "nativeQueryRef": "R$ Produção",
+              "displayName": "R$ Produção"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "sql_ds_faixa_idade"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.sql_ds_faixa_idade",
+              "nativeQueryRef": "Faixa Idade Cliente",
+              "displayName": "Faixa Idade Cliente"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "qtd_contrato v2"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.qtd_contrato v2",
+              "nativeQueryRef": "Qtd. Contrato",
+              "displayName": "Qtd. Contrato"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "tb_auto_pan_too_seguros"
+                        }
+                      },
+                      "Property": "qtde_seguro"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(tb_auto_pan_too_seguros.qtde_seguro)",
+              "nativeQueryRef": "Qtd. Seguro",
+              "displayName": "Qtd. Seguro"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "TM Emprestimo v2"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.TM Emprestimo v2",
+              "nativeQueryRef": "Ticket Empréstimo",
+              "displayName": "Ticket Empréstimo"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "TM Seguros v2"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.TM Seguros v2",
+              "nativeQueryRef": "Ticket Seguro",
+              "displayName": "Ticket Seguro"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "qtd_emitido"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.qtd_emitido",
+              "nativeQueryRef": "Qtd. Emissão",
+              "displayName": "Qtd. Emissão"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "sql_DATA_EMISSAO_AUTO_PAN"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.sql_DATA_EMISSAO_AUTO_PAN",
+              "nativeQueryRef": "Data Emissão",
+              "displayName": "Data Emissão"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tb_auto_pan_too_seguros"
+                    }
+                  },
+                  "Property": "ds_tipo_produto"
+                }
+              },
+              "queryRef": "tb_auto_pan_too_seguros.ds_tipo_produto",
+              "nativeQueryRef": "Tipo1",
+              "displayName": "Tipo"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Condensed'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter77f00042a7cd68660be7",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "AnoMes"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filter78e062ace7dd8b13a5a3",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "AnoMes"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Filter228b4ba007bac7e7ab04",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "tipo_venda"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filter38750e8f33200349765a",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "COD_LOJA"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filterfbb2013c47c0b061a609",
+        "ordinal": 4,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "DATA_EMISSAO_AUTO_PAN"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filterc05652b2675dd32ae461",
+        "ordinal": 5,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "DATA"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filterbe0903c38dc6a6a14c17",
+        "ordinal": 6,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "FILIAL"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filter883a9f08da10715a7b25",
+        "ordinal": 7,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "ds_idade"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filter743d71800941ca0983a9",
+        "ordinal": 8,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "DESC_LOJA"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filteraa8ae85b4240a4b060aa",
+        "ordinal": 9,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "COD_CONTRATO"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filter8b27fe8a67e00833b693",
+        "ordinal": 10,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "OFFICERS"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Filter4dc278c43a8e7b036422",
+        "ordinal": 11,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "Qtd. Emitidos"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filter04b6323a84b4d6db12d4",
+        "ordinal": 12,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "REL_Veiculo_Producao"
+                  }
+                },
+                "Property": "QTDE_AUTO_PAN"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filter0c78925e955070c4d08d",
+        "ordinal": 13,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "REGIONAL"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filter1c9fb31c274be51b600d",
+        "ordinal": 14,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "TM Emprestimo"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filterc386549c92d300a70d88",
+        "ordinal": 15,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "TM Seguro"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filter9a86ede274a033b034ae",
+        "ordinal": 16,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "REL_Veiculo_Producao"
+              }
+            },
+            "Property": "ds_filtro_produto"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filter40554210482cac7c1210",
+        "ordinal": 17,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "REL_Veiculo_Producao"
+                  }
+                },
+                "Property": "VAL_FINANC"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "be7928643e5c9de4eab1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "nome_operador"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c88186e945a042b2467a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "data_situacao"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "df33001b74b6678256d9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "num_proposta"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "26d66ecfd8b805132191",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "subcanal_tratado"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3ea36629d0a31de40b77",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "canal"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4b7f41686442b2964690",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "ds_consolidador"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "52201dade2e23776b1b4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "nome_loja_prop"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "74261536b3370aa20d17",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "desc_unidade_prop"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "915c2c9511db093880d2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "regional_prop"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "63fceae8904456ad8c21",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "tb_auto_pan_too_seguros"
+                  }
+                },
+                "Property": "val_financiado"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3b3dcada15e48804bee4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "sql_ds_faixa_idade"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b8fb29e380500b965001",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "qtd_contrato v2"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ee4a84e5ae1555e00a7b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "tb_auto_pan_too_seguros"
+                  }
+                },
+                "Property": "qtde_seguro"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a8defa459d854468ec27",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "TM Emprestimo v2"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "729d8fb6ee2314e9892c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "TM Seguros v2"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7c6e929400ab0b80b43e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "qtd_emitido"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ab535459cb03cb0ae081",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "sql_DATA_EMISSAO_AUTO_PAN"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e2103274bce8e1e42755",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "ds_tipo_produto"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a2681c6fc684c53ea602",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "AnoMes"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d07dfb4125bb46ba7582",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "qtd_potencial_lake"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "604e7d2079540309037b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tb_auto_pan_too_seguros"
+              }
+            },
+            "Property": "subcanal_tratado2"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7bf6640444e166036609",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "tb_auto_pan_too_seguros"
+                  }
+                },
+                "Property": "val_producao"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}
