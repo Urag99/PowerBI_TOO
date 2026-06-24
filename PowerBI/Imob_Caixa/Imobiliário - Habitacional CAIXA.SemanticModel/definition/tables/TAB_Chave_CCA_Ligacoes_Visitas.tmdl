@@ -1,0 +1,65 @@
+table TAB_Chave_CCA_Ligacoes_Visitas
+	lineageTag: 03324de8-50b8-41f7-a5c9-9e7f6d3f4937
+
+	column dsExecutivo
+		dataType: string
+		lineageTag: b8fe6c1d-8fa0-4540-8306-8e9fd7af9512
+		summarizeBy: none
+		sourceColumn: dsExecutivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdCCA
+		dataType: string
+		lineageTag: f07a61a1-e5e9-4f86-939e-4fc2c5af8ea4
+		summarizeBy: none
+		sourceColumn: cdCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_chave
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5fec834d-28bf-49cb-9b4e-592df39d2df0
+		summarizeBy: none
+		sourceColumn: dt_chave
+
+		variation Variation
+			isDefault
+			relationship: df575ed6-4f64-4dee-9cab-a6f3f3d13b0d
+			defaultHierarchy: LocalDateTable_e9bf5ea6-5969-418a-959f-ea2f986a4357.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column nmCCA
+		dataType: string
+		lineageTag: 0f89b6da-91be-4bf1-ac64-64ab59267156
+		summarizeBy: none
+		sourceColumn: nmCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column chave_ligacoes_visitas
+		dataType: string
+		lineageTag: cb5e940f-a4e6-4f6c-adb2-475a47a7a8cf
+		summarizeBy: none
+		sourceColumn: chave_ligacoes_visitas
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAB_Chave_CCA_Ligacoes_Visitas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.Combine({REL_Habitacional_Zoho_Ligacoes, REL_Habitacional_Zoho_Visitas}),
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"dsExecutivo", "cdCCA", "dt_chave", "nmCCA", "chave_ligacoes_visitas"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Outras Colunas Removidas", {"chave_ligacoes_visitas"})
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

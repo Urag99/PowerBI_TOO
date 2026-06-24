@@ -1,0 +1,58 @@
+table vw_habitacional_share_SBPE_deslocada
+	lineageTag: 9ed9eed7-62b7-4042-8586-3ba436300269
+
+	measure '% Share TOO SBPE DESL' =
+			
+			DIVIDE(
+			    sum(vw_habitacional_share_SBPE_deslocada[qtd_too])
+			    , sum(vw_habitacional_share_SBPE_deslocada[qtd_caixa])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 39483a49-b133-48b7-8b12-7f7465af202d
+
+	column dt_base
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 87335eeb-634a-4552-a422-615238e514dc
+		summarizeBy: none
+		sourceColumn: dt_base
+
+		variation Variation
+			isDefault
+			relationship: cac80d00-f43e-46ce-ad58-1874b3e15eb7
+			defaultHierarchy: LocalDateTable_544b04bd-e9e2-4138-b7e7-ef29171fbe93.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtd_caixa
+		dataType: int64
+		formatString: #,0
+		lineageTag: c966a3e1-e168-45dc-a7b7-a51cb455b18e
+		summarizeBy: sum
+		sourceColumn: qtd_caixa
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtd_too
+		dataType: int64
+		formatString: #,0
+		lineageTag: 86c1996f-a6ad-48f5-98a6-cfaede734a9a
+		summarizeBy: sum
+		sourceColumn: qtd_too
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vw_habitacional_share_SBPE_deslocada = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_vw_habitacional_share_SBPE_deslocada = Fonte{[Schema="dbo",Item="vw_habitacional_share_SBPE_deslocada"]}[Data]
+				in
+				    dbo_vw_habitacional_share_SBPE_deslocada
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

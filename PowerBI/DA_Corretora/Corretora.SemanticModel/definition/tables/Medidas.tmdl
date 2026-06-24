@@ -1,0 +1,114 @@
+table Medidas
+	lineageTag: 0f6b7de1-6e98-4c0d-842a-3c65aec06407
+
+	measure 'VL realizado' = ```
+			
+			
+			var _aberto = 
+			    CALCULATE(
+			        sum(CON_DA_Corretora_V2[vlRealizado])
+			    )
+			
+			var _fechado = CALCULATE(
+			        sum(CON_DA_Corretora_V2[vlRealizado])
+			        , CON_DA_Corretora_V2[tp_periodo] = "Fechado"
+			    )
+			
+			RETURN
+			if(SELECTEDVALUE(TAB_PERIODO[ds_periodo]) = "Aberto"
+			    , _aberto
+			    , _fechado
+			)
+			```
+		formatString: #,0
+		lineageTag: 1fab4b65-e848-4e01-82fd-223aeb80659b
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'VL orcado' = ```
+			
+			
+			var _aberto = 
+			    CALCULATE(
+			        sum(CON_DA_Corretora_V2[vlOrcado])
+			    )
+			
+			var _fechado = CALCULATE(
+			        sum(CON_DA_Corretora_V2[vlOrcado])
+			        , CON_DA_Corretora_V2[tp_periodo] = "Fechado"
+			    )
+			
+			RETURN
+			if(SELECTEDVALUE(TAB_PERIODO[ds_periodo]) = "Aberto"
+			    , _aberto
+			    , _fechado
+			)
+			```
+		lineageTag: 8a295d7a-dc99-44c1-b7f0-b07ebd1191ea
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'VL Realizado Y-1 Ajustado' = ```
+			
+			VAR _ult_Data =
+			    CALCULATE(
+			        MAX(CON_DA_Corretora_V2[periodo]),
+			        CON_DA_Corretora_V2[tp_periodo] = "Fechado"
+			    )
+			
+			RETURN
+			IF(
+			    SELECTEDVALUE(TAB_PERIODO[ds_periodo]) = "Aberto",    
+			    -- ABERTO
+			    [VL_Realizado Y-1],
+			    -- FECHADO
+			    CALCULATE(
+			        [VL_Realizado Y-1],
+			        KEEPFILTERS('Calendario'[Date] <= _ult_Data)
+			    )
+			)
+			```
+		formatString: #,0
+		lineageTag: 423c6039-e1d8-4bf2-b8ca-694230b067d3
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'vl_Real vs orcado' =
+			
+			[VL realizado] - [VL orcado]
+		formatString: #,0
+		lineageTag: 53170f87-ac62-4c8b-8363-4f4ae4c8cc8a
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Real vs Orcado' =
+			
+			([VL realizado] / [VL orcado]) - 1
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 1f164e4e-6704-469d-b904-4193c5a6c1b2
+
+	measure 'vl_Real vs Real Y-1' =
+			
+			[VL realizado] - [VL Realizado Y-1 Ajustado]
+		lineageTag: d5a681d5-a68b-48e5-9804-ecb0292cd57c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Real vs Real Y-1' =
+			
+			([VL realizado] / [VL Realizado Y-1 Ajustado]) -1
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: a06312bf-bed3-4288-a3ed-ef2a39c2773a
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

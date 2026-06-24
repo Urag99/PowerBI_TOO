@@ -1,0 +1,384 @@
+table 'REL_Habitacional_Base_Sintetica (2)'
+	lineageTag: dd2711fe-3ec4-472e-8309-16fcc16b1c2f
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 09ce6995-e108-4704-bf1e-e6edb4f91c61
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtCompetencia
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fc7d6174-a22f-4a88-806d-97119045afaa
+		summarizeBy: none
+		sourceColumn: dtCompetencia
+
+		variation Variation
+			isDefault
+			relationship: 6676d079-0fc4-4df3-b489-7f8f7f738232
+			defaultHierarchy: LocalDateTable_9f25a05a-95f7-455f-a8a1-8a6e5c84b19a.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column cdEstipulante
+		dataType: int64
+		formatString: 0
+		lineageTag: fe05528e-8994-4ef4-88f8-37188b6f54ae
+		summarizeBy: sum
+		sourceColumn: cdEstipulante
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtContrato
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 64afb8c0-2b02-4507-969d-6f0c757ecc0f
+		summarizeBy: none
+		sourceColumn: dtContrato
+
+		variation Variation
+			isDefault
+			relationship: e72ce26b-8dbb-4221-82b8-d6ba60c8efe9
+			defaultHierarchy: LocalDateTable_102b4a75-9a29-4551-ae3c-53ae5a441241.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column vlPremio
+		dataType: double
+		lineageTag: 38be75ee-a791-4684-8fbe-cc4b559adffe
+		summarizeBy: sum
+		sourceColumn: vlPremio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlPremioMIP
+		dataType: double
+		lineageTag: 85c1309a-a479-4645-b122-abb98cf81705
+		summarizeBy: sum
+		sourceColumn: vlPremioMIP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlPremioDFI
+		dataType: double
+		lineageTag: f9adc586-f23d-4389-9a67-8870cc5c52ba
+		summarizeBy: sum
+		sourceColumn: vlPremioDFI
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlPremioRCC
+		dataType: double
+		lineageTag: 6d49f387-ad5f-41e4-b648-3cff76d3e13f
+		summarizeBy: sum
+		sourceColumn: vlPremioRCC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column qtContratosNovos
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ac22032-6bd4-4ee6-b3d8-42fe1faadcea
+		summarizeBy: sum
+		sourceColumn: qtContratosNovos
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtClientes
+		dataType: int64
+		formatString: 0
+		lineageTag: bbabfe35-ef3a-4be8-9f10-555b7009c890
+		summarizeBy: sum
+		sourceColumn: qtClientes
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtContratosCarteira
+		dataType: int64
+		formatString: 0
+		lineageTag: 0508991c-fd16-4405-b91f-b1eb67767034
+		summarizeBy: sum
+		sourceColumn: qtContratosCarteira
+
+		annotation SummarizationSetBy = Automatic
+
+	column vlAtrasadoDevolver
+		dataType: double
+		lineageTag: bf951030-647b-4542-bd80-c7874910640b
+		summarizeBy: sum
+		sourceColumn: vlAtrasadoDevolver
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlAtrasadoMIPCancelamento
+		dataType: double
+		lineageTag: 927fc662-1a77-4f95-a17b-4a3ad7d66d96
+		summarizeBy: sum
+		sourceColumn: vlAtrasadoMIPCancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlAtrasadoDIFCancelamento
+		dataType: double
+		lineageTag: 03e6c087-f1ca-48fe-b828-99454be50ddc
+		summarizeBy: sum
+		sourceColumn: vlAtrasadoDIFCancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlAtrasadoRCCCancelamento
+		dataType: double
+		lineageTag: 0ab95bf4-bb45-48b5-80c0-3b9ea160b41c
+		summarizeBy: sum
+		sourceColumn: vlAtrasadoRCCCancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column qtContratosCancelados
+		dataType: int64
+		formatString: 0
+		lineageTag: 21629e8f-8aa4-4f88-9399-bf16b623ea7f
+		summarizeBy: sum
+		sourceColumn: qtContratosCancelados
+
+		annotation SummarizationSetBy = Automatic
+
+	column vlPremioContratosNovos
+		dataType: double
+		lineageTag: 40509123-9459-49ec-85f0-b92d5ad5402e
+		summarizeBy: sum
+		sourceColumn: vlPremioContratosNovos
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column qtContratosExpectativa
+		dataType: double
+		formatString: 0
+		lineageTag: 894f0120-ca0f-464e-a4c8-2ec3dfb39d54
+		summarizeBy: sum
+		sourceColumn: qtContratosExpectativa
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtContratosNovosMes
+		dataType: int64
+		formatString: 0
+		lineageTag: d8d82dc3-0918-4af7-b8b8-495a5e0f72c5
+		summarizeBy: sum
+		sourceColumn: qtContratosNovosMes
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtAtualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 348d329b-05a6-4e91-81da-65ff0c04c405
+		summarizeBy: none
+		sourceColumn: dtAtualizacao
+
+		variation Variation
+			isDefault
+			relationship: 1e79ed3b-506c-470f-a77a-f3dde7249b28
+			defaultHierarchy: LocalDateTable_c9132c23-700e-4201-a899-23abd7329791.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Canal Venda'
+		dataType: string
+		lineageTag: 6b146111-6be0-47e6-9a9a-b3003d8c3564
+		summarizeBy: none
+		sourceColumn: Canal Venda
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Canal Venda Base Sintetica'
+		dataType: string
+		lineageTag: 969637c4-af00-43e4-8519-ecfd4b633eb9
+		summarizeBy: none
+		sourceColumn: Canal Venda Base Sintetica
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtContratoTxt
+		dataType: string
+		lineageTag: 679b9cdb-a866-4fd1-b5a4-aa614ede2b17
+		summarizeBy: none
+		sourceColumn: dtContratoTxt
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mesclado
+		dataType: string
+		lineageTag: faae741a-3d67-47cd-803b-31e7d8b91033
+		summarizeBy: none
+		sourceColumn: Mesclado
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Regra Data'
+		dataType: string
+		lineageTag: 166ffe3e-c485-4ee7-8c06-ff0bed5f3a83
+		summarizeBy: none
+		sourceColumn: Regra Data
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data Contrato M+1'
+		dataType: string
+		lineageTag: 45d76ff6-d35a-4bbf-8b12-3328e0645d24
+		summarizeBy: none
+		sourceColumn: Data Contrato M+1
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChaveMetaSintetica
+		dataType: string
+		lineageTag: b18086ac-b5dc-4a5a-9383-860dad9785a6
+		summarizeBy: none
+		sourceColumn: ChaveMetaSintetica
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChaveEntreBasesSinteticas
+		dataType: string
+		lineageTag: 98d4511a-6486-4c87-8e41-09e4ce900dc4
+		summarizeBy: none
+		sourceColumn: ChaveEntreBasesSinteticas
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ChaveEntreBasesSinteticas 2'
+		dataType: string
+		lineageTag: a0b02596-9eba-4443-bfea-38e2af0666a3
+		summarizeBy: none
+		sourceColumn: ChaveEntreBasesSinteticas 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column País
+		dataType: string
+		lineageTag: 9d340c9c-8b33-44ce-a091-c52450c61acd
+		summarizeBy: none
+		sourceColumn: País
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdUF
+		dataType: string
+		lineageTag: 9b35a53a-4348-44b2-802c-26bdbf06e08a
+		summarizeBy: none
+		sourceColumn: cdUF
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtCompetenciaChave
+		dataType: string
+		lineageTag: 32071648-065a-494b-b056-b7402b818fe3
+		summarizeBy: none
+		sourceColumn: dtCompetenciaChave
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'chave venda x sintetica'
+		dataType: string
+		lineageTag: fb6ce3e3-90d2-4d51-ba0b-d0c4d03eb23b
+		summarizeBy: none
+		sourceColumn: chave venda x sintetica
+
+		annotation SummarizationSetBy = Automatic
+
+	column vlPremioPrimeiraParcela
+		dataType: double
+		lineageTag: 5ab293f5-a2b8-4722-828a-761cb55d2ca8
+		summarizeBy: sum
+		sourceColumn: vlPremioPrimeiraParcela
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dsCidade
+		dataType: string
+		lineageTag: a0d3ab87-68f6-4506-9d80-3383a5b4f670
+		summarizeBy: none
+		sourceColumn: dsCidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave_Nova_Safra
+		dataType: string
+		lineageTag: 0d30e865-1d81-4393-831b-3bf832a2e6b1
+		summarizeBy: none
+		sourceColumn: Chave_Nova_Safra
+
+		annotation SummarizationSetBy = Automatic
+
+	column fl_legado_nova_comissao
+		dataType: string
+		lineageTag: e2dda747-87a8-4847-b5b7-87fd771bea5a
+		summarizeBy: none
+		sourceColumn: fl_legado_nova_comissao
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsCidadeAgrupada
+		dataType: string
+		lineageTag: 5501a1a5-b091-42dd-a688-8470b22852e7
+		summarizeBy: none
+		sourceColumn: dsCidadeAgrupada
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'REL_Habitacional_Base_Sintetica (2)-fb10da3b-9b40-4040-8801-81c360ebdc69' = m
+		mode: import
+		source =
+				let
+				    Fonte = REL_Habitacional_Base_Sintetica,
+				    #"Colunas Removidas" = Table.RemoveColumns(Fonte,{"ChaveMetaSintetica"}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Colunas Removidas", "dtContrato", "dtContrato - Copiar"),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna Duplicada",{{"dtContrato", type date}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"dtContrato - Copiar", "dtContratoTxt"}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Colunas Renomeadas", "Personalizar", each if [dtContrato] <= #date(2018, 11, 30) then "UNIFICADO" else [Canal Venda Base Sintetica]),
+				    #"Colunas Removidas1" = Table.RemoveColumns(#"Coluna Condicional Adicionada",{"Regra Data"}),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Colunas Removidas1",{{"Personalizar", "Regra Data"}}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Colunas Renomeadas1", "Mesclado", each Text.Combine({[dtContratoTxt], [Regra Data]}, ""), type text),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Coluna Mesclada Inserida", "Personalizar", each Date.AddMonths(DateTime.FromText([dtContratoTxt]),1)),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"Personalizar", type date}}),
+				    #"Tipo Alterado3" = Table.TransformColumnTypes(#"Tipo Alterado2",{{"Personalizar", type text}}),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Tipo Alterado3",{{"Personalizar", "Data Contrato M+1"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas2",{{"Data Contrato M+1", type text}}),
+				    #"Coluna Mesclada Inserida1" = Table.AddColumn(#"Tipo Alterado1", "ChaveMetaSintetica", each Text.Combine({[#"Data Contrato M+1"], [Regra Data]}, ""), type text),
+				    #"Coluna Mesclada Inserida2" = Table.AddColumn(#"Coluna Mesclada Inserida1", "ChaveEntreBasesSinteticas 2", each Text.Combine({[#"Data Contrato M+1"], [Regra Data], [cdUF]}, ""), type text)
+				in
+				    #"Coluna Mesclada Inserida2"
+
+	annotation PBI_QueryRelationships = {"columnCount":32,"keyColumnNames":["id"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{id,0}","Section1/REL_Habitacional_Base_Sintetica/Tipo Alterado.{dtCompetencia,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{cdEstipulante,2}","Section1/REL_Habitacional_Base_Sintetica (2)/Tipo Alterado.{dtContrato,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{cdUF,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlPremio,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlPremioMIP,6}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlPremioDFI,7}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlPremioRCC,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{qtContratosNovos,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{qtClientes,10}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{qtContratosCarteira,11}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlAtrasadoDevolver,12}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlAtrasadoMIPCancelamento,13}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlAtrasadoDIFCancelamento,14}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlAtrasadoRCCCancelamento,15}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{qtContratosCancelados,16}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlPremioContratosNovos,17}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{qtContratosExpectativa,18}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{qtContratosNovosMes,19}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{dtAtualizacao,20}","Section1/REL_Habitacional_Base_Sintetica/Coluna Condicional Adicionada.{Personalizar,21}","Section1/REL_Habitacional_Base_Sintetica/Tipo Alterado1.{dtCompetenciaChave,22}","Section1/REL_Habitacional_Base_Sintetica/Coluna Condicional Adicionada1.{Canal Venda Base Sintetica,23}","Section1/REL_Habitacional_Base_Sintetica/Coluna Mesclada Inserida1.{ChaveEntreBasesSinteticas,26}","Section1/REL_Habitacional_Base_Sintetica/Personalização Adicionada.{País,27}","Section1/REL_Habitacional_Base_Sintetica (2)/Coluna Duplicada.{dtContrato - Copiar,27}","Section1/REL_Habitacional_Base_Sintetica (2)/Coluna Condicional Adicionada.{Personalizar,28}","Section1/REL_Habitacional_Base_Sintetica (2)/Coluna Mesclada Inserida.{Mesclado,28}","Section1/REL_Habitacional_Base_Sintetica (2)/Tipo Alterado1.{Data Contrato M+1,29}","Section1/REL_Habitacional_Base_Sintetica (2)/Coluna Mesclada Inserida1.{ChaveMetaSintetica,30}","Section1/REL_Habitacional_Base_Sintetica (2)/Coluna Mesclada Inserida2.{ChaveEntreBasesSinteticas 2,31}"],"ColumnCount":32,"KeyColumnNames":["id"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{id,0}","Section1/REL_Habitacional_Base_Sintetica/Tipo Alterado.{dtCompetencia,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{cdEstipulante,2}","Section1/REL_Habitacional_Base_Sintetica (2)/Tipo Alterado.{dtContrato,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{cdUF,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlPremio,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlPremioMIP,6}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlPremioDFI,7}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlPremioRCC,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{qtContratosNovos,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{qtClientes,10}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{qtContratosCarteira,11}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlAtrasadoDevolver,12}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlAtrasadoMIPCancelamento,13}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlAtrasadoDIFCancelamento,14}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlAtrasadoRCCCancelamento,15}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{qtContratosCancelados,16}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{vlPremioContratosNovos,17}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{qtContratosExpectativa,18}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{qtContratosNovosMes,19}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Sintetica.{dtAtualizacao,20}","Section1/REL_Habitacional_Base_Sintetica/Coluna Condicional Adicionada.{Personalizar,21}","Section1/REL_Habitacional_Base_Sintetica/Tipo Alterado1.{dtCompetenciaChave,22}","Section1/REL_Habitacional_Base_Sintetica/Coluna Condicional Adicionada1.{Canal Venda Base Sintetica,23}","Section1/REL_Habitacional_Base_Sintetica/Coluna Mesclada Inserida1.{ChaveEntreBasesSinteticas,26}","Section1/REL_Habitacional_Base_Sintetica/Personalização Adicionada.{País,27}","Section1/REL_Habitacional_Base_Sintetica (2)/Coluna Duplicada.{dtContrato - Copiar,27}","Section1/REL_Habitacional_Base_Sintetica (2)/Coluna Condicional Adicionada.{Personalizar,28}","Section1/REL_Habitacional_Base_Sintetica (2)/Coluna Mesclada Inserida.{Mesclado,28}","Section1/REL_Habitacional_Base_Sintetica (2)/Tipo Alterado1.{Data Contrato M+1,29}","Section1/REL_Habitacional_Base_Sintetica (2)/Coluna Mesclada Inserida1.{ChaveMetaSintetica,30}","Section1/REL_Habitacional_Base_Sintetica (2)/Coluna Mesclada Inserida2.{ChaveEntreBasesSinteticas 2,31}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

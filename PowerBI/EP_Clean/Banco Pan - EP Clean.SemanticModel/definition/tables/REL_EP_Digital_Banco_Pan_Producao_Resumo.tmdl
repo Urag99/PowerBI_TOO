@@ -1,0 +1,221 @@
+table REL_EP_Digital_Banco_Pan_Producao_Resumo
+	lineageTag: cf073052-2905-447e-b92a-c042056c86ca
+
+	measure ticket_seguro = ```
+			
+			DIVIDE(
+			    SUM(REL_EP_Digital_Banco_Pan_Producao_Resumo[vl_premio_total]) 
+			    ,SUM(REL_EP_Digital_Banco_Pan_Producao_Resumo[qt_seguros])
+			    ,BLANK()
+			)
+			```
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: cf8e7f2f-29d4-41c0-bc90-269c6e28dbbe
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure ticket_emprestimo =
+			
+			DIVIDE(
+			    SUM(REL_EP_Digital_Banco_Pan_Producao_Resumo[vl_financiado_total])
+			    ,SUM(REL_EP_Digital_Banco_Pan_Producao_Resumo[qt_contratos])
+			    ,BLANK()
+			)
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: c7e61f56-dc62-4301-969d-9a6f5962c537
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure %_total_aprovados =
+			
+			DIVIDE(
+			     sum(REL_EP_Digital_Banco_Pan_Producao[qt_seguro])
+			    ,sum(REL_EP_Digital_Banco_Pan_Producao_Resumo[qt_contratos])
+			    ,BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 4b44b6bb-5c2e-4978-ba74-66a5b3920048
+
+		changedProperty = FormatString
+
+	measure %_cancelados =
+			
+			DIVIDE(
+			     Count(REL_EP_Digital_Banco_Pan_Producao[dt_cancelamento])
+			    ,sum(REL_EP_Digital_Banco_Pan_Producao_Resumo[qt_seguros])
+			    ,BLANK()
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: cbbdf315-2134-4bac-bf24-7ac6d11be167
+
+		changedProperty = FormatString
+
+	column id_producao_resumo
+		dataType: int64
+		formatString: 0
+		lineageTag: 37d65abd-bc8a-45a2-be6f-8fddc4d2368c
+		summarizeBy: sum
+		sourceColumn: id_producao_resumo
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_contrato
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5c15e110-1497-492a-9d76-3489856453db
+		summarizeBy: none
+		sourceColumn: dt_contrato
+
+		variation Variation
+			isDefault
+			relationship: 887fbaa6-5fb5-4b22-a87f-58f47318e781
+			defaultHierarchy: LocalDateTable_8436a726-0de5-4250-b67d-d2f4acae81f3.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_parcelas
+		dataType: int64
+		formatString: 0
+		lineageTag: bf4afc72-0bf3-4671-9163-98b55d40390b
+		summarizeBy: sum
+		sourceColumn: qt_parcelas
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_uf_cliente
+		dataType: string
+		lineageTag: 9736d831-87f0-4d75-aa0f-f126d0f71320
+		summarizeBy: none
+		sourceColumn: cd_uf_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_idade
+		dataType: int64
+		formatString: 0
+		lineageTag: 0041bc8d-b2e6-408c-ac86-1d2a570952d9
+		summarizeBy: sum
+		sourceColumn: vl_idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_liberado_total
+		dataType: double
+		lineageTag: 91f44838-a421-4409-8e1f-de63d722d15c
+		summarizeBy: sum
+		sourceColumn: vl_liberado_total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_financiado_total
+		dataType: double
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: f59d4b4f-e518-4068-93ff-56979553e9e1
+		summarizeBy: sum
+		sourceColumn: vl_financiado_total
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column qt_contratos
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5e6e3a88-3c2b-405d-9a08-d5f0c9eed582
+		summarizeBy: sum
+		sourceColumn: qt_contratos
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_seguros
+		dataType: int64
+		formatString: #,0
+		lineageTag: e9ef1aee-411c-41ec-a05c-fbf3212744f8
+		summarizeBy: sum
+		sourceColumn: qt_seguros
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_premio_total
+		dataType: double
+		lineageTag: dca2d651-7a1b-4def-aabc-4260ad284b71
+		summarizeBy: sum
+		sourceColumn: vl_premio_total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dt_atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 05e4d372-97bd-43fb-a81c-2c8ab241e4fc
+		summarizeBy: none
+		sourceColumn: dt_atualizacao
+
+		variation Variation
+			isDefault
+			relationship: 914b36a1-a387-4f06-9af2-0c610bb03271
+			defaultHierarchy: LocalDateTable_a95fd8d2-0964-4e4c-a2b9-0694651b59b4.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column faixa_idade
+		dataType: string
+		lineageTag: 90e73740-7013-4ddc-ba0f-89de257f2590
+		summarizeBy: none
+		sourceColumn: faixa_idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave
+		dataType: string
+		lineageTag: ed4d4da7-11be-4117-a63f-c3393037b402
+		summarizeBy: none
+		sourceColumn: Chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_competencia
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 71a24191-f6d8-4b68-948f-385052c16aba
+		summarizeBy: none
+		sourceColumn: dt_competencia
+
+		variation Variation
+			isDefault
+			relationship: 6cc3874d-6bf7-4430-9c3f-7ec997001fa2
+			defaultHierarchy: LocalDateTable_353df56a-564e-4b5e-ab52-e23b200aba06.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_EP_Digital_Banco_Pan_Producao_Resumo-89574d27-443e-4284-8cda-4786e06adc11 = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_EP_Digital_Banco_Pan_Producao_Resumo = Fonte{[Schema="dbo",Item="REL_EP_Digital_Banco_Pan_Producao_Resumo"]}[Data],
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(dbo_REL_EP_Digital_Banco_Pan_Producao_Resumo, "faixa_idade", each if [vl_idade] <= 30 then "Até 30 anos" else if [vl_idade] <= 40 then "31 - 40 anos" else if [vl_idade] <= 50 then "41 - 50 anos" else if [vl_idade] <= 60 then "51 - 60 anos" else if [vl_idade] <= 69 then "61 - 69 anos" else "Acima de 70 anos"),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Coluna Condicional Adicionada", "dt_contrato", "dt_contrato - Copiar"),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Coluna Duplicada", "Chave", each Text.Combine({Text.From([dt_contrato], "pt-BR"), Text.From([vl_idade], "pt-BR"), [cd_uf_cliente], Text.From([qt_parcelas], "pt-BR")}, "|"), type text),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Mesclada Inserida",{{"dt_contrato - Copiar", "dt_competencia"}}),
+				    #"Início do Mês Calculado" = Table.TransformColumns(#"Colunas Renomeadas",{{"dt_competencia", Date.StartOfMonth, type datetime}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Início do Mês Calculado",null,"Indefinido",Replacer.ReplaceValue,{"cd_uf_cliente"})
+				in
+				    #"Valor Substituído"
+
+	annotation PBI_ResultType = Table
+

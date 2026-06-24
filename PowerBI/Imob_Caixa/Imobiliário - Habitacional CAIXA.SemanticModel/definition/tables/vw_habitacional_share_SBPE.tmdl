@@ -1,0 +1,58 @@
+table vw_habitacional_share_SBPE
+	lineageTag: d44150fe-9310-472e-b007-1903eb91457c
+
+	measure '% Share TOO SBPE vw' =
+			
+			DIVIDE(
+			    sum(vw_habitacional_share_SBPE[qtd_too])
+			    , sum(vw_habitacional_share_SBPE[qtd_caixa])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: fc7a5548-7d72-4d70-901a-21527f3ef0c4
+
+	column dt_base
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b479dd1c-e7e8-4375-ac8b-c6282a374d6e
+		summarizeBy: none
+		sourceColumn: dt_base
+
+		variation Variation
+			isDefault
+			relationship: 40c139af-03a9-4a28-973f-edc81affe374
+			defaultHierarchy: LocalDateTable_d16e048d-73ec-42a9-983b-7fd175f9739a.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtd_caixa
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5987730f-dc91-402f-bd06-53eca59fc07b
+		summarizeBy: sum
+		sourceColumn: qtd_caixa
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtd_too
+		dataType: int64
+		formatString: #,0
+		lineageTag: 17fdd519-a5c9-4b89-b2b1-1e82807bba65
+		summarizeBy: sum
+		sourceColumn: qtd_too
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vw_habitacional_share_SBPE = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_vw_habitacional_share_SBPE = Fonte{[Schema="dbo",Item="vw_habitacional_share_SBPE"]}[Data]
+				in
+				    dbo_vw_habitacional_share_SBPE
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

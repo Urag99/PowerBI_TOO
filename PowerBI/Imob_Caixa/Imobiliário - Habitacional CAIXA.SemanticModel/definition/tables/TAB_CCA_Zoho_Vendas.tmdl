@@ -1,0 +1,155 @@
+table TAB_CCA_Zoho_Vendas
+	lineageTag: 8aff5c2e-9a10-4e50-b2db-10161b648aae
+
+	measure qtContrato_2015-2021 = ```
+			
+			 CALCULATE(
+			     sum(REL_Habitacional_Base_Vendas[qtContratos])
+			    ,TAB_CCA_Zoho_Vendas[Ano] <= 2021
+			 )
+			```
+		formatString: #,0
+		lineageTag: 3475fb05-3b61-4b64-a3dd-1017dc36303d
+
+	measure qtContrato_2022 = ```
+			
+			 CALCULATE(
+			     sum(REL_Habitacional_Base_Vendas[qtContratos])
+			    ,TAB_CCA_Zoho_Vendas[Ano] = 2022
+			 )
+			```
+		formatString: #,0
+		lineageTag: fae08a73-b730-4931-ad99-06343fc94563
+
+	measure qtContrato_2023 = ```
+			
+			 CALCULATE(
+			     sum(REL_Habitacional_Base_Vendas[qtContratos])
+			    ,TAB_CCA_Zoho_Vendas[Ano] = 2023
+			 )
+			```
+		formatString: #,0
+		lineageTag: f97dad88-da00-4b5f-9d0b-079ae41bc304
+
+	measure qtContrato_2024 = ```
+			
+			 CALCULATE(
+			     sum(REL_Habitacional_Base_Vendas[qtContratos])
+			    ,TAB_CCA_Zoho_Vendas[Ano] = 2024
+			 )
+			```
+		formatString: #,0
+		lineageTag: 9633872a-bff4-4bb6-91b9-4906d688ebd6
+
+	measure qtContrato_2025 = ```
+			
+			 CALCULATE(
+			     sum(REL_Habitacional_Base_Vendas[qtContratos])
+			    ,TAB_CCA_Zoho_Vendas[Ano] = 2025
+			 )
+			```
+		formatString: 0
+		lineageTag: 1187364d-a394-4446-b244-590ba87cf924
+
+	column Chave_CCA_Zoho_Vendas
+		dataType: string
+		lineageTag: 5c9a4c22-b71e-45e9-9385-c51c1feed97d
+		summarizeBy: none
+		sourceColumn: Chave_CCA_Zoho_Vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_chave
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bc30cfb9-89b2-461a-9af3-799adffd9360
+		summarizeBy: none
+		sourceColumn: dt_chave
+
+		variation Variation
+			isDefault
+			relationship: fb16415b-614f-4782-95c4-0b67724a864e
+			defaultHierarchy: LocalDateTable_6198f5f4-d84a-496a-9eea-6b40f9521c28.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CCA_Zoho_Vendas
+		dataType: string
+		lineageTag: d0928691-0a91-4e37-a765-02b8c0cf0390
+		summarizeBy: none
+		sourceColumn: CCA_Zoho_Vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 7151069e-be8e-4088-9e93-4f94851d0b5b
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano_Personalizado
+		dataType: string
+		lineageTag: a8a31d28-a5a6-4cfa-ad86-48ee899d6be0
+		summarizeBy: none
+		sourceColumn: Ano_Personalizado
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmCCA
+		dataType: string
+		lineageTag: 5b070e13-335b-4d56-942f-40c8ad7d72b3
+		summarizeBy: none
+		sourceColumn: nmCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmExecutivo
+		dataType: string
+		lineageTag: 4416aa1e-7d89-427d-a435-eb995b20e7c0
+		summarizeBy: none
+		sourceColumn: nmExecutivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdUFCCA
+		dataType: string
+		lineageTag: 7a8d4aa7-0057-47ed-be93-7e20105c35e8
+		summarizeBy: none
+		sourceColumn: cdUFCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsCidadeCCA
+		dataType: string
+		lineageTag: e3e9fc31-d6ac-4bd4-80fe-19ddc9a88c4a
+		summarizeBy: none
+		sourceColumn: dsCidadeCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAB_CCA_Zoho_Vendas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.Combine({REL_Habitacional_Base_Vendas, REL_Habitacional_Zoho_Visitas}),
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"cdUFCCA", "dsCidadeCCA", "Chave_CCA_Zoho_Vendas", "dt_chave", "CCA_Zoho_Vendas", "nmCCA", "nmExecutivo"}),
+				    #"Texto em Maiúscula" = Table.TransformColumns(#"Outras Colunas Removidas",{{"nmExecutivo", Text.Upper, type text}}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Texto em Maiúscula", {"Chave_CCA_Zoho_Vendas"}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Duplicatas Removidas", "dt_chave", "dt_chave - Copiar"),
+				    #"Ano Extraído" = Table.TransformColumns(#"Coluna Duplicada",{{"dt_chave - Copiar", Date.Year, Int64.Type}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Ano Extraído",{{"dt_chave - Copiar", "Ano"}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Colunas Renomeadas", "Personalizar", each if [Ano] <= 2021 then "2015-2021" else [Ano]),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada", each true),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Linhas Filtradas",{{"Personalizar", "Ano_Personalizado"}})
+				in
+				    #"Colunas Renomeadas1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

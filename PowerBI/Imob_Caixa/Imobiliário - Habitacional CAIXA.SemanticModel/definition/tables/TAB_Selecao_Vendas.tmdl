@@ -1,0 +1,100 @@
+table TAB_Selecao_Vendas
+	lineageTag: 0bb8f883-99eb-4c4a-bf48-1fadb6e3f986
+
+	measure periodo_anterior =
+			
+			SWITCH(
+			     TRUE()
+			    ,SELECTEDVALUE(TAB_Selecao_Vendas[classificacao_vendas]) = "1. Contratos Novos"
+			    ,[qtd_novos_contratos_periodo_anterior_media]
+			    ,SELECTEDVALUE(TAB_Selecao_Vendas[classificacao_vendas]) = "2. Grupos de CCAs Produzindo"
+			    ,[qt_grupo_cca_periodo_anterior]
+			    ,SELECTEDVALUE(TAB_Selecao_Vendas[classificacao_vendas]) = "3. Ativações"
+			    ,[qtd_ativacao_periodo_anterior]
+			    ,BLANK()
+			)
+		formatString: #,0
+		lineageTag: bca23ef7-a386-47c2-9b9c-d626951b3ec2
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure M-2 =
+			
+			SWITCH(
+			     TRUE()
+			    ,SELECTEDVALUE(TAB_Selecao_Vendas[classificacao_vendas]) = "1. Contratos Novos"
+			    ,sum(REL_Habitacional_Base_Vendas[qtd_novos_contratos_m-2])
+			    ,SELECTEDVALUE(TAB_Selecao_Vendas[classificacao_vendas]) = "2. Grupos de CCAs Produzindo"
+			    ,[qt_grupo_cca_m-2]
+			    ,SELECTEDVALUE(TAB_Selecao_Vendas[classificacao_vendas]) = "3. Ativações"
+			    ,[qtd_ativacao_m-2]
+			    ,BLANK()
+			)
+		formatString: #,0
+		lineageTag: ed1ed8f3-63b7-4f30-be4d-c6917808fff1
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure M-1 =
+			
+			SWITCH(
+			     TRUE()
+			    ,SELECTEDVALUE(TAB_Selecao_Vendas[classificacao_vendas]) = "1. Contratos Novos"
+			    ,sum(REL_Habitacional_Base_Vendas[qtd_novos_contratos_m-1])
+			    ,SELECTEDVALUE(TAB_Selecao_Vendas[classificacao_vendas]) = "2. Grupos de CCAs Produzindo"
+			    ,[qt_grupo_cca_m-1]
+			    ,SELECTEDVALUE(TAB_Selecao_Vendas[classificacao_vendas]) = "3. Ativações"
+			    ,[qtd_ativacao_m-1]
+			    ,BLANK()
+			)
+		formatString: #,0
+		lineageTag: b2d5ae54-1d13-4934-ba2a-605074f8cdec
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure dif_m-1_m-2 = ```
+			
+			 [M-1]
+			-[M-2]
+			```
+		formatString: #,0
+		lineageTag: 712f19a9-a43b-4ed9-bad6-0d6cb9f3c3b1
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure dif_m-1_m-2_% =
+			
+			SWITCH(
+			     TRUE()
+			    ,[M-1]+[M-2]=0
+			    ,BLANK()
+			    ,DIVIDE(
+			         [M-1]
+			        ,[M-2]
+			        ,BLANK()
+			    )-1
+			)
+		formatString: #,0%;-#,0%;#,0%
+		lineageTag: 422b4ff2-3fb6-415d-88a4-830985a3956f
+
+	column classificacao_vendas
+		dataType: string
+		lineageTag: 8cc3d911-7b5b-4cf6-a590-1997857bf07d
+		summarizeBy: none
+		sourceColumn: classificacao_vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAB_Selecao_Vendas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMtRTcM7PKylKLMkvVvDLL8svVorViVYy0lNwLyotAIqlpCo4OzsWKwQU5aeUVmXmpeSDFRjrKTiWZJYlHl5+eGsqUE8sAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [classificacao_vendas = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"classificacao_vendas", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

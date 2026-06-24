@@ -1,0 +1,49 @@
+table 'Data Indice'
+	lineageTag: f75f1034-a673-452d-a8bb-a05d409d1762
+
+	column 'Chave de Data'
+		dataType: string
+		lineageTag: 986a6f87-c0c1-4eee-9f73-b98459130e5b
+		summarizeBy: none
+		sourceColumn: Chave de Data
+
+		annotation SummarizationSetBy = Automatic
+
+	column Índice
+		dataType: double
+		lineageTag: 91a8121a-124e-425e-9d9a-727efbf6985b
+		summarizeBy: none
+		sourceColumn: Índice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Data Indice-f40d0872-458d-44b7-b765-a58c998abea5' = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_Habitacional_Base_Vendas = Fonte{[Schema="dbo",Item="REL_Habitacional_Base_Vendas"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Habitacional_Base_Vendas,{{"dtContrato", type date}, {"dtInclusao", type date}, {"dtMesContrato", type date}, {"dtMesFaturado", type date}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Tipo Alterado", "Personalizar", each if [cdEstipulante] = 6207 then "MCMV" else "BALCÃO"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Condicional Adicionada",{{"Personalizar", "Canal Vendas"}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Colunas Renomeadas", "Pais", each "BRASIL"),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Personalização Adicionada", "dtMesFaturado", "dtMesFaturado - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"dtMesFaturado - Copiar", "Chave de Data"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas1",{{"Chave de Data", type text}}),
+				    dtMesContrato1 = #"Tipo Alterado1"[dtMesContrato],
+				    #"Convertido para Tabela" = Table.FromList(dtMesContrato1, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Convertido para Tabela",{{"Column1", "Chave de Data"}}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Colunas Renomeadas2"),
+				    #"Linhas Classificadas" = Table.Sort(#"Duplicatas Removidas",{{"Chave de Data", Order.Ascending}}),
+				    #"Índice Adicionado" = Table.AddIndexColumn(#"Linhas Classificadas", "Índice", 1, 1)
+				in
+				    #"Índice Adicionado"
+
+	annotation PBI_QueryRelationships = {"columnCount":2,"keyColumnNames":["Chave de Data"],"queryRelationships":[],"columnIdentities":["Section1/Data Indice/Índice Adicionado.{Chave de Data,0}","Section1/Data Indice/Índice Adicionado.{Índice,1}"],"ColumnCount":2,"KeyColumnNames":["Chave de Data"],"ColumnIdentities":["Section1/Data Indice/Índice Adicionado.{Chave de Data,0}","Section1/Data Indice/Índice Adicionado.{Índice,1}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

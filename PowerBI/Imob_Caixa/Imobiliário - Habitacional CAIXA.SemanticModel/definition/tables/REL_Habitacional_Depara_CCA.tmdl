@@ -1,0 +1,159 @@
+table REL_Habitacional_Depara_CCA
+	lineageTag: 9da8618a-df82-4c39-9e0c-8260c46223c0
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: aba2c1e3-190c-4bf3-b7cb-d53b66e0475b
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsFonte
+		dataType: string
+		lineageTag: 067491ad-50fc-4edb-ad0c-89aed1f34d7b
+		summarizeBy: none
+		sourceColumn: dsFonte
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdCCACompleto
+		dataType: string
+		lineageTag: 31f5b655-1c80-4d3b-a683-25bbc0749fbc
+		summarizeBy: none
+		sourceColumn: cdCCACompleto
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdCCA
+		dataType: string
+		lineageTag: 2447e59a-6916-4f1e-a331-90d0e59554f5
+		summarizeBy: none
+		sourceColumn: cdCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsRazaoSocial
+		dataType: string
+		lineageTag: 28692208-448f-485e-91bc-14cb093de079
+		summarizeBy: none
+		sourceColumn: dsRazaoSocial
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsNomeFantasia
+		dataType: string
+		lineageTag: cbab3330-b7ca-47e7-9cf4-33f480a20a3c
+		summarizeBy: none
+		sourceColumn: dsNomeFantasia
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdCNPJ
+		dataType: string
+		lineageTag: c3af0a44-842c-4a10-a2a6-21f0db4ecc6d
+		summarizeBy: none
+		sourceColumn: cdCNPJ
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdUF
+		dataType: string
+		lineageTag: d56aeffd-91b3-4ca6-89d4-36a3bc8b5720
+		summarizeBy: none
+		sourceColumn: cdUF
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsCidade
+		dataType: string
+		lineageTag: 7a0458de-74b2-4b4b-8ad1-8dee930ba07a
+		summarizeBy: none
+		sourceColumn: dsCidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsBairro
+		dataType: string
+		lineageTag: a48b57fb-8dbf-44ee-9187-89a3955becdc
+		summarizeBy: none
+		sourceColumn: dsBairro
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsExecutivo
+		dataType: string
+		lineageTag: 758ec259-3450-4cf7-93d7-96b3494931c7
+		summarizeBy: none
+		sourceColumn: dsExecutivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column stVisita
+		dataType: string
+		lineageTag: f6efd4fc-3d6b-4034-b354-19af49c146f1
+		summarizeBy: none
+		sourceColumn: stVisita
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtAtualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 152e86a2-a798-4ab4-a647-65c418055588
+		summarizeBy: none
+		sourceColumn: dtAtualizacao
+
+		variation Variation
+			isDefault
+			relationship: 36ee514d-9d11-48cf-ab5a-e4df6b8370ff
+			defaultHierarchy: LocalDateTable_c3629f14-a91b-43c1-aed0-55a6a8bcb6b6.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cluster
+		dataType: string
+		lineageTag: a9b041de-b121-447c-89d8-94ea7c492502
+		summarizeBy: none
+		sourceColumn: ds_Cluster
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Perfil_Vendas
+		dataType: string
+		lineageTag: d9cdbe7f-4bf6-43dd-9d54-5c247d5f62b4
+		summarizeBy: none
+		sourceColumn: ds_Perfil_Vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cluster_Classificado
+		dataType: string
+		lineageTag: 4309852d-6b48-471b-843f-ff842817a80f
+		summarizeBy: none
+		sourceColumn: ds_Cluster_Classificado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Habitacional_Depara_CCA = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_Habitacional_Depara_CCA = Fonte{[Schema="dbo",Item="REL_Habitacional_Depara_CCA"]}[Data],
+				    #"Personalização Adicionada" = Table.AddColumn(dbo_REL_Habitacional_Depara_CCA, "ds_Cluster_Classificado", each if [ds_Cluster] = "Top 10" then "1.Top 10" else 
+				if [ds_Cluster] = "Top 11 - 30" then "2.Top 11 - 30" else 
+				if [ds_Cluster] = "Top 30 - 50" then "3.Top 30 - 50" else 
+				if [ds_Cluster] = "Top +50" then "4.Top +50" else 
+				if [ds_Cluster] = "Não produz desde 2022" then "5.Não produz desde 2022" else 
+				if [ds_Cluster] = "Não produz desde <= 2021" then "6.Não produz desde <= 2021" else 
+				if [ds_Cluster] = "Nunca produziu" then "7.Nunca produziu" else 
+				if [ds_Cluster] = "Não classificado" then "8.Não classificado" else null),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"ds_Cluster_Classificado", type text}})
+				in
+				    #"Tipo Alterado"
+				```
+
+	annotation PBI_ResultType = Table
+

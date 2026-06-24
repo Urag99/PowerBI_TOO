@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Banco Pan - EP Clean"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1062b85f-e2c5-4c4b-8518-eed9dc1a3962"
+  }
+}

@@ -1,0 +1,601 @@
+table REL_Habitacional_Simulador_Taxa_Seguro
+	lineageTag: 353c0088-ca12-44a5-9293-05bf84cb2f4e
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: c2fee61c-1d25-465e-8d37-4820a352a11d
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column periodo
+		dataType: dateTime
+		formatString: yyyy-mm
+		lineageTag: c9acf697-7d78-40ca-891c-eee9f9a4b94e
+		summarizeBy: none
+		sourceColumn: periodo
+
+		variation Variation
+			isDefault
+			relationship: 6de262b8-d473-4ae0-a36f-3181ee8bee55
+			defaultHierarchy: LocalDateTable_51a148f1-21be-46ce-a6bd-d68e6317d5da.'Hierarquia de Datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column dsCanalVenda
+		dataType: string
+		lineageTag: 83b58511-dd05-4a25-af48-a6833576de66
+		summarizeBy: none
+		sourceColumn: dsCanalVenda
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmSeguradora
+		dataType: string
+		lineageTag: 82b57e68-408a-44ed-bc97-dd0a800f6ba2
+		summarizeBy: none
+		sourceColumn: nmSeguradora
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsFaixa
+		dataType: string
+		lineageTag: 173115be-5528-4b42-baef-540d482ee759
+		summarizeBy: none
+		sourceColumn: dsFaixa
+
+		annotation SummarizationSetBy = Automatic
+
+	column vlPercentualCESH
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: ff0cd85f-4ab9-4062-ae40-59d6df9123bd
+		summarizeBy: sum
+		sourceColumn: vlPercentualCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column vlTotalSeguro
+		dataType: double
+		formatString: #,0
+		lineageTag: 86f9f500-6342-46f9-8a8d-dae72c78badb
+		summarizeBy: sum
+		sourceColumn: vlTotalSeguro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vlPrimeiraParcelaSeg
+		dataType: double
+		formatString: #,0
+		lineageTag: f69662ea-5afa-49af-bfd4-a1ef8ba12673
+		summarizeBy: sum
+		sourceColumn: vlPrimeiraParcelaSeg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column dtAtualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 30a0b251-7c07-452d-83bb-ec6e2ccc9222
+		summarizeBy: none
+		sourceColumn: dtAtualizacao
+
+		variation Variation
+			isDefault
+			relationship: 8b83714c-170f-404a-8e06-0d89c46d61d3
+			defaultHierarchy: LocalDateTable_97235aae-67b8-4261-a49b-5f2787f61435.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column varPercentualCESH
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 98221ac3-a279-4dd5-b3ab-7f20df826df8
+		summarizeBy: sum
+		sourceColumn: varPercentualCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column varPercentualSeguro
+		dataType: double
+		lineageTag: 68ee51d6-42a1-4d67-a514-e62595dfe715
+		summarizeBy: sum
+		sourceColumn: varPercentualSeguro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column varPercentualParcela
+		dataType: double
+		lineageTag: 58e79f51-049b-4e5b-b083-b1bd6bc04081
+		summarizeBy: sum
+		sourceColumn: varPercentualParcela
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column varAbsolutaCESH
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 64895a5d-b2b7-4b7e-96e8-d1c33efcb109
+		summarizeBy: sum
+		sourceColumn: varAbsolutaCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column varAbsolutaSeguro
+		dataType: double
+		lineageTag: 55130c9e-d23c-42d4-9ebb-20b6a59deef8
+		summarizeBy: sum
+		sourceColumn: varAbsolutaSeguro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column varAbsolutaParcela
+		dataType: double
+		lineageTag: 903f0b53-ae4a-49f2-a5f0-316e75ffbbdc
+		summarizeBy: sum
+		sourceColumn: varAbsolutaParcela
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '25 anos valCESH'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a8a72b8a-0334-4506-acb6-268ffebf389b
+		summarizeBy: sum
+		sourceColumn: 25 anos valCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column '35 anos valCESH'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 8ecfaaa1-0586-4402-b5ef-6b7a13a30078
+		summarizeBy: sum
+		sourceColumn: 35 anos valCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column '45 anos valCESH'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ba83007f-bdc1-48d0-a4be-06b3a24e699e
+		summarizeBy: sum
+		sourceColumn: 45 anos valCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column '55 anos valCESH'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0b957da2-8dfa-4c4b-8935-76eef94a963c
+		summarizeBy: sum
+		sourceColumn: 55 anos valCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column '25 anos valSeg'
+		dataType: double
+		formatString: #,0
+		lineageTag: 8fd2d52e-c621-419f-a370-1492884b521f
+		summarizeBy: sum
+		sourceColumn: 25 anos valSeg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column '35 anos valSeg'
+		dataType: double
+		formatString: #,0
+		lineageTag: b9b9b274-dab7-4f0f-b67d-187210531269
+		summarizeBy: sum
+		sourceColumn: 35 anos valSeg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column '45 anos valSeg'
+		dataType: double
+		formatString: #,0
+		lineageTag: 5527e8d3-ac21-4b3b-bbd1-c0e245274b35
+		summarizeBy: sum
+		sourceColumn: 45 anos valSeg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column '55 anos valSeg'
+		dataType: double
+		formatString: #,0
+		lineageTag: 70d02a92-6fd9-41d4-8ea8-221dd3bafdac
+		summarizeBy: sum
+		sourceColumn: 55 anos valSeg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column '25 anos valParc'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 3fa92848-c166-4cdc-8c76-a46715a73adb
+		summarizeBy: sum
+		sourceColumn: 25 anos valParc
+
+		annotation SummarizationSetBy = Automatic
+
+	column '35 anos valParc'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: eb34991a-5bc6-4bd4-9630-dd3c7fd57f7b
+		summarizeBy: sum
+		sourceColumn: 35 anos valParc
+
+		annotation SummarizationSetBy = Automatic
+
+	column '45 anos valParc'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 933990c7-0069-45af-885b-0cc38476ef5d
+		summarizeBy: sum
+		sourceColumn: 45 anos valParc
+
+		annotation SummarizationSetBy = Automatic
+
+	column '55 anos valParc'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 9fc5b3ba-5a48-4289-b24e-ca589e144143
+		summarizeBy: sum
+		sourceColumn: 55 anos valParc
+
+		annotation SummarizationSetBy = Automatic
+
+	column '25 anos varPercCESH'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 10438911-74e4-4cdd-b189-3c820cfe8b91
+		summarizeBy: sum
+		sourceColumn: 25 anos varPercCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column '35 anos varPercCESH'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 3e7ea515-dedb-4721-9471-4bb9c1fcb118
+		summarizeBy: sum
+		sourceColumn: 35 anos varPercCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column '45 anos varPercCESH'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: fb6c6b1b-d4b8-4987-96ca-e07ede5f1f54
+		summarizeBy: sum
+		sourceColumn: 45 anos varPercCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column '55 anos varPercCESH'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 367907f2-9d47-4f9c-8cec-2551aa1628bf
+		summarizeBy: sum
+		sourceColumn: 55 anos varPercCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column '25 anos varPercSeg'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 414bbab6-b373-4e7c-bd75-169060012023
+		summarizeBy: sum
+		sourceColumn: 25 anos varPercSeg
+
+		annotation SummarizationSetBy = Automatic
+
+	column '35 anos varPercSeg'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 91fc31d3-7733-46a1-a15d-dcb74e3be243
+		summarizeBy: sum
+		sourceColumn: 35 anos varPercSeg
+
+		annotation SummarizationSetBy = Automatic
+
+	column '45 anos varPercSeg'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: f115106e-e796-406a-bf5e-f652d4d8fd40
+		summarizeBy: sum
+		sourceColumn: 45 anos varPercSeg
+
+		annotation SummarizationSetBy = Automatic
+
+	column '55 anos varPercSeg'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: e64c53dd-5adb-4c91-812a-80a024d9b176
+		summarizeBy: sum
+		sourceColumn: 55 anos varPercSeg
+
+		annotation SummarizationSetBy = Automatic
+
+	column '25 anos varPercParc'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 575fe725-ddd1-4a7d-a06c-55fe1be600f3
+		summarizeBy: sum
+		sourceColumn: 25 anos varPercParc
+
+		annotation SummarizationSetBy = Automatic
+
+	column '35 anos varPercParc'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 6830b2f2-1f86-4375-914f-da0f35a7d6fa
+		summarizeBy: sum
+		sourceColumn: 35 anos varPercParc
+
+		annotation SummarizationSetBy = Automatic
+
+	column '45 anos varPercParc'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 035051b4-ce2e-4bac-a51d-d5ea5af4fa18
+		summarizeBy: sum
+		sourceColumn: 45 anos varPercParc
+
+		annotation SummarizationSetBy = Automatic
+
+	column '55 anos varPercParc'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 90fd3795-2769-4f67-912c-d1de2894b0b3
+		summarizeBy: sum
+		sourceColumn: 55 anos varPercParc
+
+		annotation SummarizationSetBy = Automatic
+
+	column '25 anos varAbsCESH'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b4a6e215-f766-44e0-add6-3f94be14ce67
+		summarizeBy: sum
+		sourceColumn: 25 anos varAbsCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column '35 anos varAbsCESH'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: d538a75d-fa26-4407-b363-41441c56abc7
+		summarizeBy: sum
+		sourceColumn: 35 anos varAbsCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column '45 anos varAbsCESH'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 9ace0394-59b9-4251-bb7c-3944e934c98a
+		summarizeBy: sum
+		sourceColumn: 45 anos varAbsCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column '55 anos varAbsCESH'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: e136f455-0448-4ae3-9815-79d2bd80f1dc
+		summarizeBy: sum
+		sourceColumn: 55 anos varAbsCESH
+
+		annotation SummarizationSetBy = Automatic
+
+	column '25 anos varAbsSeg'
+		dataType: double
+		formatString: #,0
+		lineageTag: d83cd7ac-12bc-4893-8d23-b50bea799055
+		summarizeBy: sum
+		sourceColumn: 25 anos varAbsSeg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column '35 anos varAbsSeg'
+		dataType: double
+		formatString: #,0
+		lineageTag: e136f1ba-406d-4c38-8e7c-236f58f9bbd3
+		summarizeBy: sum
+		sourceColumn: 35 anos varAbsSeg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column '45 anos varAbsSeg'
+		dataType: double
+		formatString: #,0
+		lineageTag: 97ed3b57-3e58-496c-90d3-b1415dca9d46
+		summarizeBy: sum
+		sourceColumn: 45 anos varAbsSeg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column '55 anos varAbsSeg'
+		dataType: double
+		formatString: #,0
+		lineageTag: 18ef5dc2-0dc3-4c3f-9682-071f71f07e3c
+		summarizeBy: sum
+		sourceColumn: 55 anos varAbsSeg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column '25 anos varAbsParc'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 29d8a06c-3615-4ce5-9517-39a6feb4d034
+		summarizeBy: sum
+		sourceColumn: 25 anos varAbsParc
+
+		annotation SummarizationSetBy = Automatic
+
+	column '35 anos varAbsParc'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: b022582f-bd1e-41f8-a4a4-ea6fef3ba8f2
+		summarizeBy: sum
+		sourceColumn: 35 anos varAbsParc
+
+		annotation SummarizationSetBy = Automatic
+
+	column '45 anos varAbsParc'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: b7a17934-ce29-4b3d-8902-1a21d15a7037
+		summarizeBy: sum
+		sourceColumn: 45 anos varAbsParc
+
+		annotation SummarizationSetBy = Automatic
+
+	column '55 anos varAbsParc'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: f84ff8b2-2ed4-4d58-a71d-322132862122
+		summarizeBy: sum
+		sourceColumn: 55 anos varAbsParc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Habitacional_Simulador_Taxa_Seguro-9293fe9a-e0f7-4b11-a140-191e5271c657 = m
+		mode: import
+		source = ```
+				let
+				    REL_Habitacional_Simulador_Taxa_Seguro = let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_Habitacional_Simulador_Taxa_Seguro = Fonte{[Schema="dbo",Item="REL_Habitacional_Simulador_Taxa_Seguro"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Habitacional_Simulador_Taxa_Seguro,{{"periodo", type date}}),
+				
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Tipo Alterado", "25 anos valCESH", each if [dsFaixa] = "25 anos" then [vlPercentualCESH] else null),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada",{{"25 anos valCESH", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada1" = Table.AddColumn(#"Tipo Alterado1", "35 anos valCESH", each if [dsFaixa] = "35 anos" then [vlPercentualCESH] else null),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada1",{{"35 anos valCESH", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada2" = Table.AddColumn(#"Tipo Alterado2", "45 anos valCESH", each if [dsFaixa] = "45 anos" then [vlPercentualCESH] else null),
+				    #"Tipo Alterado3" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada2",{{"45 anos valCESH", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada3" = Table.AddColumn(#"Tipo Alterado3", "55 anos valCESH", each if [dsFaixa] = "55 anos" then [vlPercentualCESH] else null),
+				    #"Tipo Alterado4" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada3",{{"55 anos valCESH", Percentage.Type}}),        
+				
+				    #"Coluna Condicional Adicionada4" = Table.AddColumn(#"Tipo Alterado4", "25 anos valSeg", each if [dsFaixa] = "25 anos" then [vlTotalSeguro] else null),
+				    #"Tipo Alterado5" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada4",{{"25 anos valSeg", Decimal.Type}}),
+				    #"Coluna Condicional Adicionada5" = Table.AddColumn(#"Tipo Alterado5", "35 anos valSeg", each if [dsFaixa] = "35 anos" then [vlTotalSeguro] else null),
+				    #"Tipo Alterado6" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada5",{{"35 anos valSeg", Decimal.Type}}),
+				    #"Coluna Condicional Adicionada6" = Table.AddColumn(#"Tipo Alterado6", "45 anos valSeg", each if [dsFaixa] = "45 anos" then [vlTotalSeguro] else null),
+				    #"Tipo Alterado7" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada6",{{"45 anos valSeg", Decimal.Type}}),
+				    #"Coluna Condicional Adicionada7" = Table.AddColumn(#"Tipo Alterado7", "55 anos valSeg", each if [dsFaixa] = "55 anos" then [vlTotalSeguro] else null),
+				    #"Tipo Alterado8" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada7",{{"55 anos valSeg", Decimal.Type}}),
+				 
+				    #"Coluna Condicional Adicionada8" = Table.AddColumn(#"Tipo Alterado8", "25 anos valParc", each if [dsFaixa] = "25 anos" then [vlPrimeiraParcelaSeg] else null),
+				    #"Tipo Alterado9" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada8",{{"25 anos valParc", Decimal.Type}}),
+				    #"Coluna Condicional Adicionada9" = Table.AddColumn(#"Tipo Alterado9", "35 anos valParc", each if [dsFaixa] = "35 anos" then [vlPrimeiraParcelaSeg] else null),
+				    #"Tipo Alterado10" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada9",{{"35 anos valParc", Decimal.Type}}),
+				    #"Coluna Condicional Adicionada10" = Table.AddColumn(#"Tipo Alterado10", "45 anos valParc", each if [dsFaixa] = "45 anos" then [vlPrimeiraParcelaSeg] else null),
+				    #"Tipo Alterado11" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada10",{{"45 anos valParc", Decimal.Type}}),
+				    #"Coluna Condicional Adicionada11" = Table.AddColumn(#"Tipo Alterado11", "55 anos valParc", each if [dsFaixa] = "55 anos" then [vlPrimeiraParcelaSeg] else null),
+				    #"Tipo Alterado12" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada11",{{"55 anos valParc", Decimal.Type}}),     
+				
+				    #"Coluna Condicional Adicionada12" = Table.AddColumn(#"Tipo Alterado12", "25 anos varPercCESH", each if [dsFaixa] = "25 anos" then [varPercentualCESH] else null),
+				    #"Tipo Alterado13" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada12",{{"25 anos varPercCESH", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada13" = Table.AddColumn(#"Tipo Alterado13", "35 anos varPercCESH", each if [dsFaixa] = "35 anos" then [varPercentualCESH] else null),
+				    #"Tipo Alterado14" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada13",{{"35 anos varPercCESH", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada14" = Table.AddColumn(#"Tipo Alterado14", "45 anos varPercCESH", each if [dsFaixa] = "45 anos" then [varPercentualCESH] else null),
+				    #"Tipo Alterado15" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada14",{{"45 anos varPercCESH", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada15" = Table.AddColumn(#"Tipo Alterado15", "55 anos varPercCESH", each if [dsFaixa] = "55 anos" then [varPercentualCESH] else null),
+				    #"Tipo Alterado16" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada15",{{"55 anos varPercCESH", Percentage.Type}}),    
+				
+				    #"Coluna Condicional Adicionada16" = Table.AddColumn(#"Tipo Alterado16", "25 anos varPercSeg", each if [dsFaixa] = "25 anos" then [varPercentualSeguro] else null),
+				    #"Tipo Alterado17" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada16",{{"25 anos varPercSeg", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada17" = Table.AddColumn(#"Tipo Alterado17", "35 anos varPercSeg", each if [dsFaixa] = "35 anos" then [varPercentualSeguro] else null),
+				    #"Tipo Alterado18" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada17",{{"35 anos varPercSeg", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada18" = Table.AddColumn(#"Tipo Alterado18", "45 anos varPercSeg", each if [dsFaixa] = "45 anos" then [varPercentualSeguro] else null),
+				    #"Tipo Alterado19" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada18",{{"45 anos varPercSeg", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada19" = Table.AddColumn(#"Tipo Alterado19", "55 anos varPercSeg", each if [dsFaixa] = "55 anos" then [varPercentualSeguro] else null),
+				    #"Tipo Alterado20" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada19",{{"55 anos varPercSeg", Percentage.Type}}),       
+				
+				    #"Coluna Condicional Adicionada20" = Table.AddColumn(#"Tipo Alterado20", "25 anos varPercParc", each if [dsFaixa] = "25 anos" then [varPercentualParcela] else null),
+				    #"Tipo Alterado21" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada20",{{"25 anos varPercParc", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada21" = Table.AddColumn(#"Tipo Alterado21", "35 anos varPercParc", each if [dsFaixa] = "35 anos" then [varPercentualParcela] else null),
+				    #"Tipo Alterado22" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada21",{{"35 anos varPercParc", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada22" = Table.AddColumn(#"Tipo Alterado22", "45 anos varPercParc", each if [dsFaixa] = "45 anos" then [varPercentualParcela] else null),
+				    #"Tipo Alterado23" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada22",{{"45 anos varPercParc", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada23" = Table.AddColumn(#"Tipo Alterado23", "55 anos varPercParc", each if [dsFaixa] = "55 anos" then [varPercentualParcela] else null),
+				    #"Tipo Alterado24" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada23",{{"55 anos varPercParc", Percentage.Type}}),   
+				
+				    #"Coluna Condicional Adicionada24" = Table.AddColumn(#"Tipo Alterado24", "25 anos varAbsCESH", each if [dsFaixa] = "25 anos" then [varAbsolutaCESH] else null),
+				    #"Tipo Alterado25" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada24",{{"25 anos varAbsCESH", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada25" = Table.AddColumn(#"Tipo Alterado25", "35 anos varAbsCESH", each if [dsFaixa] = "35 anos" then [varAbsolutaCESH] else null),
+				    #"Tipo Alterado26" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada25",{{"35 anos varAbsCESH", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada26" = Table.AddColumn(#"Tipo Alterado26", "45 anos varAbsCESH", each if [dsFaixa] = "45 anos" then [varAbsolutaCESH] else null),
+				    #"Tipo Alterado27" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada26",{{"45 anos varAbsCESH", Percentage.Type}}),
+				    #"Coluna Condicional Adicionada27" = Table.AddColumn(#"Tipo Alterado27", "55 anos varAbsCESH", each if [dsFaixa] = "55 anos" then [varAbsolutaCESH] else null),
+				    #"Tipo Alterado28" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada27",{{"55 anos varAbsCESH", Percentage.Type}}),      
+				
+				    #"Coluna Condicional Adicionada28" = Table.AddColumn(#"Tipo Alterado28", "25 anos varAbsSeg", each if [dsFaixa] = "25 anos" then [varAbsolutaSeguro] else null),
+				    #"Tipo Alterado29" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada28",{{"25 anos varAbsSeg", Decimal.Type}}),
+				    #"Coluna Condicional Adicionada29" = Table.AddColumn(#"Tipo Alterado29", "35 anos varAbsSeg", each if [dsFaixa] = "35 anos" then [varAbsolutaSeguro] else null),
+				    #"Tipo Alterado30" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada29",{{"35 anos varAbsSeg", Decimal.Type}}),
+				    #"Coluna Condicional Adicionada30" = Table.AddColumn(#"Tipo Alterado30", "45 anos varAbsSeg", each if [dsFaixa] = "45 anos" then [varAbsolutaSeguro] else null),
+				    #"Tipo Alterado31" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada30",{{"45 anos varAbsSeg", Decimal.Type}}),
+				    #"Coluna Condicional Adicionada31" = Table.AddColumn(#"Tipo Alterado31", "55 anos varAbsSeg", each if [dsFaixa] = "55 anos" then [varAbsolutaSeguro] else null),
+				    #"Tipo Alterado32" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada31",{{"55 anos varAbsSeg", Decimal.Type}}),         
+				
+				    #"Coluna Condicional Adicionada32" = Table.AddColumn(#"Tipo Alterado32", "25 anos varAbsParc", each if [dsFaixa] = "25 anos" then [varAbsolutaParcela] else null),
+				    #"Tipo Alterado33" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada32",{{"25 anos varAbsParc", Decimal.Type}}),
+				    #"Coluna Condicional Adicionada33" = Table.AddColumn(#"Tipo Alterado33", "35 anos varAbsParc", each if [dsFaixa] = "35 anos" then [varAbsolutaParcela] else null),
+				    #"Tipo Alterado34" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada33",{{"35 anos varAbsParc", Decimal.Type}}),
+				    #"Coluna Condicional Adicionada34" = Table.AddColumn(#"Tipo Alterado34", "45 anos varAbsParc", each if [dsFaixa] = "45 anos" then [varAbsolutaParcela] else null),
+				    #"Tipo Alterado35" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada34",{{"45 anos varAbsParc", Decimal.Type}}),
+				    #"Coluna Condicional Adicionada35" = Table.AddColumn(#"Tipo Alterado35", "55 anos varAbsParc", each if [dsFaixa] = "55 anos" then [varAbsolutaParcela] else null),
+				    #"Tipo Alterado36" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada35",{{"55 anos varAbsParc", Decimal.Type}})
+				
+				in
+				    #"Tipo Alterado36",
+				    #"Tipo Alterado" = Table.TransformColumnTypes(REL_Habitacional_Simulador_Taxa_Seguro,{{"periodo", type text}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Tipo Alterado",{{"periodo", type date}})
+				in
+				    #"Tipo Alterado1"
+				```
+
+	annotation PBI_QueryRelationships = {"columnCount":51,"keyColumnNames":["id"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{id,0}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/Tipo Alterado.{periodo,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{dsCanalVenda,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{nmSeguradora,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{dsFaixa,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{vlPercentualCESH,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{vlTotalSeguro,6}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{vlPrimeiraParcelaSeg,7}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{varPercentualCESH,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{varPercentualSeguro,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{varPercentualParcela,10}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{varAbsolutaCESH,11}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{varAbsolutaSeguro,12}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{varAbsolutaParcela,13}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{dtAtualizacao,14}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos valCESH,15}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos valCESH,16}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos valCESH,17}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos valCESH,18}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos valSeg,19}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos valSeg,20}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos valSeg,21}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos valSeg,22}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos valParc,23}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos valParc,24}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos valParc,25}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos valParc,26}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos varPercCESH,27}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos varPercCESH,28}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos varPercCESH,29}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos varPercCESH,30}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos varPercSeg,31}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos varPercSeg,32}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos varPercSeg,33}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos varPercSeg,34}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos varPercParc,35}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos varPercParc,36}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos varPercParc,37}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos varPercParc,38}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos varAbsCESH,39}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos varAbsCESH,40}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos varAbsCESH,41}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos varAbsCESH,42}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos varAbsSeg,43}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos varAbsSeg,44}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos varAbsSeg,45}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos varAbsSeg,46}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos varAbsParc,47}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos varAbsParc,48}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos varAbsParc,49}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos varAbsParc,50}"],"ColumnCount":51,"KeyColumnNames":["id"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{id,0}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/Tipo Alterado.{periodo,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{dsCanalVenda,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{nmSeguradora,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{dsFaixa,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{vlPercentualCESH,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{vlTotalSeguro,6}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{vlPrimeiraParcelaSeg,7}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{varPercentualCESH,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{varPercentualSeguro,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{varPercentualParcela,10}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{varAbsolutaCESH,11}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{varAbsolutaSeguro,12}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{varAbsolutaParcela,13}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Simulador_Taxa_Seguro.{dtAtualizacao,14}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos valCESH,15}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos valCESH,16}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos valCESH,17}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos valCESH,18}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos valSeg,19}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos valSeg,20}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos valSeg,21}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos valSeg,22}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos valParc,23}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos valParc,24}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos valParc,25}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos valParc,26}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos varPercCESH,27}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos varPercCESH,28}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos varPercCESH,29}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos varPercCESH,30}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos varPercSeg,31}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos varPercSeg,32}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos varPercSeg,33}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos varPercSeg,34}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos varPercParc,35}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos varPercParc,36}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos varPercParc,37}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos varPercParc,38}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos varAbsCESH,39}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos varAbsCESH,40}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos varAbsCESH,41}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos varAbsCESH,42}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos varAbsSeg,43}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos varAbsSeg,44}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos varAbsSeg,45}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos varAbsSeg,46}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{25 anos varAbsParc,47}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{35 anos varAbsParc,48}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{45 anos varAbsParc,49}","Section1/REL_Habitacional_Simulador_Taxa_Seguro/REL_Habitacional_Simulador_Taxa_Seguro.{55 anos varAbsParc,50}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

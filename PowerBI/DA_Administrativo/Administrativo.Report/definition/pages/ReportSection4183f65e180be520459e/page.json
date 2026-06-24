@@ -1,0 +1,10 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSection4183f65e180be520459e",
+  "displayName": "Tooltip Colaboradores",
+  "displayOption": "FitToPage",
+  "height": 350,
+  "width": 320,
+  "visibility": "HiddenInViewMode",
+  "type": "Tooltip"
+}

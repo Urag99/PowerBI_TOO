@@ -1,0 +1,624 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 1422.6666259765625,
+        "y": 172
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1830.8267683742358,
+            "y": 77.746609418648177
+          },
+          "nodeIndex": "Data Indice",
+          "nodeLineageTag": "f75f1034-a673-452d-a8bb-a05d409d1762",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 415.0221294836947,
+            "y": 307.283487857336
+          },
+          "nodeIndex": "REL_Habitacional_Base_Sintetica",
+          "nodeLineageTag": "265d8954-dab3-44ec-97c9-60fe49f036e4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 122.18451539623038,
+            "y": -10
+          },
+          "nodeIndex": "REL_Habitacional_Base_Sintetica (2)",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 2063.7252937519638,
+            "y": 393.44259635094261
+          },
+          "nodeIndex": "REL_Habitacional_Base_Vendas",
+          "nodeLineageTag": "7dd64d4e-2e2b-490f-97a3-535ed5102b4a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 856.7218086092098,
+            "y": 122.6490469479611
+          },
+          "nodeIndex": "REL_Habitacional_Meta",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 881.04540276629371,
+            "y": 844.20844799543511
+          },
+          "nodeIndex": "REL_Habitacional_Simulador_Taxa_Seguro",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 707.917537217497,
+            "y": 483.41336165797065
+          },
+          "nodeIndex": "REL_Habitacional_Wiz",
+          "nodeLineageTag": "dd995ed0-84e0-40d9-8dc1-c44910e8554c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1770.7876816396167,
+            "y": 624.93602757047006
+          },
+          "nodeIndex": "REL_Habitacional_Zoho_CCA",
+          "nodeLineageTag": "288de3bb-d418-47b1-b494-a203d84cddfc",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 1802.9638690401114,
+            "y": 1345.3246979758881
+          },
+          "nodeIndex": "REL_Habitacional_Zoho_CCA_Resumo",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 1169.942950247412,
+            "y": 1070.4146226082705
+          },
+          "nodeIndex": "REL_Habitacional_Zoho_Ligacoes",
+          "nodeLineageTag": "8af2138b-7865-46ec-8085-d230b4f19aff",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 1586.9909166195641,
+            "y": 985.64890784840145
+          },
+          "nodeIndex": "REL_Habitacional_Zoho_Visitas",
+          "nodeLineageTag": "638ea269-7a1c-4012-ac5a-afeb3c03833f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 2027.7315952280453,
+            "y": 1160.2537603768035
+          },
+          "nodeIndex": "Data_Visita_Ano_Indice",
+          "nodeLineageTag": "331aad81-6d8d-4830-9fc2-dc1ec4045a9d",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 2318.0677856785587,
+            "y": 1159.0770804011529
+          },
+          "nodeIndex": "Data_Mes_Faturado_Ano_Indice",
+          "nodeLineageTag": "f7e52a39-1295-4fa5-85dd-c75bdba5819a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 2356.6272316781792,
+            "y": 427.50245820763064
+          },
+          "nodeIndex": "Data_Mes_Faturado_Mes_Indice",
+          "nodeLineageTag": "c0a80e9d-14c8-433b-86b2-e45d3574c519",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 2356.5302781257078,
+            "y": 671.89254275363749
+          },
+          "nodeIndex": "CCA_Agrupado_Ano",
+          "nodeLineageTag": "96fc8529-646e-45c6-80ba-8f3ec6db1a9e",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1476.8786745301679,
+            "y": 1345.0518155802661
+          },
+          "nodeIndex": "TAB_Chave_CCA_Ligacoes_Visitas",
+          "nodeLineageTag": "03324de8-50b8-41f7-a5c9-9e7f6d3f4937",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1300.3050854651642,
+            "y": 713.95658987780166
+          },
+          "nodeIndex": "REL_Habitacional_Depara_CCA",
+          "nodeLineageTag": "9da8618a-df82-4c39-9e0c-8260c46223c0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 1641.9057213124515,
+            "y": 264.17970635691995
+          },
+          "nodeIndex": "TAB_CCA_Zoho_Vendas",
+          "nodeLineageTag": "8aff5c2e-9a10-4e50-b2db-10161b648aae",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 10,
+            "y": 350.86175763299207
+          },
+          "nodeIndex": "REL_Habitacional_Novos_Safra",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2630.6272316781797,
+            "y": 641.66234898794391
+          },
+          "nodeIndex": "vw_habitacional_share_fgts",
+          "nodeLineageTag": "012c6e01-3fc9-4087-b454-4bf0178f596a",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2914.6272316781797,
+            "y": 641.66234898794391
+          },
+          "nodeIndex": "vw_habitacional_share_fgts_deslocada",
+          "nodeLineageTag": "a52faaac-706a-4ef0-aca5-44d10748f772",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3198.6272316781797,
+            "y": 701.66234898794391
+          },
+          "nodeIndex": "vw_habitacional_share_SBPE",
+          "nodeLineageTag": "d44150fe-9310-472e-b007-1903eb91457c",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3482.6272316781797,
+            "y": 701.66234898794391
+          },
+          "nodeIndex": "vw_habitacional_share_SBPE_deslocada",
+          "nodeLineageTag": "9ed9eed7-62b7-4042-8586-3ba436300269",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3766.6272316781797,
+            "y": 725.66234898794391
+          },
+          "nodeIndex": "TAB_Grupo_Ativacao",
+          "nodeLineageTag": "b7488207-d947-41ae-855d-53f334f575b6",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2264.6633896974095,
+            "y": 109.68397448711153
+          },
+          "nodeIndex": "TAB_Calculos_Vendas",
+          "nodeLineageTag": "a8890975-54b8-4956-aeab-66a19c7e8281",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4050.6272316781797,
+            "y": 677.66234898794391
+          },
+          "nodeIndex": "TAB_Selecao_Vendas",
+          "nodeLineageTag": "0bb8f883-99eb-4c4a-bf48-1fadb6e3f986",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 50,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 1,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 420,
+            "y": 73
+          },
+          "nodeIndex": "REL_Habitacional_Depara_CCA",
+          "nodeLineageTag": "9da8618a-df82-4c39-9e0c-8260c46223c0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 67,
+            "y": 22
+          },
+          "nodeIndex": "REL_Habitacional_Zoho_CCA",
+          "nodeLineageTag": "288de3bb-d418-47b1-b494-a203d84cddfc",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        }
+      ],
+      "name": "Layout 1",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 2,
+      "scrollPosition": {
+        "x": 40.36206762840132,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 674.242960632147,
+            "y": 0
+          },
+          "nodeIndex": "REL_Habitacional_Zoho_Visitas",
+          "nodeLineageTag": "638ea269-7a1c-4012-ac5a-afeb3c03833f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 253.24405852580207,
+            "y": 3.3825398442282228
+          },
+          "nodeIndex": "REL_Habitacional_Zoho_CCA",
+          "nodeLineageTag": "288de3bb-d418-47b1-b494-a203d84cddfc",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "REL_Habitacional_Base_Vendas",
+          "nodeLineageTag": "7dd64d4e-2e2b-490f-97a3-535ed5102b4a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 615.2413525680264,
+            "y": 427.18424994244214
+          },
+          "nodeIndex": "TAB_CCA_Zoho_Vendas",
+          "nodeLineageTag": "8aff5c2e-9a10-4e50-b2db-10161b648aae",
+          "size": {
+            "height": 298.31249515295474,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 190.17832785642497,
+            "y": 418.35504764872928
+          },
+          "nodeIndex": "REL_Habitacional_Depara_CCA",
+          "nodeLineageTag": "9da8618a-df82-4c39-9e0c-8260c46223c0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Layout 2",
+      "zoomValue": 79.2823605931495,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 3,
+      "scrollPosition": {
+        "x": 2,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 54,
+            "y": 42
+          },
+          "nodeIndex": "REL_Habitacional_Base_Sintetica",
+          "nodeLineageTag": "265d8954-dab3-44ec-97c9-60fe49f036e4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 381,
+            "y": 82
+          },
+          "nodeIndex": "REL_Habitacional_Novos_Safra",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Layout 3",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 4,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 434,
+            "y": 23
+          },
+          "nodeIndex": "TAB_Calculos_Vendas",
+          "nodeLineageTag": "a8890975-54b8-4956-aeab-66a19c7e8281",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2,
+            "y": 13
+          },
+          "nodeIndex": "REL_Habitacional_Base_Vendas",
+          "nodeLineageTag": "7dd64d4e-2e2b-490f-97a3-535ed5102b4a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Layout 4",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 5,
+      "scrollPosition": {
+        "x": 0,
+        "y": 297.5
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 583.10966191856926,
+            "y": 549.63100258947509
+          },
+          "nodeIndex": "REL_Habitacional_Zoho_Visitas",
+          "nodeLineageTag": "638ea269-7a1c-4012-ac5a-afeb3c03833f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 10,
+            "y": 524.378933803064
+          },
+          "nodeIndex": "REL_Habitacional_Base_Vendas",
+          "nodeLineageTag": "7dd64d4e-2e2b-490f-97a3-535ed5102b4a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 296.99019156081067,
+            "y": 232.66650458537384
+          },
+          "nodeIndex": "TAB_CCA_Zoho_Vendas",
+          "nodeLineageTag": "8aff5c2e-9a10-4e50-b2db-10161b648aae",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 12.268462013278622,
+            "y": -10
+          },
+          "nodeIndex": "REL_Habitacional_Depara_CCA",
+          "nodeLineageTag": "9da8618a-df82-4c39-9e0c-8260c46223c0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Layout 5",
+      "zoomValue": 80,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

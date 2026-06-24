@@ -1,0 +1,18 @@
+relationship 66ab2a25-a765-09d3-6500-dade6b235272
+	fromColumn: CON_DA_Corretora_V2.cdContaContabil
+	toColumn: TAB_Conta_Contabil.cdContaContabil
+
+relationship da15a219-7063-48ea-9326-7f73bf83337b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendario.Date
+	toColumn: LocalDateTable_84be79f8-13c1-4415-86b4-9264dcffcd0e.Date
+
+relationship e000d185-57cb-b033-f9fa-a4eaee33ad9c
+	fromColumn: CON_DA_Corretora_V2.periodo
+	toColumn: Calendario.Date
+
+relationship 706e12bf-45a5-41a4-81da-05388e4e14d5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: CON_DA_Corretora_V2.dt_competencia
+	toColumn: LocalDateTable_f7111003-56f1-4ddd-bebf-85f93ca8d5bb.Date
+

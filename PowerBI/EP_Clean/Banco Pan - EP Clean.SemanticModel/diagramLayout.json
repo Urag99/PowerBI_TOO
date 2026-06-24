@@ -1,0 +1,84 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 666.95842450765861,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 5
+          },
+          "nodeIndex": "REL_EP_Digital_Banco_Pan_Producao",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 684.16102603463071,
+            "y": 7.625820568927816
+          },
+          "nodeIndex": "REL_EP_Digital_Banco_Pan_Producao_Resumo",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 356.71881838074404,
+            "y": 7.6258205689277894
+          },
+          "nodeIndex": "TAB_Chave",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1361.9422076538865,
+            "y": 0
+          },
+          "nodeIndex": "tb_emprestimoepclean",
+          "nodeLineageTag": "07777099-8283-43f3-8c17-08c1b4feae7f",
+          "size": {
+            "height": 292.06126914660831,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 978.16102603463071,
+            "y": -3.6870897155361035
+          },
+          "nodeIndex": "tb_epclean",
+          "nodeLineageTag": "c45b958d-65a1-4c76-aec8-5fb8ccd5648c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 76.166666666666671,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

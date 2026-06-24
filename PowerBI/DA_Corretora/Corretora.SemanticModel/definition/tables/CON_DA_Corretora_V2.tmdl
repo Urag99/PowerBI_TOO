@@ -1,0 +1,136 @@
+table CON_DA_Corretora_V2
+	lineageTag: ef6bef74-cefb-4f8a-b80b-c0cec963b3e1
+
+	measure 'VL_Realizado Y-1' =
+			
+			CALCULATE(
+			    SUM(CON_DA_Corretora_V2[vlRealizado])
+			    , DATEADD(Calendario[Date], -1, YEAR)
+			)
+		formatString: #,0
+		lineageTag: 88c0e79e-56bc-4fac-b9e0-679d2ad356e6
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column tpLancamento
+		dataType: string
+		lineageTag: ffded7fb-0eee-4c3e-8958-9025307f44ee
+		summarizeBy: none
+		sourceColumn: tpLancamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdContaContabil
+		dataType: string
+		lineageTag: 78392be0-68bf-4d8e-8729-ffc363ab56a1
+		summarizeBy: none
+		sourceColumn: cdContaContabil
+
+		annotation SummarizationSetBy = Automatic
+
+	column periodo
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a6b6dff6-8cbd-4d80-b006-fed86ec732b1
+		summarizeBy: none
+		sourceColumn: periodo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dsPacote
+		dataType: string
+		lineageTag: 6ab637d2-0375-409e-bf74-8002b2a6c7eb
+		summarizeBy: none
+		sourceColumn: dsPacote
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsSubPacote
+		dataType: string
+		lineageTag: f0b8f59c-515c-4e2f-8afb-393a284789cf
+		summarizeBy: none
+		sourceColumn: dsSubPacote
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdFornecedor
+		dataType: string
+		lineageTag: fefc6566-5f28-4082-9b76-95451977af05
+		summarizeBy: none
+		sourceColumn: cdFornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsFornecedor
+		dataType: string
+		lineageTag: 66bbd17a-85df-417b-9943-cc8c94b59627
+		summarizeBy: none
+		sourceColumn: dsFornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column vlRealizado
+		dataType: double
+		lineageTag: 2e8c79dd-de50-4f21-afa6-8bd8b4f0ddfe
+		summarizeBy: sum
+		sourceColumn: vlRealizado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlOrcado
+		dataType: double
+		lineageTag: 4ab483f9-65c9-49fd-a242-1f7cab07427b
+		summarizeBy: sum
+		sourceColumn: vlOrcado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tp_periodo
+		dataType: string
+		lineageTag: a9618df0-6511-4f4c-99c8-f20e4e57752b
+		summarizeBy: none
+		sourceColumn: tp_periodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_competencia
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 48dbb83e-81c8-4070-921e-9c7791231a94
+		summarizeBy: none
+		sourceColumn: dt_competencia
+
+		variation Variation
+			isDefault
+			relationship: 706e12bf-45a5-41a4-81da-05388e4e14d5
+			defaultHierarchy: LocalDateTable_f7111003-56f1-4ddd-bebf-85f93ca8d5bb.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition CON_DA_Corretora_V2 = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Sql.Database("SQL-SANDBOX", "CONTROLADORIA", [Query="select #(lf)#(tab)tpLancamento#(lf)#(tab), isnull(cdContaContabil, '')#(tab)as cdContaContabil#(lf)#(tab), periodo#(lf)#(tab), dsPacote#(lf)#(tab), dsSubPacote#(lf)#(tab), isnull(cdFornecedor,'')#(tab)#(tab)as cdFornecedor#(lf)#(tab), isnull(dsFornecedor,'')#(tab)#(tab)as dsFornecedor#(lf)#(tab), isnull(vlRealizado ,0)#(tab)#(tab)as vlRealizado #(lf)#(tab), isnull(vlOrcado#(tab) ,0)#(tab)#(tab)as vlOrcado#(lf)from CON_DA_Corretora_V2"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"periodo", type date}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "tp_periodo", each if [periodo] < Date.StartOfMonth(DateTime.Date(DateTime.LocalNow())) 
+				then "Fechado"
+				else "Aberto"),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Personalização Adicionada", "periodo", "periodo - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"periodo - Copiar", "dt_competencia"}})
+				in
+				    #"Colunas Renomeadas"
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

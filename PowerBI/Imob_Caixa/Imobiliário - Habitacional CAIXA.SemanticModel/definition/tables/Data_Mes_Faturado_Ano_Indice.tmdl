@@ -1,0 +1,42 @@
+table Data_Mes_Faturado_Ano_Indice
+	lineageTag: f7e52a39-1295-4fa5-85dd-c75bdba5819a
+
+	column dtMesFaturado_Ano
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 193e875b-e6e0-4f6d-a7e2-58d75c89909d
+		summarizeBy: none
+		sourceColumn: dtMesFaturado_Ano
+
+		variation Variation
+			isDefault
+			relationship: 814ebedb-bd98-4559-9538-e75f97ec499f
+			defaultHierarchy: LocalDateTable_74ae4f92-86d5-4c79-afa6-818e7cb441c6.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Indice
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b12d5ab-8d7a-48c9-8215-f91e1ab9c692
+		summarizeBy: sum
+		sourceColumn: Indice
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Data_Mes_Faturado_Ano_Indice = m
+		mode: import
+		source =
+				let
+				    Fonte = REL_Habitacional_Base_Vendas,
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"dtMesFaturado_Ano"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Outras Colunas Removidas"),
+				    #"Linhas Classificadas" = Table.Sort(#"Duplicatas Removidas",{{"dtMesFaturado_Ano", Order.Descending}}),
+				    #"Índice Adicionado" = Table.AddIndexColumn(#"Linhas Classificadas", "Indice", 1, 1, Int64.Type)
+				in
+				    #"Índice Adicionado"
+
+	annotation PBI_ResultType = Table
+

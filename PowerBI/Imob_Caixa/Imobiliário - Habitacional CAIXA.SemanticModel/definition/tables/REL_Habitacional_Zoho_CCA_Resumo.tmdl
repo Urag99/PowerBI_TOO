@@ -1,0 +1,68 @@
+table REL_Habitacional_Zoho_CCA_Resumo
+	lineageTag: b2e0a5f7-25db-4860-9b5d-520b62bf0503
+
+	column nmExecutivo
+		dataType: string
+		lineageTag: 7e8bd8ce-9b9b-444b-8280-58d419f92a87
+		summarizeBy: none
+		sourceColumn: nmExecutivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdUF
+		dataType: string
+		lineageTag: 889feb98-22c0-455b-be24-fbf82574b2e2
+		summarizeBy: none
+		sourceColumn: cdUF
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsCidade
+		dataType: string
+		lineageTag: fbe9c3e0-9fa4-40a7-96d6-470dd8f0c093
+		summarizeBy: none
+		sourceColumn: dsCidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdAtivosResumo
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d753d30-79ca-4f66-b978-d00560625285
+		summarizeBy: none
+		sourceColumn: qtdAtivosResumo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave
+		dataType: string
+		lineageTag: a8b037c6-e90d-4d37-a322-a0cc043c161a
+		summarizeBy: none
+		sourceColumn: Chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column txt_qtdAtivosResumo
+		dataType: string
+		lineageTag: d6fed451-f516-456a-97b3-55750be71f6f
+		summarizeBy: none
+		sourceColumn: txt_qtdAtivosResumo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Habitacional_Zoho_CCA_Resumo-33fcbd75-1488-4fbc-a3cc-f0482d7bbf4e = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA", [Query="SELECT #(lf)nmExecutivo#(lf), cdUF#(lf), dsCidade#(lf), count (1)  as qtdAtivosResumo#(lf)FROM REL_Habitacional_Zoho_CCA#(lf)WHERE stCCA = 'Ativo Certificado'#(lf)group by nmexecutivo#(lf), cduf#(lf), dscidade"]),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(Fonte, "Chave", each Text.Combine({[nmExecutivo], [cdUF], [dsCidade]}, ";"), type text),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Coluna Mesclada Inserida", "qtdAtivosResumo", "qtdAtivosResumo - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"qtdAtivosResumo - Copiar", "txt_qtdAtivosResumo"}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"txt_qtdAtivosResumo", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_QueryRelationships = {"columnCount":5,"keyColumnNames":[],"queryRelationships":[],"columnIdentities":["Section1/REL_Habitacional_Zoho_CCA_Resumo/Fonte.{nmExecutivo,0}","Section1/REL_Habitacional_Zoho_CCA_Resumo/Fonte.{cdUF,1}","Section1/REL_Habitacional_Zoho_CCA_Resumo/Fonte.{dsCidade,2}","Section1/REL_Habitacional_Zoho_CCA_Resumo/Fonte.{qtdAtivosResumo,3}","Section1/REL_Habitacional_Zoho_CCA_Resumo/Coluna Mesclada Inserida.{Chave,4}"],"ColumnCount":5,"KeyColumnNames":[],"ColumnIdentities":["Section1/REL_Habitacional_Zoho_CCA_Resumo/Fonte.{nmExecutivo,0}","Section1/REL_Habitacional_Zoho_CCA_Resumo/Fonte.{cdUF,1}","Section1/REL_Habitacional_Zoho_CCA_Resumo/Fonte.{dsCidade,2}","Section1/REL_Habitacional_Zoho_CCA_Resumo/Fonte.{qtdAtivosResumo,3}","Section1/REL_Habitacional_Zoho_CCA_Resumo/Coluna Mesclada Inserida.{Chave,4}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

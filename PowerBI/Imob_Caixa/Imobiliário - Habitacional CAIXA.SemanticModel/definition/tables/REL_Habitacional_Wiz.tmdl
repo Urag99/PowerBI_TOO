@@ -1,0 +1,138 @@
+table REL_Habitacional_Wiz
+	lineageTag: dd995ed0-84e0-40d9-8dc1-c44910e8554c
+
+	measure 'Aproveitamento (%)' = SUM(REL_Habitacional_Wiz[qtdTOO]) / (sum (REL_Habitacional_Wiz[qtdWiz]) + sum (REL_Habitacional_Wiz[qtdTOO]))
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: 75f79969-b2c9-4034-89c6-f69c82c84a44
+
+	measure 'Caixa CCA (70,5%)' = sum (REL_Habitacional_Wiz[qtdWiz]) * 0.705
+		formatString: #,0
+		lineageTag: 48180fc6-f691-4103-af10-fefbaf8ef705
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Caixa CCA (29,5%)' = sum (REL_Habitacional_Wiz[qtdWiz]) * 0.295
+		formatString: #,0
+		lineageTag: f2e3003d-8205-4036-89c4-769f01b95ce8
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure Total = sum(REL_Habitacional_Wiz[qtdTOO]) + sum(REL_Habitacional_Wiz[qtdWiz])
+		formatString: #,0
+		lineageTag: a3a6df17-ddd7-4cfe-9ead-ae70e5a301d9
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Crecimento MoM Too' = ```
+			
+				VAR __PREV_month =
+					CALCULATE(
+						sum([qtdTOO]),
+						DATEADD('REL_Habitacional_Wiz'[dtTrimestre].[Date], -3, MONTH)
+					)
+				RETURN
+					DIVIDE((sum([qtdTOO])) - __PREV_month, __PREV_month)
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: 7653be5b-8d75-4d4b-92e3-b8206ab0fb94
+
+	measure '% Crecimento MoM Caixa' = ```
+			
+				VAR __PREV_MONTH =
+					CALCULATE(
+						sum([qtdWiz]),
+						DATEADD('REL_Habitacional_Wiz'[dtTrimestre].[Date], -3, MONTH)
+					)
+				RETURN
+					DIVIDE((sum([qtdWiz])) - __PREV_MONTH, __PREV_MONTH)
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: aafb43f1-21fb-425b-826a-6e13983b2eb6
+
+	measure 'Aproveitamento Too x Caixa CCA (%)' = SUM(REL_Habitacional_Wiz[qtdTOO]) / [Caixa CCA (70,5%)]
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: a0b6a932-47ba-4cef-a9f7-7dd628f7aa97
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: d9dbdeac-8c1d-4fea-8eff-0bf8d270710b
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtTrimestre
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f28927a8-93d5-42f5-a93d-57d9704cd67c
+		summarizeBy: none
+		sourceColumn: dtTrimestre
+
+		variation Variation
+			isDefault
+			relationship: c0f46457-0bd7-4949-af1b-0189529be712
+			defaultHierarchy: LocalDateTable_c22c1108-1b3d-4f01-970c-cd7f7a4f472d.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dsCanal
+		dataType: string
+		lineageTag: 8017a200-ef5e-4ca9-a1cd-f9a467ec8cd3
+		summarizeBy: none
+		sourceColumn: dsCanal
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtAtualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4e0635ff-3704-4f84-a616-b2aabb226a9c
+		summarizeBy: none
+		sourceColumn: dtAtualizacao
+
+		variation Variation
+			isDefault
+			relationship: 7610d7a5-3be6-48ea-aee8-0af741e47e48
+			defaultHierarchy: LocalDateTable_2a3284ea-d631-4467-b6ac-ec5c1f9352ca.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdWiz
+		dataType: double
+		formatString: #,0
+		lineageTag: e0cdf557-f59f-42db-a363-96a952f376af
+		summarizeBy: sum
+		sourceColumn: qtdWiz
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column qtdTOO
+		dataType: double
+		formatString: #,0
+		lineageTag: 3a6d2f9d-fea2-4d12-8abe-6d7423242c7f
+		summarizeBy: sum
+		sourceColumn: qtdTOO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	partition REL_Habitacional_Wiz-37f1acc4-33a4-4fc9-a2cf-b9e7e1eca94f = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_Habitacional_Wiz = Fonte{[Schema="dbo",Item="REL_Habitacional_Wiz"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Habitacional_Wiz,{{"dtTrimestre", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_QueryRelationships = {"columnCount":6,"keyColumnNames":["id"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Wiz.{id,0}","Section1/REL_Habitacional_Wiz/Tipo Alterado.{dtTrimestre,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Wiz.{dsCanal,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Wiz.{qtdWiz,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Wiz.{qtdTOO,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Wiz.{dtAtualizacao,5}"],"ColumnCount":6,"KeyColumnNames":["id"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Wiz.{id,0}","Section1/REL_Habitacional_Wiz/Tipo Alterado.{dtTrimestre,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Wiz.{dsCanal,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Wiz.{qtdWiz,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Wiz.{qtdTOO,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Wiz.{dtAtualizacao,5}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

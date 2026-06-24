@@ -1,0 +1,662 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSection91948e5fd8e10ddc347c",
+  "displayName": "Analitico Despesas Owner",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter5a204da7052050c7594c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "TAB_Visao"
+              }
+            },
+            "Property": "Tipo_Visao"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "TAB_Visao",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "t"
+                          }
+                        },
+                        "Property": "Tipo_Visao"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Realizado'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "Filter7afef400008343cb4e83",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "TAB_CMGR"
+              }
+            },
+            "Property": "Competencia"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filter3ff7723143004a077a87",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsConta"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filter3a78e3a66a3538bd1202",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsContaContabil"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filter3daf7d0f8ad4b134c15a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsOrigem"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filter7fdf4d75db1018d6ee34",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsPacote"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filtera8a767b9b63621dd6ee2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsProjeto"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filterd15f9ded1e7a264ba521",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsSubdivisao"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filter6182a596d2187780b611",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsSubPacote"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filterc0df6387006aa5950748",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsUnidade"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filter1d30927000a932703131",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "fl_Periodo_Fechado"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filter126a51052e179457b8ac",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "Sub-Divisão"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filtera6934b1566d1630200b2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "tpLancamento"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filter8e2174d0405cca6b820b",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "TAB_CMGR"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Competencia"
+                  }
+                },
+                "Hierarchy": "Hierarquia de datas"
+              }
+            },
+            "Level": "Ano"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filter2b88ca2c27d5004830a0",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "TAB_CMGR"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Competencia"
+                  }
+                },
+                "Hierarchy": "Hierarquia de datas"
+              }
+            },
+            "Level": "Trimestre"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filter98e5f20c0e017ee0eab5",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "TAB_CMGR"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Competencia"
+                  }
+                },
+                "Hierarchy": "Hierarquia de datas"
+              }
+            },
+            "Level": "Mês"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filter6a3c38b66bd82a32bbb6",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "TAB_CMGR"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Competencia"
+                  }
+                },
+                "Hierarchy": "Hierarquia de datas"
+              }
+            },
+            "Level": "Dia"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "Pod1",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "Param_Filter7afef400008343cb4e83",
+        "boundFilter": "Filter7afef400008343cb4e83",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "TAB_CMGR"
+              }
+            },
+            "Property": "Competencia"
+          }
+        }
+      },
+      {
+        "name": "Param_Filter3ff7723143004a077a87",
+        "boundFilter": "Filter3ff7723143004a077a87",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsConta"
+          }
+        }
+      },
+      {
+        "name": "Param_Filter3a78e3a66a3538bd1202",
+        "boundFilter": "Filter3a78e3a66a3538bd1202",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsContaContabil"
+          }
+        }
+      },
+      {
+        "name": "Param_Filter3daf7d0f8ad4b134c15a",
+        "boundFilter": "Filter3daf7d0f8ad4b134c15a",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsOrigem"
+          }
+        }
+      },
+      {
+        "name": "Param_Filter7fdf4d75db1018d6ee34",
+        "boundFilter": "Filter7fdf4d75db1018d6ee34",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsPacote"
+          }
+        }
+      },
+      {
+        "name": "Param_Filtera8a767b9b63621dd6ee2",
+        "boundFilter": "Filtera8a767b9b63621dd6ee2",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsProjeto"
+          }
+        }
+      },
+      {
+        "name": "Param_Filterd15f9ded1e7a264ba521",
+        "boundFilter": "Filterd15f9ded1e7a264ba521",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsSubdivisao"
+          }
+        }
+      },
+      {
+        "name": "Param_Filter6182a596d2187780b611",
+        "boundFilter": "Filter6182a596d2187780b611",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsSubPacote"
+          }
+        }
+      },
+      {
+        "name": "Param_Filterc0df6387006aa5950748",
+        "boundFilter": "Filterc0df6387006aa5950748",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "dsUnidade"
+          }
+        }
+      },
+      {
+        "name": "Param_Filter1d30927000a932703131",
+        "boundFilter": "Filter1d30927000a932703131",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "fl_Periodo_Fechado"
+          }
+        }
+      },
+      {
+        "name": "Param_Filter126a51052e179457b8ac",
+        "boundFilter": "Filter126a51052e179457b8ac",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "Sub-Divisão"
+          }
+        }
+      },
+      {
+        "name": "Param_Filtera6934b1566d1630200b2",
+        "boundFilter": "Filtera6934b1566d1630200b2",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Despesas Owner"
+              }
+            },
+            "Property": "tpLancamento"
+          }
+        }
+      },
+      {
+        "name": "Param_Filter8e2174d0405cca6b820b",
+        "boundFilter": "Filter8e2174d0405cca6b820b",
+        "fieldExpr": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "TAB_CMGR"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Competencia"
+                  }
+                },
+                "Hierarchy": "Hierarquia de datas"
+              }
+            },
+            "Level": "Ano"
+          }
+        }
+      },
+      {
+        "name": "Param_Filter2b88ca2c27d5004830a0",
+        "boundFilter": "Filter2b88ca2c27d5004830a0",
+        "fieldExpr": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "TAB_CMGR"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Competencia"
+                  }
+                },
+                "Hierarchy": "Hierarquia de datas"
+              }
+            },
+            "Level": "Trimestre"
+          }
+        }
+      },
+      {
+        "name": "Param_Filter98e5f20c0e017ee0eab5",
+        "boundFilter": "Filter98e5f20c0e017ee0eab5",
+        "fieldExpr": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "TAB_CMGR"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Competencia"
+                  }
+                },
+                "Hierarchy": "Hierarquia de datas"
+              }
+            },
+            "Level": "Mês"
+          }
+        }
+      },
+      {
+        "name": "Param_Filter6a3c38b66bd82a32bbb6",
+        "boundFilter": "Filter6a3c38b66bd82a32bbb6",
+        "fieldExpr": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "TAB_CMGR"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Competencia"
+                  }
+                },
+                "Hierarchy": "Hierarquia de datas"
+              }
+            },
+            "Level": "Dia"
+          }
+        }
+      }
+    ],
+    "referenceScope": "CrossReport"
+  },
+  "objects": {
+    "outspace": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'shutterstock_1322071796_comfiltro.jpg'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "shutterstock_1322071796_comfil5673131728314922.jpg"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fill'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode"
+}

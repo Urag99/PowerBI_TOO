@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Imobiliário - Habitacional CAIXA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e39dd68b-ce33-4fc1-b457-96da786ce7dd"
+  }
+}

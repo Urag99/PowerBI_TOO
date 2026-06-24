@@ -1,0 +1,25 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["CON_DA_Corretora_V2","TAB_Conta_Contabil","TAB_PERIODO","Medidas"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table CON_DA_Corretora_V2
+ref table TAB_Conta_Contabil
+ref table Calendario
+ref table DateTableTemplate_8533878c-ffbe-4366-9463-fdd455dd3379
+ref table LocalDateTable_84be79f8-13c1-4415-86b4-9264dcffcd0e
+ref table TAB_PERIODO
+ref table Medidas
+ref table LocalDateTable_f7111003-56f1-4ddd-bebf-85f93ca8d5bb
+
+ref cultureInfo pt-BR
+

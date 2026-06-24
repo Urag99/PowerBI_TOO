@@ -1,0 +1,105 @@
+table TAB_Calculos_Vendas
+	lineageTag: a8890975-54b8-4956-aeab-66a19c7e8281
+
+	measure diferenca_m-1_m-2_% = ```
+			
+			SWITCH(
+			     TRUE()
+			    ,sum(TAB_Calculos_Vendas[M-1])+sum(TAB_Calculos_Vendas[M-2]) = 0
+			    ,BLANK()
+			    ,and(
+			         sum(TAB_Calculos_Vendas[M-2]) = 0
+			        ,sum(TAB_Calculos_Vendas[M-1]) > 0 
+			    )
+			    ,1
+			    ,DIVIDE(
+			         sum(TAB_Calculos_Vendas[M-1])
+			        ,sum(TAB_Calculos_Vendas[M-2])
+			        ,BLANK()
+			    )-1
+			)
+			    
+			```
+		formatString: #,0%;-#,0%;#,0%
+		lineageTag: a404d1d1-877a-41c5-aa27-d17b9717535c
+
+	column Grupo_CCA
+		dataType: string
+		lineageTag: 2e47e088-d2af-470e-ba9b-7f57de8a46c6
+		summarizeBy: none
+		sourceColumn: Grupo_CCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column M-2
+		dataType: double
+		formatString: #,0
+		lineageTag: 2f20706f-bd9a-4bb9-a9e9-6d1c4736dfc1
+		summarizeBy: none
+		sourceColumn: M-2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column M-1
+		dataType: double
+		formatString: #,0
+		lineageTag: 0c27f2a1-d3dc-47ca-ba9b-5bd231ebeacf
+		summarizeBy: none
+		sourceColumn: M-1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column diferenca_m-1_m02
+		dataType: double
+		formatString: #,0
+		lineageTag: 8d81c16d-be91-4134-ae9e-5a3169d0c8a7
+		summarizeBy: sum
+		sourceColumn: diferenca_m-1_m02
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Classificacao_Producao
+		dataType: string
+		lineageTag: bc8cc393-f8d2-46a3-a09a-a95cbdd1b96c
+		summarizeBy: none
+		sourceColumn: Classificacao_Producao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAB_Calculos_Vendas = m
+		mode: import
+		source = ```
+				let
+				    Fonte = REL_Habitacional_Base_Vendas,
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"Grupo_CCA", "qtContratos", "data_agrupada"}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Outras Colunas Removidas", "Período Anterior", each if [data_agrupada] = "1. Período Anterior" then [qtContratos] else 0),
+				    #"Personalização Adicionada1" = Table.AddColumn(#"Personalização Adicionada", "M-2", each if [data_agrupada] = "2. M-2" then [qtContratos] else  0),
+				    #"Personalização Adicionada2" = Table.AddColumn(#"Personalização Adicionada1", "M-1", each if [data_agrupada] = "3. M-1" then [qtContratos] else  0),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Personalização Adicionada2",{{"Período Anterior", type number}, {"M-2", type number}, {"M-1", type number}}),
+				    #"Linhas Agrupadas" = Table.Group(#"Tipo Alterado", {"Grupo_CCA"}, {{"M-2", each List.Sum([#"M-2"]), type nullable number}, {"M-1", each List.Sum([#"M-1"]), type nullable number}}),
+				    #"Personalização Adicionada3" = Table.AddColumn(#"Linhas Agrupadas", "diferenca_m-1_m02", each [#"M-1"]-[#"M-2"]),
+				    #"Personalização Adicionada4" = Table.AddColumn(#"Personalização Adicionada3", "Classificacao_Producao", each if [#"M-1"] = 0 and [#"M-2"] = 0 then "Sem Produção" else 
+				if [Grupo_CCA] = "FALTA INFORMAÇÃO|SEM EXECUTIVO" then "4. Sem Executivo" else 
+				if [Grupo_CCA] = "AGENCIA|SEM EXECUTIVO" then "4. Sem Executivo" else 
+				if [#"M-1"] > 0  and [#"M-2"] = 0 then "3. Novos" else
+				if [#"M-1"] = 0  and [#"M-2"] > 0 then "5. Pararam de Produzir" else
+				if [#"diferenca_m-1_m02"] > 0  then "1. Cresceram" else 
+				if [#"diferenca_m-1_m02"] < 0 then "2. Caíram" else 
+				if [#"diferenca_m-1_m02"] = 0 then "4. Flat" else 
+				null),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada4", each ([Classificacao_Producao] <> "Sem Produção")),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Linhas Filtradas",{{"diferenca_m-1_m02", type number}})
+				in
+				    #"Tipo Alterado1"
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

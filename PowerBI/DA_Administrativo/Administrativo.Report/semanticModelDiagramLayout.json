@@ -1,0 +1,273 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 408.7,
+            "y": 653
+          },
+          "nodeIndex": "CON_Centro_Custo",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1377.3,
+            "y": 361.4
+          },
+          "nodeIndex": "CON_DR",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1127.9,
+            "y": 518
+          },
+          "nodeIndex": "CON_Fornecedor",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 359.4,
+            "y": 0
+          },
+          "nodeIndex": "CON_Funcionario",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1786,
+            "y": 32.1
+          },
+          "nodeIndex": "CON_Orcado_DA",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 966.5,
+            "y": 245.3
+          },
+          "nodeIndex": "CON_Pacote",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2194.7,
+            "y": 701.8
+          },
+          "nodeIndex": "CON_Ramo",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 839.4,
+            "y": 655.9
+          },
+          "nodeIndex": "Despesas",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1113.2,
+            "y": 688.1
+          },
+          "nodeIndex": "Despesas Agrupadas",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1521.9,
+            "y": 880.3
+          },
+          "nodeIndex": "Despesas Owner",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2603.4,
+            "y": 639.8
+          },
+          "nodeIndex": "Despesas_Ano_Anterior",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3012.1,
+            "y": 639.8
+          },
+          "nodeIndex": "Despesas_Owner_Ano_Anterior",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 541.5,
+            "y": 474.7
+          },
+          "nodeIndex": "Funcionários Agrupados por CCusto",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 954.5,
+            "y": 1130.6
+          },
+          "nodeIndex": "REL_CAPEX",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 637.8,
+            "y": 1092.9
+          },
+          "nodeIndex": "REL_Headcount",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3420.8,
+            "y": 689.8
+          },
+          "nodeIndex": "TAB_Classificacao",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1363.2,
+            "y": 1584.6
+          },
+          "nodeIndex": "TAB_CMGR",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 967.3
+          },
+          "nodeIndex": "TAB_Funcionario_Ano_Anterior",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3829.5,
+            "y": 725.8
+          },
+          "nodeIndex": "TAB_Periodo",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4238.2,
+            "y": 689.8
+          },
+          "nodeIndex": "TAB_Visao",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1236.1,
+            "y": 1058.4
+          },
+          "nodeIndex": "Tabela de Atribuição DR",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

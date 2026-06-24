@@ -1,0 +1,115 @@
+table REL_Habitacional_Novos_Safra
+	lineageTag: 2706cf96-5d6f-4110-9ed7-9ca616e698b2
+
+	column dt_Competencia
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 57a69b72-e1c4-4492-adcd-8377993d82f0
+		summarizeBy: none
+		sourceColumn: dt_Competencia
+
+		variation Variation
+			isDefault
+			relationship: 640d098b-4837-41b3-a9f8-5f3037923299
+			defaultHierarchy: LocalDateTable_996f97fc-ce10-4dd3-8c43-e8c7bf77c406.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ds_Produto_SUN
+		dataType: string
+		lineageTag: 63a5935c-ba77-441e-a5d4-3b9e27300c56
+		summarizeBy: none
+		sourceColumn: ds_Produto_SUN
+
+		annotation SummarizationSetBy = Automatic
+
+	column Canal_Venda
+		dataType: string
+		lineageTag: 29a646fb-08bd-4560-9eaa-2e9cfcdd2070
+		summarizeBy: none
+		sourceColumn: Canal_Venda
+
+		annotation SummarizationSetBy = Automatic
+
+	column nm_UF
+		dataType: string
+		lineageTag: fbcb8736-3753-4042-8aff-76c874412e1f
+		summarizeBy: none
+		sourceColumn: nm_UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtFaturado_Vendas
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: dd916da3-2259-42e6-807e-18ae9078f9f6
+		summarizeBy: none
+		sourceColumn: dtFaturado_Vendas
+
+		variation Variation
+			isDefault
+			relationship: b50b2143-1e42-4686-9adf-ddb17ba67ebc
+			defaultHierarchy: LocalDateTable_562bf546-2fa9-45a4-9e4a-8d74c412df20.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Qtd_Contratos
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4f374ec2-cee6-47c8-b88b-9af138a5def5
+		summarizeBy: sum
+		sourceColumn: Qtd_Contratos
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave_Nova_Safra
+		dataType: string
+		lineageTag: 8fd5fdb9-430b-4b1f-adf7-ea8115ddd27b
+		summarizeBy: none
+		sourceColumn: Chave_Nova_Safra
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_Novo_Safra
+		dataType: int64
+		formatString: 0
+		lineageTag: 2de6009c-1915-4336-81de-b8b8119ef73a
+		summarizeBy: sum
+		sourceColumn: id_Novo_Safra
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_Atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 183440f7-ad03-4fae-8991-491065a2e577
+		summarizeBy: none
+		sourceColumn: dt_Atualizacao
+
+		variation Variation
+			isDefault
+			relationship: 1acebda6-3402-416f-be0f-bc3a97fa2ae5
+			defaultHierarchy: LocalDateTable_c1ebe271-615c-440f-a93d-8324b4360725.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Habitacional_Novos_Safra = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_VW_Habitacional_Safra_Remanescente = Fonte{[Schema="dbo",Item="REL_Habitacional_Novos_Safra"]}[Data],
+				    #"Início do Mês Calculado" = Table.TransformColumns(dbo_VW_Habitacional_Safra_Remanescente,{{"dt_Competencia", Date.StartOfMonth, type datetime}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Início do Mês Calculado",{{"dt_Competencia", type date}}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Tipo Alterado", "Chave_Nova_Safra", each Text.Combine({Text.From([dt_Competencia], "pt-BR"), [Canal_Venda], [nm_UF]}, "|"), type text)
+				in
+				    #"Coluna Mesclada Inserida"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

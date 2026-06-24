@@ -1,0 +1,2934 @@
+cultureInfo pt-BR
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "CON_DA_corretora_V2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "CON DA corretora V2": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CON_DA_Corretora_V2": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.tp_lancamento": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "ConceptualProperty": "tpLancamento"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "tp lancamento": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "tpLancamento": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.cd_conta_contabil": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "ConceptualProperty": "cdContaContabil"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "cd conta contabil": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "cdContaContabil": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.periodo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "ConceptualProperty": "periodo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "periodo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "calendario.date.dia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Dia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.date.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.date.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.date.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.date.hierarquia_de_data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hierarquia de data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hierarquia de information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.ds_pacote": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "ConceptualProperty": "dsPacote"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds pacote": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dsPacote": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Pacote": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.ds_sub_pacote": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "ConceptualProperty": "dsSubPacote"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds sub pacote": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dsSubPacote": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.cd_fornecedor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "ConceptualProperty": "cdFornecedor"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cd fornecedor": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "cdFornecedor": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.ds_fornecedor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "ConceptualProperty": "dsFornecedor"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds fornecedor": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dsFornecedor": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Fornecedor": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.vl_realizado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "ConceptualProperty": "vlRealizado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl realizado": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vlRealizado": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.vl_orcado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "ConceptualProperty": "vlOrcado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl orcado": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vlOrcado": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.tp_periodo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "ConceptualProperty": "tp_periodo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "tp periodo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "tp_periodo": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "TAB_conta_contabil": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_Conta_Contabil"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "TAB conta contabil": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TAB_Conta_Contabil": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "TAB_conta_contabil.cd_conta_contabil": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_Conta_Contabil",
+			          "ConceptualProperty": "cdContaContabil"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cd conta contabil": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "cdContaContabil": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "TAB_conta_contabil.ds_conta_contabil": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_Conta_Contabil",
+			          "ConceptualProperty": "dsContaContabil"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds conta contabil": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dsContaContabil": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Conta": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.VL_Realizado_Y1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "ConceptualProperty": "VL_Realizado Y-1"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "VL_Realizado Y-1": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario",
+			          "ConceptualProperty": "Date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "calendario": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "calendario": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "tab_periodo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_PERIODO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "tab periodo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TAB_PERIODO": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "tab_periodo.ds_periodo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TAB_PERIODO",
+			          "ConceptualProperty": "ds_periodo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ds periodo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ds_periodo": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "medida": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "medida": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.VL_realizado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "VL realizado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "VL realizado": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Realizado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medida.VL_orcado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "VL orcado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "VL orcado": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Orçado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medida.VL_realizado_Y1_ajustado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "VL Realizado Y-1 Ajustado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "VL realizado Y-1 ajustado": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Realizado A-1": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.dt_competencia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "ConceptualProperty": "dt_competencia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dt competencia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt_competencia": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "VariationSource": "dt_competencia",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hierarquia de data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hierarquia de information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.dt_competencia.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "VariationSource": "dt_competencia",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt competencia ano": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.dt_competencia.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "VariationSource": "dt_competencia",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt competencia trimestre": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.dt_competencia.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "VariationSource": "dt_competencia",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt competencia mê": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2.dt_competencia.dia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CON_DA_Corretora_V2",
+			          "VariationSource": "dt_competencia",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Dia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt competencia dia": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_Real_vs_orcado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_Real vs orcado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl_Real vs orcado": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.real_vs_orcado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Real vs Orcado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% real vs orcado": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "percentage real vs orcado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "pct real vs orcado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_Real_vs_real_Y1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vl_Real vs Real Y-1"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl_Real vs real Y-1": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.real_vs_real_Y1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Real vs Real Y-1"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% real vs real Y-1": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "percentage real vs real y-1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        },
+			        {
+			          "pct real vs real y-1": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "CON_DA_corretora_V2_dt_competencia_mê_has_CON_DA_corretora_V2_dt_competencia_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2.dt_competencia.mê": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.mê"
+			          }
+			        },
+			        "CON_DA_corretora_V2.dt_competencia.dia": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.mê"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_dias"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.dia"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_have_mê"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.dia"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_are_in_mê1"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_dt_competencia_trimestre_has_CON_DA_corretora_V2_dt_competencia_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2.dt_competencia.trimestre": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.trimestre"
+			          }
+			        },
+			        "CON_DA_corretora_V2.dt_competencia.mê": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.trimestre"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_mê"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.mê"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_trimestres"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.mê"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_are_in_trimestres1"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_dt_competencia_ano_has_CON_DA_corretora_V2_dt_competencia_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2.dt_competencia.ano": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.ano"
+			          }
+			        },
+			        "CON_DA_corretora_V2.dt_competencia.trimestre": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.ano"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.trimestre"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos1"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_dt_competencia_hierarquia_de_data_has_CON_DA_corretora_V2_dt_competencia_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data"
+			          }
+			        },
+			        "CON_DA_corretora_V2.dt_competencia.dia": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_dt_competencia_hierarquia_de_data_has_CON_DA_corretora_V2_dt_competencia_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data"
+			          }
+			        },
+			        "CON_DA_corretora_V2.dt_competencia.mê": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_dt_competencia_hierarquia_de_data_has_CON_DA_corretora_V2_dt_competencia_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data"
+			          }
+			        },
+			        "CON_DA_corretora_V2.dt_competencia.trimestre": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_trimestres"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_dt_competencia_hierarquia_de_data_has_CON_DA_corretora_V2_dt_competencia_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data"
+			          }
+			        },
+			        "CON_DA_corretora_V2.dt_competencia.ano": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_anos"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_dt_competencia_has_hierarquia_de_data": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2.dt_competencia": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia"
+			          }
+			        },
+			        "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia.hierarquia_de_data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dt_competencias_have_hierarquia_de_data"
+			        }
+			      ]
+			    },
+			    "calendario_date_mê_has_calendario_date_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario.date.mê": {
+			          "Target": {
+			            "Entity": "calendario.date.mê"
+			          }
+			        },
+			        "calendario.date.dia": {
+			          "Target": {
+			            "Entity": "calendario.date.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario.date.mê"
+			            },
+			            "Object": {
+			              "Role": "calendario.date.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_dias1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario.date.dia"
+			            },
+			            "Object": {
+			              "Role": "calendario.date.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_have_mê1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "calendario.date.dia"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "calendario.date.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_are_in_mê"
+			        }
+			      ]
+			    },
+			    "calendario_date_trimestre_has_calendario_date_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario.date.trimestre": {
+			          "Target": {
+			            "Entity": "calendario.date.trimestre"
+			          }
+			        },
+			        "calendario.date.mê": {
+			          "Target": {
+			            "Entity": "calendario.date.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario.date.trimestre"
+			            },
+			            "Object": {
+			              "Role": "calendario.date.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_mê1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario.date.mê"
+			            },
+			            "Object": {
+			              "Role": "calendario.date.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_trimestres1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "calendario.date.mê"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "calendario.date.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_are_in_trimestres"
+			        }
+			      ]
+			    },
+			    "calendario_date_ano_has_calendario_date_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario.date.ano": {
+			          "Target": {
+			            "Entity": "calendario.date.ano"
+			          }
+			        },
+			        "calendario.date.trimestre": {
+			          "Target": {
+			            "Entity": "calendario.date.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario.date.ano"
+			            },
+			            "Object": {
+			              "Role": "calendario.date.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario.date.trimestre"
+			            },
+			            "Object": {
+			              "Role": "calendario.date.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "calendario.date.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "calendario.date.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos"
+			        }
+			      ]
+			    },
+			    "calendario_date_hierarquia_de_data_has_calendario_date_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "calendario.date.hierarquia_de_data"
+			          }
+			        },
+			        "calendario.date.dia": {
+			          "Target": {
+			            "Entity": "calendario.date.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario.date.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "calendario.date.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias1"
+			        }
+			      ]
+			    },
+			    "calendario_date_hierarquia_de_data_has_calendario_date_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "calendario.date.hierarquia_de_data"
+			          }
+			        },
+			        "calendario.date.mê": {
+			          "Target": {
+			            "Entity": "calendario.date.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario.date.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "calendario.date.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê1"
+			        }
+			      ]
+			    },
+			    "calendario_date_hierarquia_de_data_has_calendario_date_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "calendario.date.hierarquia_de_data"
+			          }
+			        },
+			        "calendario.date.trimestre": {
+			          "Target": {
+			            "Entity": "calendario.date.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario.date.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "calendario.date.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_trimestres1"
+			        }
+			      ]
+			    },
+			    "calendario_date_hierarquia_de_data_has_calendario_date_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "calendario.date.hierarquia_de_data"
+			          }
+			        },
+			        "calendario.date.ano": {
+			          "Target": {
+			            "Entity": "calendario.date.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario.date.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "calendario.date.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_anos1"
+			        }
+			      ]
+			    },
+			    "calendario_date_has_hierarquia_de_data": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario.date": {
+			          "Target": {
+			            "Entity": "calendario.date"
+			          }
+			        },
+			        "calendario.date.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "calendario.date.hierarquia_de_data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario.date"
+			            },
+			            "Object": {
+			              "Role": "calendario.date.hierarquia_de_data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dates_have_hierarquia_de_data"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_calendario": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "calendario": {
+			          "Target": {
+			            "Entity": "calendario"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "calendario"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_calendarios"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendarios_have_CON_DA_corretora_V2"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_TAB_conta_contabil": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "TAB_conta_contabil": {
+			          "Target": {
+			            "Entity": "TAB_conta_contabil"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "TAB_conta_contabil"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_TAB_conta_contabils"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "TAB_conta_contabil"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "TAB_conta_contabils_have_CON_DA_corretora_V2"
+			        }
+			      ]
+			    },
+			    "tab_periodo_has_medida_real_vs_real_Y1": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_PERIODO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_periodo": {
+			          "Target": {
+			            "Entity": "tab_periodo"
+			          }
+			        },
+			        "medida.real_vs_real_Y1": {
+			          "Target": {
+			            "Entity": "medida.real_vs_real_Y1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_periodo"
+			            },
+			            "Object": {
+			              "Role": "medida.real_vs_real_Y1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tab_periodos_have__real_vs_real_Y1"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_medida_real_vs_real_Y1": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "medida.real_vs_real_Y1": {
+			          "Target": {
+			            "Entity": "medida.real_vs_real_Y1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "medida.real_vs_real_Y1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have__real_vs_real_Y1"
+			        }
+			      ]
+			    },
+			    "tab_periodo_has_medida_vl_Real_vs_real_Y1": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_PERIODO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_periodo": {
+			          "Target": {
+			            "Entity": "tab_periodo"
+			          }
+			        },
+			        "medida.vl_Real_vs_real_Y1": {
+			          "Target": {
+			            "Entity": "medida.vl_Real_vs_real_Y1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_periodo"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_Real_vs_real_Y1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tab_periodos_have_vl_Real_vs_real_Y1"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_medida_vl_Real_vs_real_Y1": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "medida.vl_Real_vs_real_Y1": {
+			          "Target": {
+			            "Entity": "medida.vl_Real_vs_real_Y1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_Real_vs_real_Y1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_vl_Real_vs_real_Y1"
+			        }
+			      ]
+			    },
+			    "tab_periodo_has_medida_real_vs_orcado": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_PERIODO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_periodo": {
+			          "Target": {
+			            "Entity": "tab_periodo"
+			          }
+			        },
+			        "medida.real_vs_orcado": {
+			          "Target": {
+			            "Entity": "medida.real_vs_orcado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_periodo"
+			            },
+			            "Object": {
+			              "Role": "medida.real_vs_orcado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tab_periodos_have__real_vs_orcado"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_medida_real_vs_orcado": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "medida.real_vs_orcado": {
+			          "Target": {
+			            "Entity": "medida.real_vs_orcado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "medida.real_vs_orcado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have__real_vs_orcado"
+			        }
+			      ]
+			    },
+			    "tab_periodo_has_medida_vl_Real_vs_orcado": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_PERIODO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_periodo": {
+			          "Target": {
+			            "Entity": "tab_periodo"
+			          }
+			        },
+			        "medida.vl_Real_vs_orcado": {
+			          "Target": {
+			            "Entity": "medida.vl_Real_vs_orcado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_periodo"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_Real_vs_orcado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tab_periodos_have_vl_Real_vs_orcado"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_medida_vl_Real_vs_orcado": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "medida.vl_Real_vs_orcado": {
+			          "Target": {
+			            "Entity": "medida.vl_Real_vs_orcado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "medida.vl_Real_vs_orcado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_vl_Real_vs_orcado"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_dt_competencia": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "CON_DA_corretora_V2.dt_competencia": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.dt_competencia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.dt_competencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_dt_competencias"
+			        }
+			      ]
+			    },
+			    "tab_periodo_has_medida_VL_realizado_Y1_ajustado": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_PERIODO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_periodo": {
+			          "Target": {
+			            "Entity": "tab_periodo"
+			          }
+			        },
+			        "medida.VL_realizado_Y1_ajustado": {
+			          "Target": {
+			            "Entity": "medida.VL_realizado_Y1_ajustado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_periodo"
+			            },
+			            "Object": {
+			              "Role": "medida.VL_realizado_Y1_ajustado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tab_periodos_have_VL_realizado_Y1_ajustado"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_medida_VL_realizado_Y1_ajustado": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "medida.VL_realizado_Y1_ajustado": {
+			          "Target": {
+			            "Entity": "medida.VL_realizado_Y1_ajustado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "medida.VL_realizado_Y1_ajustado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_VL_realizado_Y1_ajustado"
+			        }
+			      ]
+			    },
+			    "tab_periodo_has_medida_VL_orcado": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_PERIODO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_periodo": {
+			          "Target": {
+			            "Entity": "tab_periodo"
+			          }
+			        },
+			        "medida.VL_orcado": {
+			          "Target": {
+			            "Entity": "medida.VL_orcado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_periodo"
+			            },
+			            "Object": {
+			              "Role": "medida.VL_orcado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tab_periodos_have_VL_orcado"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_medida_VL_orcado": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "medida.VL_orcado": {
+			          "Target": {
+			            "Entity": "medida.VL_orcado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "medida.VL_orcado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_VL_orcado"
+			        }
+			      ]
+			    },
+			    "tab_periodo_has_medida_VL_realizado": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_PERIODO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_periodo": {
+			          "Target": {
+			            "Entity": "tab_periodo"
+			          }
+			        },
+			        "medida.VL_realizado": {
+			          "Target": {
+			            "Entity": "medida.VL_realizado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_periodo"
+			            },
+			            "Object": {
+			              "Role": "medida.VL_realizado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tab_periodos_have_VL_realizado"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_medida_VL_realizado": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "medida.VL_realizado": {
+			          "Target": {
+			            "Entity": "medida.VL_realizado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "medida.VL_realizado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_VL_realizado"
+			        }
+			      ]
+			    },
+			    "tab_periodo_has_ds_periodo": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_PERIODO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tab_periodo": {
+			          "Target": {
+			            "Entity": "tab_periodo"
+			          }
+			        },
+			        "tab_periodo.ds_periodo": {
+			          "Target": {
+			            "Entity": "tab_periodo.ds_periodo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tab_periodo"
+			            },
+			            "Object": {
+			              "Role": "tab_periodo.ds_periodo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tab_periodos_have_ds_periodos"
+			        }
+			      ]
+			    },
+			    "calendario_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario": {
+			          "Target": {
+			            "Entity": "calendario"
+			          }
+			        },
+			        "calendario.date": {
+			          "Target": {
+			            "Entity": "calendario.date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario"
+			            },
+			            "Object": {
+			              "Role": "calendario.date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendarios_have_dates"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_VL_Realizado_Y1": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "CON_DA_corretora_V2.VL_Realizado_Y1": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.VL_Realizado_Y1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.VL_Realizado_Y1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_VL_Realizado_Y1"
+			        }
+			      ]
+			    },
+			    "TAB_conta_contabil_has_ds_conta_contabil": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_Conta_Contabil"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "TAB_conta_contabil": {
+			          "Target": {
+			            "Entity": "TAB_conta_contabil"
+			          }
+			        },
+			        "TAB_conta_contabil.ds_conta_contabil": {
+			          "Target": {
+			            "Entity": "TAB_conta_contabil.ds_conta_contabil"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "TAB_conta_contabil"
+			            },
+			            "Object": {
+			              "Role": "TAB_conta_contabil.ds_conta_contabil"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "TAB_conta_contabils_have_ds_conta_contabils"
+			        }
+			      ]
+			    },
+			    "TAB_conta_contabil_has_cd_conta_contabil": {
+			      "Binding": {
+			        "ConceptualEntity": "TAB_Conta_Contabil"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "TAB_conta_contabil": {
+			          "Target": {
+			            "Entity": "TAB_conta_contabil"
+			          }
+			        },
+			        "TAB_conta_contabil.cd_conta_contabil": {
+			          "Target": {
+			            "Entity": "TAB_conta_contabil.cd_conta_contabil"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "TAB_conta_contabil"
+			            },
+			            "Object": {
+			              "Role": "TAB_conta_contabil.cd_conta_contabil"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "TAB_conta_contabils_have_cd_conta_contabils"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_tp_periodo": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "CON_DA_corretora_V2.tp_periodo": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.tp_periodo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.tp_periodo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_tp_periodos"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_vl_orcado": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "CON_DA_corretora_V2.vl_orcado": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.vl_orcado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.vl_orcado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_vl_orcados"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_vl_realizado": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "CON_DA_corretora_V2.vl_realizado": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.vl_realizado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.vl_realizado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_vl_realizados"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_ds_fornecedor": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "CON_DA_corretora_V2.ds_fornecedor": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.ds_fornecedor"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.ds_fornecedor"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_ds_fornecedors"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_cd_fornecedor": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "CON_DA_corretora_V2.cd_fornecedor": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.cd_fornecedor"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.cd_fornecedor"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_cd_fornecedors"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_ds_sub_pacote": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "CON_DA_corretora_V2.ds_sub_pacote": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.ds_sub_pacote"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.ds_sub_pacote"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_ds_sub_pacotes"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_ds_pacote": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "CON_DA_corretora_V2.ds_pacote": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.ds_pacote"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.ds_pacote"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_ds_pacotes"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_periodo": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "CON_DA_corretora_V2.periodo": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.periodo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.periodo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_periodos"
+			        }
+			      ]
+			    },
+			    "CON_DA_corretora_V2_has_tp_lancamento": {
+			      "Binding": {
+			        "ConceptualEntity": "CON_DA_Corretora_V2"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "CON_DA_corretora_V2": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2"
+			          }
+			        },
+			        "CON_DA_corretora_V2.tp_lancamento": {
+			          "Target": {
+			            "Entity": "CON_DA_corretora_V2.tp_lancamento"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "CON_DA_corretora_V2"
+			            },
+			            "Object": {
+			              "Role": "CON_DA_corretora_V2.tp_lancamento"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "CON_DA_corretora_V2_have_tp_lancamentos"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.1.0"
+			    }
+			  }
+			}
+		contentType: json
+

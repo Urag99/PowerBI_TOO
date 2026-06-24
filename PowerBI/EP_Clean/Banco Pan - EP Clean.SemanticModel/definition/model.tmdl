@@ -1,0 +1,45 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["REL_EP_Digital_Banco_Pan_Producao_Resumo","REL_EP_Digital_Banco_Pan_Producao","TAB_Chave","tb_emprestimoepclean","tb_epclean"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table REL_EP_Digital_Banco_Pan_Producao_Resumo
+ref table DateTableTemplate_34ab1c28-617b-40e6-9dbf-5daf76e8b3ad
+ref table LocalDateTable_8436a726-0de5-4250-b67d-d2f4acae81f3
+ref table LocalDateTable_a95fd8d2-0964-4e4c-a2b9-0694651b59b4
+ref table REL_EP_Digital_Banco_Pan_Producao
+ref table LocalDateTable_1fee3583-5c68-45e5-89f6-965c6d7a48c6
+ref table LocalDateTable_384c1c7b-9811-45b1-8b77-01e94aaa296a
+ref table LocalDateTable_aeaba5a6-43fa-4ed2-83f4-69e71d090779
+ref table LocalDateTable_7ce4f791-1f65-4a1d-a4b4-e5e19553ae98
+ref table LocalDateTable_a6d255c2-b5ec-44a6-bf4b-e40542c8e6fb
+ref table TAB_Chave
+ref table LocalDateTable_b167c842-bce0-4b2b-a670-bb9c2b301dd7
+ref table LocalDateTable_e8dbd4f8-8518-4378-aab0-bf633b9a3dac
+ref table LocalDateTable_08b00509-675e-45a6-8640-25bdc80b29f4
+ref table LocalDateTable_665938eb-0d7b-49b4-a1b0-9545ed416ac2
+ref table LocalDateTable_99588929-f120-4e20-b3d6-ab43ffb5503d
+ref table LocalDateTable_353df56a-564e-4b5e-ab52-e23b200aba06
+ref table LocalDateTable_46328277-6291-4fef-b57f-d17e0e930572
+ref table LocalDateTable_143f8560-1929-4dfe-97fe-351a8f9fdced
+ref table LocalDateTable_fff0aaeb-7aea-4b47-acf7-00a6909f4e51
+ref table tb_emprestimoepclean
+ref table LocalDateTable_cb52b486-0087-453c-a062-029e975bc408
+ref table tb_epclean
+ref table LocalDateTable_a8fabbf8-28c2-47fb-900e-d7bbf6533edc
+ref table LocalDateTable_9aa633d7-43c9-42f8-b807-c86f18103775
+ref table LocalDateTable_a9891df5-4c37-4202-a96b-fb89452fffe9
+ref table LocalDateTable_3ad67c25-9492-4e6b-a026-c84e1afaa697
+ref table LocalDateTable_77504d1c-e790-4655-af0c-242c8f10802f
+
+ref cultureInfo pt-BR
+

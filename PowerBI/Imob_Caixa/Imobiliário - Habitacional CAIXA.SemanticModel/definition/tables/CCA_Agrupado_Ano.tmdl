@@ -1,0 +1,51 @@
+table CCA_Agrupado_Ano
+	lineageTag: 96fc8529-646e-45c6-80ba-8f3ec6db1a9e
+
+	column nmFantasiaCCA
+		dataType: string
+		lineageTag: 02b08e43-9b1e-43d4-84e7-70a437f1c60c
+		summarizeBy: none
+		sourceColumn: nmFantasiaCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtMesFaturado_Ano
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 321eedb7-13ae-43d7-960f-d095217024c9
+		summarizeBy: none
+		sourceColumn: dtMesFaturado_Ano
+
+		variation Variation
+			isDefault
+			relationship: a0a91d04-93d5-4138-abac-33f1f0b70127
+			defaultHierarchy: LocalDateTable_33a01987-bbfb-40cb-9851-76edfce343b6.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Indice
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b499fb5-4492-4c78-8760-01fec7c6010f
+		summarizeBy: sum
+		sourceColumn: Indice
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CCA_Agrupado_Ano = m
+		mode: import
+		source =
+				let
+				    Fonte = REL_Habitacional_Base_Vendas,
+				    #"Linhas Agrupadas" = Table.Group(Fonte, {"nmFantasiaCCA"}, {{"dtMesFaturado_Ano", each List.Max([dtMesFaturado_Ano]), type date}}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Linhas Agrupadas", {"dtMesFaturado_Ano"}, Data_Mes_Faturado_Ano_Indice, {"dtMesFaturado_Ano"}, "Data_Mes_Faturado_Ano_Indice", JoinKind.LeftOuter),
+				    #"Data_Mes_Faturado_Ano_Indice Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "Data_Mes_Faturado_Ano_Indice", {"Indice"}, {"Indice"})
+				in
+				    #"Data_Mes_Faturado_Ano_Indice Expandido"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navegação
+

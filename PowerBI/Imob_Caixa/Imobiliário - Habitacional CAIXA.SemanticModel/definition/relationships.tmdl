@@ -1,0 +1,347 @@
+relationship dc573766-11aa-4f8f-b908-6802acb878ff
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Base_Vendas.dtAtualizacao
+	toColumn: LocalDateTable_500d23d2-65dc-47b8-96a2-b6398452eb98.Date
+
+relationship 5b93d8e7-5547-494e-a023-ee6c69054f77
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Base_Vendas.dtContrato
+	toColumn: LocalDateTable_0c4534c4-7f20-4409-8fb3-f3b45a793fe4.Date
+
+relationship 862d445f-64fc-48c5-a162-f2fad04a1bfa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Base_Vendas.dtInclusao
+	toColumn: LocalDateTable_d5ad4fe5-36fc-4fd8-ac5e-60fbc1adfe2b.Date
+
+relationship 0050f6ab-9150-456e-8e47-72790a32cca7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Base_Vendas.dtMesContrato
+	toColumn: LocalDateTable_80abc043-d682-452c-9fcd-c5d059ebdc59.Date
+
+relationship fe9561f3-9934-41fd-848b-fd6b17f81bc7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Base_Sintetica.dtAtualizacao
+	toColumn: LocalDateTable_6547a8cd-92d3-45a8-941b-1bd01fede98c.Date
+
+relationship ad7bf524-e4a0-47e9-b391-e1d8dc53f5be
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Meta.dtAtualizacao
+	toColumn: LocalDateTable_653a28e2-ff9c-4a1b-a7ce-1e8a239e43e1.Date
+
+relationship 4c2600ae-59e5-4ac8-bf45-05035a16488e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Meta.periodo
+	toColumn: LocalDateTable_273b50bb-a828-483f-86ea-6cc7637f190e.Date
+
+relationship b4b81a37-a771-4d2d-abac-3cff3ce99918
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Base_Sintetica.dtCompetencia
+	toColumn: LocalDateTable_b35e839b-2d73-4488-9627-91e75f7ddb1d.Date
+
+relationship bea001b8-cb18-4ad1-b63e-93eda2fe9227
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Habitacional_Base_Sintetica.ChaveMetaSintetica
+	toColumn: REL_Habitacional_Meta.ChaveMetaSintetica
+
+relationship 6676d079-0fc4-4df3-b489-7f8f7f738232
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'REL_Habitacional_Base_Sintetica (2)'.dtCompetencia
+	toColumn: LocalDateTable_9f25a05a-95f7-455f-a8a1-8a6e5c84b19a.Date
+
+relationship 1e79ed3b-506c-470f-a77a-f3dde7249b28
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'REL_Habitacional_Base_Sintetica (2)'.dtAtualizacao
+	toColumn: LocalDateTable_c9132c23-700e-4201-a899-23abd7329791.Date
+
+relationship e72ce26b-8dbb-4221-82b8-d6ba60c8efe9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'REL_Habitacional_Base_Sintetica (2)'.dtContrato
+	toColumn: LocalDateTable_102b4a75-9a29-4551-ae3c-53ae5a441241.Date
+
+relationship d2678dc8-57d8-4ceb-a272-dd3bd8ffbfde
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: REL_Habitacional_Base_Sintetica.ChaveEntreBasesSinteticas
+	toColumn: 'REL_Habitacional_Base_Sintetica (2)'.'ChaveEntreBasesSinteticas 2'
+
+relationship 7610d7a5-3be6-48ea-aee8-0af741e47e48
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Wiz.dtAtualizacao
+	toColumn: LocalDateTable_2a3284ea-d631-4467-b6ac-ec5c1f9352ca.Date
+
+relationship 08cabfd6-ddb7-4c1b-9d57-6d4ac6221abd
+	crossFilteringBehavior: bothDirections
+	securityFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: REL_Habitacional_Base_Sintetica.'Canal Venda Base Sintetica'
+	toColumn: REL_Habitacional_Wiz.dsCanal
+
+relationship c0f46457-0bd7-4949-af1b-0189529be712
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Wiz.dtTrimestre
+	toColumn: LocalDateTable_c22c1108-1b3d-4f01-970c-cd7f7a4f472d.Date
+
+relationship 8b83714c-170f-404a-8e06-0d89c46d61d3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Simulador_Taxa_Seguro.dtAtualizacao
+	toColumn: LocalDateTable_97235aae-67b8-4261-a49b-5f2787f61435.Date
+
+relationship b17a4538-7e9f-421f-b9f2-0d8cc4971d23
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Zoho_Visitas.dtAtualizacao
+	toColumn: LocalDateTable_00994bd1-f3b8-4218-8aef-23d2dec70e31.Date
+
+relationship abbb814c-f66f-4a03-b59f-0751940eae94
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: REL_Habitacional_Zoho_CCA.cdCCA
+	toColumn: REL_Habitacional_Zoho_Visitas.cdCCA
+
+relationship d67fb0c5-68b4-448a-a25b-34ce217b2fde
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: REL_Habitacional_Base_Vendas.cdCCAReferenciaAjustado
+	toColumn: REL_Habitacional_Zoho_CCA.cdCCA
+
+relationship 5d481b6b-9cf8-4ad3-8c7b-aebda86d9198
+	crossFilteringBehavior: bothDirections
+	securityFilteringBehavior: bothDirections
+	fromColumn: REL_Habitacional_Zoho_CCA.Chave
+	toColumn: REL_Habitacional_Zoho_CCA_Resumo.Chave
+
+relationship 3a76f1be-29e9-43aa-9e74-8ddf55dd4bbe
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Zoho_Ligacoes.dtAtualizacao
+	toColumn: LocalDateTable_761bcc91-d668-46df-be5a-f71d307d6354.Date
+
+relationship 393c1c9d-9af3-49d2-b1c2-0ad321754dae
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Zoho_Ligacoes.dtInicioLigacao
+	toColumn: LocalDateTable_e46d11fb-dd7f-4519-a70d-62bb24a5074f.Date
+
+relationship c86a9cf1-4b1d-465d-8a0a-2825788d1d84
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Habitacional_Base_Vendas.'Chave de Data'
+	toColumn: 'Data Indice'.'Chave de Data'
+
+relationship 6de262b8-d473-4ae0-a36f-3181ee8bee55
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Simulador_Taxa_Seguro.periodo
+	toColumn: LocalDateTable_51a148f1-21be-46ce-a6bd-d68e6317d5da.Date
+
+relationship 01afb63b-a3c6-418a-89b5-76ef860fb270
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Zoho_Visitas.dtVisita
+	toColumn: LocalDateTable_189bb728-c382-461f-967d-653ace639cbf.Date
+
+relationship 39aefe7a-4b12-4589-b832-608f29f07a34
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Data_Visita_Ano_Indice.dtVisita_Ano
+	toColumn: LocalDateTable_54733f79-3e2f-4ff9-9563-10eaa000428f.Date
+
+relationship 55a29c83-814d-4ebc-8cb2-46b8cbcce5c4
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Habitacional_Zoho_Visitas.dtVisita_Ano
+	toColumn: Data_Visita_Ano_Indice.dtVisita_Ano
+
+relationship 814ebedb-bd98-4559-9538-e75f97ec499f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Data_Mes_Faturado_Ano_Indice.dtMesFaturado_Ano
+	toColumn: LocalDateTable_74ae4f92-86d5-4c79-afa6-818e7cb441c6.Date
+
+relationship 53b2f54c-dcd6-4e32-9eab-fdd2f1c89210
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Habitacional_Base_Vendas.dtMesFaturado_Ano
+	toColumn: Data_Mes_Faturado_Ano_Indice.dtMesFaturado_Ano
+
+relationship 5bfd357d-4adb-415f-8149-45126b071abd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Data_Mes_Faturado_Mes_Indice.dtMesFaturado
+	toColumn: LocalDateTable_aa2a1b3d-61fc-47cf-b813-877d01466039.Date
+
+relationship 73b0e634-f91d-436a-8bfe-4bc6e14e5fce
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Habitacional_Base_Vendas.dtMesFaturado_chave
+	toColumn: Data_Mes_Faturado_Mes_Indice.dtMesFaturado
+
+relationship efc386fb-362f-436f-afef-27b3508de962
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Base_Vendas.dtMesFaturado
+	toColumn: LocalDateTable_d4079e7f-432a-417c-9fd2-b2886a5d0d0f.Date
+
+relationship a0a91d04-93d5-4138-abac-33f1f0b70127
+	joinOnDateBehavior: datePartOnly
+	fromColumn: CCA_Agrupado_Ano.dtMesFaturado_Ano
+	toColumn: LocalDateTable_33a01987-bbfb-40cb-9851-76edfce343b6.Date
+
+relationship 6dd6deea-3059-42a0-a76d-d2d8c82f1855
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Habitacional_Base_Vendas.nmFantasiaCCA
+	toColumn: CCA_Agrupado_Ano.nmFantasiaCCA
+
+relationship d9ff7af4-385f-4115-9ed8-c5f6b3cdd760
+	isActive: false
+	fromColumn: CCA_Agrupado_Ano.Indice
+	toColumn: Data_Mes_Faturado_Mes_Indice.Indice
+
+relationship f5640f33-63fb-4bb3-89e4-ed70754966d5
+	isActive: false
+	fromColumn: CCA_Agrupado_Ano.Indice
+	toColumn: Data_Mes_Faturado_Ano_Indice.Indice
+
+relationship 8a3c2142-b76f-49cb-9245-54e419899d8e
+	isActive: false
+	fromColumn: CCA_Agrupado_Ano.Indice
+	toColumn: Data_Visita_Ano_Indice.Indice
+
+relationship df575ed6-4f64-4dee-9cab-a6f3f3d13b0d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Chave_CCA_Ligacoes_Visitas.dt_chave
+	toColumn: LocalDateTable_e9bf5ea6-5969-418a-959f-ea2f986a4357.Date
+
+relationship ca945bbc-4da7-48fa-b63e-ca19e39e1075
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Zoho_Visitas.dt_chave
+	toColumn: LocalDateTable_48561f1a-4e49-4a6c-9a71-c75e8b84527b.Date
+
+relationship 96d970b4-eafe-471c-b983-65e946171ecd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Zoho_Ligacoes.dt_chave
+	toColumn: LocalDateTable_cd9b78e1-2ed8-4686-9223-399de20af5c8.Date
+
+relationship 2c4e01f1-b61b-421a-8556-dad48e4c1775
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: REL_Habitacional_Zoho_Ligacoes.chave_ligacoes_visitas
+	toColumn: TAB_Chave_CCA_Ligacoes_Visitas.chave_ligacoes_visitas
+
+relationship d8b222ee-8334-49ca-817c-8acf8ce388bd
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: TAB_Chave_CCA_Ligacoes_Visitas.chave_ligacoes_visitas
+	toColumn: REL_Habitacional_Zoho_Visitas.chave_ligacoes_visitas
+
+relationship 36ee514d-9d11-48cf-ab5a-e4df6b8370ff
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Depara_CCA.dtAtualizacao
+	toColumn: LocalDateTable_c3629f14-a91b-43c1-aed0-55a6a8bcb6b6.Date
+
+relationship e1f94f73-f808-4a3c-a23b-c189bd10c63e
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: REL_Habitacional_Depara_CCA.id
+	toColumn: REL_Habitacional_Zoho_Ligacoes.id
+
+relationship a906dec3-2428-4e1a-b108-127bff866bd2
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: REL_Habitacional_Depara_CCA.id
+	toColumn: REL_Habitacional_Zoho_Visitas.id
+
+relationship 240a33e1-242b-4fbd-a5f2-aefa563fea77
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: REL_Habitacional_Depara_CCA.id
+	toColumn: REL_Habitacional_Simulador_Taxa_Seguro.id
+
+relationship 668f25ab-1f02-4d16-8181-996c561bd800
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: REL_Habitacional_Depara_CCA.id
+	toColumn: REL_Habitacional_Meta.id
+
+relationship ff81168a-06de-4dbc-8cd1-3c262261e54f
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: REL_Habitacional_Depara_CCA.id
+	toColumn: REL_Habitacional_Wiz.id
+
+relationship 30ef9c3f-e356-405e-a988-efa026b924d2
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: REL_Habitacional_Zoho_CCA.cdCCA
+	toColumn: REL_Habitacional_Depara_CCA.cdCCACompleto
+
+relationship fb16415b-614f-4782-95c4-0b67724a864e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_CCA_Zoho_Vendas.dt_chave
+	toColumn: LocalDateTable_6198f5f4-d84a-496a-9eea-6b40f9521c28.Date
+
+relationship fde6f246-9219-405f-929f-9c0efb04eb4e
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Habitacional_Base_Vendas.Chave_CCA_Zoho_Vendas
+	toColumn: TAB_CCA_Zoho_Vendas.Chave_CCA_Zoho_Vendas
+
+relationship 6c3bf177-57da-4735-81c1-f83e031f4b5f
+	crossFilteringBehavior: bothDirections
+	fromColumn: TAB_CCA_Zoho_Vendas.CCA_Zoho_Vendas
+	toColumn: REL_Habitacional_Zoho_CCA.cdCCA
+
+relationship 7812c2fa-aeee-4465-a1ea-9a739edc8e8d
+	crossFilteringBehavior: bothDirections
+	fromColumn: TAB_CCA_Zoho_Vendas.CCA_Zoho_Vendas
+	toColumn: REL_Habitacional_Depara_CCA.cdCCACompleto
+
+relationship 65f27a92-6322-708a-77ac-160c4213d9c3
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: REL_Habitacional_Zoho_Visitas.CCA_Zoho_Vendas
+	toColumn: TAB_CCA_Zoho_Vendas.CCA_Zoho_Vendas
+
+relationship 640d098b-4837-41b3-a9f8-5f3037923299
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Novos_Safra.dt_Competencia
+	toColumn: LocalDateTable_996f97fc-ce10-4dd3-8c43-e8c7bf77c406.Date
+
+relationship b50b2143-1e42-4686-9adf-ddb17ba67ebc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Novos_Safra.dtFaturado_Vendas
+	toColumn: LocalDateTable_562bf546-2fa9-45a4-9e4a-8d74c412df20.Date
+
+relationship c753b02e-145a-782e-7963-561791f67379
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Habitacional_Base_Sintetica.Chave_Nova_Safra
+	toColumn: REL_Habitacional_Novos_Safra.Chave_Nova_Safra
+
+relationship 1acebda6-3402-416f-be0f-bc3a97fa2ae5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Novos_Safra.dt_Atualizacao
+	toColumn: LocalDateTable_c1ebe271-615c-440f-a93d-8324b4360725.Date
+
+relationship 32597f3d-14ef-4ea2-af37-4be37f61cf4a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_habitacional_share_fgts.dt_base
+	toColumn: LocalDateTable_b883265f-e3bd-4dcf-9e72-cdf1d60a7cb3.Date
+
+relationship 11c1c56e-9359-49b5-bb2b-3bf8316661f8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_habitacional_share_fgts_deslocada.dt_base
+	toColumn: LocalDateTable_43af87df-08d0-48d2-b024-a7dcd365bebf.Date
+
+relationship 40c139af-03a9-4a28-973f-edc81affe374
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_habitacional_share_SBPE.dt_base
+	toColumn: LocalDateTable_d16e048d-73ec-42a9-983b-7fd175f9739a.Date
+
+relationship cac80d00-f43e-46ce-ad58-1874b3e15eb7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_habitacional_share_SBPE_deslocada.dt_base
+	toColumn: LocalDateTable_544b04bd-e9e2-4138-b7e7-ef29171fbe93.Date
+
+relationship 78e24875-ae8a-4f2f-bfa9-3c658f8420ca
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_Habitacional_Base_Vendas.dt_chave
+	toColumn: LocalDateTable_ae03f0cf-2f75-4ae1-a096-836a8367b05f.Date
+
+relationship a8c3f9d5-26f7-49f0-aac1-8e3ae86603f5
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_Habitacional_Base_Vendas.Grupo_CCA
+	toColumn: TAB_Calculos_Vendas.Grupo_CCA
+

@@ -1,0 +1,433 @@
+table REL_Habitacional_Zoho_Ligacoes
+	lineageTag: 8af2138b-7865-46ec-8085-d230b4f19aff
+
+	measure '% CCA Ativado' = ```
+			sum(REL_Habitacional_Zoho_Ligacoes[qtdCCAAtivado]) / sum(REL_Habitacional_Zoho_Ligacoes[qtdCCA]) 
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 50ad55a8-7166-439f-a923-f787ba00a7ca
+
+	measure '% Obs Preenchida' = sum(REL_Habitacional_Zoho_Ligacoes[qtdObsPreenchida]) / sum(REL_Habitacional_Zoho_Ligacoes[qtdLigacao])
+		formatString: 0%;-0%;0%
+		lineageTag: d5fce0fd-8ffe-4ad3-b323-0098321cd283
+
+	measure '% Preenchimento' = sum(REL_Habitacional_Zoho_Ligacoes[qtdPreenchimento]) / sum(REL_Habitacional_Zoho_Ligacoes[qtdLigacao])
+		formatString: 0%;-0%;0%
+		lineageTag: d7dc05bd-60b9-4712-a36b-c41f38a3ae42
+
+	measure '% CCA Ativados Unicos' = ```
+			
+			
+			CALCULATE(
+			    DISTINCTCOUNT(REL_Habitacional_Zoho_Ligacoes[cdCCA])
+			    , REL_Habitacional_Zoho_Ligacoes[stFinalLigacao] IN {"Efetuada com Sucesso – Ligação","Efetuada com Sucesso – Mensagem"})
+			     / 
+			
+			
+			
+			
+			DISTINCTCOUNT(REL_Habitacional_Zoho_Ligacoes[cdCCA])
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 094289d0-8e8e-4644-9bba-5085cb9fe77f
+
+	measure qtdVisitas = ```
+			
+			 sum(REL_Habitacional_Zoho_Ligacoes[qtdLigacao])
+			-sum(REL_Habitacional_Zoho_Ligacoes[qtdLigacaoApenas])
+			-sum(REL_Habitacional_Zoho_Ligacoes[qtdWhatsApenas])
+			```
+		formatString: 0
+		lineageTag: 56af8d29-7830-45a8-8659-f9ab347210b2
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 772d5aaf-4b27-443e-b0d4-0cb95167dd31
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column idTask
+		dataType: string
+		lineageTag: 8a0e3c61-3ac9-4b2c-9640-b33a50b3b6cc
+		summarizeBy: none
+		sourceColumn: idTask
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsExecutivo
+		dataType: string
+		lineageTag: 25c5f909-3043-409f-8bfd-a048984bd0b7
+		summarizeBy: none
+		sourceColumn: dsExecutivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsObsLigacao
+		dataType: string
+		lineageTag: f174404e-7986-40e6-a639-0e0d2d7e932a
+		summarizeBy: none
+		sourceColumn: dsObsLigacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsDuracaoLigacaoMin
+		dataType: string
+		lineageTag: 761ca0cc-7232-4d68-b6e7-15eea1f56ec2
+		summarizeBy: none
+		sourceColumn: dsDuracaoLigacaoMin
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsDuracaoLigacaoSeg
+		dataType: double
+		formatString: #,0
+		lineageTag: a307bcb0-ac07-4a9a-8ee4-31ae618fa58f
+		summarizeBy: sum
+		sourceColumn: dsDuracaoLigacaoSeg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column dtCriacao
+		dataType: string
+		lineageTag: eb242461-0d79-4e99-b282-9d75a3ebdf2b
+		summarizeBy: none
+		sourceColumn: dtCriacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtInicioLigacao
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 3a46d47f-b139-42aa-ac5b-385051551d03
+		summarizeBy: none
+		sourceColumn: dtInicioLigacao
+
+		variation Variation
+			isDefault
+			relationship: 393c1c9d-9af3-49d2-b1c2-0ad321754dae
+			defaultHierarchy: LocalDateTable_e46d11fb-dd7f-4519-a70d-62bb24a5074f.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column idChamada
+		dataType: string
+		lineageTag: e7653eab-819f-4e06-a018-9472f36014d6
+		summarizeBy: none
+		sourceColumn: idChamada
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsMotivoLigacao
+		dataType: string
+		lineageTag: 0d820d2b-84cc-4e16-be4d-2deb9e88eeb0
+		summarizeBy: none
+		sourceColumn: dsMotivoLigacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsProprietarioChamada
+		dataType: string
+		lineageTag: 9861e6ff-00eb-44d9-802d-0de0316ee3a6
+		summarizeBy: none
+		sourceColumn: dsProprietarioChamada
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsRelacionado
+		dataType: string
+		lineageTag: ff1cc286-66e6-4fc9-9238-5465a02f5620
+		summarizeBy: none
+		sourceColumn: dsRelacionado
+
+		annotation SummarizationSetBy = Automatic
+
+	column stFinalLigacao
+		dataType: string
+		lineageTag: 1bd8a8f9-46e0-4ff5-aa06-cd24b2fa0b10
+		summarizeBy: none
+		sourceColumn: stFinalLigacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column tpLigacao
+		dataType: string
+		lineageTag: da73f880-686a-4997-a979-ecddd1122a8a
+		summarizeBy: none
+		sourceColumn: tpLigacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column tpLigacaoToo
+		dataType: string
+		lineageTag: c11c1d21-835f-49a0-a0ac-f4d724601cb5
+		summarizeBy: none
+		sourceColumn: tpLigacaoToo
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsContaNome
+		dataType: string
+		lineageTag: 92b07fb6-8a90-4bbf-b55d-e9beae062cb6
+		summarizeBy: none
+		sourceColumn: dsContaNome
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdCCA
+		dataType: string
+		lineageTag: ce8a9513-ae35-4348-b7e8-fe7df7296ed0
+		summarizeBy: none
+		sourceColumn: cdCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdBRB
+		dataType: string
+		lineageTag: 95619267-0ec8-4b42-a914-cf3f3cc7f283
+		summarizeBy: none
+		sourceColumn: cdBRB
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsPotencialCaixa
+		dataType: string
+		lineageTag: 4c8f3437-9660-48c1-9dd7-577b66d90354
+		summarizeBy: none
+		sourceColumn: dsPotencialCaixa
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsPotencialToo
+		dataType: string
+		lineageTag: 9b5c971c-89fa-47e4-a19b-4f14b74c9263
+		summarizeBy: none
+		sourceColumn: dsPotencialToo
+
+		annotation SummarizationSetBy = Automatic
+
+	column stCaixa
+		dataType: string
+		lineageTag: 7fe0056b-cea7-48c9-b1d3-3f604ae243cf
+		summarizeBy: none
+		sourceColumn: stCaixa
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdLigacao
+		dataType: int64
+		formatString: #,0
+		lineageTag: 985bea42-0a22-4940-b72c-c099f95d1fa4
+		summarizeBy: sum
+		sourceColumn: qtdLigacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdLigacaoEfetivada
+		dataType: int64
+		formatString: 0
+		lineageTag: 53d7be24-e390-4ff0-bab1-d080cd4e60fb
+		summarizeBy: sum
+		sourceColumn: qtdLigacaoEfetivada
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdCCA
+		dataType: int64
+		formatString: #,0
+		lineageTag: 8ba3c2e5-d9a0-4603-83c0-55d5f89ebcc8
+		summarizeBy: sum
+		sourceColumn: qtdCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdCCAEfetivo
+		dataType: int64
+		formatString: #,0
+		lineageTag: 0c8d2cc3-cf7d-450c-aef8-b8f7c2ae8652
+		summarizeBy: sum
+		sourceColumn: qtdCCAEfetivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdCCAAtivado
+		dataType: int64
+		formatString: #,0
+		lineageTag: f13d9dc1-a6d2-433a-b46f-671fc68f4dc6
+		summarizeBy: sum
+		sourceColumn: qtdCCAAtivado
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdCCAUnico
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4cdd349b-2e21-4f8c-b4a8-82be78e338a6
+		summarizeBy: sum
+		sourceColumn: qtdCCAUnico
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdCCAEfetivoUnico
+		dataType: string
+		lineageTag: 135cc30f-5a14-4711-96e8-4127560f09be
+		summarizeBy: none
+		sourceColumn: cdCCAEfetivoUnico
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdCCAEfetivoUnico
+		dataType: int64
+		formatString: #,0
+		lineageTag: a20e4d8b-f7a1-4a2e-9ff8-e46ba30a63a7
+		summarizeBy: sum
+		sourceColumn: qtdCCAEfetivoUnico
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdObsPreenchida
+		dataType: int64
+		formatString: #,0
+		lineageTag: c1a8d28d-2ba1-480d-a4dd-94bc66246c5b
+		summarizeBy: sum
+		sourceColumn: qtdObsPreenchida
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdPreenchimento
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2438e11d-52a4-4dd3-aedf-aa1f3998b969
+		summarizeBy: sum
+		sourceColumn: qtdPreenchimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtAtualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 66c5db02-fcab-4c82-ad2d-1503c808d286
+		summarizeBy: none
+		sourceColumn: dtAtualizacao
+
+		variation Variation
+			isDefault
+			relationship: 3a76f1be-29e9-43aa-9e74-8ddf55dd4bbe
+			defaultHierarchy: LocalDateTable_761bcc91-d668-46df-be5a-f71d307d6354.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdUF
+		dataType: string
+		lineageTag: 691ac80a-2745-46cd-a02c-4f2e6aeef5ed
+		summarizeBy: none
+		sourceColumn: cdUF
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Chave Cod + Desc CCA'
+		dataType: string
+		lineageTag: 4e402f45-b9de-4e3c-bce0-0ac84379f0bf
+		summarizeBy: none
+		sourceColumn: Chave Cod + Desc CCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdLigacaoApenas
+		dataType: int64
+		formatString: #,0
+		lineageTag: fff22ed3-60dd-4149-b38d-56be8aa44dba
+		summarizeBy: sum
+		sourceColumn: qtdLigacaoApenas
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdWhatsApenas
+		dataType: int64
+		formatString: #,0
+		lineageTag: 80f18087-ba06-4618-8fcd-c446eaa82751
+		summarizeBy: sum
+		sourceColumn: qtdWhatsApenas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column cdCCAAtivadosUnicos
+		dataType: string
+		lineageTag: ee497723-854d-440f-b603-5aaba94cf663
+		summarizeBy: none
+		sourceColumn: cdCCAAtivadosUnicos
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtdLigacaoAtivadas
+		dataType: int64
+		formatString: #,0
+		lineageTag: d8896a0a-e2ca-4a88-9711-c71e912efbb2
+		summarizeBy: sum
+		sourceColumn: qtdLigacaoAtivadas
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_chave
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 635510d5-dd36-4153-b3e7-cc48fa0209ea
+		summarizeBy: none
+		sourceColumn: dt_chave
+
+		variation Variation
+			isDefault
+			relationship: 96d970b4-eafe-471c-b983-65e946171ecd
+			defaultHierarchy: LocalDateTable_cd9b78e1-2ed8-4686-9223-399de20af5c8.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column nmCCA
+		dataType: string
+		lineageTag: 0f2245db-d885-43da-aef9-31d7cbda7a77
+		summarizeBy: none
+		sourceColumn: nmCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column chave_ligacoes_visitas
+		dataType: string
+		lineageTag: 2acbc5eb-de6b-4ae5-a984-1ed23ad109ef
+		summarizeBy: none
+		sourceColumn: chave_ligacoes_visitas
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Habitacional_Zoho_Ligacoes-47caf52a-df02-4d43-a2c0-67fea8ecb0b4 = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_Habitacional_Zoho_Ligacoes = Fonte{[Schema="dbo",Item="REL_Habitacional_Zoho_Ligacoes"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Habitacional_Zoho_Ligacoes,{{"dtInicioLigacao", type datetime}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Tipo Alterado",{{"dtInicioLigacao", type date}, {"dsDuracaoLigacaoSeg", type number}}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Tipo Alterado1", "Chave Cod + Desc CCA", each Text.Combine({[cdCCA], [dsContaNome]}, ""), type text),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Coluna Mesclada Inserida", "dtInicioLigacao", "dtInicioLigacao - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"dtInicioLigacao - Copiar", "dt_chave"}}),
+				    #"Coluna Duplicada1" = Table.DuplicateColumn(#"Colunas Renomeadas", "dsContaNome", "dsContaNome - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada1",{{"dsContaNome - Copiar", "nmCCA"}}),
+				    #"Coluna Mesclada Inserida1" = Table.AddColumn(#"Colunas Renomeadas1", "chave_ligacoes_visitas", each Text.Combine({Text.From([dt_chave], "pt-BR"), [dsExecutivo], [cdCCA], [nmCCA]}, "|"), type text)
+				in
+				    #"Coluna Mesclada Inserida1"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navegação
+

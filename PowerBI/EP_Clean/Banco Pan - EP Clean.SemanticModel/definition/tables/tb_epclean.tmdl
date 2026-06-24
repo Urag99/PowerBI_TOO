@@ -1,0 +1,220 @@
+table tb_epclean
+	lineageTag: c45b958d-65a1-4c76-aec8-5fb8ccd5648c
+
+	measure qtd_seguros =
+			
+			CALCULATE(
+			    DISTINCTCOUNTNOBLANK(tb_epclean[num_operacao])
+			)
+		formatString: #,0
+		lineageTag: 2d0f3f66-bdc1-44a2-931d-305bb5ed37ab
+
+	measure ticket_seguros =
+			
+			DIVIDE(
+			    sum(tb_epclean[premio_liquido_ajustado])
+			    , [qtd_seguros])
+		formatString: #,0
+		lineageTag: f9b9cc9a-689c-411e-866c-799ba797dd4a
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column num_operacao
+		dataType: string
+		lineageTag: 3b5fcf42-d559-4671-8f0b-f7f1a017ecba
+		summarizeBy: none
+		sourceColumn: num_operacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_cadastramento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8a3391a6-be06-4214-afa6-44ec3fda875c
+		summarizeBy: none
+		sourceColumn: data_cadastramento
+
+		variation Variation
+			isDefault
+			relationship: ed96206e-c9b8-40ea-9c25-01bbf954354d
+			defaultHierarchy: LocalDateTable_a8fabbf8-28c2-47fb-900e-d7bbf6533edc.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column val_financiado
+		dataType: double
+		lineageTag: bc82711b-ec87-40c3-b419-e767bf8b4bc1
+		summarizeBy: sum
+		sourceColumn: val_financiado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column val_liberado
+		dataType: double
+		formatString: #,0
+		lineageTag: a5c9d0ef-4235-4bcb-98f9-cc7dd1a6cbf6
+		summarizeBy: sum
+		sourceColumn: val_liberado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column dt_cancelamento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 08350de8-a889-40e9-9687-e3d4bcc2d1a9
+		summarizeBy: none
+		sourceColumn: dt_cancelamento
+
+		variation Variation
+			isDefault
+			relationship: a528a580-6f04-4136-838e-44339f061d06
+			defaultHierarchy: LocalDateTable_9aa633d7-43c9-42f8-b807-c86f18103775.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column qtd_parcelas
+		dataType: double
+		lineageTag: 1f889fb2-06f6-40b7-8aa7-5ba85ade5937
+		summarizeBy: sum
+		sourceColumn: qtd_parcelas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column premio
+		dataType: double
+		formatString: #,0
+		lineageTag: a0a22f1e-0803-4295-a606-57024fd57705
+		summarizeBy: sum
+		sourceColumn: premio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column premio_liquido
+		dataType: double
+		formatString: #,0
+		lineageTag: ea5a7643-ebb7-4eeb-adf4-9f5eb05e3ca6
+		summarizeBy: sum
+		sourceColumn: premio_liquido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vlr_parcela
+		dataType: double
+		formatString: #,0
+		lineageTag: 47891b8b-6d4b-4182-af5d-a2e76de63dc0
+		summarizeBy: sum
+		sourceColumn: vlr_parcela
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column cpf_cliente
+		dataType: string
+		lineageTag: b400085e-44e2-43d0-9ee3-67cd11fcee16
+		summarizeBy: none
+		sourceColumn: cpf_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column uf
+		dataType: string
+		lineageTag: ce62fd6d-b21c-4d89-a0b1-5076c0094011
+		summarizeBy: none
+		sourceColumn: uf
+
+		annotation SummarizationSetBy = Automatic
+
+	column sexo
+		dataType: string
+		lineageTag: b4cbf54f-7816-4d80-be10-bfb1c611f21b
+		summarizeBy: none
+		sourceColumn: sexo
+
+		annotation SummarizationSetBy = Automatic
+
+	column idade
+		dataType: int64
+		formatString: 0
+		lineageTag: b6e6cb91-6284-4c13-923a-d77e3d470b87
+		summarizeBy: sum
+		sourceColumn: idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column premio_ajustado = ```
+			tb_epclean[premio] 
+			```
+		lineageTag: 1e258226-cbf3-4620-a7cb-b8a14d6d26d9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column premio_liquido_ajustado = ```
+			tb_epclean[premio_liquido] 
+			```
+		formatString: #,0
+		lineageTag: 71880edd-e9f8-4a99-bc9f-2c0c8c484f3b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column vl_parcela_ajustado = tb_epclean[vlr_parcela] / 100
+		lineageTag: 846b6ad2-a0a2-45e5-93ae-04242780724f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dt_carga
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cf77241f-f46b-4c93-93e7-a1d59f68e080
+		summarizeBy: none
+		sourceColumn: dt_carga
+
+		variation Variation
+			isDefault
+			relationship: 5abf3c2f-7f6d-4357-95d8-932d0fd17397
+			defaultHierarchy: LocalDateTable_77504d1c-e790-4655-af0c-242c8f10802f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition tb_epclean = m
+		mode: import
+		source =
+				let
+				    Fonte = AmazonAthena.Databases("athena", null),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_banco_pan_analytics_Schema = AwsDataCatalog_Database{[Name="db_banco_pan_analytics",Kind="Schema"]}[Data],
+				    tb_epclean_Table = db_banco_pan_analytics_Schema{[Name="tb_epclean",Kind="Table"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(tb_epclean_Table,{{"data_cadastramento", type date}, {"val_financiado", type number}, {"val_liberado", type number}, {"dt_cancelamento", type date}, {"qtd_parcelas", type number}, {"premio", type number}, {"premio_liquido", type number}, {"vlr_parcela", type number}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado", let latest = List.Max(#"Tipo Alterado"[dt_carga]) in each [dt_carga] = latest)
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

@@ -1,0 +1,87 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 237.5951241967885,
+        "y": 50.234397487553288
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "CON_DA_Corretora_V2",
+          "nodeLineageTag": "ef6bef74-cefb-4f8a-b80b-c0cec963b3e1",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 394,
+            "y": 67
+          },
+          "nodeIndex": "TAB_Conta_Contabil",
+          "nodeLineageTag": "085ebe6a-e01a-4b65-b391-dc69dd6861d5",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 351.81581916983271,
+            "y": 235.36073059360729
+          },
+          "nodeIndex": "Calendario",
+          "nodeLineageTag": "3464774e-171d-44c7-a348-0737fa82ba90",
+          "size": {
+            "height": 185.74429223744289,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 670.01826484018272,
+            "y": 57.06543606274748
+          },
+          "nodeIndex": "TAB_PERIODO",
+          "nodeLineageTag": "1afac8fd-df19-4a5f-9b79-21700bcb8960",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 678,
+            "y": 168.88355775946351
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "0f6b7de1-6e98-4c0d-842a-3c65aec06407",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 98.206278026905821,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

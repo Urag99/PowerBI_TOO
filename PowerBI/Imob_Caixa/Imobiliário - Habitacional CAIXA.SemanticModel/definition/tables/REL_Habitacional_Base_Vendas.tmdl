@@ -1,0 +1,1444 @@
+table REL_Habitacional_Base_Vendas
+	lineageTag: 7dd64d4e-2e2b-490f-97a3-535ed5102b4a
+
+	measure '% Repres Construtora' = ```
+			
+			IFERROR(
+			    DIVIDE(
+			        SUM(
+			            REL_Habitacional_Base_Vendas[qtContratos]
+			        ),
+			        CALCULATE(
+			            SUM(
+			                REL_Habitacional_Base_Vendas[qtContratos]
+			            ),
+			            ALL(
+			                REL_Habitacional_Base_Vendas[nmConstrutora]
+			            )
+			        )
+			    ),""
+			)
+			
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: cc30eb71-3b42-4cf9-97fa-ce85691fd1c2
+
+	measure '% Crecimento MoM' = ```
+			
+				VAR __PREV_MONTH =
+					CALCULATE(
+						sum([qtContratos]),
+						DATEADD('REL_Habitacional_Base_Vendas'[dtMesFaturado].[Date], -1, MONTH)
+					)
+				RETURN
+					DIVIDE(sum(REL_Habitacional_Base_Vendas[qtContratos]) - __PREV_MONTH, __PREV_MONTH)
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: 49d7c395-9f5d-47d7-813c-9d173cb50f7b
+
+	measure 'R$ Crecimento MoM' = ```
+			
+				VAR __PREV_MONTH =
+					CALCULATE(
+						sum([qtContratos]),
+						DATEADD('REL_Habitacional_Base_Vendas'[dtMesFaturado].[Date], -1, MONTH)
+					)
+				RETURN
+					sum(REL_Habitacional_Base_Vendas[qtContratos]) - __PREV_MONTH
+			```
+		formatString: #,0
+		lineageTag: 22d5d577-a4cf-4286-9b9c-25a0aca7a1d3
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'qtContratos YTD' = ```
+			
+				TOTALYTD(
+					SUM('REL_Habitacional_Base_Vendas'[qtContratos]),
+					'REL_Habitacional_Base_Vendas'[dtMesFaturado].[Date]
+			        --'REL_Habitacional_Base_Vendas'[dtMesFaturado]
+				)
+			
+			```
+		formatString: #,0
+		lineageTag: c9982265-3d1d-4078-9827-5c37f5727a96
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "YearToDate"
+				}
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Last Year Qtd Contratos' =
+			
+			iferror(
+			    calculate(
+			        [qtContratos YTD],
+			        LASTDATE(
+			            REL_Habitacional_Base_Vendas[dtMesFaturado]
+			        )
+			    ),""
+			)
+		formatString: #,0
+		lineageTag: 9a44e013-e2e0-41f0-9d24-5c8429b97b86
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Same Period Last Year Qtd Contratos' =
+			
+			iferror(
+			    calculate(
+			        [qtContratos YTD],
+					DATEADD('REL_Habitacional_Base_Vendas'[dtMesFaturado].[Date], -1, YEAR
+			        )
+			    ),""
+			)
+		formatString: #,0
+		lineageTag: 14be528d-98cf-4bc2-8b99-583778788d39
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Repres Canal Venda' = ```
+			
+			IFERROR(
+			    DIVIDE(
+			        SUM(
+			            REL_Habitacional_Base_Vendas[qtContratos]
+			        ),
+			        CALCULATE(
+			            SUM(
+			                REL_Habitacional_Base_Vendas[qtContratos]
+			            ),
+			            ALL(
+			                REL_Habitacional_Base_Vendas[Canal Vendas]
+			            )
+			        )
+			    ),""
+			)
+			
+			
+			
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: 48777658-ef18-4e75-a47f-f777c229da4c
+
+	measure 'Last Date Qt Contratos' =
+			
+			IFERROR(
+			    CALCULATE(
+			        SUM(REL_Habitacional_Base_Vendas[qtContratos])
+			        --;LASTDATE(REL_Habitacional_Base_Vendas[dtMesFaturado].[Date])
+			        ,LASTDATE(REL_Habitacional_Base_Vendas[dtMesFaturado])
+			        --;DATEADD(REL_Habitacional_Base_Vendas[dtMesFaturado];0;MONTH)
+			    ),BLANK()
+			)
+		formatString: #,0
+		lineageTag: a8f3088a-41ae-4786-8781-f6016a5735c4
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Same Period Last Month Qtd Contratos' =
+			
+			iferror(
+			    calculate(
+			        SUM(REL_Habitacional_Base_Vendas[qtContratos]),
+					DATEADD('REL_Habitacional_Base_Vendas'[dtMesFaturado].[Date], -1, MONTH
+			        )
+			    ),""
+			)
+		lineageTag: d83f14eb-de4e-4756-85cb-6f9f1249d49f
+
+	measure 'Mes Anterior Qt Contratos' = ```
+			
+			
+			
+			var ult_dt = CALCULATE(
+			            DATEADD(LASTDATE(REL_Habitacional_Base_Vendas[dtMesFaturado]), -1, MONTH)
+			             , all(REL_Habitacional_Zoho_CCA)
+			            )
+			
+			
+			return
+			IFERROR(
+			    CALCULATE(
+			        SUM(REL_Habitacional_Base_Vendas[qtContratos]),
+			        --DATEADD(LASTDATE(REL_Habitacional_Base_Vendas[dtMesFaturado]);-1;MONTH)
+			        REL_Habitacional_Base_Vendas[dtMesFaturado] = ult_dt,
+			        all(REL_Habitacional_Zoho_Visitas[dtVisita])
+			        ),BLANK()
+			    )
+			
+			```
+		formatString: #,0
+		lineageTag: e8a95424-b2ed-4f5c-9b05-c304b4536cab
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Crecimento Mês Atual x Anterior' =
+			
+			iferror(
+			    divide(
+			         [Last Year Qtd Contratos]
+			        ,[Mes Anterior Qt Contratos]
+			    )-1
+			    ,BLANK()
+			)
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: 16d737d5-db50-40c6-b643-13896f88c8bd
+
+	measure 'Mes Anterior -1 Qt Contratos' = ```
+			
+			
+			var ult_dt = CALCULATE(
+			            DATEADD(LASTDATE(REL_Habitacional_Base_Vendas[dtMesFaturado]), -2, MONTH)
+			             , all(REL_Habitacional_Zoho_CCA)
+			            )
+			return
+			
+			IFERROR(
+			    CALCULATE(
+			        SUM(REL_Habitacional_Base_Vendas[qtContratos]),
+			        REL_Habitacional_Base_Vendas[dtMesFaturado] = ult_dt,
+			        all(REL_Habitacional_Zoho_Visitas[dtVisita])
+			        --DATEADD(LASTDATE(REL_Habitacional_Base_Vendas[dtMesFaturado]);-2;MONTH)
+			        )
+			    ,BLANK()
+			)
+			
+			
+			
+			```
+		formatString: #,0
+		lineageTag: bd4d073c-82a2-4f79-9a4a-76b0c0189e75
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'qt CCA com Produção YTD' = ```
+			
+				TOTALYTD(
+					DISTINCTCOUNT('REL_Habitacional_Base_Vendas'[cdCCAReferenciaAjustado]),
+					'REL_Habitacional_Base_Vendas'[dtMesFaturado].[Date]
+				)
+			```
+		formatString: #,0
+		lineageTag: b575f753-d317-4cd7-9217-a0d3b99d8887
+
+	measure 'qtContratos YTD Zoho' = ```
+			
+				TOTALYTD(
+					SUM('REL_Habitacional_Base_Vendas'[qtContratos]),
+					--'REL_Habitacional_Base_Vendas'[dtMesFaturado].[Date]
+			        'REL_Habitacional_Base_Vendas'[dtMesFaturado]
+				)
+			
+			```
+		formatString: #,0
+		lineageTag: a302556d-e7bd-4661-b664-a0194eb18760
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Ultima Data' =
+			
+			max(REL_Habitacional_Base_Vendas[dtMesFaturado])
+		formatString: yyyy-mm
+		lineageTag: 4535934d-a90e-4290-9874-d13d153b6d5b
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'Last Date Qt Contratos Zoho' = ```
+			
+			// IFERROR(
+			//     CALCULATE(
+			//         SUM(REL_Habitacional_Base_Vendas[qtContratos]);
+			//         FILTER( REL_Habitacional_Base_Vendas;
+			//                REL_Habitacional_Base_Vendas[Chave de Data] = max(REL_Habitacional_Base_Vendas[Chave de Data]))
+			//     );BLANK()
+			// )
+			
+			var ult_dt = CALCULATE(
+			            MAX(REL_Habitacional_Base_Vendas[dtMesFaturado])
+			             , all(REL_Habitacional_Zoho_CCA)
+			            )
+			
+			return
+			IFERROR(
+			    CALCULATE(
+			        SUM(REL_Habitacional_Base_Vendas[qtContratos]),
+			               REL_Habitacional_Base_Vendas[dtMesFaturado] = ult_dt
+			               ,all(REL_Habitacional_Zoho_Visitas[dtVisita])
+			            --LASTDATE(
+			          --REL_Habitacional_Base_Vendas[dtMesFaturado]
+			        --)
+			    ),BLANK()
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: c7435d0f-1f2a-43e4-8425-4b241932e981
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'qtContratos maior igual 2024' =
+			
+				CALCULATE(
+					SUM(REL_Habitacional_Base_Vendas[qtContratos]),
+					YEAR(REL_Habitacional_Base_Vendas[dtMesFaturado]) >= 2024,
+			        all(REL_Habitacional_Zoho_Visitas[dtVisita])
+			        --'REL_Habitacional_Base_Vendas'[dtMesFaturado]
+				)
+		formatString: #,0
+		lineageTag: c22ba8cd-a0a2-4a9e-9d38-09e5170e2fe6
+
+	measure 'qt CCA com Produção Igual 2023' =
+			
+				CALCULATE(
+					DISTINCTCOUNT('REL_Habitacional_Base_Vendas'[cdCCAReferenciaAjustado]),
+					YEAR('REL_Habitacional_Base_Vendas'[dtMesFaturado]) = 2023,
+			        ALL(REL_Habitacional_Zoho_Visitas[dtVisita])
+				)
+		formatString: #,0
+		lineageTag: e095e1cd-5f7c-467f-a106-fe98c73bbd00
+
+	measure 'qt Contratos sem filtro' =
+			CALCULATE(
+			                            SUM(REL_Habitacional_Base_Vendas[qtContratos]) ,
+			                            ALL(REL_Habitacional_Zoho_Visitas[dtVisita])
+			)
+		formatString: #,0
+		lineageTag: 0cc04ab7-4070-46cf-960d-17ebb3ed94e4
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'qt CCA com Produção Igual 2024' =
+			
+				CALCULATE(
+					DISTINCTCOUNT('REL_Habitacional_Base_Vendas'[cdCCAReferenciaAjustado]),
+					YEAR('REL_Habitacional_Base_Vendas'[dtMesFaturado]) = 2024,
+			        ALL(REL_Habitacional_Zoho_Visitas[dtVisita])
+				)
+		formatString: #,0
+		lineageTag: 7a1b7597-f13c-4b64-892f-b865f64e4194
+
+	measure 'qt CCA com Produção' =
+			
+			DISTINCTCOUNT('REL_Habitacional_Base_Vendas'[cdCCAReferenciaAjustado])
+		formatString: #,0
+		lineageTag: 7962e782-1e59-4ebf-ab6a-b0021a65cefd
+
+		changedProperty = FormatString
+
+	measure qtContratos_Ultimo_Ano =
+			
+			CALCULATE(
+			     sum(REL_Habitacional_Base_Vendas[qtContratos])
+			    ,Data_Mes_Faturado_Ano_Indice[Indice] = 1
+			)
+		formatString: #,0
+		lineageTag: 9c4365d8-e389-4a80-b579-99cb27965496
+
+	measure qtContratos_Penultimo_Ano =
+			
+			CALCULATE(
+			     sum(REL_Habitacional_Base_Vendas[qtContratos])
+			    ,Data_Mes_Faturado_Ano_Indice[Indice] = 2
+			)
+		formatString: #,0
+		lineageTag: 78b4fad8-cfa4-4779-b366-e534ef901153
+
+	measure qtMesesContratos_Penultimo_Ano =
+			
+			CALCULATE(
+			     DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[dtMesFaturado])
+			    ,Data_Mes_Faturado_Ano_Indice[Indice] = 2
+			)
+		formatString: 0
+		lineageTag: a8daeca1-7d19-4892-aeac-68800188cff4
+
+	measure qtMesesContratos_Ultimo_Ano =
+			
+			CALCULATE(
+			     DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[dtMesFaturado])
+			    ,Data_Mes_Faturado_Ano_Indice[Indice] = 1
+			)
+		formatString: 0
+		lineageTag: f371dcf8-d477-4252-b930-b29e2cc7d2ff
+
+	measure qtContratos_Ultimo_Ano_Media =
+			
+			DIVIDE(
+			     [qtContratos_Ultimo_Ano]
+			    ,[qtMesesContratos_Ultimo_Ano]
+			    ,BLANK()
+			)
+		formatString: #,0.00
+		lineageTag: dd1a8afa-36b4-4ab3-9e38-17d0f0072063
+
+	measure qtContratos_Penultimo_Ano_Media =
+			
+			DIVIDE(
+			     [qtContratos_Penultimo_Ano]
+			    ,[qtMesesContratos_Penultimo_Ano]
+			    ,BLANK()
+			)
+		formatString: #,0.00
+		lineageTag: 402ce9b2-c717-4102-90d5-d78ede400fb2
+
+	measure Dif_qtContratos_Ultimo_Ano_Media_Penultimo_Ano_Media = ```
+			
+			 [qtContratos_Ultimo_Ano_Media]
+			-[qtContratos_Penultimo_Ano_Media]
+			```
+		formatString: #,0.00
+		lineageTag: ff152b29-7ee9-4882-b0d0-7b7b93108cd8
+
+	measure qtContratos_Ultimo_Mes =
+			
+			CALCULATE(
+			     sum(REL_Habitacional_Base_Vendas[qtContratos])
+			    ,Data_Mes_Faturado_Mes_Indice[Indice] = 1
+			)
+		formatString: #,0
+		lineageTag: f5225a8c-a42b-4ca5-bf2f-2ef0a5b19205
+
+	measure qtContratos_Penultimo_Mes =
+			
+			CALCULATE(
+			     sum(REL_Habitacional_Base_Vendas[qtContratos])
+			    ,Data_Mes_Faturado_Mes_Indice[Indice] = 2
+			)
+		formatString: #,0
+		lineageTag: 38c40bf7-00ec-4056-a88e-f07582261967
+
+	measure Dif_qtContratos_Ultimo_Mes_Penultimo_Mes = ```
+			
+			 [qtContratos_Ultimo_Mes]
+			-[qtContratos_Penultimo_Mes]
+			```
+		formatString: #,0
+		lineageTag: 3fba84fb-6f9f-4d32-ba18-a7f27c63af48
+
+	measure Produziu_Ultimo_Ano =
+			
+			SWITCH(
+			     TRUE()
+			    ,[qtContratos_Ultimo_Ano] > 0
+			    ,1
+			    ,BLANK()
+			)
+		formatString: 0
+		lineageTag: fc6619f7-3260-4980-91fd-28f472aa7b10
+
+	measure Produziu_Penultimo_Ano =
+			
+			SWITCH(
+			     TRUE()
+			    ,[qtContratos_Penultimo_Ano] > 0
+			    ,1
+			    ,BLANK()
+			)
+		formatString: 0
+		lineageTag: 3c50cb4c-5716-4643-819b-57fca87f5e6c
+
+	measure Dif_Produziu_Ultimo_Ano_Penultimo_Ano = ```
+			
+			 [Produziu_Ultimo_Ano]
+			-[Produziu_Penultimo_Ano]
+			```
+		formatString: 0
+		lineageTag: 38157810-7d84-413f-83c4-2eb5160ecbf6
+
+	measure '% qt CCA com Produção Igual 2024' =
+			
+			DIVIDE(
+			     [qt CCA com Produção Igual 2024]
+			    ,CALCULATE(
+			     SUM(REL_Habitacional_Zoho_CCA[Qtd CCA Ativos])
+			    ,ALL(REL_Habitacional_Zoho_Visitas[dtVisita])
+			    ,all(TAB_CCA_Zoho_Vendas[dt_chave])
+			))
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: edf02752-85e1-41ae-af0b-8a21008332d6
+
+	measure qtd_cca_ativado_venda =
+			
+			SWITCH(
+			     TRUE()
+			    ,sum(REL_Habitacional_Base_Vendas[stVisita.1]) > 0
+			    ,DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[grupo_cca_ativado_produzido])
+			    ,BLANK()
+			)
+		formatString: 0
+		lineageTag: dfd3461e-38ba-465f-b33f-6b1633a13714
+
+	measure qtd_cca_venda =
+			
+			SWITCH(
+			     TRUE()
+			    ,sum(REL_Habitacional_Base_Vendas[stVisita.1]) > 0
+			    ,DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[Grupo_CCA])
+			    ,BLANK()
+			)
+		formatString: 0
+		lineageTag: 3a8c7290-578e-4525-978e-cb526dbc15b0
+
+	measure qtContratosMedio =
+			
+			DIVIDE(
+			     sum(REL_Habitacional_Base_Vendas[qtContratos])
+			    ,DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[dtMesFaturado])
+			    ,BLANK()
+			)
+		formatString: #,0
+		lineageTag: 42e99c35-6f48-457c-b503-f159ecbeaf6e
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure qt_grupo_cca_periodo_anterior =
+			
+			DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[grupo_cca_periodo_anterior])
+		formatString: #,0
+		lineageTag: 48f3a670-4a43-423a-a3b7-d1f75cf27034
+
+	measure qt_grupo_cca_m-2 =
+			
+			DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[grupo_cca_m-2])
+		formatString: #,0
+		lineageTag: 96fa4215-605e-47a2-ab06-f699958bf37e
+
+	measure qt_grupo_cca_m-1 =
+			
+			DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[grupo_cca_m-1])
+		formatString: #,0
+		lineageTag: c6e658e2-a861-48c1-abb6-8911137872c1
+
+	measure qtd_novos_contratos_periodo_anterior_media =
+			
+			DIVIDE(
+			     sum(REL_Habitacional_Base_Vendas[qtd_novos_contratos_periodo_anterior])
+			    ,DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[dtMesFaturado_chave])
+			    ,BLANK()
+			)
+		formatString: #,0
+		lineageTag: b822eda7-579b-4fe1-b922-c53a83946348
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure qtd_ativacao_periodo_anterior =
+			
+			DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[ativacao_periodo_anterior])
+		formatString: #,0
+		lineageTag: 1bc18254-fc8c-483b-922d-60c323bbe32f
+
+	measure qtd_ativacao_m-2 =
+			
+			DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[ativacao_m-2])
+		formatString: #,0
+		lineageTag: 58ed3517-76b3-45d6-89d5-8a0890400fff
+
+	measure qtd_ativacao_m-1 =
+			
+			DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[ativacao_m-1])
+		formatString: #,0
+		lineageTag: e637a53d-cdfa-444c-b653-196ee7a080b7
+
+	measure qtd_ativacao_atual =
+			
+			DISTINCTCOUNTNOBLANK(REL_Habitacional_Base_Vendas[ativacao_atual])
+		formatString: #,0
+		lineageTag: b39865f2-5484-47f5-8dae-cae77e42facd
+
+	measure %_ativacao_m-1 =
+			
+			DIVIDE(
+			     [qtd_ativacao_m-1]
+			    ,[qt_grupo_cca_m-1]
+			    ,BLANK()
+			)
+		formatString: #,0%;-#,0%;#,0%
+		lineageTag: 3b644ba9-343b-4de3-83d7-907de78945bf
+
+	measure 'qt CCA com Produção Igual 2025' =
+			
+				CALCULATE(
+					DISTINCTCOUNT('REL_Habitacional_Base_Vendas'[cdCCAReferenciaAjustado]),
+					YEAR('REL_Habitacional_Base_Vendas'[dtMesFaturado]) = 2025,
+			        ALL(REL_Habitacional_Zoho_Visitas[dtVisita])
+				)
+		formatString: 0
+		lineageTag: a4c950a7-53e4-434c-bf6f-b689c5f765d5
+
+	measure 'qtContratos maior igual 2025' =
+			
+				CALCULATE(
+					SUM(REL_Habitacional_Base_Vendas[qtContratos]),
+					YEAR(REL_Habitacional_Base_Vendas[dtMesFaturado]) >= 2025,
+			        all(REL_Habitacional_Zoho_Visitas[dtVisita])
+			        --'REL_Habitacional_Base_Vendas'[dtMesFaturado]
+				)
+		formatString: 0
+		lineageTag: 39ace867-5377-49ae-b014-3ec391772a61
+
+	measure '% qt CCA com Produção Igual 2025' =
+			
+			DIVIDE(
+			     [qt CCA com Produção Igual 2025]
+			    ,CALCULATE(
+			     SUM(REL_Habitacional_Zoho_CCA[Qtd CCA Ativos])
+			    ,ALL(REL_Habitacional_Zoho_Visitas[dtVisita])
+			    ,all(TAB_CCA_Zoho_Vendas[dt_chave])
+			))
+		lineageTag: 0e99952e-346a-4b05-9552-1de627c93cac
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: b0b1fde0-a90c-44e0-98a8-b62efd5aae16
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdEstipulante
+		dataType: int64
+		formatString: 0
+		lineageTag: 9371e82d-5328-43bb-89e9-c4b495ae6686
+		summarizeBy: sum
+		sourceColumn: cdEstipulante
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdApolice
+		dataType: string
+		lineageTag: dd011932-8e3c-4d5f-8abc-1904ad1ea4d6
+		summarizeBy: none
+		sourceColumn: cdApolice
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdEmpreendimento
+		dataType: string
+		lineageTag: b39154e6-ad0e-4781-85b4-95291a351b97
+		summarizeBy: none
+		sourceColumn: cdEmpreendimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdContrato
+		dataType: string
+		lineageTag: bc49013f-a5b7-4384-b3e9-ad0df9a343cb
+		summarizeBy: none
+		sourceColumn: cdContrato
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmSegurado
+		dataType: string
+		lineageTag: c2f39dbb-3cd0-491e-92c1-ea42437d4d06
+		summarizeBy: none
+		sourceColumn: nmSegurado
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdCpf
+		dataType: string
+		lineageTag: b680db09-0992-4786-b7e9-6f9f73803e7d
+		summarizeBy: none
+		sourceColumn: cdCpf
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtContrato
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fc145226-6e4f-4c30-9b36-3ba49fd58729
+		summarizeBy: none
+		sourceColumn: dtContrato
+
+		variation Variation
+			isDefault
+			relationship: 5b93d8e7-5547-494e-a023-ee6c69054f77
+			defaultHierarchy: LocalDateTable_0c4534c4-7f20-4409-8fb3-f3b45a793fe4.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dtInclusao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a4fe5117-d9ef-4523-ae5a-2fb576974c87
+		summarizeBy: none
+		sourceColumn: dtInclusao
+
+		variation Variation
+			isDefault
+			relationship: 862d445f-64fc-48c5-a162-f2fad04a1bfa
+			defaultHierarchy: LocalDateTable_d5ad4fe5-36fc-4fd8-ac5e-60fbc1adfe2b.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Prazo
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d6e5ccc-d9df-4721-aff6-859393c6e309
+		summarizeBy: sum
+		sourceColumn: Prazo
+
+		annotation SummarizationSetBy = Automatic
+
+	column vlComposicaoRenda
+		dataType: double
+		lineageTag: ae8c692a-3f20-4f9d-9523-e84af3294987
+		summarizeBy: sum
+		sourceColumn: vlComposicaoRenda
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dsLogradouro
+		dataType: string
+		lineageTag: 2f590a65-6308-4437-a28a-aa7bfcf12895
+		summarizeBy: none
+		sourceColumn: dsLogradouro
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsComplemento
+		dataType: string
+		lineageTag: 51814ccf-28cb-4b1a-b54d-47480543b74f
+		summarizeBy: none
+		sourceColumn: dsComplemento
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsBairro
+		dataType: string
+		lineageTag: a1285bd8-c954-4e2d-83e9-70accc45c7a7
+		summarizeBy: none
+		sourceColumn: dsBairro
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsCidade
+		dataType: string
+		lineageTag: 28cdb269-970c-4bf0-9943-9293b2bdb71d
+		summarizeBy: none
+		sourceColumn: dsCidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column nrCEP
+		dataType: string
+		lineageTag: c1704720-aab8-4f3f-9574-14495f0e1327
+		summarizeBy: none
+		sourceColumn: nrCEP
+
+		annotation SummarizationSetBy = Automatic
+
+	column vlFinanciamento
+		dataType: double
+		lineageTag: bd1e3566-cc6a-4fa8-b792-79c46f0a1c36
+		summarizeBy: sum
+		sourceColumn: vlFinanciamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlAvalicao
+		dataType: double
+		lineageTag: 3de9ea16-2322-4bc1-a0c0-61a9cc44c465
+		summarizeBy: sum
+		sourceColumn: vlAvalicao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nrPropostaAdesao
+		dataType: string
+		lineageTag: abb13a75-783f-4ce6-b7ff-231f3a55c8f8
+		summarizeBy: none
+		sourceColumn: nrPropostaAdesao
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtInicioVigencia
+		dataType: string
+		lineageTag: 664104d1-44a2-4982-8dcb-4410ac87dec4
+		summarizeBy: none
+		sourceColumn: dtInicioVigencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtFimVigencia
+		dataType: string
+		lineageTag: bff83dc0-079d-42c7-b9d9-71597bf3e5b6
+		summarizeBy: none
+		sourceColumn: dtFimVigencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsParecer
+		dataType: string
+		lineageTag: c140e6c9-2ca5-4b93-8795-76e030d5adfb
+		summarizeBy: none
+		sourceColumn: dsParecer
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsMotivoRecusa
+		dataType: string
+		lineageTag: 0a286df6-d5d4-4f6c-ac5d-04193a6c28fd
+		summarizeBy: none
+		sourceColumn: dsMotivoRecusa
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdCCA
+		dataType: string
+		lineageTag: b3a4a6ad-b94a-4d0f-bf7f-1d74f3b7c146
+		summarizeBy: none
+		sourceColumn: cdCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdMatriculaFuncCCA
+		dataType: string
+		lineageTag: c044acf6-4338-4be9-a0c9-b58ceb7e3baa
+		summarizeBy: none
+		sourceColumn: cdMatriculaFuncCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmUsuario
+		dataType: string
+		lineageTag: dac61abc-ccd9-4570-aae2-cd5530c47569
+		summarizeBy: none
+		sourceColumn: nmUsuario
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsEmail
+		dataType: string
+		lineageTag: d5307e26-d732-407f-8a97-5800842eb556
+		summarizeBy: none
+		sourceColumn: dsEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdAgencia
+		dataType: string
+		lineageTag: d0dffc9b-e618-4506-9e99-1f48425b5696
+		summarizeBy: none
+		sourceColumn: cdAgencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmAgencia
+		dataType: string
+		lineageTag: 9507a8d0-3a3b-4d69-9667-5931fa315263
+		summarizeBy: none
+		sourceColumn: nmAgencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdCCAReferencia
+		dataType: int64
+		formatString: 0
+		lineageTag: afb8c6b0-55e1-4ae1-aa00-7d49d81d5552
+		summarizeBy: sum
+		sourceColumn: cdCCAReferencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdPontoVendaCCA
+		dataType: int64
+		formatString: 0
+		lineageTag: c7f4a2d2-8a8e-45df-a5bb-0dfa8de7818e
+		summarizeBy: sum
+		sourceColumn: cdPontoVendaCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdIndicadorCCA
+		dataType: string
+		lineageTag: 70f9866f-7a64-498e-aeff-ec4e4957d947
+		summarizeBy: none
+		sourceColumn: cdIndicadorCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmRazaoSocialCCA
+		dataType: string
+		lineageTag: a37dcf69-75dd-4b93-9607-1ee1e89fa91b
+		summarizeBy: none
+		sourceColumn: nmRazaoSocialCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmFantasiaCCA
+		dataType: string
+		lineageTag: a799cff1-c801-480d-84d1-60daa017fce9
+		summarizeBy: none
+		sourceColumn: nmFantasiaCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtContratos
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2b0c79e4-fc1c-47bf-988b-6317a210ec28
+		summarizeBy: sum
+		sourceColumn: qtContratos
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column dtMesContrato
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0d641de0-0352-4a6f-9442-71a26775991b
+		summarizeBy: none
+		sourceColumn: dtMesContrato
+
+		variation Variation
+			isDefault
+			relationship: 0050f6ab-9150-456e-8e47-72790a32cca7
+			defaultHierarchy: LocalDateTable_80abc043-d682-452c-9fcd-c5d059ebdc59.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dtMesFaturado
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: a5b4f456-9535-4b36-9f14-b536ba381ca7
+		summarizeBy: none
+		sourceColumn: dtMesFaturado
+
+		variation Variation
+			isDefault
+			relationship: efc386fb-362f-436f-afef-27b3508de962
+			defaultHierarchy: LocalDateTable_d4079e7f-432a-417c-9fd2-b2886a5d0d0f.'Hierarquia de Datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column cdCCAReferenciaAjustado
+		dataType: string
+		lineageTag: bc284027-a2ed-482c-bdac-358a325ec954
+		summarizeBy: none
+		sourceColumn: cdCCAReferenciaAjustado
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmConstrutora
+		dataType: string
+		lineageTag: eeecc762-f8ff-4b03-be8d-6e147356035b
+		summarizeBy: none
+		sourceColumn: nmConstrutora
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsExecutivoCidadeCCA
+		dataType: string
+		lineageTag: 85ff02d5-2629-414f-b1f8-26982e7fab22
+		summarizeBy: none
+		sourceColumn: dsExecutivoCidadeCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtAtualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 70c38f38-4490-44df-bdb4-815d7efa6f51
+		summarizeBy: none
+		sourceColumn: dtAtualizacao
+
+		variation Variation
+			isDefault
+			relationship: dc573766-11aa-4f8f-b908-6802acb878ff
+			defaultHierarchy: LocalDateTable_500d23d2-65dc-47b8-96a2-b6398452eb98.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Canal Vendas'
+		dataType: string
+		lineageTag: 5814dc45-3b7d-43a3-8894-e8a680f0c6db
+		summarizeBy: none
+		sourceColumn: Canal Vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdOrigemRec
+		dataType: int64
+		formatString: 0
+		lineageTag: 89bf5997-56ae-488d-9eb1-4058bdeceb7a
+		summarizeBy: sum
+		sourceColumn: cdOrigemRec
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsOrigemRec
+		dataType: string
+		lineageTag: ed6adca9-f627-4727-804f-157b676f70c8
+		summarizeBy: none
+		sourceColumn: dsOrigemRec
+
+		annotation SummarizationSetBy = Automatic
+
+	column rankProducaoMes
+		dataType: int64
+		formatString: 0
+		lineageTag: ef89c064-03a2-4e47-8621-2b9bc845b8d4
+		summarizeBy: sum
+		sourceColumn: rankProducaoMes
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdUFCCA
+		dataType: string
+		lineageTag: e35b2452-f974-4dca-906e-3117713f6180
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: cdUFCCA
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsCidadeCCA
+		dataType: string
+		lineageTag: 607d9deb-5946-41e2-a6b0-cde5a6c1471a
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: dsCidadeCCA
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pais
+		dataType: string
+		lineageTag: 36da40c4-d420-460b-a21b-78679a60057e
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: Pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdUF
+		dataType: string
+		lineageTag: 9741222d-b98a-4e0a-b897-1d45c55ddf3b
+		summarizeBy: none
+		sourceColumn: cdUF
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Chave de Data'
+		dataType: string
+		lineageTag: 0d4ff569-98fe-45f9-9280-698738bdfda1
+		summarizeBy: none
+		sourceColumn: Chave de Data
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'chave venda x sintetica'
+		dataType: string
+		lineageTag: 6df66386-368b-43c4-9ce4-51f926ddea41
+		summarizeBy: none
+		sourceColumn: chave venda x sintetica
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdGenero
+		dataType: string
+		lineageTag: b8201aa9-4c77-4dba-86b6-58a83b2a2576
+		summarizeBy: none
+		sourceColumn: cdGenero
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtMesFaturado_Ano
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9cac737e-41e4-4c54-92d6-9e6a2f8b88f3
+		summarizeBy: none
+		sourceColumn: dtMesFaturado_Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dtMesFaturado_chave
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9700abc3-9c54-4ec6-8923-ba0dc2824e7c
+		summarizeBy: none
+		sourceColumn: dtMesFaturado_chave
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ds_cluster
+		dataType: string
+		lineageTag: e66ef890-517e-4e5e-97ea-8a5a67fe50ad
+		summarizeBy: none
+		sourceColumn: ds_cluster
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_perfil_vendas
+		dataType: string
+		lineageTag: 914b125e-e9a4-4d20-a040-504dadc087b6
+		summarizeBy: none
+		sourceColumn: ds_perfil_vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave_CCA_Zoho_Vendas
+		dataType: string
+		lineageTag: 503960c3-6aa0-4f5d-ac06-e7b4511f0925
+		summarizeBy: none
+		sourceColumn: Chave_CCA_Zoho_Vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_chave
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8cc14143-e1b5-4662-9ce2-1459aebf7df2
+		summarizeBy: none
+		sourceColumn: dt_chave
+
+		variation Variation
+			isDefault
+			relationship: 78e24875-ae8a-4f2f-bfa9-3c658f8420ca
+			defaultHierarchy: LocalDateTable_ae03f0cf-2f75-4ae1-a096-836a8367b05f.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CCA_Zoho_Vendas
+		dataType: string
+		lineageTag: 0bd557cc-314f-441c-a222-4811a11c8da4
+		summarizeBy: none
+		sourceColumn: CCA_Zoho_Vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmCCA
+		dataType: string
+		lineageTag: 00c399d2-8925-418a-9fcc-19c497c4e17c
+		summarizeBy: none
+		sourceColumn: nmCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmExecutivo
+		dataType: string
+		lineageTag: 45793934-0922-4b35-9553-7dc2f3983e1b
+		summarizeBy: none
+		sourceColumn: nmExecutivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'stVisita.1'
+		dataType: int64
+		formatString: 0
+		lineageTag: 37505484-23e4-4e33-ab9e-56ce891567ad
+		summarizeBy: sum
+		sourceColumn: stVisita.1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Flag Visita'
+		dataType: string
+		lineageTag: d10fd4d7-cb1f-401a-af35-a7476537aa77
+		summarizeBy: none
+		sourceColumn: Flag Visita
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_cca_ativado_venda
+		dataType: string
+		lineageTag: 1326e1c8-9cd0-45e9-b4c8-f22678e19110
+		summarizeBy: none
+		sourceColumn: cd_cca_ativado_venda
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_cca_ativado_grupo_venda
+		dataType: string
+		lineageTag: fed7eebd-07eb-44e2-94e4-e0c778ba2411
+		summarizeBy: none
+		sourceColumn: cd_cca_ativado_grupo_venda
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grupo_CCA
+		dataType: string
+		lineageTag: 1a8a7af2-20d6-4818-ad60-294860f8f91f
+		summarizeBy: none
+		sourceColumn: Grupo_CCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave_Grupo_CCA_Vendas_Ativacao
+		dataType: string
+		lineageTag: 73bbb5fd-d88e-4713-95e6-c9c31dc5918a
+		summarizeBy: none
+		sourceColumn: Chave_Grupo_CCA_Vendas_Ativacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_ativacao
+		dataType: string
+		lineageTag: 5e110f00-052f-4705-a876-6b17c357b73d
+		summarizeBy: none
+		sourceColumn: data_ativacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column grupo_cca_ativado_produzido
+		dataType: string
+		lineageTag: 86f95c21-269a-4c7e-ba24-52d27eed731a
+		summarizeBy: none
+		sourceColumn: grupo_cca_ativado_produzido
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'grupo_cca.1'
+		dataType: string
+		lineageTag: 9ba85189-3cee-49f0-92da-b823e3e39919
+		summarizeBy: none
+		sourceColumn: grupo_cca.1
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_agrupada
+		dataType: string
+		lineageTag: b9518cb0-a8d9-4ffa-87f6-bab0b648adf9
+		summarizeBy: none
+		sourceColumn: data_agrupada
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtd_novos_contratos_periodo_anterior
+		dataType: double
+		lineageTag: 9bec4d79-838f-4e77-8630-b1fa15ad49f1
+		summarizeBy: sum
+		sourceColumn: qtd_novos_contratos_periodo_anterior
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column qtd_novos_contratos_m-2
+		dataType: double
+		formatString: #,0
+		lineageTag: 05820fa6-903d-413a-9071-04b0b675ea82
+		summarizeBy: sum
+		sourceColumn: qtd_novos_contratos_m-2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column grupo_cca_periodo_anterior
+		dataType: string
+		lineageTag: 59b09509-bba3-4579-80a7-4e8941eaeafc
+		summarizeBy: none
+		sourceColumn: grupo_cca_periodo_anterior
+
+		annotation SummarizationSetBy = Automatic
+
+	column grupo_cca_m-2
+		dataType: string
+		lineageTag: 75329a01-d148-410f-af8f-cae3232261a4
+		summarizeBy: none
+		sourceColumn: grupo_cca_m-2
+
+		annotation SummarizationSetBy = Automatic
+
+	column grupo_cca_m-1
+		dataType: string
+		lineageTag: 37630316-03db-4da3-9b70-fd2b44dd2864
+		summarizeBy: none
+		sourceColumn: grupo_cca_m-1
+
+		annotation SummarizationSetBy = Automatic
+
+	column grupo_cca_atual
+		dataType: string
+		lineageTag: 93a33120-203d-42da-9323-cd2dca056661
+		summarizeBy: none
+		sourceColumn: grupo_cca_atual
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtd_novos_contratos_m-1
+		dataType: double
+		formatString: #,0
+		lineageTag: 456f3ada-1e46-406e-b063-1f62f3790ce8
+		summarizeBy: sum
+		sourceColumn: qtd_novos_contratos_m-1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column qtd_novos_contratos_atual
+		dataType: double
+		formatString: #,0
+		lineageTag: dc2282c7-b4cc-4796-85a4-287b954cddbc
+		summarizeBy: sum
+		sourceColumn: qtd_novos_contratos_atual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column ativacao_periodo_anterior
+		dataType: string
+		lineageTag: 4e527d32-0177-4580-ade2-675ef137c55e
+		summarizeBy: none
+		sourceColumn: ativacao_periodo_anterior
+
+		annotation SummarizationSetBy = Automatic
+
+	column ativacao_m-2
+		dataType: string
+		lineageTag: 821180b2-c33f-4205-acc9-789a3d8eb500
+		summarizeBy: none
+		sourceColumn: ativacao_m-2
+
+		annotation SummarizationSetBy = Automatic
+
+	column ativacao_m-1
+		dataType: string
+		lineageTag: 219a9dd3-25ab-4b16-b36b-dde19fe50414
+		summarizeBy: none
+		sourceColumn: ativacao_m-1
+
+		annotation SummarizationSetBy = Automatic
+
+	column ativacao_atual
+		dataType: string
+		lineageTag: 0997a202-ff88-43bf-8a97-8aed2ad983cf
+		summarizeBy: none
+		sourceColumn: ativacao_atual
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsCidadeAgrupadaCCA
+		dataType: string
+		lineageTag: c161bef2-a883-4334-ab29-e52e57846f73
+		summarizeBy: none
+		sourceColumn: dsCidadeAgrupadaCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Habitacional_Base_Vendas-a2419362-d292-44ce-bd74-25370caa4d1d = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_Habitacional_Base_Vendas = Fonte{[Schema="dbo",Item="REL_Habitacional_Base_Vendas"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Habitacional_Base_Vendas,{{"dtContrato", type date}, {"dtInclusao", type date}, {"dtMesContrato", type date}, {"dtMesFaturado", type date}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Tipo Alterado", "Personalizar", each if [cdEstipulante] = 6207 then "MCMV / CASA VERDE E AMARELA" else "BALCÃO"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Condicional Adicionada",{{"Personalizar", "Canal Vendas"}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Colunas Renomeadas", "Pais", each "BRASIL"),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Personalização Adicionada", "dtMesFaturado", "dtMesFaturado - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"dtMesFaturado - Copiar", "Chave de Data"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas1",{{"Chave de Data", type text}}),
+				    #"Coluna Duplicada1" = Table.DuplicateColumn(#"Tipo Alterado1", "Chave de Data", "Chave de Data - Copiar"),
+				    #"Coluna Duplicada2" = Table.DuplicateColumn(#"Coluna Duplicada1", "cdUF", "cdUF - Copiar"),
+				    #"Colunas Mescladas" = Table.CombineColumns(#"Coluna Duplicada2",{"Chave de Data - Copiar", "cdUF - Copiar"},Combiner.CombineTextByDelimiter(";", QuoteStyle.None),"chave venda x sintetica"),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Colunas Mescladas",{{"cdCCAReferenciaAjustado", type text}}),
+				    #"Coluna Duplicada3" = Table.DuplicateColumn(#"Tipo Alterado2", "dtMesFaturado", "dtMesFaturado - Copiar"),
+				    #"Início do Ano Calculado" = Table.TransformColumns(#"Coluna Duplicada3",{{"dtMesFaturado - Copiar", Date.StartOfYear, type date}}),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Início do Ano Calculado",{{"dtMesFaturado - Copiar", "dtMesFaturado_Ano"}}),
+				    #"Coluna Duplicada4" = Table.DuplicateColumn(#"Colunas Renomeadas2", "dtMesFaturado", "dtMesFaturado - Copiar"),
+				    #"Colunas Renomeadas3" = Table.RenameColumns(#"Coluna Duplicada4",{{"dtMesFaturado - Copiar", "dtMesFaturado_chave"}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Colunas Renomeadas3","MCMV / CASA VERDE E AMARELA","MCMV",Replacer.ReplaceText,{"Canal Vendas"}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Valor Substituído", "Chave_CCA_Zoho_Vendas", each Text.Combine({Text.From([dtMesFaturado_chave], "pt-BR"), [cdCCAReferenciaAjustado]}, "|"), type text),
+				    #"Coluna Duplicada5" = Table.DuplicateColumn(#"Coluna Mesclada Inserida", "dtMesFaturado_chave", "dtMesFaturado_chave - Copiar"),
+				    #"Colunas Renomeadas4" = Table.RenameColumns(#"Coluna Duplicada5",{{"dtMesFaturado_chave - Copiar", "dt_chave"}}),
+				    #"Coluna Duplicada6" = Table.DuplicateColumn(#"Colunas Renomeadas4", "cdCCAReferenciaAjustado", "cdCCAReferenciaAjustado - Copiar"),
+				    #"Colunas Renomeadas5" = Table.RenameColumns(#"Coluna Duplicada6",{{"cdCCAReferenciaAjustado - Copiar", "CCA_Zoho_Vendas"}}),
+				    #"Coluna Duplicada7" = Table.DuplicateColumn(#"Colunas Renomeadas5", "nmFantasiaCCA", "nmFantasiaCCA - Copiar"),
+				    #"Colunas Renomeadas6" = Table.RenameColumns(#"Coluna Duplicada7",{{"nmFantasiaCCA - Copiar", "nmCCA"}}),
+				    #"Coluna Duplicada8" = Table.DuplicateColumn(#"Colunas Renomeadas6", "dsExecutivoCidadeCCA", "dsExecutivoCidadeCCA - Copiar"),
+				    #"Colunas Renomeadas7" = Table.RenameColumns(#"Coluna Duplicada8",{{"dsExecutivoCidadeCCA - Copiar", "nmExecutivo"}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Colunas Renomeadas7",{"stVisita"}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Colunas Removidas", {"CCA_Zoho_Vendas"}, REL_Habitacional_Zoho_CCA, {"cdCCA"}, "REL_Habitacional_Zoho_CCA", JoinKind.LeftOuter),
+				    #"REL_Habitacional_Zoho_CCA Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "REL_Habitacional_Zoho_CCA", {"stVisita", "Flag Visita"}, {"stVisita.1", "Flag Visita"}),
+				    #"Personalização Adicionada1" = Table.AddColumn(#"REL_Habitacional_Zoho_CCA Expandido", "cd_cca_ativado_venda", each if [stVisita.1] = null then null else 
+				if [stVisita.1] > 0 then [CCA_Zoho_Vendas] else null),
+				    #"Personalização Adicionada2" = Table.AddColumn(#"Personalização Adicionada1", "cd_cca_ativado_grupo_venda", each if [stVisita.1] = null then null else 
+				if [stVisita.1] >0 then [nmFantasiaCCA]&"|"&[nmExecutivo] else 
+				null),
+				    #"Coluna Mesclada Inserida1" = Table.AddColumn(#"Personalização Adicionada2", "Grupo_CCA", each Text.Combine({[nmFantasiaCCA], [nmExecutivo]}, "|"), type text),
+				    #"Personalização Adicionada3" = Table.AddColumn(#"Coluna Mesclada Inserida1", "data_ativacao", each Text.From([dtMesFaturado]) & "|" & Text.From(Date.AddMonths(Date.StartOfMonth([dtMesFaturado]), 1))),
+				    #"Coluna Mesclada Inserida2" = Table.AddColumn(#"Personalização Adicionada3", "Chave_Grupo_CCA_Vendas_Ativacao", each Text.Combine({[Grupo_CCA], Text.From([data_ativacao], "pt-BR")}, "|"), type text),
+				    #"Consultas Mescladas1" = Table.NestedJoin(#"Coluna Mesclada Inserida2", {"Chave_Grupo_CCA_Vendas_Ativacao"}, TAB_Grupo_Ativacao, {"Chave_Grupo_CCA_Vendas_Ativacao"}, "TAB_Grupo_Ativacao", JoinKind.LeftOuter),
+				    #"TAB_Grupo_Ativacao Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas1", "TAB_Grupo_Ativacao", {"grupo_cca"}, {"grupo_cca.1"}),
+				    #"Personalização Adicionada4" = Table.AddColumn(#"TAB_Grupo_Ativacao Expandido", "grupo_cca_ativado_produzido", each if [Grupo_CCA] = null then null else 
+				if Text.Contains([Grupo_CCA], "H2 FINANCIAMENTO|THAINARA SILVA") then [Grupo_CCA] else 
+				if Text.Contains([Grupo_CCA], "H2 FINANCIAMENTO|KELY SILVA") then [Grupo_CCA] else 
+				if Text.Contains([Grupo_CCA], "ASSINO (ASLERO SERVICOS ADM)|CLAUDIA MOURA") then [Grupo_CCA] else 
+				[grupo_cca.1]),
+				    #"Personalização Adicionada5" = Table.AddColumn(#"Personalização Adicionada4", "data_agrupada", each if [dtMesFaturado] < Date.From(Date.StartOfMonth(Date.AddMonths(DateTime.LocalNow(), -2))) then 
+				    "1. Período Anterior" 
+				else 
+				if [dtMesFaturado] = Date.From(Date.StartOfMonth(Date.AddMonths(DateTime.LocalNow(), -2))) then 
+				    "2. M-2"
+				else
+				if [dtMesFaturado] = Date.From(Date.StartOfMonth(Date.AddMonths(DateTime.LocalNow(), -1))) then 
+				    "3. M-1"
+				else
+				if [dtMesFaturado] = Date.From(Date.StartOfMonth(DateTime.LocalNow())) then 
+				    "4. Atual"
+				else
+				null),
+				    #"Personalização Adicionada6" = Table.AddColumn(#"Personalização Adicionada5", "qtd_novos_contratos_periodo_anterior", each if [data_agrupada] = "1. Período Anterior" then [qtContratos] else null),
+				    #"Personalização Adicionada7" = Table.AddColumn(#"Personalização Adicionada6", "qtd_novos_contratos_m-2", each if [data_agrupada] = "2. M-2" then [qtContratos] else null),
+				    #"Personalização Adicionada8" = Table.AddColumn(#"Personalização Adicionada7", "qtd_novos_contratos_m-1", each if [data_agrupada] = "3. M-1" then [qtContratos] else null),
+				    #"Personalização Adicionada9" = Table.AddColumn(#"Personalização Adicionada8", "qtd_novos_contratos_atual", each if [data_agrupada] = "4. Atual" then [qtContratos] else null),
+				    #"Personalização Adicionada10" = Table.AddColumn(#"Personalização Adicionada9", "grupo_cca_periodo_anterior", each if [qtContratos] = 1 and [data_agrupada] = "1. Período Anterior" then [Grupo_CCA] else null),
+				    #"Personalização Adicionada11" = Table.AddColumn(#"Personalização Adicionada10", "grupo_cca_m-2", each if [qtContratos] = 1 and [data_agrupada] = "2. M-2" then [Grupo_CCA] else null),
+				    #"Personalização Adicionada12" = Table.AddColumn(#"Personalização Adicionada11", "grupo_cca_m-1", each if [qtContratos] = 1 and [data_agrupada] = "3. M-1" then [Grupo_CCA] else null),
+				    #"Personalização Adicionada13" = Table.AddColumn(#"Personalização Adicionada12", "grupo_cca_atual", each if [qtContratos] = 1 and [data_agrupada] = "4. Atual" then [Grupo_CCA] else null),
+				    #"Personalização Adicionada14" = Table.AddColumn(#"Personalização Adicionada13", "ativacao_periodo_anterior", each if [qtContratos] = 1 and [data_agrupada] = "1. Período Anterior" then [grupo_cca_ativado_produzido] else null),
+				    #"Personalização Adicionada15" = Table.AddColumn(#"Personalização Adicionada14", "ativacao_m-2", each if [qtContratos] = 1 and [data_agrupada] = "2. M-2" then [grupo_cca_ativado_produzido] else null),
+				    #"Personalização Adicionada16" = Table.AddColumn(#"Personalização Adicionada15", "ativacao_m-1", each if [qtContratos] = 1 and [data_agrupada] = "3. M-1" then [grupo_cca_ativado_produzido] else null),
+				    #"Personalização Adicionada17" = Table.AddColumn(#"Personalização Adicionada16", "ativacao_atual", each if [qtContratos] = 1 and [data_agrupada] = "4. Atual" then [grupo_cca_ativado_produzido] else null),
+				    #"Tipo Alterado3" = Table.TransformColumnTypes(#"Personalização Adicionada17",{{"qtd_novos_contratos_periodo_anterior", type number}, {"qtd_novos_contratos_m-2", type number}, {"qtd_novos_contratos_m-1", type number}, {"qtd_novos_contratos_atual", type number}})
+				in
+				    #"Tipo Alterado3"
+				```
+
+	annotation PBI_QueryRelationships = {"columnCount":51,"keyColumnNames":["id"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{id,0}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdEstipulante,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdApolice,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdEmpreendimento,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdContrato,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nmSegurado,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdCpf,6}","Section1/REL_Habitacional_Base_Vendas/Tipo Alterado.{dtContrato,7}","Section1/REL_Habitacional_Base_Vendas/Tipo Alterado.{dtInclusao,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{Prazo,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{vlComposicaoRenda,10}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdOrigemRec,11}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsOrigemRec,12}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsLogradouro,13}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsComplemento,14}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsBairro,15}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsCidade,16}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdUF,17}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nrCEP,18}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{vlFinanciamento,19}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{vlAvalicao,20}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nrPropostaAdesao,21}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dtInicioVigencia,22}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dtFimVigencia,23}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsParecer,24}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsMotivoRecusa,25}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdCCA,26}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdMatriculaFuncCCA,27}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nmUsuario,28}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsEmail,29}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdAgencia,30}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nmAgencia,31}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdCCAReferencia,32}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdPontoVendaCCA,33}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdIndicadorCCA,34}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nmRazaoSocialCCA,35}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nmFantasiaCCA,36}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{qtContratos,37}","Section1/REL_Habitacional_Base_Vendas/Tipo Alterado.{dtMesContrato,38}","Section1/REL_Habitacional_Base_Vendas/Tipo Alterado.{dtMesFaturado,39}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdCCAReferenciaAjustado,40}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nmConstrutora,41}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsExecutivoCidadeCCA,42}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{stVisita,43}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{rankProducaoMes,44}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dtAtualizacao,45}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdUFCCA,46}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsCidadeCCA,47}","Section1/REL_Habitacional_Base_Vendas/Coluna Condicional Adicionada.{Personalizar,48}","Section1/REL_Habitacional_Base_Vendas/Personalização Adicionada.{Pais,49}","Section1/REL_Habitacional_Base_Vendas/Tipo Alterado1.{Chave de Data,50}"],"ColumnCount":51,"KeyColumnNames":["id"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{id,0}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdEstipulante,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdApolice,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdEmpreendimento,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdContrato,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nmSegurado,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdCpf,6}","Section1/REL_Habitacional_Base_Vendas/Tipo Alterado.{dtContrato,7}","Section1/REL_Habitacional_Base_Vendas/Tipo Alterado.{dtInclusao,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{Prazo,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{vlComposicaoRenda,10}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdOrigemRec,11}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsOrigemRec,12}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsLogradouro,13}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsComplemento,14}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsBairro,15}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsCidade,16}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdUF,17}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nrCEP,18}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{vlFinanciamento,19}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{vlAvalicao,20}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nrPropostaAdesao,21}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dtInicioVigencia,22}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dtFimVigencia,23}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsParecer,24}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsMotivoRecusa,25}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdCCA,26}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdMatriculaFuncCCA,27}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nmUsuario,28}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsEmail,29}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdAgencia,30}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nmAgencia,31}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdCCAReferencia,32}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdPontoVendaCCA,33}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdIndicadorCCA,34}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nmRazaoSocialCCA,35}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nmFantasiaCCA,36}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{qtContratos,37}","Section1/REL_Habitacional_Base_Vendas/Tipo Alterado.{dtMesContrato,38}","Section1/REL_Habitacional_Base_Vendas/Tipo Alterado.{dtMesFaturado,39}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdCCAReferenciaAjustado,40}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{nmConstrutora,41}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsExecutivoCidadeCCA,42}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{stVisita,43}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{rankProducaoMes,44}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dtAtualizacao,45}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{cdUFCCA,46}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Base_Vendas.{dsCidadeCCA,47}","Section1/REL_Habitacional_Base_Vendas/Coluna Condicional Adicionada.{Personalizar,48}","Section1/REL_Habitacional_Base_Vendas/Personalização Adicionada.{Pais,49}","Section1/REL_Habitacional_Base_Vendas/Tipo Alterado1.{Chave de Data,50}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

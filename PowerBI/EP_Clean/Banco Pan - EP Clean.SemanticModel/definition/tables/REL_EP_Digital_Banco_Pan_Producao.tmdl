@@ -1,0 +1,344 @@
+table REL_EP_Digital_Banco_Pan_Producao
+	lineageTag: 26cdf0f9-1622-4ca1-a5a5-5716f02d4eea
+
+	measure %_Seguro_Financiado =
+			
+			DIVIDE(
+			    SUM(REL_EP_Digital_Banco_Pan_Producao[vl_seguro])
+			    ,SUM(REL_EP_Digital_Banco_Pan_Producao[vl_financiado_total])
+			    ,BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 7bffc7db-1ba5-4623-be1e-553862d2e6bc
+
+		changedProperty = FormatString
+
+	column id_producao
+		dataType: int64
+		formatString: 0
+		lineageTag: acc1e00d-093a-4c40-bab6-10e02d93e07f
+		summarizeBy: sum
+		sourceColumn: id_producao
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_contrato
+		dataType: string
+		lineageTag: 00edbad8-922e-464b-acd2-401cd85c8b9c
+		summarizeBy: none
+		sourceColumn: cd_contrato
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_proposta
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: fb9d8852-f031-4a95-83ad-70c624d6d74b
+		summarizeBy: none
+		sourceColumn: dt_proposta
+
+		variation Variation
+			isDefault
+			relationship: 334fd7f3-b524-43b4-9f6c-f102d438c432
+			defaultHierarchy: LocalDateTable_1fee3583-5c68-45e5-89f6-965c6d7a48c6.'Hierarquia de datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column dt_contrato
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: e7559bc9-d7b5-44f7-99d5-741af88d170f
+		summarizeBy: none
+		sourceColumn: dt_contrato
+
+		variation Variation
+			isDefault
+			relationship: ee817628-4582-49f9-bb33-416330ef1a67
+			defaultHierarchy: LocalDateTable_384c1c7b-9811-45b1-8b77-01e94aaa296a.'Hierarquia de datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column vl_liberado_total
+		dataType: double
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: 3f36f3b8-b956-4128-bae5-61108c3f478c
+		summarizeBy: sum
+		sourceColumn: vl_liberado_total
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column ds_faixa_valor_liberado
+		dataType: string
+		lineageTag: eacf1652-7b6b-42ce-a1c4-0f72dbfc2010
+		summarizeBy: none
+		sourceColumn: ds_faixa_valor_liberado
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_financiado_total
+		dataType: double
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: 5abed4b4-cdde-46e6-870a-8435500a33ce
+		summarizeBy: sum
+		sourceColumn: vl_financiado_total
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column qt_total
+		dataType: int64
+		formatString: 0
+		lineageTag: ed054a96-e392-4383-b147-a4715f44481d
+		summarizeBy: sum
+		sourceColumn: qt_total
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_liberado_seguro
+		dataType: double
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: 279dbf5c-82b1-4dac-9a73-d3b17897fa80
+		summarizeBy: sum
+		sourceColumn: vl_liberado_seguro
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vl_financiado_seguro
+		dataType: double
+		lineageTag: c1818167-7902-4d5e-96c6-cab5f38691d1
+		summarizeBy: sum
+		sourceColumn: vl_financiado_seguro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column qt_seguro
+		dataType: int64
+		formatString: 0
+		lineageTag: ea9ce65a-7af0-41f3-8bf0-ff9f0eb3b48b
+		summarizeBy: sum
+		sourceColumn: qt_seguro
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_seguro
+		dataType: double
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: 82447181-3683-4489-846f-1729aba4ba0f
+		summarizeBy: sum
+		sourceColumn: vl_seguro
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vl_idade
+		dataType: int64
+		formatString: 0
+		lineageTag: 942ce2db-dc2a-4d66-b8ff-a44807c2f43d
+		summarizeBy: sum
+		sourceColumn: vl_idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_faixa_idade
+		dataType: string
+		lineageTag: 1827ba59-1412-472a-8e19-34cbef485cac
+		summarizeBy: none
+		sourceColumn: ds_faixa_idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_uf_cliente
+		dataType: string
+		lineageTag: eaa01590-e37c-42bf-bb3d-e0cf6a31ee2d
+		summarizeBy: none
+		sourceColumn: cd_uf_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_parcelas
+		dataType: int64
+		formatString: 0
+		lineageTag: 48bd8463-2fa1-477e-8142-17e96fad889f
+		summarizeBy: sum
+		sourceColumn: qt_parcelas
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_faixa_parcelas
+		dataType: string
+		lineageTag: 93314aee-ee4b-4cb5-ab63-f253ef455dc8
+		summarizeBy: none
+		sourceColumn: ds_faixa_parcelas
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_emitido
+		dataType: int64
+		formatString: 0
+		lineageTag: 091505d0-e0fb-4d1a-939f-05f4b26bf855
+		summarizeBy: sum
+		sourceColumn: qt_emitido
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_emissao
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 2c721567-bf66-45f4-8ab4-639916f960ed
+		summarizeBy: none
+		sourceColumn: dt_emissao
+
+		variation Variation
+			isDefault
+			relationship: 40cbbbd6-aba6-49d9-ab3b-c6833e79a37a
+			defaultHierarchy: LocalDateTable_aeaba5a6-43fa-4ed2-83f4-69e71d090779.'Hierarquia de datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column dt_cancelamento
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 7a54ace4-d31a-4f22-8cba-466d3fab5bf1
+		summarizeBy: none
+		sourceColumn: dt_cancelamento
+
+		variation Variation
+			isDefault
+			relationship: cabf8752-8276-45c4-bc7a-a9d516e61874
+			defaultHierarchy: LocalDateTable_7ce4f791-1f65-4a1d-a4b4-e5e19553ae98.'Hierarquia de datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column dt_atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4efa112f-4c90-46f8-b742-b2882f9a186b
+		summarizeBy: none
+		sourceColumn: dt_atualizacao
+
+		variation Variation
+			isDefault
+			relationship: e36819fa-f93c-4467-9c09-89d6ee6e005e
+			defaultHierarchy: LocalDateTable_a6d255c2-b5ec-44a6-bf4b-e40542c8e6fb.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave
+		dataType: string
+		lineageTag: 484470d6-b6fc-4c60-804c-7e3062365010
+		summarizeBy: none
+		sourceColumn: Chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Motivo_Cancelamento
+		dataType: string
+		lineageTag: 5cf6e166-d5b0-4196-849c-1f803c19d137
+		summarizeBy: none
+		sourceColumn: ds_Motivo_Cancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column tempo_cancelamento
+		dataType: int64
+		formatString: 0
+		lineageTag: 00d0e740-42a6-410f-9729-745c5cb43d9d
+		summarizeBy: sum
+		sourceColumn: tempo_cancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column faixa_cancelado = ```
+			
+			
+			var data = REL_EP_Digital_Banco_Pan_Producao[tempo_cancelamento]
+			
+			return
+			IF(data >= 1 && data <=30, "1) Até 30 dias",
+			    IF(data >= 31 && data <=60, "2) 31 - 60 dias",
+			        IF(data >= 61 && data <=90, "3) 60 - 90 dias",
+			            IF(data >= 91 && data <=120, "4) 90 - 120 dias",
+			                IF(data > 120, "5) Acima de 120 dias", "0) Não Cancelado"
+			                  )
+			            )
+			        )
+			    ) 
+			 )     
+			```
+		lineageTag: 55d902ad-8ab0-4b17-a2ae-600d506a57f4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_cancelamento_safra
+		dataType: dateTime
+		formatString: yyyy-mm
+		lineageTag: 7e266173-6692-430d-a2a3-3a5c63e43991
+		summarizeBy: none
+		sourceColumn: dt_cancelamento_safra
+
+		variation Variation
+			isDefault
+			relationship: d4f71de2-b3eb-451e-8063-da9403e52fa9
+			defaultHierarchy: LocalDateTable_143f8560-1929-4dfe-97fe-351a8f9fdced.'Hierarquia de datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition REL_EP_Digital_Banco_Pan_Producao-6517be14-f69a-4c64-a205-c984ac9acfbb = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_EP_Digital_Banco_Pan_Producao = Fonte{[Schema="dbo",Item="REL_EP_Digital_Banco_Pan_Producao"]}[Data],
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(dbo_REL_EP_Digital_Banco_Pan_Producao, "Chave", each Text.Combine({Text.From([dt_contrato], "pt-BR"), Text.From([vl_idade], "pt-BR"), [cd_uf_cliente], Text.From([qt_parcelas], "pt-BR")}, "|"), type text),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Coluna Mesclada Inserida",null,"Indefinido",Replacer.ReplaceValue,{"cd_uf_cliente"}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Valor Substituído", "Personalizar", each Duration.Days(
+				    Duration.From([dt_cancelamento] - [dt_contrato])
+				    )),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada", each true),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Linhas Filtradas",{{"Personalizar", "tempo_cancelamento"}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"tempo_cancelamento", Int64.Type}}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Tipo Alterado", "dt_cancelamento", "dt_cancelamento - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"dt_cancelamento - Copiar", "dt_cancelamento_safra"}}),
+				    #"Início do Mês Calculado" = Table.TransformColumns(#"Colunas Renomeadas1",{{"dt_cancelamento_safra", Date.StartOfMonth, type datetime}})
+				in
+				    #"Início do Mês Calculado"
+
+	annotation PBI_ResultType = Table
+

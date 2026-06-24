@@ -1,0 +1,233 @@
+table tb_emprestimoepclean
+	lineageTag: 07777099-8283-43f3-8c17-08c1b4feae7f
+
+	measure qt_contratos =
+			
+			CALCULATE(
+			    DISTINCTCOUNTNOBLANK(tb_emprestimoepclean[num_operacao])
+			)
+		formatString: #,0
+		lineageTag: 7b52dac8-80eb-431d-9daa-c96de9c55b85
+
+	measure '% aproveitamento' = ```
+			
+			DIVIDE(
+			    [qtd_seguros]
+			    , [qt_contratos])
+			    
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 381c7812-460c-4844-b843-a9a5bb3da24e
+
+	measure '% Seguro Financiado' =
+			
+			DIVIDE(
+			    SUM(tb_epclean[premio_liquido])
+			    ,SUM(tb_emprestimoepclean[val_financiado])
+			    ,BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: a6c08c64-b0ba-4797-b5c3-a38fa75da03f
+
+	measure 'Ticket Emprestimo' =
+			
+			DIVIDE(
+			    suM(tb_emprestimoepclean[val_financiado])
+			    , [qt_contratos]
+			    , BLANK()
+			)
+		formatString: #,0
+		lineageTag: 26e3b758-05a9-436c-8c3a-cbdc42f9de6f
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column num_cpf
+		dataType: string
+		lineageTag: bd5260fa-7a86-48ed-beb7-e825d65f9c33
+		summarizeBy: none
+		sourceColumn: num_cpf
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_operacao
+		dataType: string
+		lineageTag: c15cb19f-8825-464d-8831-4d146443be57
+		summarizeBy: none
+		sourceColumn: num_operacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_cadastramento
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: c841356b-f13e-42bf-b687-27c19030b743
+		summarizeBy: none
+		sourceColumn: data_cadastramento
+
+		variation Variation
+			isDefault
+			relationship: 46ad062c-9cb7-4700-931e-8ea7cca34f5c
+			defaultHierarchy: LocalDateTable_cb52b486-0087-453c-a062-029e975bc408.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column val_financiado
+		dataType: double
+		formatString: #,0
+		lineageTag: 6b9fea5c-e1fa-4291-b7cd-aa86b80784f7
+		summarizeBy: sum
+		sourceColumn: val_financiado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column val_liberado
+		dataType: double
+		formatString: #,0
+		lineageTag: c2ac5155-e9c4-4ad8-bb55-08c4c2ad7c54
+		summarizeBy: sum
+		sourceColumn: val_liberado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column opqtddparc
+		dataType: int64
+		formatString: 0
+		lineageTag: a638f7f4-0922-49a5-a356-67a85ab27f94
+		summarizeBy: sum
+		sourceColumn: opqtddparc
+
+		annotation SummarizationSetBy = Automatic
+
+	column uf
+		dataType: string
+		lineageTag: 906ff1ef-eb00-4805-a23b-7264a9f3aa16
+		summarizeBy: none
+		sourceColumn: uf
+
+		annotation SummarizationSetBy = Automatic
+
+	column sexo
+		dataType: string
+		lineageTag: 13656d78-f0ae-47b2-aed0-2ad1a351c414
+		summarizeBy: none
+		sourceColumn: sexo
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_nascimento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 42989806-0ef8-4687-8bf0-1c63132377c3
+		summarizeBy: none
+		sourceColumn: dt_nascimento
+
+		variation Variation
+			isDefault
+			relationship: 20ad1fe1-e027-4620-8d7e-c2569f04b026
+			defaultHierarchy: LocalDateTable_a9891df5-4c37-4202-a96b-fb89452fffe9.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Idade
+		dataType: double
+		formatString: 0
+		lineageTag: 1446b215-9207-4a02-8415-7c4b44bc3be1
+		summarizeBy: sum
+		sourceColumn: Idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_faixa_idade
+		dataType: string
+		lineageTag: d7824c22-fa57-4225-8420-f42c758b6040
+		summarizeBy: none
+		sourceColumn: ds_faixa_idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_faixa_liberado
+		dataType: string
+		lineageTag: 01c4da06-65d2-4d0e-8d33-274892389481
+		summarizeBy: none
+		sourceColumn: ds_faixa_liberado
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_faixa_parcelas
+		dataType: string
+		lineageTag: 757b7dd8-751c-4688-a720-0b9f256904c1
+		summarizeBy: none
+		sourceColumn: ds_faixa_parcelas
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_cancelamento
+		dataType: string
+		lineageTag: 39a4e8db-5f39-49ef-b52e-6a0789c1b044
+		summarizeBy: none
+		sourceColumn: dt_cancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column faixa_idade =
+			
+			if(tb_emprestimoepclean[ds_faixa_idade] = BLANK() , "Não Informado", tb_emprestimoepclean[ds_faixa_idade])
+		lineageTag: afd6854c-1a1c-431e-82a6-0a7f9da1cd77
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_carga
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7cf57f4b-f044-4485-be49-9dc4a8711a4b
+		summarizeBy: none
+		sourceColumn: dt_carga
+
+		variation Variation
+			isDefault
+			relationship: 9f7b2993-a99e-430a-bbca-cb136129a8f6
+			defaultHierarchy: LocalDateTable_3ad67c25-9492-4e6b-a026-c84e1afaa697.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition tb_emprestimoepclean = m
+		mode: import
+		source = ```
+				let
+				    Fonte = AmazonAthena.Databases("athena", null),
+				    AwsDataCatalog_Database = Fonte{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    db_banco_pan_analytics_Schema = AwsDataCatalog_Database{[Name="db_banco_pan_analytics",Kind="Schema"]}[Data],
+				    tb_emprestimoepclean_Table = db_banco_pan_analytics_Schema{[Name="tb_emprestimoepclean",Kind="Table"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(tb_emprestimoepclean_Table,{{"data_cadastramento", type date}, {"val_financiado", type number}, {"val_liberado", type number}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "dt_nascimento", each Text.Start([datanascimento],2) & "/" 
+				& Text.End(Text.Start([datanascimento],4),2) & "/" 
+				& Text.End([datanascimento],4)),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"dt_nascimento", type date}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado1",{"datanascimento"}),
+				    #"Idade Inserida" = Table.AddColumn(#"Colunas Removidas", "Idade", each (Date.From(DateTime.LocalNow()) - [dt_nascimento])/365, type duration),
+				    #"Tipo Alterado4" = Table.TransformColumnTypes(#"Idade Inserida",{{"Idade", Int64.Type}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado4",null,0,Replacer.ReplaceValue,{"Idade"}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Valor Substituído", "ds_faixa_idade", each if [Idade] <= 30 then "Até 30 anos" else if [Idade] <= 40 then "31 - 40 anos" else if [Idade] <= 50 then "41 - 50 anos" else if [Idade] <= 60 then "51 - 60 anos" else if [Idade] <= 70 then "61 - 70 anos" else if [Idade] > 70 then "Acima de 70 anos" else if [Idade] = 0 then "Não Informado" else "Não Informado"),
+				    #"Coluna Condicional Adicionada1" = Table.AddColumn(#"Coluna Condicional Adicionada", "ds_faixa_liberado", each if [val_liberado] <= 500 then "Até R$500" else if [val_liberado] <= 1000 then "R$500 ~ R$1000" else if [val_liberado] <= 1500 then "R$1000 ~ R$1500" else if [val_liberado] <= 2000 then "R$1500 ~ R$2000" else "Acima de R$2000"),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada1",{{"opqtddparc", Int64.Type}}),
+				    #"Coluna Condicional Adicionada2" = Table.AddColumn(#"Tipo Alterado2", "ds_faixa_parcelas", each if [opqtddparc] <= 11 then "1 a 11 Parcelas" else if [opqtddparc] = 12 then "12 Parcelas" else if [opqtddparc] <= 17 then "13 a 17 Parcelas" else if [opqtddparc] = 18 then "18 Parcelas" else "Outros"),
+				    #"Linhas Filtradas1" = Table.SelectRows(#"Coluna Condicional Adicionada2", let latest = List.Max(#"Coluna Condicional Adicionada2"[dt_carga]) in each [dt_carga] = latest)
+				in
+				    #"Linhas Filtradas1"
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

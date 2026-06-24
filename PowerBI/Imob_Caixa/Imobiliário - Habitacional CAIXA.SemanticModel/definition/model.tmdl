@@ -1,0 +1,81 @@
+model Model
+	culture: pt-PT
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["REL_Habitacional_Base_Vendas","REL_Habitacional_Base_Sintetica","REL_Habitacional_Meta","REL_Habitacional_Base_Sintetica (2)","REL_Habitacional_Wiz","REL_Habitacional_Simulador_Taxa_Seguro","REL_Habitacional_Zoho_CCA","REL_Habitacional_Zoho_Visitas","Data Indice","REL_Habitacional_Zoho_CCA_Resumo","REL_Habitacional_Zoho_Ligacoes","Data_Visita_Ano_Indice","Data_Mes_Faturado_Ano_Indice","Data_Mes_Faturado_Mes_Indice","CCA_Agrupado_Ano","TAB_Chave_CCA_Ligacoes_Visitas","REL_Habitacional_Depara_CCA","TAB_CCA_Zoho_Vendas","REL_Habitacional_Novos_Safra","vw_habitacional_share_fgts","vw_habitacional_share_fgts_deslocada","vw_habitacional_share_SBPE","vw_habitacional_share_SBPE_deslocada","TAB_Grupo_Ativacao","TAB_Calculos_Vendas","TAB_Selecao_Vendas"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_e508a3e3-1b39-45ed-bfb2-a8b63e713314
+ref table REL_Habitacional_Base_Vendas
+ref table LocalDateTable_500d23d2-65dc-47b8-96a2-b6398452eb98
+ref table LocalDateTable_0c4534c4-7f20-4409-8fb3-f3b45a793fe4
+ref table LocalDateTable_d5ad4fe5-36fc-4fd8-ac5e-60fbc1adfe2b
+ref table LocalDateTable_80abc043-d682-452c-9fcd-c5d059ebdc59
+ref table REL_Habitacional_Base_Sintetica
+ref table LocalDateTable_6547a8cd-92d3-45a8-941b-1bd01fede98c
+ref table REL_Habitacional_Meta
+ref table LocalDateTable_653a28e2-ff9c-4a1b-a7ce-1e8a239e43e1
+ref table LocalDateTable_273b50bb-a828-483f-86ea-6cc7637f190e
+ref table LocalDateTable_b35e839b-2d73-4488-9627-91e75f7ddb1d
+ref table 'REL_Habitacional_Base_Sintetica (2)'
+ref table LocalDateTable_9f25a05a-95f7-455f-a8a1-8a6e5c84b19a
+ref table LocalDateTable_c9132c23-700e-4201-a899-23abd7329791
+ref table LocalDateTable_102b4a75-9a29-4551-ae3c-53ae5a441241
+ref table REL_Habitacional_Wiz
+ref table LocalDateTable_2a3284ea-d631-4467-b6ac-ec5c1f9352ca
+ref table LocalDateTable_c22c1108-1b3d-4f01-970c-cd7f7a4f472d
+ref table REL_Habitacional_Simulador_Taxa_Seguro
+ref table LocalDateTable_97235aae-67b8-4261-a49b-5f2787f61435
+ref table REL_Habitacional_Zoho_CCA
+ref table REL_Habitacional_Zoho_Visitas
+ref table LocalDateTable_00994bd1-f3b8-4218-8aef-23d2dec70e31
+ref table 'Data Indice'
+ref table REL_Habitacional_Zoho_CCA_Resumo
+ref table REL_Habitacional_Zoho_Ligacoes
+ref table LocalDateTable_761bcc91-d668-46df-be5a-f71d307d6354
+ref table LocalDateTable_e46d11fb-dd7f-4519-a70d-62bb24a5074f
+ref table LocalDateTable_51a148f1-21be-46ce-a6bd-d68e6317d5da
+ref table LocalDateTable_189bb728-c382-461f-967d-653ace639cbf
+ref table Data_Visita_Ano_Indice
+ref table LocalDateTable_54733f79-3e2f-4ff9-9563-10eaa000428f
+ref table Data_Mes_Faturado_Ano_Indice
+ref table LocalDateTable_74ae4f92-86d5-4c79-afa6-818e7cb441c6
+ref table Data_Mes_Faturado_Mes_Indice
+ref table LocalDateTable_aa2a1b3d-61fc-47cf-b813-877d01466039
+ref table LocalDateTable_d4079e7f-432a-417c-9fd2-b2886a5d0d0f
+ref table CCA_Agrupado_Ano
+ref table LocalDateTable_33a01987-bbfb-40cb-9851-76edfce343b6
+ref table TAB_Chave_CCA_Ligacoes_Visitas
+ref table LocalDateTable_e9bf5ea6-5969-418a-959f-ea2f986a4357
+ref table LocalDateTable_48561f1a-4e49-4a6c-9a71-c75e8b84527b
+ref table LocalDateTable_cd9b78e1-2ed8-4686-9223-399de20af5c8
+ref table REL_Habitacional_Depara_CCA
+ref table LocalDateTable_c3629f14-a91b-43c1-aed0-55a6a8bcb6b6
+ref table TAB_CCA_Zoho_Vendas
+ref table LocalDateTable_6198f5f4-d84a-496a-9eea-6b40f9521c28
+ref table REL_Habitacional_Novos_Safra
+ref table LocalDateTable_996f97fc-ce10-4dd3-8c43-e8c7bf77c406
+ref table LocalDateTable_562bf546-2fa9-45a4-9e4a-8d74c412df20
+ref table LocalDateTable_c1ebe271-615c-440f-a93d-8324b4360725
+ref table vw_habitacional_share_fgts
+ref table LocalDateTable_b883265f-e3bd-4dcf-9e72-cdf1d60a7cb3
+ref table vw_habitacional_share_fgts_deslocada
+ref table LocalDateTable_43af87df-08d0-48d2-b024-a7dcd365bebf
+ref table vw_habitacional_share_SBPE
+ref table LocalDateTable_d16e048d-73ec-42a9-983b-7fd175f9739a
+ref table vw_habitacional_share_SBPE_deslocada
+ref table LocalDateTable_544b04bd-e9e2-4138-b7e7-ef29171fbe93
+ref table LocalDateTable_ae03f0cf-2f75-4ae1-a096-836a8367b05f
+ref table TAB_Grupo_Ativacao
+ref table TAB_Calculos_Vendas
+ref table TAB_Selecao_Vendas
+
+ref cultureInfo pt-PT
+

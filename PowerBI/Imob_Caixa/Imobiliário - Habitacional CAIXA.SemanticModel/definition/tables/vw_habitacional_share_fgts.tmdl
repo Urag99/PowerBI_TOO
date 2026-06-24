@@ -1,0 +1,113 @@
+table vw_habitacional_share_fgts
+	lineageTag: 012c6e01-3fc9-4087-b454-4bf0178f596a
+
+	measure '% Share TOO FGTS' =
+			
+			DIVIDE(
+			    sum(vw_habitacional_share_fgts[qtd_too])
+			    , sum(vw_habitacional_share_fgts[qtd_caixa])
+			    , BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 167ce5f1-af45-4b9e-aeb0-f1f3446a7af7
+
+	measure 'Ticket Médio CAIXA FGTS' =
+			
+			DIVIDE(
+			    sum(vw_habitacional_share_fgts[vl_emprestimo])
+			    , sum(vw_habitacional_share_fgts[qtd_caixa])
+			    , BLANK()
+			)
+		formatString: #,0
+		lineageTag: 41b2d513-13d2-4d30-a7b7-7949559f840d
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column dt_base
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e0d08886-926d-432a-a7d3-f2396704f120
+		summarizeBy: none
+		sourceColumn: dt_base
+
+		variation Variation
+			isDefault
+			relationship: 32597f3d-14ef-4ea2-af37-4be37f61cf4a
+			defaultHierarchy: LocalDateTable_b883265f-e3bd-4dcf-9e72-cdf1d60a7cb3.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtd_caixa
+		dataType: int64
+		formatString: #,0
+		lineageTag: f6a50d45-d756-4756-907f-176d84c5e6e0
+		summarizeBy: sum
+		sourceColumn: qtd_caixa
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_emprestimo
+		dataType: double
+		formatString: #,0
+		lineageTag: 5328d790-71ee-41b9-b17d-776fcd910c92
+		summarizeBy: sum
+		sourceColumn: vl_emprestimo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column qtd_too
+		dataType: int64
+		formatString: #,0
+		lineageTag: d449cb1d-9973-493d-8012-aafc32f5eee9
+		summarizeBy: sum
+		sourceColumn: qtd_too
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_cidade
+		dataType: string
+		lineageTag: 269e39ec-6361-4da5-a653-0969d9e3da8d
+		summarizeBy: none
+		sourceColumn: ds_cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_UF
+		dataType: string
+		lineageTag: 70b95bfa-412f-427c-a6be-e17594e7e246
+		summarizeBy: none
+		sourceColumn: ds_UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_executivo
+		dataType: string
+		lineageTag: f02b9200-776a-4484-9cc4-497c51c2d766
+		summarizeBy: none
+		sourceColumn: ds_executivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cidade_Agrupado
+		dataType: string
+		lineageTag: 045b3eab-a1cd-4331-be66-f608761049df
+		summarizeBy: none
+		sourceColumn: ds_Cidade_Agrupado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vw_habitacional_share_fgts = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_vw_habitacional_share_fgts = Fonte{[Schema="dbo",Item="vw_habitacional_share_fgts"]}[Data]
+				in
+				    dbo_vw_habitacional_share_fgts
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

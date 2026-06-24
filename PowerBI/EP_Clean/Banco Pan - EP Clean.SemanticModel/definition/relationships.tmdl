@@ -1,0 +1,126 @@
+relationship 887fbaa6-5fb5-4b22-a87f-58f47318e781
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_EP_Digital_Banco_Pan_Producao_Resumo.dt_contrato
+	toColumn: LocalDateTable_8436a726-0de5-4250-b67d-d2f4acae81f3.Date
+
+relationship 914b36a1-a387-4f06-9af2-0c610bb03271
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_EP_Digital_Banco_Pan_Producao_Resumo.dt_atualizacao
+	toColumn: LocalDateTable_a95fd8d2-0964-4e4c-a2b9-0694651b59b4.Date
+
+relationship 334fd7f3-b524-43b4-9f6c-f102d438c432
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_EP_Digital_Banco_Pan_Producao.dt_proposta
+	toColumn: LocalDateTable_1fee3583-5c68-45e5-89f6-965c6d7a48c6.Date
+
+relationship ee817628-4582-49f9-bb33-416330ef1a67
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_EP_Digital_Banco_Pan_Producao.dt_contrato
+	toColumn: LocalDateTable_384c1c7b-9811-45b1-8b77-01e94aaa296a.Date
+
+relationship 40cbbbd6-aba6-49d9-ab3b-c6833e79a37a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_EP_Digital_Banco_Pan_Producao.dt_emissao
+	toColumn: LocalDateTable_aeaba5a6-43fa-4ed2-83f4-69e71d090779.Date
+
+relationship cabf8752-8276-45c4-bc7a-a9d516e61874
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_EP_Digital_Banco_Pan_Producao.dt_cancelamento
+	toColumn: LocalDateTable_7ce4f791-1f65-4a1d-a4b4-e5e19553ae98.Date
+
+relationship e36819fa-f93c-4467-9c09-89d6ee6e005e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_EP_Digital_Banco_Pan_Producao.dt_atualizacao
+	toColumn: LocalDateTable_a6d255c2-b5ec-44a6-bf4b-e40542c8e6fb.Date
+
+relationship e030fc3e-fbb1-4a94-933f-56063fa3f060
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Chave.dt_proposta
+	toColumn: LocalDateTable_b167c842-bce0-4b2b-a670-bb9c2b301dd7.Date
+
+relationship 69af5bc5-aab4-4f9b-8d1f-7ec0c4744107
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Chave.dt_contrato
+	toColumn: LocalDateTable_e8dbd4f8-8518-4378-aab0-bf633b9a3dac.Date
+
+relationship bac19ec6-5f49-4c76-8810-0017ef2e0d8a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Chave.dt_emissao
+	toColumn: LocalDateTable_08b00509-675e-45a6-8640-25bdc80b29f4.Date
+
+relationship f03330d4-a7c6-4545-8646-61197bd57041
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Chave.dt_cancelamento
+	toColumn: LocalDateTable_665938eb-0d7b-49b4-a1b0-9545ed416ac2.Date
+
+relationship 14c0daa3-69fe-4b7a-950a-34b37a148201
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Chave.dt_atualizacao
+	toColumn: LocalDateTable_99588929-f120-4e20-b3d6-ab43ffb5503d.Date
+
+relationship 6cc3874d-6bf7-4430-9c3f-7ec997001fa2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_EP_Digital_Banco_Pan_Producao_Resumo.dt_competencia
+	toColumn: LocalDateTable_353df56a-564e-4b5e-ab52-e23b200aba06.Date
+
+relationship caeac177-3bb3-4656-b81a-28375bc3391d
+	crossFilteringBehavior: bothDirections
+	fromColumn: REL_EP_Digital_Banco_Pan_Producao.Chave
+	toColumn: TAB_Chave.Chave
+
+relationship 3fad47a0-af99-47d2-9a74-255e61d0629c
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: TAB_Chave.Chave
+	toColumn: REL_EP_Digital_Banco_Pan_Producao_Resumo.Chave
+
+relationship f8a219fa-6ee0-4fba-9f95-e2fd73566849
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Chave.dt_competencia
+	toColumn: LocalDateTable_46328277-6291-4fef-b57f-d17e0e930572.Date
+
+relationship d4f71de2-b3eb-451e-8063-da9403e52fa9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REL_EP_Digital_Banco_Pan_Producao.dt_cancelamento_safra
+	toColumn: LocalDateTable_143f8560-1929-4dfe-97fe-351a8f9fdced.Date
+
+relationship 6332fc32-b57d-456e-b7d4-1bc14ca437f8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TAB_Chave.dt_cancelamento_safra
+	toColumn: LocalDateTable_fff0aaeb-7aea-4b47-acf7-00a6909f4e51.Date
+
+relationship 46ad062c-9cb7-4700-931e-8ea7cca34f5c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tb_emprestimoepclean.data_cadastramento
+	toColumn: LocalDateTable_cb52b486-0087-453c-a062-029e975bc408.Date
+
+relationship ed96206e-c9b8-40ea-9c25-01bbf954354d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tb_epclean.data_cadastramento
+	toColumn: LocalDateTable_a8fabbf8-28c2-47fb-900e-d7bbf6533edc.Date
+
+relationship a528a580-6f04-4136-838e-44339f061d06
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tb_epclean.dt_cancelamento
+	toColumn: LocalDateTable_9aa633d7-43c9-42f8-b807-c86f18103775.Date
+
+relationship 3152527a-e8e2-46b1-abbb-dfd73bf2b7e7
+	crossFilteringBehavior: bothDirections
+	fromColumn: tb_epclean.num_operacao
+	toColumn: tb_emprestimoepclean.num_operacao
+
+relationship 20ad1fe1-e027-4620-8d7e-c2569f04b026
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tb_emprestimoepclean.dt_nascimento
+	toColumn: LocalDateTable_a9891df5-4c37-4202-a96b-fb89452fffe9.Date
+
+relationship 9f7b2993-a99e-430a-bbca-cb136129a8f6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tb_emprestimoepclean.dt_carga
+	toColumn: LocalDateTable_3ad67c25-9492-4e6b-a026-c84e1afaa697.Date
+
+relationship 5abf3c2f-7f6d-4357-95d8-932d0fd17397
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tb_epclean.dt_carga
+	toColumn: LocalDateTable_77504d1c-e790-4655-af0c-242c8f10802f.Date
+

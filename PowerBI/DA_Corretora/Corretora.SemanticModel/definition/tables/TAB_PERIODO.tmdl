@@ -1,0 +1,22 @@
+table TAB_PERIODO
+	lineageTag: 1afac8fd-df19-4a5f-9b79-21700bcb8960
+
+	column ds_periodo
+		dataType: string
+		lineageTag: bf456875-f843-4ad6-bb6e-d501ffdcdd21
+		summarizeBy: none
+		sourceColumn: ds_periodo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAB_PERIODO = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WckxKLSrJV4rViVZyS03OSEwBsmMB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [ds_periodo = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"ds_periodo", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

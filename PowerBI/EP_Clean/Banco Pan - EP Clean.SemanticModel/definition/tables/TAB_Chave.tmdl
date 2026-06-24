@@ -1,0 +1,331 @@
+table TAB_Chave
+	lineageTag: f1d9b4c0-d8a3-4dc8-bd69-13f249bd8178
+
+	column cd_contrato
+		dataType: string
+		lineageTag: becabfb3-3606-4c5d-b4ba-f46fd015ae30
+		summarizeBy: none
+		sourceColumn: cd_contrato
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_proposta
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5ebbe5b0-858c-4b39-acb1-980d0a877312
+		summarizeBy: none
+		sourceColumn: dt_proposta
+
+		variation Variation
+			isDefault
+			relationship: e030fc3e-fbb1-4a94-933f-56063fa3f060
+			defaultHierarchy: LocalDateTable_b167c842-bce0-4b2b-a670-bb9c2b301dd7.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_contrato
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b90544bb-9e2a-42a9-91a5-55b09e8874ed
+		summarizeBy: none
+		sourceColumn: dt_contrato
+
+		variation Variation
+			isDefault
+			relationship: 69af5bc5-aab4-4f9b-8d1f-7ec0c4744107
+			defaultHierarchy: LocalDateTable_e8dbd4f8-8518-4378-aab0-bf633b9a3dac.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_liberado_total
+		dataType: double
+		lineageTag: a5ad9a3c-31f0-4b56-9c42-51ca811dceee
+		summarizeBy: sum
+		sourceColumn: vl_liberado_total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ds_faixa_valor_liberado
+		dataType: string
+		lineageTag: 882b6353-5857-4c40-a735-86510e2e9a83
+		summarizeBy: none
+		sourceColumn: ds_faixa_valor_liberado
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_financiado_total
+		dataType: double
+		lineageTag: a3139f05-9821-4f19-8fd3-073deedb6f72
+		summarizeBy: sum
+		sourceColumn: vl_financiado_total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column qt_total
+		dataType: int64
+		formatString: 0
+		lineageTag: 38c3e398-7822-4192-b615-892bd2f8eddb
+		summarizeBy: sum
+		sourceColumn: qt_total
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_liberado_seguro
+		dataType: double
+		lineageTag: 2bff54a2-a88c-42e6-a106-08e06ac5a683
+		summarizeBy: sum
+		sourceColumn: vl_liberado_seguro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_financiado_seguro
+		dataType: double
+		lineageTag: a545a930-324f-4177-b27f-68d674fb15db
+		summarizeBy: sum
+		sourceColumn: vl_financiado_seguro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column qt_seguro
+		dataType: int64
+		formatString: 0
+		lineageTag: 6503d7f2-77e4-4130-be6b-e278b194ab19
+		summarizeBy: sum
+		sourceColumn: qt_seguro
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_seguro
+		dataType: double
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: 5d84f2d4-0f85-4661-b9bc-d900ff94124e
+		summarizeBy: sum
+		sourceColumn: vl_seguro
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column vl_idade
+		dataType: int64
+		formatString: 0
+		lineageTag: e716ffb8-fdab-431b-a4a5-150434c6a644
+		summarizeBy: sum
+		sourceColumn: vl_idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_faixa_idade
+		dataType: string
+		lineageTag: b9f46b1f-f590-4f49-974b-6fffe02efd0d
+		summarizeBy: none
+		sourceColumn: ds_faixa_idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column cd_uf_cliente
+		dataType: string
+		lineageTag: f860aa7c-977f-4842-884e-c83522f7e39d
+		summarizeBy: none
+		sourceColumn: cd_uf_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_parcelas
+		dataType: int64
+		formatString: 0
+		lineageTag: 4881d2d7-f9f1-4d9d-90ff-ab351829634c
+		summarizeBy: sum
+		sourceColumn: qt_parcelas
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_faixa_parcelas
+		dataType: string
+		lineageTag: 2a223418-4ad2-4ed5-aaeb-a4b858562cf5
+		summarizeBy: none
+		sourceColumn: ds_faixa_parcelas
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_emitido
+		dataType: int64
+		formatString: 0
+		lineageTag: d79b5533-20df-4263-9eb6-395ad2520858
+		summarizeBy: sum
+		sourceColumn: qt_emitido
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_emissao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 96e5e6d4-470e-4e7f-94c5-a42c65df2069
+		summarizeBy: none
+		sourceColumn: dt_emissao
+
+		variation Variation
+			isDefault
+			relationship: bac19ec6-5f49-4c76-8810-0017ef2e0d8a
+			defaultHierarchy: LocalDateTable_08b00509-675e-45a6-8640-25bdc80b29f4.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_cancelamento
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d76e5754-3b8d-448a-884a-6a713bf710e0
+		summarizeBy: none
+		sourceColumn: dt_cancelamento
+
+		variation Variation
+			isDefault
+			relationship: f03330d4-a7c6-4545-8646-61197bd57041
+			defaultHierarchy: LocalDateTable_665938eb-0d7b-49b4-a1b0-9545ed416ac2.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_atualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 22931ce2-7f20-408c-83ef-27ddb523d324
+		summarizeBy: none
+		sourceColumn: dt_atualizacao
+
+		variation Variation
+			isDefault
+			relationship: 14c0daa3-69fe-4b7a-950a-34b37a148201
+			defaultHierarchy: LocalDateTable_99588929-f120-4e20-b3d6-ab43ffb5503d.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave
+		dataType: string
+		lineageTag: 7fb1c6f8-5db1-49fd-a567-1daecfd89380
+		summarizeBy: none
+		sourceColumn: Chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_contratos
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d4e5f37-eaea-4b2d-847f-e34cbf623521
+		summarizeBy: sum
+		sourceColumn: qt_contratos
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_seguros
+		dataType: int64
+		formatString: 0
+		lineageTag: d671ca09-61ec-4502-b120-81b6fc784245
+		summarizeBy: sum
+		sourceColumn: qt_seguros
+
+		annotation SummarizationSetBy = Automatic
+
+	column vl_premio_total
+		dataType: double
+		lineageTag: ff7b4ce6-1ba6-47f2-b1e5-57d6e8e1bc42
+		summarizeBy: sum
+		sourceColumn: vl_premio_total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column faixa_idade
+		dataType: string
+		lineageTag: 596d04e3-a24a-4eb8-9471-b4b5e007b655
+		summarizeBy: none
+		sourceColumn: faixa_idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Motivo_Cancelamento
+		dataType: string
+		lineageTag: 45db7900-2a7a-4cbf-91ae-8979cb0eddd3
+		summarizeBy: none
+		sourceColumn: ds_Motivo_Cancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_competencia
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 4d86aad3-428e-43a1-a630-cdc41e167140
+		summarizeBy: none
+		sourceColumn: dt_competencia
+
+		variation Variation
+			isDefault
+			relationship: f8a219fa-6ee0-4fba-9f95-e2fd73566849
+			defaultHierarchy: LocalDateTable_46328277-6291-4fef-b57f-d17e0e930572.'Hierarquia de datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Personalizar
+		dataType: string
+		lineageTag: 66e53354-7795-45e2-be6a-967027e9b49a
+		summarizeBy: none
+		sourceColumn: Personalizar
+
+		annotation SummarizationSetBy = Automatic
+
+	column tempo_cancelamento
+		dataType: int64
+		formatString: 0
+		lineageTag: d13e6a7a-4136-43be-9586-7f0fbda25441
+		summarizeBy: sum
+		sourceColumn: tempo_cancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_cancelamento_safra
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f3c665c0-0c08-468d-abc3-bf306207dcad
+		summarizeBy: none
+		sourceColumn: dt_cancelamento_safra
+
+		variation Variation
+			isDefault
+			relationship: 6332fc32-b57d-456e-b7d4-1bc14ca437f8
+			defaultHierarchy: LocalDateTable_fff0aaeb-7aea-4b47-acf7-00a6909f4e51.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAB_Chave-b5d91c71-2ba4-45ac-a9de-95016c93f7ae = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.Combine({REL_EP_Digital_Banco_Pan_Producao, REL_EP_Digital_Banco_Pan_Producao_Resumo}),
+				    #"Colunas Removidas" = Table.RemoveColumns(Fonte,{"id_producao", "id_producao_resumo", "dt_competencia"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Colunas Removidas", {"Chave"}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Duplicatas Removidas", "dt_contrato", "dt_contrato - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"dt_contrato - Copiar", "dt_competencia"}}),
+				    #"Início do Mês Calculado" = Table.TransformColumns(#"Colunas Renomeadas",{{"dt_competencia", Date.StartOfMonth, type datetime}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Início do Mês Calculado",{{"dt_competencia", type date}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Tipo Alterado", "Personalizar", each if [cd_uf_cliente] = "SP" then "SAO PAULO" else if [cd_uf_cliente] = "RJ" then "RIO DE JANEIRO" else if [cd_uf_cliente] = "MG" then "MINAS GERAIS" else if [cd_uf_cliente] = "BA" then "BAHIA" else if [cd_uf_cliente] = "PE" then "PERNAMBUCO" else if [cd_uf_cliente] = "CE" then "CEARA" else if [cd_uf_cliente] = "PR" then "PARANA" else if [cd_uf_cliente] = "GO" then "GOIAS" else if [cd_uf_cliente] = "RS" then "RIO GRANDE DO SUL" else if [cd_uf_cliente] = "PA" then "PARA" else if [cd_uf_cliente] = "SC" then "SANTA CATARINA" else if [cd_uf_cliente] = "DF" then "DISTRITO FEDERAL" else if [cd_uf_cliente] = "RN" then "RIO GRANDE DO NORTE" else if [cd_uf_cliente] = "PB" then "PARAIBA" else if [cd_uf_cliente] = "ES" then "ESPIRITO SANTO" else if [cd_uf_cliente] = "AL" then "ALAGOAS" else if [cd_uf_cliente] = "MA" then "MARANHAO" else if [cd_uf_cliente] = "AM" then "AMAZONAS" else if [cd_uf_cliente] = "SE" then "SERGIPE" else if [cd_uf_cliente] = "MT" then "MATO GROSSO" else if [cd_uf_cliente] = "PI" then "PIAUI" else if [cd_uf_cliente] = "MS" then "MATO GROSSO DO SUL" else if [cd_uf_cliente] = "RO" then "RORAIMA" else if [cd_uf_cliente] = "RR" then "RONDONIA" else if [cd_uf_cliente] = "TO" then "TOCANTINS" else if [cd_uf_cliente] = "AC" then "ACRE" else if [cd_uf_cliente] = "AP" then "AMAPA" else null),
+				    #"Tipo Alterado com Localidade" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada", {{"Personalizar", type text}}, "pt-BR"),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado com Localidade",null,"Indefinido",Replacer.ReplaceValue,{"cd_uf_cliente"})
+				in
+				    #"Valor Substituído"
+
+	annotation PBI_ResultType = Table
+

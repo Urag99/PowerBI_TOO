@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Corretora"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "31c17c39-8140-454f-b8c1-d0786b6849a0"
+  }
+}

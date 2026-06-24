@@ -1,0 +1,545 @@
+table REL_Habitacional_Zoho_Visitas
+	lineageTag: 638ea269-7a1c-4012-ac5a-afeb3c03833f
+
+	measure qt_CCAs =
+			
+			CALCULATE(
+			     DISTINCTCOUNTNOBLANK(REL_Habitacional_Zoho_Visitas[cdCCA])
+			    ,REL_Habitacional_Zoho_CCA[stCCA] = "Ativo Certificado"
+			    ,YEAR(REL_Habitacional_Zoho_Visitas[dtVisita]) = YEAR(TODAY())
+			)
+		formatString: 0
+		lineageTag: 2cd92aab-d7af-40c8-9cd6-30872a20fdd7
+
+	measure %_qt_CCAs =
+			
+			DIVIDE(
+			     [qt_CCAs]
+			    ,[Qtd Ativos CCA sem filtro]
+			    ,BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: a6d3fb3e-0a98-4a57-99b6-bf32698132ed
+
+	measure qt_grupo_CCAs =
+			
+			CALCULATE(
+			     DISTINCTCOUNTNOBLANK(REL_Habitacional_Zoho_Visitas[grupo_cca])
+			    ,REL_Habitacional_Zoho_CCA[stCCA] = "Ativo Certificado"
+			)
+		formatString: #,0
+		lineageTag: 60bc5ccd-e353-4975-bb39-accbfdf83abf
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: c314ccbf-6ab8-44bb-9994-2d60aa78742a
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column codCRM
+		dataType: string
+		lineageTag: 8825ac10-cef1-4638-82cd-de8c756152ce
+		summarizeBy: none
+		sourceColumn: codCRM
+
+		annotation SummarizationSetBy = Automatic
+
+	column tpAtividade
+		dataType: string
+		lineageTag: bc02d2d1-c940-489f-8557-dc7a02c64c0a
+		summarizeBy: none
+		sourceColumn: tpAtividade
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmExecutivo
+		dataType: string
+		lineageTag: fc03fa7f-e171-40d4-a62e-4573af86ef4e
+		summarizeBy: none
+		sourceColumn: nmExecutivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmCCA
+		dataType: string
+		lineageTag: 320f5c31-87c4-4049-88d0-f4349f432ef9
+		summarizeBy: none
+		sourceColumn: nmCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdCCA
+		dataType: string
+		lineageTag: 3106dc77-5e92-4885-9533-6425e417c857
+		summarizeBy: none
+		sourceColumn: cdCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo
+		dataType: string
+		lineageTag: fde81595-6293-4005-bbb9-46757d93a3be
+		summarizeBy: none
+		sourceColumn: tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column stVisita
+		dataType: string
+		lineageTag: 3c024e81-0432-49b4-9a50-f773e3b70584
+		summarizeBy: none
+		sourceColumn: stVisita
+
+		annotation SummarizationSetBy = Automatic
+
+	column stCheckIN
+		dataType: string
+		lineageTag: 03cb30f8-02b9-49ea-8c8d-583d1d9c1875
+		summarizeBy: none
+		sourceColumn: stCheckIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtAtualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dd2436a1-cea9-41d3-b248-9355a7b5b176
+		summarizeBy: none
+		sourceColumn: dtAtualizacao
+
+		variation Variation
+			isDefault
+			relationship: b17a4538-7e9f-421f-b9f2-0d8cc4971d23
+			defaultHierarchy: LocalDateTable_00994bd1-f3b8-4218-8aef-23d2dec70e31.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column tpAtivacao
+		dataType: string
+		lineageTag: 27637853-b816-47ef-b76c-bf01c5b0451d
+		summarizeBy: none
+		sourceColumn: tpAtivacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtVisita
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: f94c0f1a-257e-436a-b2f6-f2b193b8d119
+		summarizeBy: none
+		sourceColumn: dtVisita
+
+		variation Variation
+			isDefault
+			relationship: 01afb63b-a3c6-418a-89b5-76ef860fb270
+			defaultHierarchy: LocalDateTable_189bb728-c382-461f-967d-653ace639cbf.'Hierarquia de Datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column dtVisita_Ano
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e23cf387-69d7-4fa3-9323-10e69e47a760
+		summarizeBy: none
+		sourceColumn: dtVisita_Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dt_chave
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bb732781-0b92-43c2-ad0b-7475cfbd85b8
+		summarizeBy: none
+		sourceColumn: dt_chave
+
+		variation Variation
+			isDefault
+			relationship: ca945bbc-4da7-48fa-b63e-ca19e39e1075
+			defaultHierarchy: LocalDateTable_48561f1a-4e49-4a6c-9a71-c75e8b84527b.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dsExecutivo
+		dataType: string
+		lineageTag: c24dd1d6-5757-401e-9abd-03838287c0dc
+		summarizeBy: none
+		sourceColumn: dsExecutivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column chave_ligacoes_visitas
+		dataType: string
+		lineageTag: 456ce8d2-1692-4d1a-a441-05c102415e6e
+		summarizeBy: none
+		sourceColumn: chave_ligacoes_visitas
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_ligacao
+		dataType: double
+		formatString: #,0
+		lineageTag: 629958cc-9a39-415e-a988-8ce33822f024
+		summarizeBy: sum
+		sourceColumn: qt_ligacao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column qt_WhatsApp
+		dataType: double
+		formatString: #,0
+		lineageTag: e4fc95c1-18bf-4c16-8b86-e918e5b0c290
+		summarizeBy: sum
+		sourceColumn: qt_WhatsApp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column qt_Reuniao
+		dataType: double
+		formatString: #,0
+		lineageTag: 1e83c8b5-4f3a-4106-9f1a-61a016d89704
+		summarizeBy: sum
+		sourceColumn: qt_Reuniao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column qt_Total
+		dataType: double
+		formatString: #,0
+		lineageTag: 97cc6289-3f44-4f3d-b29b-dc4796373181
+		summarizeBy: sum
+		sourceColumn: qt_Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column tpAtividade_Personalizado
+		dataType: string
+		lineageTag: 4bfa381b-2fd9-4b6c-8d98-8c08cb0ce79a
+		summarizeBy: none
+		sourceColumn: tpAtividade_Personalizado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status_Atividade
+		dataType: string
+		lineageTag: 6eab4a59-7f11-4eff-bd66-6cedad5bdb0b
+		summarizeBy: none
+		sourceColumn: Status_Atividade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status_CheckIn
+		dataType: string
+		lineageTag: aecc6c18-1128-485c-b4fd-95b9ce8ca375
+		summarizeBy: none
+		sourceColumn: Status_CheckIn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cores_tpAtividades
+		dataType: string
+		lineageTag: f51b79a2-f4dc-4617-adde-9a4f55724c60
+		summarizeBy: none
+		sourceColumn: Cores_tpAtividades
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave_CCA_Zoho_Vendas
+		dataType: string
+		lineageTag: 5a3ac2e1-1813-4dbe-8d1d-38448844daee
+		summarizeBy: none
+		sourceColumn: Chave_CCA_Zoho_Vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	column CCA_Zoho_Vendas
+		dataType: string
+		lineageTag: 9f5d44d3-7ecd-4f33-ac6f-fbd73cd882b4
+		summarizeBy: none
+		sourceColumn: CCA_Zoho_Vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Teams
+		dataType: double
+		formatString: #,0
+		lineageTag: 3c834334-4b9c-40f7-b074-9811beabab32
+		summarizeBy: sum
+		sourceColumn: qt_Teams
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column cdUFCCA
+		dataType: string
+		lineageTag: 4d9633d4-9637-409c-90ce-f0a50a9523f0
+		summarizeBy: none
+		sourceColumn: cdUFCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsCidadeCCA
+		dataType: string
+		lineageTag: 969b99cb-55e3-4b8f-84d5-0998dd73f255
+		summarizeBy: none
+		sourceColumn: dsCidadeCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoVisita
+		dataType: string
+		lineageTag: 7ac87c94-e059-49b0-a006-3305afb8d345
+		summarizeBy: none
+		sourceColumn: AnoVisita
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesVisita
+		dataType: string
+		lineageTag: c87934cf-bfb2-4d56-afd7-154cc732e784
+		summarizeBy: none
+		sourceColumn: MesVisita
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaVisita
+		dataType: string
+		lineageTag: 499992f6-dd6d-4dff-ab9b-274539cc7436
+		summarizeBy: none
+		sourceColumn: DiaVisita
+
+		annotation SummarizationSetBy = Automatic
+
+	column Executivo
+		dataType: string
+		lineageTag: e18b7864-926e-47d7-9e95-ac37c811c394
+		summarizeBy: none
+		sourceColumn: Executivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave_Grupo_CCA_Vendas_Ativacao
+		dataType: string
+		lineageTag: 7faa1d0d-2642-49b0-bb7f-dc44c8e8f59e
+		summarizeBy: none
+		sourceColumn: Chave_Grupo_CCA_Vendas_Ativacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_ativacao
+		dataType: string
+		lineageTag: 43e19a3c-b790-48cb-83c5-722cba4457aa
+		summarizeBy: none
+		sourceColumn: data_ativacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column grupo_cca
+		dataType: string
+		lineageTag: 672fab44-6dc1-4526-9947-391be9251c45
+		summarizeBy: none
+		sourceColumn: grupo_cca
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cluster
+		dataType: string
+		lineageTag: a8f67c7f-c96d-47ea-9bce-6576f13beff0
+		summarizeBy: none
+		sourceColumn: ds_Cluster
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Top_nac
+		dataType: string
+		lineageTag: 129a65b0-492e-46ad-9752-97cc0df184c3
+		summarizeBy: none
+		sourceColumn: ds_Top_nac
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cluster_Agrupado
+		dataType: string
+		lineageTag: 537d9691-cefd-4bd6-b8be-4b8b1fcd4e46
+		summarizeBy: none
+		sourceColumn: ds_Cluster_Agrupado
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Top
+		dataType: string
+		lineageTag: ad07610c-b36f-4b23-983a-bffd41d11faf
+		summarizeBy: none
+		sourceColumn: ds_Top
+
+		annotation SummarizationSetBy = Automatic
+
+	column ds_Cluster_Agrupado_Personalizado
+		dataType: string
+		lineageTag: a59bb763-ada9-4159-bad1-48548398140f
+		summarizeBy: none
+		sourceColumn: ds_Cluster_Agrupado_Personalizado
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt_Ligacao_SR
+		dataType: double
+		formatString: 0
+		lineageTag: 7a0de455-e9c4-4c3e-a9d3-845ea7f841f0
+		summarizeBy: sum
+		sourceColumn: qt_Ligacao_SR
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column qt_WhatsApp_SR
+		dataType: double
+		formatString: 0
+		lineageTag: eb09c942-8e61-424b-9b2e-38affb012c1d
+		summarizeBy: sum
+		sourceColumn: qt_WhatsApp_SR
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column qt_Reuniao_SR
+		dataType: double
+		formatString: 0
+		lineageTag: a80746f8-aca6-4c1b-8228-45435a100f30
+		summarizeBy: sum
+		sourceColumn: qt_Reuniao_SR
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column qt_Teams_SR
+		dataType: double
+		formatString: 0
+		lineageTag: 91252054-fab8-409e-ac01-bae361ddf34f
+		summarizeBy: sum
+		sourceColumn: qt_Teams_SR
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column qt_Total_SR
+		dataType: double
+		formatString: 0
+		lineageTag: b200c9ca-410b-40f8-9874-8ccd4e33cd1c
+		summarizeBy: sum
+		sourceColumn: qt_Total_SR
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	partition REL_Habitacional_Zoho_Visitas-4428c21e-a245-4f6d-914b-b3df60f79c92 = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_Habitacional_Zoho_Visitas = Fonte{[Schema="dbo",Item="REL_Habitacional_Zoho_Visitas"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Habitacional_Zoho_Visitas,{{"dtVisita", type date}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Tipo Alterado",{{"dtVisita", type date}}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Tipo Alterado1", "dtVisita", "dtVisita - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"dtVisita - Copiar", "dtVisita_Ano"}}),
+				    #"Início do Ano Calculado" = Table.TransformColumns(#"Colunas Renomeadas",{{"dtVisita_Ano", Date.StartOfYear, type date}}),
+				    #"Coluna Duplicada1" = Table.DuplicateColumn(#"Início do Ano Calculado", "dtVisita", "dtVisita - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada1",{{"dtVisita - Copiar", "dt_chave"}}),
+				    #"Texto Inserido Antes do Delimitador" = Table.AddColumn(#"Colunas Renomeadas1", "Texto Antes do Delimitador", each Text.BeforeDelimiter([nmExecutivo], " "), type text),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Texto Inserido Antes do Delimitador",{{"Texto Antes do Delimitador", "dsExecutivo"}}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Colunas Renomeadas2", "chave_ligacoes_visitas", each Text.Combine({Text.From([dt_chave], "pt-BR"), [dsExecutivo], [cdCCA], [nmCCA]}, "|"), type text),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Coluna Mesclada Inserida", "qt_ligacao", each if [cdCCA] = null then 0 else if [tpAtivacao] = "Ligação" then 1 else 0),
+				    #"Personalização Adicionada12" = Table.AddColumn(#"Personalização Adicionada", "qt_Ligacao_SR", each if [cdCCA] <> null then 0 else if [tpAtivacao] = "Ligação" then 1 else 0),
+				    #"Personalização Adicionada1" = Table.AddColumn(#"Personalização Adicionada12", "qt_WhatsApp", each if [cdCCA] = null then 0 else if [tpAtivacao] = "WhatsApp" then 1 else 0),
+				    #"Personalização Adicionada13" = Table.AddColumn(#"Personalização Adicionada1", "qt_WhatsApp_SR", each if [cdCCA] <> null then 0 else if [tpAtivacao] = "WhatsApp" then 1 else 0),
+				    #"Personalização Adicionada2" = Table.AddColumn(#"Personalização Adicionada13", "qt_Reuniao", each if [cdCCA] = null then 0 else if [tpAtivacao] = "Visita" then 1 else if [tpAtivacao] = "Visita Presencial" then 1 else 0),
+				    #"Personalização Adicionada14" = Table.AddColumn(#"Personalização Adicionada2", "qt_Reuniao_SR", each if [cdCCA] <> null then 0 else if [tpAtivacao] = "Visita" then 1 else if [tpAtivacao] = "Visita Presencial" then 1 else 0),
+				    #"Personalização Adicionada8" = Table.AddColumn(#"Personalização Adicionada14", "qt_Teams", each if [cdCCA] = null then 0 else if  [tpAtivacao] = "Teams" then 1 else 0),
+				    #"Personalização Adicionada15" = Table.AddColumn(#"Personalização Adicionada8", "qt_Teams_SR", each if [cdCCA] <> null then 0 else if  [tpAtivacao] = "Teams" then 1 else 0),
+				    #"Personalização Adicionada3" = Table.AddColumn(#"Personalização Adicionada15", "qt_Total", each [qt_Reuniao]+[qt_WhatsApp]+[qt_ligacao]+[qt_Teams]),
+				    #"Personalização Adicionada16" = Table.AddColumn(#"Personalização Adicionada3", "qt_Total_SR", each [qt_Ligacao_SR]+[qt_WhatsApp_SR]+[qt_Reuniao_SR]+[qt_Teams_SR]),
+				    #"Personalização Adicionada4" = Table.AddColumn(#"Personalização Adicionada16", "tpAtividade_Personalizado", each if [tpAtivacao] = "Visita" then "Visitas" else 
+				if [tpAtivacao] = "WhatsApp" then "WhatsApp" else 
+				if [tpAtivacao] = "Ligação" then "Ligaçoes" else 
+				if [tpAtivacao] = "Teams" then "Teams" else null),
+				    #"Personalização Adicionada5" = Table.AddColumn(#"Personalização Adicionada4", "Status_Atividade", each if [tpAtivacao] = "WhatsApp" then "WhatsApp" else 
+				if [tpAtivacao] = "Visita" then "Visitas" else 
+				if [tpAtivacao] = "Ligação" then [stVisita] else null),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada5", each true),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Linhas Filtradas",
+				    {
+				        {"qt_ligacao", type number}, 
+				        {"qt_WhatsApp", type number}, 
+				        {"qt_Reuniao", type number},
+				        {"qt_Teams", type number}, 
+				        {"qt_Total", type number}, 
+				        {"tpAtividade_Personalizado", type text}, 
+				        {"Status_Atividade", type text}
+				    }),
+				    #"Personalização Adicionada6" = Table.AddColumn(#"Tipo Alterado2", "Status_CheckIn", each if [tpAtivacao] = "WhatsApp" then "WhatsApp" else 
+				if [tpAtivacao] = "Visita" then "Visitas" else 
+				if [tpAtivacao] = "Ligação" then [stCheckIN] else null),
+				    #"Linhas Filtradas1" = Table.SelectRows(#"Personalização Adicionada6", each true),
+				    #"Personalização Adicionada7" = Table.AddColumn(#"Linhas Filtradas1", "Cores_tpAtividades", each if [tpAtivacao] = "Ligação" then "#01B8AA" else 
+				if [tpAtivacao] = "WhatsApp" then "#FD625E" else 
+				if [tpAtivacao] = "Visita" then "#374649" else null),
+				    #"Coluna Mesclada Inserida1" = Table.AddColumn(#"Personalização Adicionada7", "Chave_CCA_Zoho_Vendas", each Text.Combine({Text.From([dt_chave], "pt-BR"), [cdCCA]}, "|"), type text),
+				    #"Coluna Duplicada2" = Table.DuplicateColumn(#"Coluna Mesclada Inserida1", "cdCCA", "cdCCA - Copiar"),
+				    #"Colunas Renomeadas3" = Table.RenameColumns(#"Coluna Duplicada2",{{"cdCCA - Copiar", "CCA_Zoho_Vendas"}}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Colunas Renomeadas3", {"cdCCA"}, REL_Habitacional_Zoho_CCA, {"cdCCA"}, "REL_Habitacional_Zoho_CCA", JoinKind.LeftOuter),
+				    #"REL_Habitacional_Zoho_CCA Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "REL_Habitacional_Zoho_CCA", {"cdUF", "dsCidade"}, {"REL_Habitacional_Zoho_CCA.cdUF", "REL_Habitacional_Zoho_CCA.dsCidade"}),
+				    #"Colunas Renomeadas4" = Table.RenameColumns(#"REL_Habitacional_Zoho_CCA Expandido",{{"REL_Habitacional_Zoho_CCA.cdUF", "cdUFCCA"}, {"REL_Habitacional_Zoho_CCA.dsCidade", "dsCidadeCCA"}}),
+				    #"Coluna Duplicada3" = Table.DuplicateColumn(#"Colunas Renomeadas4", "nmExecutivo", "nmExecutivo - Copiar"),
+				    #"Colunas Renomeadas5" = Table.RenameColumns(#"Coluna Duplicada3",{{"nmExecutivo - Copiar", "Executivo"}}),
+				    #"Texto em Maiúscula" = Table.TransformColumns(#"Colunas Renomeadas5",{{"Executivo", Text.Upper, type text}}),
+				    #"Personalização Adicionada9" = Table.AddColumn(#"Texto em Maiúscula", "data_ativacao", each Text.From(Date.AddMonths(Date.StartOfMonth([dtVisita]), 1)) & "|" & Text.From(Date.AddMonths(Date.StartOfMonth([dtVisita]), 2))),
+				    #"Coluna Mesclada Inserida2" = Table.AddColumn(#"Personalização Adicionada9", "Chave_Grupo_CCA_Vendas_Ativacao", each Text.Combine({[nmCCA], [Executivo], Text.From([data_ativacao], "pt-BR")}, "|"), type text),
+				    #"Personalização Adicionada10" = Table.AddColumn(#"Coluna Mesclada Inserida2", "grupo_cca", each Text.Combine({[nmCCA], [Executivo]}, "|"), type text),
+				    #"Personalização Adicionada11" = Table.AddColumn(#"Personalização Adicionada10", "ds_Cluster_Agrupado_Personalizado", each if [ds_Cluster_Agrupado] = "Top 10" then "1. Top 10" else if [ds_Cluster_Agrupado] = "CCAs Médios" then "2. CCAs Médios" else if [ds_Cluster_Agrupado] = "CCAs Pequenos" then "3. CCAs Pequenos" else if [ds_Cluster_Agrupado] = "Sem Executivo" then "4. Sem Executivo" else if [ds_Cluster_Agrupado] = "Não produz desde <= 2021" then "5. Não produz desde <= 2021" else if [ds_Cluster_Agrupado] = "Não produz desde <= 2022" then "6. Não produz desde 2022" else if [ds_Cluster_Agrupado] = "Não produz desde 2023" then "7. Não produz desde 2023" else if [ds_Cluster_Agrupado] = "Não produz desde 2024" then "8. Não produz desde 2024" else if [ds_Cluster_Agrupado] = "NA" then "9. NA" else null),
+				    #"Tipo Alterado3" = Table.TransformColumnTypes(#"Personalização Adicionada11",{{"ds_Cluster_Agrupado_Personalizado", type text}})
+				in
+				    #"Tipo Alterado3"
+				```
+
+	annotation PBI_QueryRelationships = {"columnCount":11,"keyColumnNames":["id"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{id,0}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{codCRM,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{tpAtividade,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{nmExecutivo,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{nmCCA,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{cdCCA,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{tipo,6}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{stVisita,7}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{stCheckIN,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{tpAtivacao,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{dtAtualizacao,10}"],"ColumnCount":11,"KeyColumnNames":["id"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{id,0}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{codCRM,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{tpAtividade,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{nmExecutivo,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{nmCCA,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{cdCCA,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{tipo,6}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{stVisita,7}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{stCheckIN,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{tpAtivacao,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_Visitas.{dtAtualizacao,10}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

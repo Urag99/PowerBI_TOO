@@ -1,0 +1,44 @@
+table Data_Visita_Ano_Indice
+	lineageTag: 331aad81-6d8d-4830-9fc2-dc1ec4045a9d
+
+	column dtVisita_Ano
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 145bee6c-a645-4a70-8105-86780c8e322b
+		summarizeBy: none
+		sourceColumn: dtVisita_Ano
+
+		variation Variation
+			isDefault
+			relationship: 39aefe7a-4b12-4589-b832-608f29f07a34
+			defaultHierarchy: LocalDateTable_54733f79-3e2f-4ff9-9563-10eaa000428f.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Indice
+		dataType: int64
+		formatString: 0
+		lineageTag: 4aef9157-7c61-4e63-a77d-eeb47a103f11
+		summarizeBy: sum
+		sourceColumn: Indice
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Data_Visita_Ano_Indice = m
+		mode: import
+		source =
+				let
+				    Fonte = REL_Habitacional_Zoho_Visitas,
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"dtVisita_Ano"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Outras Colunas Removidas"),
+				    #"Linhas Classificadas" = Table.Sort(#"Duplicatas Removidas",{{"dtVisita_Ano", Order.Descending}}),
+				    #"Índice Adicionado" = Table.AddIndexColumn(#"Linhas Classificadas", "Indice", 1, 1, Int64.Type)
+				in
+				    #"Índice Adicionado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

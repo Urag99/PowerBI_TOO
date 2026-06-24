@@ -1,0 +1,128 @@
+table REL_Habitacional_Meta
+	lineageTag: 66195cb5-a1ca-4c4a-9d60-1a77fc1d322a
+
+	measure '% Ating AC' = sum (REL_Habitacional_Meta[vlRealizado]) / sum(REL_Habitacional_Meta[vlOrcadoAcionista])
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: 391b3bf6-b432-4b5a-be23-897872f1f635
+
+	measure '% Ating C' = ```
+			sum (REL_Habitacional_Meta[vlRealizado]) / sum(REL_Habitacional_Meta[vlOrcadoComercial]) 
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: 1722774d-8d4e-41bf-9a6d-614c070718fa
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: fb2234ce-30a6-44c1-8fb1-eee0352eeb58
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column periodo
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 2bf0b1dd-5e62-49c6-8902-76c16eb036e3
+		summarizeBy: none
+		sourceColumn: periodo
+
+		variation Variation
+			isDefault
+			relationship: 4c2600ae-59e5-4ac8-bf45-05035a16488e
+			defaultHierarchy: LocalDateTable_273b50bb-a828-483f-86ea-6cc7637f190e.'Hierarquia de Datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column vlOrcadoComercial
+		dataType: double
+		lineageTag: bf3fc70e-1e4d-44c0-ba6d-818e27785164
+		summarizeBy: sum
+		sourceColumn: vlOrcadoComercial
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlOrcadoAcionista
+		dataType: double
+		lineageTag: aa149f3f-0c31-450d-897a-b0eedd625cc1
+		summarizeBy: sum
+		sourceColumn: vlOrcadoAcionista
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlRealizado
+		dataType: double
+		lineageTag: b714f8b0-8d0e-4fa8-a870-e7f147ddc5cc
+		summarizeBy: sum
+		sourceColumn: vlRealizado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dtAtualizacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6ef0d3e3-4033-4f85-b072-9ad4c774a6ed
+		summarizeBy: none
+		sourceColumn: dtAtualizacao
+
+		variation Variation
+			isDefault
+			relationship: ad7bf524-e4a0-47e9-b391-e1d8dc53f5be
+			defaultHierarchy: LocalDateTable_653a28e2-ff9c-4a1b-a7ce-1e8a239e43e1.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsCanalVenda
+		dataType: string
+		lineageTag: cf0bc08d-2725-419b-8af1-baab17552129
+		summarizeBy: none
+		sourceColumn: dsCanalVenda
+
+		annotation SummarizationSetBy = Automatic
+
+	column periodoTxt
+		dataType: string
+		lineageTag: e6cb6ca3-854a-415e-a679-53338ba6d261
+		summarizeBy: none
+		sourceColumn: periodoTxt
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChaveMetaSintetica
+		dataType: string
+		lineageTag: e330ced2-e89b-40cb-8703-a2a40bd544bb
+		summarizeBy: none
+		sourceColumn: ChaveMetaSintetica
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Habitacional_Meta-d5ef5b62-b183-4584-ad16-7af138e8ac1c = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_Habitacional_Meta = Fonte{[Schema="dbo",Item="REL_Habitacional_Meta"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(dbo_REL_Habitacional_Meta,{{"periodo", type date}}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Tipo Alterado", "periodo", "periodo - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"periodo - Copiar", "periodoTxt"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"periodoTxt", type text}}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Tipo Alterado1", "ChaveMetaSintetica", each Text.Combine({[periodoTxt], [dsCanalVenda]}, ""), type text)
+				in
+				    #"Coluna Mesclada Inserida"
+
+	annotation PBI_QueryRelationships = {"columnCount":9,"keyColumnNames":["id"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Meta.{id,0}","Section1/REL_Habitacional_Meta/Tipo Alterado.{periodo,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Meta.{vlOrcadoComercial,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Meta.{vlOrcadoAcionista,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Meta.{vlRealizado,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Meta.{dsCanalVenda,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Meta.{dtAtualizacao,6}","Section1/REL_Habitacional_Meta/Tipo Alterado1.{periodoTxt,7}","Section1/REL_Habitacional_Meta/Coluna Mesclada Inserida.{ChaveMetaSintetica,8}"],"ColumnCount":9,"KeyColumnNames":["id"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Meta.{id,0}","Section1/REL_Habitacional_Meta/Tipo Alterado.{periodo,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Meta.{vlOrcadoComercial,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Meta.{vlOrcadoAcionista,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Meta.{vlRealizado,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Meta.{dsCanalVenda,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Meta.{dtAtualizacao,6}","Section1/REL_Habitacional_Meta/Tipo Alterado1.{periodoTxt,7}","Section1/REL_Habitacional_Meta/Coluna Mesclada Inserida.{ChaveMetaSintetica,8}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,361 @@
+table REL_Habitacional_Zoho_CCA
+	lineageTag: 288de3bb-d418-47b1-b494-a203d84cddfc
+
+	measure '% Visitas x Ativos' = ```
+			CALCULATE(
+			                                SUM(REL_Habitacional_Zoho_CCA[stVisita]) / 
+			                                CALCULATE(
+			                                    SUM(REL_Habitacional_Zoho_CCA[Qtd CCA Ativos]),
+			                                    ALL(REL_Habitacional_Zoho_Visitas[dtVisita]),
+			                                    all(TAB_CCA_Zoho_Vendas[dt_chave])
+			                                )
+			)
+			
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 4d8e23db-5496-4ca1-a2ba-2473f5b1e216
+
+	measure 'QTD CCA Pendente Visita' =
+			CALCULATE(
+			                                    sum(REL_Habitacional_Zoho_CCA[Qtd CCA Ativos]),
+			                                    ALL(REL_Habitacional_Zoho_Visitas[dtVisita]))
+			                                    - sum(REL_Habitacional_Zoho_CCA[stVisita])
+		formatString: #,0
+		lineageTag: fccb4a40-f0f0-4cf0-ae0b-f6d41d90a88c
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Qtd CCA' = COUNT(REL_Habitacional_Zoho_CCA[cdCCA])
+		formatString: #,0
+		lineageTag: cfa98bfe-9081-4625-b28c-a736e2de05c9
+
+	measure 'dt atualizacao Calculada' =
+			
+			VALUES(REL_Habitacional_Zoho_CCA[dtAtualizacao])
+		lineageTag: bfff0c20-d3a3-4f47-9446-5cb8ab2c6f43
+
+	measure '% CCA Com Produção 2024' = ```
+			[qt CCA com Produção Igual 2024] /
+			                    CALCULATE( 
+			                            sum(REL_Habitacional_Zoho_CCA[Qtd CCA Ativos]),
+			                            ALL(REL_Habitacional_Zoho_Visitas[dtVisita])
+			                            
+			                            )
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 5c1fc534-3ab7-433d-b9c1-42e3f8cbe344
+
+	measure 'Qtd UF + Cidade' =
+			CALCULATE(
+			                        DISTINCTCOUNT(REL_Habitacional_Zoho_CCA[Uf + Cidade]),
+			                        REL_Habitacional_Zoho_CCA[stCCA] = "Ativo Certificado",
+			                        all(REL_Habitacional_Zoho_Visitas[dtVisita])
+			)
+		formatString: #,0
+		lineageTag: 7dd23c08-c1d8-4f93-8637-7e2df59b6613
+
+	measure 'Qtd Ativos CCA sem filtro' =
+			
+			CALCULATE(
+			     sum(REL_Habitacional_Zoho_CCA[Qtd CCA Ativos])
+			    ,all(REL_Habitacional_Zoho_Visitas[dtVisita])
+			    ,all(TAB_CCA_Zoho_Vendas[dt_chave])
+			)
+		formatString: #,0
+		lineageTag: 532e35ca-280b-456a-acda-0936a7edfb7d
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Qtd UF + Cidade Ativados' = ```
+			CALCULATE(
+			                        DISTINCTCOUNT(REL_Habitacional_Zoho_CCA[Uf + Cidade]),
+			                        REL_Habitacional_Zoho_CCA[stCCA] = "Ativo Certificado"
+			                        
+			                        )
+			
+			```
+		formatString: #,0
+		lineageTag: 9c826a3f-8355-4a2c-9dc8-8719e24774f5
+
+	measure 'Flag visita sem filtro' = ```
+			if(values(REL_Habitacional_Zoho_CCA[stVisita]) = 1,"Sim","Não"
+			                            )
+			                                                             
+			```
+		lineageTag: 398ed6d3-fe2b-4439-8303-f10bded58c3f
+
+	measure '% CCA Com Produção 2023' = ```
+			[qt CCA com Produção Igual 2023] /
+			                    CALCULATE( 
+			                            sum(REL_Habitacional_Zoho_CCA[Qtd CCA Ativos]),
+			                            ALL(REL_Habitacional_Zoho_Visitas[dtVisita])
+			                            
+			                            )
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 967326f3-5566-410e-a786-51770a43098c
+
+	measure flAtivacaoVisitaNew =
+			CALCULATE(
+			                                SUM(REL_Habitacional_Zoho_CCA[flAtivacaoVisita]),
+			                                REL_Habitacional_Zoho_Visitas[stCheckIN] = "VISITED"
+			                                ||
+			                                REL_Habitacional_Zoho_Visitas[stVisita] = "Visita realizada"
+			                                )
+		formatString: #,0
+		lineageTag: fcf7e9f3-945f-452a-9c50-74561cf80a99
+
+	measure flAtivacaoLigacaoNew =
+			
+			CALCULATE(
+			     SUM(REL_Habitacional_Zoho_CCA[flAtivacaoLigacao])
+			    ,REL_Habitacional_Zoho_Visitas[tpAtivacao] = "Ligação"
+			)
+		formatString: #,0
+		lineageTag: 537f51d6-6414-4419-929e-7060fe0a82b2
+
+	measure stVisita_Ultimo_Ano =
+			
+			CALCULATE(
+			     sum(REL_Habitacional_Zoho_CCA[stVisita])
+			    ,Data_Visita_Ano_Indice[Indice] = 1
+			    ,all(REL_Habitacional_Base_Vendas[dtMesFaturado])
+			)
+		formatString: #,0
+		lineageTag: 9ff42801-0fdf-4991-872d-0d17d90d81af
+
+	measure dtVisita_Ultima =
+			
+			CALCULATE(
+			     LASTDATE(REL_Habitacional_Zoho_Visitas[dtVisita])
+			    ,all(REL_Habitacional_Base_Vendas[dtMesFaturado])
+			)
+		formatString: Short Date
+		lineageTag: c7dd79fb-fc5a-4025-8396-edf6bcad93e7
+
+	measure ultima_dtVisita =
+			
+			LASTDATE(REL_Habitacional_Zoho_Visitas[dtVisita])
+		formatString: yyyy-mm
+		lineageTag: 6f46781f-5814-4757-ad4d-c200b623068a
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure '% CCA Com Produção 2025' = ```
+			[qt CCA com Produção Igual 2025] /
+			                    CALCULATE( 
+			                            sum(REL_Habitacional_Zoho_CCA[Qtd CCA Ativos]),
+			                            ALL(REL_Habitacional_Zoho_Visitas[dtVisita])
+			                            
+			                            )
+			
+			```
+		lineageTag: 9f8b7a9a-2960-4cc2-83d9-c29d55254155
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 79250a35-382d-4d0b-b30f-49e975db0a64
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmExecutivo
+		dataType: string
+		lineageTag: c02102f2-b626-428f-a00b-e343a47dc819
+		summarizeBy: none
+		sourceColumn: nmExecutivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdUF
+		dataType: string
+		lineageTag: 0f3e6d20-03b7-414b-854e-f6144f003e0d
+		summarizeBy: none
+		sourceColumn: cdUF
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsCidade
+		dataType: string
+		lineageTag: 70d28e21-3e95-4ab3-b3ca-4f66112f2f4a
+		summarizeBy: none
+		sourceColumn: dsCidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdCCA
+		dataType: string
+		lineageTag: 9b5b646c-931d-4f94-94bd-e4ea346ebf7d
+		summarizeBy: none
+		sourceColumn: cdCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column stCCA
+		dataType: string
+		lineageTag: 6631b659-7b6a-44da-a2c9-1c30e5a2b041
+		summarizeBy: none
+		sourceColumn: stCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column nmCCA
+		dataType: string
+		lineageTag: 83751227-77f8-4203-8528-e9226b35064f
+		summarizeBy: none
+		sourceColumn: nmCCA
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtAtualizacao
+		dataType: string
+		lineageTag: e4b65c21-b00c-4a87-b178-c7b223ae8ce5
+		summarizeBy: none
+		sourceColumn: dtAtualizacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CCA + Nome'
+		dataType: string
+		lineageTag: c8c05fc4-22e6-4307-ae61-a19d374ba4c7
+		summarizeBy: none
+		sourceColumn: CCA + Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtd CCA Ativos'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5105dc83-26a7-47fa-b008-44d18d4bbc07
+		summarizeBy: sum
+		sourceColumn: Qtd CCA Ativos
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtd CCA Inativos'
+		dataType: int64
+		formatString: #,0
+		lineageTag: e5d856c4-c15f-4bfc-996d-964d02a93726
+		summarizeBy: sum
+		sourceColumn: Qtd CCA Inativos
+
+		annotation SummarizationSetBy = Automatic
+
+	column stVisita
+		dataType: int64
+		formatString: #,0
+		lineageTag: b2099509-6481-4b3f-822d-128b6c6104a6
+		summarizeBy: sum
+		sourceColumn: stVisita
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Flag Visita'
+		dataType: string
+		lineageTag: b4961c22-d419-4fbd-b3dc-7ad7a7b13ef3
+		summarizeBy: none
+		sourceColumn: Flag Visita
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Uf + Cidade'
+		dataType: string
+		lineageTag: 1a4f5b23-a3b6-42ae-b7c0-bd60a6be7c9b
+		summarizeBy: none
+		sourceColumn: Uf + Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column flAtivacaoVisita
+		dataType: int64
+		formatString: #,0
+		lineageTag: 9a0fe825-e5da-4134-a306-80be88cc97c5
+		summarizeBy: sum
+		sourceColumn: flAtivacaoVisita
+
+		annotation SummarizationSetBy = Automatic
+
+	column flAtivacaoLigacao
+		dataType: int64
+		formatString: #,0
+		lineageTag: fb342e1f-47ae-42c2-b205-df484131c93d
+		summarizeBy: sum
+		sourceColumn: flAtivacaoLigacao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column flAtivacaoGeral
+		dataType: int64
+		formatString: 0
+		lineageTag: e03c38f3-1d06-41a7-8779-18dc8bf0ab8c
+		summarizeBy: sum
+		sourceColumn: flAtivacaoGeral
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo Ativacao'
+		dataType: string
+		lineageTag: 686d1898-fe78-4978-9fe9-4ba71ecdf0d5
+		summarizeBy: none
+		sourceColumn: Tipo Ativacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave
+		dataType: string
+		lineageTag: 2ef119eb-41f2-4699-bd92-452402728a5b
+		summarizeBy: none
+		sourceColumn: Chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column dsCidadeAgrupado
+		dataType: string
+		lineageTag: 1c7c5b75-ea50-47f8-b1b0-a854536ba649
+		summarizeBy: none
+		sourceColumn: dsCidadeAgrupado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REL_Habitacional_Zoho_CCA-e0bd5af0-52ae-4018-b369-8c7eecb82f77 = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Sql.Database("sql-sandbox", "CONTROLADORIA"),
+				    dbo_REL_Habitacional_Zoho_CCA = Fonte{[Schema="dbo",Item="REL_Habitacional_Zoho_CCA"]}[Data],
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(dbo_REL_Habitacional_Zoho_CCA, "CCA + Nome", each Text.Combine({[cdCCA], [nmCCA]}, " - "), type text),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Coluna Mesclada Inserida", "Qtd CCA Ativos", each if [stCCA] = "Ativo Certificado" then 1 else 0),
+				    #"Coluna Condicional Adicionada1" = Table.AddColumn(#"Coluna Condicional Adicionada", "Qtd CCA Inativos", each if [stCCA] = "Inativo" then 1 else if [stCCA] = "Transacional" then 1 else 0),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna Condicional Adicionada1",{{"Qtd CCA Ativos", Int64.Type}, {"Qtd CCA Inativos", Int64.Type}, {"dtAtualizacao", type date}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Tipo Alterado",{{"dtAtualizacao", type text}}),
+				    #"Coluna Condicional Adicionada2" = Table.AddColumn(#"Tipo Alterado1", "Flag Visita", each if [stVisita] = 1 then "Sim" else "Não"),
+				    #"Coluna Mesclada Inserida1" = Table.AddColumn(#"Coluna Condicional Adicionada2", "Uf + Cidade", each Text.Combine({[cdUF], [dsCidade]}, ";"), type text),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Coluna Mesclada Inserida1", "Tipo Ativacao", each if  [flAtivacaoVisita] = 1 and [flAtivacaoLigacao] = 0 then "Visita"
+				else if  [flAtivacaoVisita] = 1 and [flAtivacaoLigacao] = 1 then "Visita"
+				else if [flAtivacaoVisita] = 0 and [flAtivacaoLigacao] = 1 then "Ligação"
+				else if [flAtivacaoVisita] = 1 and [flAtivacaoLigacao] = 1 then "Ligação"
+				else "Inativo"),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Personalização Adicionada", each true),
+				    #"Coluna Mesclada Inserida2" = Table.AddColumn(#"Linhas Filtradas", "Chave", each Text.Combine({[nmExecutivo], [cdUF], [dsCidade]}, ";"), type text),
+				    #"Personalização Adicionada1" = Table.AddColumn(#"Coluna Mesclada Inserida2", "dsCidadeAgrupado", each if [cdUF] = "SP" and 
+				List.Contains({"CACAPAVA", "IGARATA", "JACAREI","JAMBEIRO","MONTEIRO LOBATO","SANTA BRANCA","TAUBATE","CAMPOS DO JORDAO","LAGOINHA","NATIVIDADE DA SERRA"},[dsCidade])
+				then "VALE DO PARAIBA" 
+				else [dsCidade])
+				in
+				    #"Personalização Adicionada1"
+				```
+
+	annotation PBI_QueryRelationships = {"columnCount":19,"keyColumnNames":["id"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{id,0}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{nmExecutivo,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{cdUF,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{dsCidade,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{cdCCA,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{stCCA,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{nmCCA,6}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{stVisita,7}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{flAtivacaoVisita,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{flAtivacaoLigacao,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{flAtivacaoGeral,10}","Section1/REL_Habitacional_Zoho_CCA/Tipo Alterado1.{dtAtualizacao,11}","Section1/REL_Habitacional_Zoho_CCA/Coluna Mesclada Inserida.{CCA + Nome,12}","Section1/REL_Habitacional_Zoho_CCA/Tipo Alterado.{Qtd CCA Ativos,13}","Section1/REL_Habitacional_Zoho_CCA/Tipo Alterado.{Qtd CCA Inativos,14}","Section1/REL_Habitacional_Zoho_CCA/Coluna Condicional Adicionada2.{Flag Visita,15}","Section1/REL_Habitacional_Zoho_CCA/Coluna Mesclada Inserida1.{Uf + Cidade,16}","Section1/REL_Habitacional_Zoho_CCA/Personalização Adicionada.{Tipo Ativacao,17}","Section1/REL_Habitacional_Zoho_CCA/Coluna Mesclada Inserida2.{Chave,18}"],"ColumnCount":19,"KeyColumnNames":["id"],"ColumnIdentities":["Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{id,0}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{nmExecutivo,1}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{cdUF,2}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{dsCidade,3}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{cdCCA,4}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{stCCA,5}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{nmCCA,6}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{stVisita,7}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{flAtivacaoVisita,8}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{flAtivacaoLigacao,9}","Server.Database\\/2/SQL/toovdbp01;CONTROLADORIA/dbo/REL_Habitacional_Zoho_CCA.{flAtivacaoGeral,10}","Section1/REL_Habitacional_Zoho_CCA/Tipo Alterado1.{dtAtualizacao,11}","Section1/REL_Habitacional_Zoho_CCA/Coluna Mesclada Inserida.{CCA + Nome,12}","Section1/REL_Habitacional_Zoho_CCA/Tipo Alterado.{Qtd CCA Ativos,13}","Section1/REL_Habitacional_Zoho_CCA/Tipo Alterado.{Qtd CCA Inativos,14}","Section1/REL_Habitacional_Zoho_CCA/Coluna Condicional Adicionada2.{Flag Visita,15}","Section1/REL_Habitacional_Zoho_CCA/Coluna Mesclada Inserida1.{Uf + Cidade,16}","Section1/REL_Habitacional_Zoho_CCA/Personalização Adicionada.{Tipo Ativacao,17}","Section1/REL_Habitacional_Zoho_CCA/Coluna Mesclada Inserida2.{Chave,18}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+
