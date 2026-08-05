@@ -321,6 +321,14 @@ table tb_auto_pan_too_seguros
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	column TIPO_PESSOA
+		dataType: string
+		lineageTag: 938bac04-a672-4b0a-8278-dc0ad997a120
+		summarizeBy: none
+		sourceColumn: TIPO_PESSOA
+
+		annotation SummarizationSetBy = Automatic
+
 	partition tb_auto_pan_too_seguros = m
 		mode: import
 		source = ```
@@ -334,8 +342,9 @@ table tb_auto_pan_too_seguros
 				    #"Coluna Condicional Adicionada1" = Table.AddColumn(#"Coluna Condicional Adicionada", "qtde_seguro", each if [valor_seguro] > 0 then 1 else 0),
 				    #"Coluna Condicional Adicionada2" = Table.AddColumn(#"Coluna Condicional Adicionada1", "ds_consolidador", each if Text.Contains([produto], "MOTOS") then "MOTOS" else "LEVES"),
 				    #"Consultas Mescladas" = Table.NestedJoin(#"Coluna Condicional Adicionada2", {"num_proposta"}, REL_Veiculo_Producao, {"COD_CONTRATO"}, "REL_Veiculo_Producao", JoinKind.LeftOuter),
-				    #"REL_Veiculo_Producao Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "REL_Veiculo_Producao", {"POTENCIAL_AUTO_PAN", "DATA_EMISSAO_AUTO_PAN", "ds_faixa_idade"}, {"REL_Veiculo_Producao.POTENCIAL_AUTO_PAN", "REL_Veiculo_Producao.DATA_EMISSAO_AUTO_PAN", "REL_Veiculo_Producao.ds_faixa_idade"}),
-				    #"Colunas Renomeadas" = Table.RenameColumns(#"REL_Veiculo_Producao Expandido",{{"REL_Veiculo_Producao.POTENCIAL_AUTO_PAN", "sql_POTENCIAL_AUTO_PAN"}, {"REL_Veiculo_Producao.DATA_EMISSAO_AUTO_PAN", "sql_DATA_EMISSAO_AUTO_PAN"}, {"REL_Veiculo_Producao.ds_faixa_idade", "sql_ds_faixa_idade"}}),
+				    #"REL_Veiculo_Producao Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "REL_Veiculo_Producao", {"POTENCIAL_AUTO_PAN", "DATA_EMISSAO_AUTO_PAN", "ds_faixa_idade", "TIPO_PESSOA"}, {"REL_Veiculo_Producao.POTENCIAL_AUTO_PAN", "REL_Veiculo_Producao.DATA_EMISSAO_AUTO_PAN", "REL_Veiculo_Producao.ds_faixa_idade", "REL_Veiculo_Producao.TIPO_PESSOA"}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"REL_Veiculo_Producao Expandido",{{"REL_Veiculo_Producao.POTENCIAL_AUTO_PAN", "sql_POTENCIAL_AUTO_PAN"}, {"REL_Veiculo_Producao.DATA_EMISSAO_AUTO_PAN", "sql_DATA_EMISSAO_AUTO_PAN"}, {"REL_Veiculo_Producao.ds_faixa_idade", "sql_ds_faixa_idade"},
+				    {"REL_Veiculo_Producao.TIPO_PESSOA", "TIPO_PESSOA"}}),
 				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Colunas Renomeadas", "data_situacao", "data_situacao - Copiar"),
 				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"data_situacao - Copiar", "AnoMes"}}),
 				    #"Valor Substituído" = Table.ReplaceValue(#"Colunas Renomeadas1",null,"6. Não Informado",Replacer.ReplaceValue,{"sql_ds_faixa_idade"}),
@@ -345,12 +354,14 @@ table tb_auto_pan_too_seguros
 				then 
 						if [ds_tipo_produto] = "Troco" 
 				           or [sql_ds_faixa_idade] = "5. Acima de 60" 
+				           or [TIPO_PESSOA] = "J"
 						then 0
 				        else 1
 				else
 					if [ds_tipo_produto] = "Troco" 
 				           or [sql_ds_faixa_idade] = "5. Acima de 60" 
 				           or [sql_ds_faixa_idade] = "6. Não Informado"
+				           or [TIPO_PESSOA] = "J"
 				    then 0
 				else 1)
 				in

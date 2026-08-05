@@ -1,0 +1,126 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 542,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "REL_Cartao_Consignado_Renovacao",
+          "nodeLineageTag": "2181dedb-1456-4049-a63b-e4231f04563d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 0
+          },
+          "nodeIndex": "REL_ConsignadoProtegido_Proposta_INSS_Agrupado",
+          "nodeLineageTag": "3866bc31-67f0-486f-b1fd-9609f2be3ab5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 0
+          },
+          "nodeIndex": "vw_consignado_agrupado",
+          "nodeLineageTag": "bbde7fe5-0ae2-4401-aa2e-a3bf4d845b89",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 0
+          },
+          "nodeIndex": "Data_Periodo_1",
+          "nodeLineageTag": "a3ae6013-7cc2-4d53-b4e7-1e04ebcfebd4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136,
+            "y": 50
+          },
+          "nodeIndex": "Data_Periodo_2",
+          "nodeLineageTag": "6f45180f-dfb4-41f3-b43d-d9a1b7509b68",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420,
+            "y": 98
+          },
+          "nodeIndex": "TAB_Periodo_Comparar",
+          "nodeLineageTag": "327af7df-ccaa-4261-b081-287e6738e7d7",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1704,
+            "y": 50
+          },
+          "nodeIndex": "TAB_Classificacao_Digitador",
+          "nodeLineageTag": "6c900698-b643-4fc1-bacc-864791ec6337",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1988,
+            "y": 86
+          },
+          "nodeIndex": "vwCorrespondente",
+          "nodeLineageTag": "1559fdf2-c275-4f3a-8f8d-1b47eb3d7a03",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

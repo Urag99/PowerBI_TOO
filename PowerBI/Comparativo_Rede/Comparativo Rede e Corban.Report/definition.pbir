@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json",
+  "version": "4.0",
+  "datasetReference": {
+    "byConnection": {
+      "connectionString": "Data Source=\"powerbi://api.powerbi.com/v1.0/myorg/Informacoes Gerenciais\";initial catalog=\"Banco Pan - Rede e Corban\";access mode=readonly;integrated security=ClaimsToken;semanticmodelid=693e5403-5ed8-4603-98e3-707a8e349e09"
+    }
+  }
+}
